@@ -1,0 +1,48 @@
+#new:Script $Script_ShipBindsToMario
+{
+    Thread
+        Loop
+            Call  GetPlayerPos ( *Var0 *Var1 *Var2 )
+            Call  TranslateModel ( ~Model:Rocket1 *Var0 00000000 *Var2 )
+            Wait  1`
+        EndLoop
+    EndThread
+    Return
+    End
+}
+
+@ $Script_Main_Callback_AfterEnterMap {
+    Call  DisablePlayerInput ( .True )
+    Call  ShowMessageAtScreenPos    ( 002F0002  160`  40` ) % Where to next?
+    Call  ShowChoice ( 002F0003 )
+    If  *Var0  ==  00000000
+        Call CloseMessage()
+        Call  PlayerMoveTo ( 158` -133` 60` )
+        Wait  20`
+        Call  ShowMessageAtScreenPos    ( 002F0004  160`  40` ) % Up!
+    Else
+        Call CloseMessage()
+        Call  PlayerMoveTo ( 158` 148` 60` )
+        Wait  20`
+        Call  ShowMessageAtScreenPos    ( 002F0005  160`  40` ) % Down!
+    EndIf
+    Wait  30`
+    Call GotoMap ( "pro_02" ~Entry:pro_02:entry_w )
+    Call  DisablePlayerInput ( .False )
+    Return
+    End
+}
+
+@ $Script_Main {
+    Set   *GB_WorldLocation  .Location:GoombaRoad
+    Call  SetCamPerspective  ( .Cam:Default 00000003 00000019 00000010 00001000 )
+    Call  SetCamBGColor      ( .Cam:Default 00000000 00000000 00000000 )
+    Call  SetCamEnabled      ( .Cam:Default .True
+    Call  SetCamLeadPlayer   ( .Cam:Default .False )
+    Exec  $Script_SetupMusic
+    Exec  $Script_ShipBindsToMario
+    Exec  $Script_EnterMap
+    Exec  $Script_Main_Callback_AfterEnterMap
+    Return
+    End
+}

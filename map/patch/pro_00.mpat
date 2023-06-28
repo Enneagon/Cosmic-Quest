@@ -1,0 +1,115 @@
+@ $Script_Main {
+    Set   *GB_WorldLocation  .Location:GoombaRoad
+    Call  SetCamPerspective  ( .Cam:Default 00000003 00000019 00000010 00001000 )
+    Call  SetCamBGColor      ( .Cam:Default 00000000 00000000 00000000 )
+    Call  SetCamEnabled      ( .Cam:Default .True )
+    Call  SetCamLeadPlayer   ( .Cam:Default .False )
+    Exec  $Script_SetupMusic
+    Exec  $Script_BindShips
+    Exec  $Script_EnterMap
+    Return
+    End
+}
+
+#new:Script $Script_BindShips
+{
+    Bind $Script_Ship0 .Trigger:WallPressA ~Collider:Rocket0C 00000001 00000000
+    Bind $Script_Ship1 .Trigger:WallPressA ~Collider:Rocket1C 00000001 00000000
+    Bind $Script_Ship2 .Trigger:WallPressA ~Collider:Rocket2C 00000001 00000000
+    Return
+    End
+}
+
+#new:Script $Script_Ship0
+{
+    Call  DisablePlayerInput ( .True )
+    Call  ShowMessageAtScreenPos    ( 002F0000  160`  40` ) % Choose this ship?
+    Call  ShowChoice ( 002F0001 )
+    If  *Var0  ==  00000000
+        Call CloseMessage()
+        Call $StartingStats1 (  )
+        Call  $Function_80240908 ( ) % Gain Lucky Star
+        Call GotoMap ( "pro_01" ~Entry:pro_01:Teleport )
+    Else
+        Call  DisablePlayerInput ( .False )
+        Call  CloseMessage ()
+    EndIf
+    Return
+    End
+}
+
+#new:Script $Script_Ship1
+{
+    Call  DisablePlayerInput ( .True )
+    Call  ShowMessageAtScreenPos    ( 002F0000  160`  40` ) % Choose this ship?
+    Call  ShowChoice ( 002F0001 )
+    If  *Var0  ==  00000000
+        Call CloseMessage()
+        Set *GB_CurrentShip 1`
+        Set *GF_NewSector .True
+        Call $StartingStats1 (  )
+        Call  $Function_80240908 ( ) % Gain Lucky Star
+        Call GotoMap ( "pro_03" ~Entry:pro_03:SectorStart )
+    Else
+        Call  DisablePlayerInput ( .False )
+        Call  CloseMessage ()
+    EndIf
+    Return
+    End
+}
+
+#new:Script $Script_Ship2
+{
+    Call  DisablePlayerInput ( .True )
+    Call  ShowMessageAtScreenPos    ( 002F0000  160`  40` ) % Choose this ship?
+    Call  ShowChoice ( 002F0001 )
+    If  *Var0  ==  00000000
+        Call CloseMessage()
+        Set *GB_CurrentShip 2`
+        Set *GF_NewSector .True
+        Call $StartingStats2 (  )
+        Call  $Function_80240908 ( ) % Gain Lucky Star
+        Call GotoMap ( "pro_03" ~Entry:pro_03:SectorStart )
+    Else
+        Call  DisablePlayerInput ( .False )
+        Call  CloseMessage ()
+    EndIf
+    Return
+    End
+}
+
+#new:Function $StartingStats1 {
+    LIO t0, 8010F290
+    ORI t2, r0, F % hex for 15
+    ORI t3, r0, A % hex for 10
+    ORI t4, r0, 6 % hex for 6
+    ORI t5, r0, 4 % hex for 4
+    SB t2, 0002 (t0) % set hp
+    SB t2, 0003 (t0) % max hp
+    SB t2, 0004 (t0) % true max hp
+    SB t3, 0005 (t0) % set fp
+    SB t3, 0006 (t0) % max fp
+    SB t3, 0007 (t0) % true max fp
+    SB t4, 0008 (t0) % max BP
+    SB t5, 0009 (t0) % level
+    JR RA
+    ORI v0, r0, 2
+}
+
+#new:Function $StartingStats2 {
+    LIO t0, 8010F290
+    ORI t2, r0, 19 % hex for 15
+    SB t2, 0002 (t0) % set hp
+    SB t2, 0003 (t0) % max hp
+    SB t2, 0004 (t0) % true max hp
+    JR RA
+    ORI v0, r0, 2
+}
+
+#new:Function $Function_80240908
+{
+   LI        V0, 1
+   SAB       V0, 8010F29A
+   JR        RA
+   LI        V0, 2
+}

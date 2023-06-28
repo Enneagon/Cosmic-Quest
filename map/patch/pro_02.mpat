@@ -1,0 +1,104 @@
+@ $Script_Main {
+    Set   *GB_WorldLocation  .Location:GoombaRoad
+    Call  SetCamPerspective  ( .Cam:Default 00000003 00000019 00000010 00001000 )
+    Call  SetCamBGColor      ( .Cam:Default 00000000 00000000 00000000 )
+    Call  SetCamEnabled      ( .Cam:Default .True
+    Call  SetCamLeadPlayer   ( .Cam:Default .False )
+    Exec  $Script_SetupMusic
+    Exec  $Script_ShipBindsToMario
+    Exec  $Script_BindAsteroids
+    Exec  $Script_EnterMap
+    Exec  $Script_Main_Callback_AfterEnterMap
+    Return
+    End
+}
+
+#new:Script $Script_ShipBindsToMario
+{
+    Thread
+        Loop
+            Call  GetPlayerPos ( *Var0 *Var1 *Var2 )
+            Sub  *Var0 80`
+            Call  TranslateModel ( ~Model:Rocket1 *Var0 00000000 *Var2 )
+            Wait  1`
+        EndLoop
+    EndThread
+    Return
+    End
+}
+
+#new:Script $Script_BindAsteroids
+{
+    Bind $Script_SphereBlowUp1 .Trigger:WallTouch ~Collider:SphereCollider1 00000001 00000000
+    Bind $Script_SphereBlowUp2 .Trigger:WallTouch ~Collider:SphereCollider2 00000001 00000000
+    Bind $Script_SphereBlowUp3 .Trigger:WallTouch ~Collider:SphereCollider3 00000001 00000000
+    Return
+    End
+}
+
+@ $Script_Main_Callback_AfterEnterMap {
+    Wait 20`
+    Call ParentColliderToModel ( ~Collider:MovingCollider ~Model:MovingWall )
+    Call MakeLerp ( 0` 9000` 750` .Easing:Linear )
+            Loop
+                Call  UpdateLerp ( )
+                Call  TranslateModel ( ~Model:MovingWall *Var0 00000000 00000000 )
+                Call  UpdateColliderTransform ( ~Collider:MovingCollider )
+                Wait  1`
+                If  *Var1  ==  00000000
+                    BreakLoop
+                EndIf
+            EndLoop
+    Return
+    End
+}
+
+#new:Script $Script_SphereBlowUp1
+{
+    Call  PlaySoundAtModel ( ~Model:SphereModel1 .Sound:BombBlast 00000000 )
+    Call  GetModelCenter ( ~Model:SphereModel1 )
+    Call  PlayEffect ( ~FX:Explosion1 *Var0 *Var1 *Var2 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 )
+    Call  EnableModel ( ~Model:SphereModel1 .False )
+    Call  ModifyColliderFlags   ( 00000000 ~Collider:SphereCollider1 7FFFFE00 )
+    Call  $Function_DamageShip (  )
+    Return
+    End
+}
+
+#new:Script $Script_SphereBlowUp2
+{
+    Call  PlaySoundAtModel ( ~Model:SphereModel2 .Sound:BombBlast 00000000 )
+    Call  GetModelCenter ( ~Model:SphereModel2 )
+    Call  PlayEffect ( ~FX:Explosion1 *Var0 *Var1 *Var2 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 )
+    Call  EnableModel ( ~Model:SphereModel2 .False )
+    Call  ModifyColliderFlags   ( 00000000 ~Collider:SphereCollider2 7FFFFE00 )
+    Call  $Function_DamageShip (  )
+    Return
+    End
+}
+
+#new:Script $Script_SphereBlowUp3
+{
+    Call  PlaySoundAtModel ( ~Model:SphereModel3 .Sound:BombBlast 00000000 )
+    Call  GetModelCenter ( ~Model:SphereModel3 )
+    Call  PlayEffect ( ~FX:Explosion1 *Var0 *Var1 *Var2 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 )
+    Call  EnableModel ( ~Model:SphereModel3 .False )
+    Call  ModifyColliderFlags   ( 00000000 ~Collider:SphereCollider3 7FFFFE00 )
+    Call  $Function_DamageShip (  )
+    Return
+    End
+}
+
+#new:Function $Function_DamageShip
+{
+    LA        v0, 8010F290 %Load Address of current HP
+    LBU       t0, 2 (v0) %Load value of the address, current HP
+    ADDIU     t0, t0, -1 %Subtract 1 from current HP, apply value to t0
+    ADDIU      t1, t0, -1 %Subtract 1 from t0, apply to t1
+    BLTZ      t1, .o31 %Jump to .031 if t1 is less than 0 (Does nothing if HP was 1)
+    NOP                 %Extra space so the if statement can work
+    SB        t0, 2 (v0) %Set the current HP value to t0
+    .o31 %Label!
+    JR RA
+    ORI v0, r0, 2
+}

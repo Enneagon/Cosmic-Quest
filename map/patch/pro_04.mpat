@@ -1,0 +1,95 @@
+#define .NpcID:Toad1       01
+#define .NpcID:Toad2       02
+#define .NpcID:Toad3       03
+
+@ $Script_Main {
+    Set   *GB_WorldLocation  .Location:GoombaRoad
+    Call  SetCamPerspective  ( .Cam:Default 00000003 00000019 00000010 00001000 )
+    Call  SetCamBGColor      ( .Cam:Default 00000000 00000000 00000000 )
+    Call  SetCamEnabled      ( .Cam:Default .True
+    Call  SetCamLeadPlayer   ( .Cam:Default .False )
+    Call  MakeNpcs  ( .False $NpcGroupList_Toads )
+    Exec  $Script_SetupMusic
+    Exec  $Script_EnterMap
+    Return
+    End
+}
+
+#new:NpcGroupList $NpcGroupList_Toads
+{
+	00000003 $NpcGroup_Toads 00000000
+    00000000 00000000 00000000
+}
+
+#new:NpcGroup $NpcGroup_Toads
+{
+	.NpcID:Toad1 $NpcSettings_Toads ~Vec3f:Toad1
+	00000001 $Script_Init_Toad1 00000000 00000000 00000000
+	~NoDrops
+	~Movement:Toad1
+	~AnimationTable:Toad1
+	00000000 00000000 00000000 001A0066 % Tattle ID
+    %
+    .NpcID:Toad2 $NpcSettings_Toads ~Vec3f:Toad2
+	00000001 $Script_Init_Toad2 00000000 00000000 00000000
+	~NoDrops
+	~Movement:Toad2
+	~AnimationTable:Toad2
+	00000000 00000000 00000000 001A0066 % Tattle ID
+    %
+    .NpcID:Toad3 $NpcSettings_Toads ~Vec3f:Toad3
+	00000001 $Script_Init_Toad3 00000000 00000000 00000000
+	~NoDrops
+	~Movement:Toad3
+	~AnimationTable:Toad3
+	00000000 00000000 00000000 001A0066 % Tattle ID
+}
+
+#new:NpcSettings $NpcSettings_Toads
+{
+	00000000 001E0018 00000000 00000000 00000000 00000000 00000000 00000000
+	00000000 00000000 00630000
+}
+
+#new:Script $Script_Init_Toad1
+{
+   14:  Call  BindNpcInteract   ( .Npc:Self $Script_Interact_Toad1 )
+        Return
+   1C:  End
+}
+
+#new:Script $Script_Init_Toad2
+{
+   14:  Call  BindNpcInteract   ( .Npc:Self $Script_Interact_Toad2 )
+        Return
+   1C:  End
+}
+
+#new:Script $Script_Init_Toad3
+{
+   14:  Call  BindNpcInteract   ( .Npc:Self $Script_Interact_Toad3 )
+        Return
+   1C:  End
+}
+
+#new:Script $Script_Interact_Toad1
+{
+  Call  SpeakToPlayer ( .Npc:Self 00830004 00830001 00000000 002F0010 ) % String
+  Return
+  End
+}
+
+#new:Script $Script_Interact_Toad2
+{
+  Call  SpeakToPlayer ( .Npc:Self 00830004 00830001 00000000 002F0011 ) % String
+  Return
+  End
+}
+
+#new:Script $Script_Interact_Toad3
+{
+  Call  SpeakToPlayer ( .Npc:Self 00830004 00830001 00000000 002F0012 ) % String
+  Call  GotoMapByID ( *GB_LastArea *GB_LastMap *GB_LastNode )
+  Return
+  End
+}

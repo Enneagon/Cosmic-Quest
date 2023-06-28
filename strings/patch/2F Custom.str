@@ -1,0 +1,134 @@
+#message:2F:000
+{
+	[Style Right]Choose this ship?[Yield][End]
+}
+
+#message:2F:001
+{
+	[Style Choice pos=120,90 size=75,46]
+	[StartChoice]
+	[Option 0]Yes[BR]
+	[Option 1]No[BR]
+	[EndChoice cancel=1][End]
+}
+
+#message:2F:002
+{
+	[Style Choice pos=15,190 size=135,30]Where to next?[Yield][End]
+}
+
+#message:2F:003
+{
+	[Style Choice pos=120,90 size=158,80]
+	[StartChoice]
+	[Option 0]Up[BR]
+	(Distress signal!)[BR]
+	[Option 1]Down[BR]
+	(Friendly station!)[BR]
+	[EndChoice][End]
+}
+
+#message:2F:004
+{
+	[Style Right]It's a combat encounter![Wait][End]
+}
+
+#message:2F:005
+{
+	[Style Right]It's a friendly encounter![Wait][End]
+}
+
+#message:2F:006
+{
+	[Style Choice pos=15,25 size=115,48]
+	[StartChoice]
+	[Option 0][Var 0] node[BR]
+	[Option 1][Var 1] node[BR]
+	[EndChoice][End]
+}
+
+#message:2F:007
+{
+	[Style Right]Drawing from pool of friendly[BR]
+	encounters...[Wait][End]
+}
+
+#message:2F:008
+{
+	[Style Right]Drawing from pool of neutral[BR]
+	encounters...[Wait][End]
+}
+
+#message:2F:009
+{
+	[Style Right]Drawing from pool of hostile[BR]
+	encounters...[Wait][End]
+}
+
+#message:2F:00A
+{
+	[Style Right]Drawing from pool of anomaly[BR]
+	encounters...[Wait][End]
+}
+
+#message:2F:00B
+{
+	[Style Right]You got encounter [Var 0].[Wait][End]
+}
+
+#message:2F:00C
+{
+	Green[End]
+}
+
+#message:2F:00D
+{
+	Yellow[End]
+}
+
+#message:2F:00E
+{
+	Red[End]
+}
+
+#message:2F:00F
+{
+	Blue[End]
+}
+
+#message:2F:010
+{
+	[Style Right]I could be a shop![Wait][End]
+}
+
+#message:2F:011
+{
+	[Style Right]I could say something different[BR]
+	if Rosalina is with you![Wait][End]
+}
+
+#message:2F:012
+{
+	[Style Right]Time to go![Wait][End]
+}
+
+#message:2F:013
+{
+	[Style Choice pos=15,25 size=115,34]
+	[StartChoice]
+	[Option 0][Var 0] node[BR]
+	[EndChoice][End]
+}
+
+#message:2F:014
+{
+	[Style Choice pos=15,25 size=115,48]
+	[StartChoice]
+	[Option 0]Tatanga[BR]Station![BR]
+	[EndChoice][End]
+}
+
+#message:2F:015
+{
+	[Style Right]Next sector! Blast off![Wait][End]
+}

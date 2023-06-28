@@ -1,0 +1,1 @@
+000 = Flag_EVT_00 = GF_NewSector
