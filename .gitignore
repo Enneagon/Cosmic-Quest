@@ -17,3 +17,16 @@ raw
 mod.cfg
 # modified game data (for multimedia which doesn't use src/patch directories)
 # (put overrides here, e.g. `!/sprite/npc/src/80` if you've changed bowser)
+
+# Altered Backgrounds
+!/image/bg/arn_bg.png
+!/image/bg/fla_bg.png
+!/image/bg/flb_bg.png
+!/image/bg/hos_bg.png
+!/image/bg/iwa_bg.png
+!/image/bg/jan_bg.png
+!/image/bg/kmr_bg.png
+!/image/bg/kpa_bg.png
+!/image/bg/nok_bg.png
+!/image/bg/obk_bg.png
+!/image/bg/omo_bg.png
