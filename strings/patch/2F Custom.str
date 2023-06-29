@@ -132,3 +132,8 @@
 {
 	[Style Right]Next sector! Blast off![Wait][End]
 }
+
+#message:2F:016
+{
+	[Style Right]Don't give up, Mario![Wait][End]
+}

@@ -1,0 +1,13 @@
+@ $Script_80241690 {
+    Call GotoMap ( "ngo_00" ~Entry:ngo_00:Entry0 )
+    Return
+    End
+}
+
+@ $Header {
+    [MainScript]  $Script_80241690
+    [EntryList]   $EntryList
+    [EntryCount]  00000001
+    [Background]  00000000
+    [MapTattle]   00000000
+}

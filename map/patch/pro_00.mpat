@@ -5,6 +5,9 @@
     Call  SetCamEnabled      ( .Cam:Default .True )
     Call  SetCamLeadPlayer   ( .Cam:Default .False )
     Exec  $Script_SetupMusic
+    Call  $Function_LuckyStar ( ) % Gain Lucky Star
+    Call  $Function_GetHammer ( ) % Gain Hammer
+    Set  *GB_StoryProgress  .Story:Ch0_FoundHammer
     Exec  $Script_BindShips
     Exec  $Script_EnterMap
     Return
@@ -28,7 +31,6 @@
     If  *Var0  ==  00000000
         Call CloseMessage()
         Call $StartingStats1 (  )
-        Call  $Function_80240908 ( ) % Gain Lucky Star
         Call GotoMap ( "pro_01" ~Entry:pro_01:Teleport )
     Else
         Call  DisablePlayerInput ( .False )
@@ -48,7 +50,6 @@
         Set *GB_CurrentShip 1`
         Set *GF_NewSector .True
         Call $StartingStats1 (  )
-        Call  $Function_80240908 ( ) % Gain Lucky Star
         Call GotoMap ( "pro_03" ~Entry:pro_03:SectorStart )
     Else
         Call  DisablePlayerInput ( .False )
@@ -68,7 +69,6 @@
         Set *GB_CurrentShip 2`
         Set *GF_NewSector .True
         Call $StartingStats2 (  )
-        Call  $Function_80240908 ( ) % Gain Lucky Star
         Call GotoMap ( "pro_03" ~Entry:pro_03:SectorStart )
     Else
         Call  DisablePlayerInput ( .False )
@@ -98,7 +98,7 @@
 
 #new:Function $StartingStats2 {
     LIO t0, 8010F290
-    ORI t2, r0, 19 % hex for 15
+    ORI t2, r0, 19 % hex for 25
     SB t2, 0002 (t0) % set hp
     SB t2, 0003 (t0) % max hp
     SB t2, 0004 (t0) % true max hp
@@ -106,10 +106,17 @@
     ORI v0, r0, 2
 }
 
-#new:Function $Function_80240908
+#new:Function $Function_LuckyStar
 {
    LI        V0, 1
    SAB       V0, 8010F29A
    JR        RA
    LI        V0, 2
+}
+
+#new:Function $Function_GetHammer
+{
+    0:  SAB       R0, 8010F291
+    8:  JR        RA
+    C:  LI        V0, 2
 }

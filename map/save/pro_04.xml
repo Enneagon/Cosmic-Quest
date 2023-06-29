@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Map name="pro_04" author="unnamed" background="kmr_bg" textures="kmr_tex">
 	<Editor>
-		<Camera pos="7.900610,38.111141,-134.739349" pitch="31.039986" yaw="358.160126"/>
+		<Camera pos="19.360479,117.357391,214.704620" pitch="18.879971" yaw="0.400261"/>
 		<Camera pos="0.000000,65536.000000,0.000000"/>
 		<Camera pos="65536.000000,-50.000000,0.000000"/>
 		<Camera pos="0.000000,-50.000000,65536.000000"/>
@@ -60,11 +60,14 @@
 		</Node>
 	</ZoneTree>
 	<MarkerTree>
-		<Node name="Root" id="3">
+		<Node name="Root" id="6">
 			<Node name="Toad1" id="FFFFFFFF"/>
 			<Node name="Toad2" id="0"/>
 			<Node name="Toad3" id="1"/>
 			<Node name="EncounterEntry" id="2"/>
+			<Node name="Mushroom" id="3"/>
+			<Node name="Badge" id="4"/>
+			<Node name="Guy" id="5"/>
 		</Node>
 	</MarkerTree>
 	<LightSets>
@@ -896,7 +899,18 @@
 	</Zones>
 	<Markers>
 		<Marker ver="4" type="Root">
-			<MapObject name="Root" id="3"/>
+			<MapObject name="Root" id="6"/>
+		</Marker>
+		<Marker ver="4" type="NPC" pos="200,0,0" yaw="0.000000">
+			<MapObject name="Guy" id="5"/>
+			<Movement type="Stationary" data="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
+			<Sprite sprite="3B" palette="5" animations="1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
+		</Marker>
+		<Marker ver="4" type="Position" pos="-100,0,0" yaw="0.000000">
+			<MapObject name="Badge" id="4"/>
+		</Marker>
+		<Marker ver="4" type="Position" pos="-200,0,0" yaw="0.000000">
+			<MapObject name="Mushroom" id="3"/>
 		</Marker>
 		<Marker ver="4" type="Entry" pos="0,0,0" yaw="0.000000">
 			<MapObject name="EncounterEntry" id="2"/>

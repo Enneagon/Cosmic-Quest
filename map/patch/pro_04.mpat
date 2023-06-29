@@ -1,6 +1,7 @@
 #define .NpcID:Toad1       01
 #define .NpcID:Toad2       02
 #define .NpcID:Toad3       03
+#define .NpcID:Guy         04
 
 @ $Script_Main {
     Set   *GB_WorldLocation  .Location:GoombaRoad
@@ -9,15 +10,25 @@
     Call  SetCamEnabled      ( .Cam:Default .True
     Call  SetCamLeadPlayer   ( .Cam:Default .False )
     Call  MakeNpcs  ( .False $NpcGroupList_Toads )
+    Exec  $Script_MakeEntities
     Exec  $Script_SetupMusic
     Exec  $Script_EnterMap
     Return
     End
 }
 
+#new:Script $Script_MakeEntities
+{
+  Call  MakeItemEntity    ( .Item:Mushroom ~Vec3d:Mushroom .ItemSpawnMode:Fixed_SpawnAlways_NeverVanish 00000000 )
+  Call  MakeItemEntity    ( .Item:PowerJump ~Vec3d:Badge .ItemSpawnMode:Fixed_SpawnAlways_NeverVanish 00000000 )
+  Return
+  End
+}
+
 #new:NpcGroupList $NpcGroupList_Toads
 {
 	00000003 $NpcGroup_Toads 00000000
+  00000001 $NpcGroup_Guy 102C0001
     00000000 00000000 00000000
 }
 
@@ -43,6 +54,16 @@
 	~Movement:Toad3
 	~AnimationTable:Toad3
 	00000000 00000000 00000000 001A0066 % Tattle ID
+}
+
+#new:NpcGroup $NpcGroup_Guy
+{
+	  .NpcID:Guy $NpcSettings_Toads ~Vec3f:Guy
+  00000001 $Script_Init_Guy 00000000 00000000 00000000
+  ~NoDrops
+  ~Movement:Guy
+  ~AnimationTable:Guy
+  00000000 00000000 00000000 001A0066 % Tattle ID
 }
 
 #new:NpcSettings $NpcSettings_Toads
@@ -90,6 +111,21 @@
 {
   Call  SpeakToPlayer ( .Npc:Self 00830004 00830001 00000000 002F0012 ) % String
   Call  GotoMapByID ( *GB_LastArea *GB_LastMap *GB_LastNode )
+  Return
+  End
+}
+
+#new:Script $Script_Init_Guy
+{
+   14:  Call  BindNpcInteract   ( .Npc:Self $Script_Interact_Guy )
+        Return
+   1C:  End
+}
+
+#new:Script $Script_Interact_Guy
+{
+  Call  SpeakToPlayer ( .Npc:Self 00830004 00830001 00000000 002F0012 ) % String
+  Call  StartBattle (  )
   Return
   End
 }
