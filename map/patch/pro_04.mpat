@@ -2,6 +2,7 @@
 #define .NpcID:Toad2       02
 #define .NpcID:Toad3       03
 #define .NpcID:Guy         04
+#define .NpcID:Merlow      05
 
 @ $Script_Main {
     Set   *GB_WorldLocation  .Location:GoombaRoad
@@ -10,6 +11,7 @@
     Call  SetCamEnabled      ( .Cam:Default .True
     Call  SetCamLeadPlayer   ( .Cam:Default .False )
     Call  MakeNpcs  ( .False $NpcGroupList_Toads )
+    Bind  $Script_PurchasePillar .Trigger:WallPressA ~Collider:PillarCollider 00000001 00000000
     Exec  $Script_MakeEntities
     Exec  $Script_SetupMusic
     Exec  $Script_EnterMap
@@ -21,6 +23,7 @@
 {
   Call  MakeItemEntity    ( .Item:Mushroom ~Vec3d:Mushroom .ItemSpawnMode:Fixed_SpawnAlways_NeverVanish 00000000 )
   Call  MakeItemEntity    ( .Item:PowerJump ~Vec3d:Badge .ItemSpawnMode:Fixed_SpawnAlways_NeverVanish 00000000 )
+  Call  MakeItemEntity    ( .Item:StarPiece ~Vec3d:StarPiece .ItemSpawnMode:Fixed_SpawnAlways_NeverVanish 00000000 )
   Return
   End
 }
@@ -29,6 +32,7 @@
 {
 	00000003 $NpcGroup_Toads 00000000
   00000001 $NpcGroup_Guy 102C0001
+  00000001 $NpcGroup_Merlow 00000000
     00000000 00000000 00000000
 }
 
@@ -63,6 +67,16 @@
   ~NoDrops
   ~Movement:Guy
   ~AnimationTable:Guy
+  00000000 00000000 00000000 001A0066 % Tattle ID
+}
+
+#new:NpcGroup $NpcGroup_Merlow
+{
+	  .NpcID:Merlow $NpcSettings_Toads ~Vec3f:Merlow
+  00000001 $Script_Init_Merlow 00000000 00000000 00000000
+  ~NoDrops
+  ~Movement:Merlow
+  ~AnimationTable:Merlow
   00000000 00000000 00000000 001A0066 % Tattle ID
 }
 
@@ -126,6 +140,57 @@
 {
   Call  SpeakToPlayer ( .Npc:Self 00830004 00830001 00000000 002F0012 ) % String
   Call  StartBattle (  )
+  Return
+  End
+}
+
+#new:Script $Script_Init_Merlow
+{
+   14:  Call  BindNpcInteract   ( .Npc:Self $Script_Interact_Merlow )
+        Return
+   1C:  End
+}
+
+#new:Script $Script_Interact_Merlow
+{
+  Call  SpeakToPlayer ( .Npc:Self 00B20004 00B20001 00000000 002F0017 ) % String
+  Call  ShowChoice ( 002F0001 )
+  If *Var0 != 00000001
+    Loop 5`
+      Call  AddStarPieces ( 1` )
+      Call  PlaySound ( 0215 )
+      Wait    1
+    EndLoop
+  EndIf
+  Call CloseMessage ( )
+  Return
+  End
+}
+
+#new:Script $Script_PurchasePillar
+{
+  Call DisablePlayerInput ( .True )
+  Call  $Function_GetArbitraryByte ( *VarF 8010F29F )
+  Call  SetMessageValue ( *VarF 00000000 )
+  If *VarF <= 4`
+    Call  SpeakToPlayer ( .NpcID:Merlow 00B20004 00B20001 00000000 002F0019 ) % String
+  Else
+    Call  SpeakToPlayer ( .NpcID:Merlow 00B20004 00B20001 00000000 002F0018 ) % String
+    Call  ShowChoice ( 002F0001 )
+    If  *Var0  !=  00000001
+      Call CloseMessage ( )
+      Loop 5` % Amount to substract
+        Call  AddStarPieces ( -1` )
+        Call  PlaySound ( 0215 )
+        Wait    1
+      EndLoop
+      Add *GB_HPComponents 1`
+      Call SetMessageValue ( *GB_HPComponents 00000000 )
+      Call  SpeakToPlayer ( .NpcID:Merlow 00B20004 00B20001 00000000 002F001A ) % String
+    EndIf
+    Call CloseMessage ( )
+  EndIf
+  Call DisablePlayerInput ( .False )
   Return
   End
 }

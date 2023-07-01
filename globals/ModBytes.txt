@@ -1,17 +1,21 @@
-002 = Byte_EVT_02 = GB_Node1
-003 = Byte_EVT_03 = GB_Node2
-004 = Byte_EVT_04 = GB_Node3
-005 = Byte_EVT_05 = GB_Node4
-006 = Byte_EVT_06 = GB_Node5
-007 = Byte_EVT_07 = GB_Node6
-008 = Byte_EVT_08 = GB_Node7
-009 = Byte_EVT_09 = GB_Node8
-00A = Byte_EVT_0A = GB_Node9
-00B = Byte_EVT_0B = GB_Node10
-00C = Byte_KMR_00 = GB_Node11
-00D = Byte_KMR_01 = GB_Node12
-00E = Byte_KMR_02 = GB_CurrentShip
-00F = Byte_KMR_03 = GB_LastMap
-010 = Byte_KMR_04 = GB_LastNode
-011 = Byte_KMR_05 = GB_LastArea
-012 = Byte_KMR_06 = GB_CurrentNode
+002 = GB_Node1
+003 = GB_Node2
+004 = GB_Node3
+005 = GB_Node4
+006 = GB_Node5
+007 = GB_Node6
+008 = GB_Node7
+009 = GB_Node8
+00A = GB_Node9
+00B = GB_Node10
+00C = GB_Node11
+00D = GB_Node12
+00E = GB_CurrentShip
+00F = GB_LastMap
+010 = GB_LastNode
+011 = GB_LastArea
+012 = GB_CurrentNode
+013 = GB_HPComponents
+014 = GB_FPComponents
+015 = GB_BPComponents
+016 = GB_BadgeComponents

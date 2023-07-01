@@ -137,3 +137,43 @@
 {
 	[Style Right]Don't give up, Mario![Wait][End]
 }
+
+#message:2F:017
+{
+	[Style Right]I sell ship components! Interact[BR]
+	with the pillar over there to buy.[BR]
+	[Wait][Next]
+	Want some Star Pieces?[Yield][End]
+}
+
+#message:2F:018
+{
+	[Style Right]That's a ship component![BR]
+	[Wait][Next]
+	You have [Var 0] Star Pieces.[BR]
+	The component costs 5 Star[BR]
+	Pieces.[BR]
+	Do you want it?[Yield][End]
+}
+
+#message:2F:019
+{
+	[Style Right]That's a ship component![BR]
+	[Wait][Next]
+	You have [Var 0] Star Pieces.[BR]
+	The component costs 5 Star[BR]
+	Pieces.[BR]
+	I'm sorry, you can't afford it.
+	[Wait][End]
+}
+
+#message:2F:01A
+{
+	[Style Right]You bought a ship component![BR]
+	[Wait][Next]
+	You have [Var 0] components. This[BR]
+	system can be easily expanded to[BR]
+	include different component[BR]
+	types, or even ships!
+	[Wait][End]
+}
