@@ -578,6 +578,12 @@
 	<Area name="ngo" nickname="New Game Over">
 		<Map name="ngo_00" nickname="Reset Room"/>
 	</Area>
+	<Area name="sar" nickname="Sarasaland">
+	</Area>
+	<Area name="sec" nickname="Sectors">
+	</Area>
+	<Area name="enc" nickname="Encounters">
+	</Area>
 	<Resource name="mac_tex" compressed="false"/>
 	<Resource name="tik_tex" compressed="false"/>
 	<Resource name="kgr_tex" compressed="false"/>
