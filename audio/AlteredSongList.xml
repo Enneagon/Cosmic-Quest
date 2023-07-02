@@ -1,0 +1,8 @@
+<Song id="03" BGM="bgm/01_118.bgm"/> <!-- SpecialBattle / Boss 01 --> 
+<Song id="04" BGM="bgm/0D_184.bgm"/> <!-- JrTroopaBattle / Boss 02 -->
+<Song id="11" BGM="bgm/30_103.bgm"/> <!-- PleasantPath / Eladard -->
+<Song id="12" BGM="bgm/31_105.bgm"/> <!-- FuzzyAttack / FoxTrot -->
+<Song id="13" BGM="bgm/32_106.bgm"/> <!-- KoopaVillage / Map Screen -->
+<Song id="14" BGM="bgm/33_107.bgm"/> <!-- KoopaFortress / Sector Y Waltz -->
+<Song id="15" BGM="bgm/38_109.bgm"/> <!-- DryDryOutpost / Wolfen Mercenaries -->
+<Song id="16" BGM="bgm/36_827.bgm"/> <!-- MtRugged / Zoness -->

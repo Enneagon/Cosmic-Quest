@@ -32,3 +32,13 @@ mod.cfg
 !/image/bg/omo_bg.png
 
 # Altered/Custom Sprites
+
+# Altered Music
+!/audio/bgm/01_118.bgm
+!/audio/bgm/0D_184.bgm
+!/audio/bgm/30_103.bgm
+!/audio/bgm/31_105.bgm
+!/audio/bgm/32_106.bgm
+!/audio/bgm/33_107.bgm
+!/audio/bgm/38_109.bgm
+!/audio/bgm/36_827.bgm
