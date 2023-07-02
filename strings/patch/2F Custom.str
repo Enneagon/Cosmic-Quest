@@ -40,7 +40,7 @@
 
 #message:2F:006
 {
-	[Style Choice pos=15,25 size=115,48]
+	[Style Choice pos=15,25 size=130,48]
 	[StartChoice]
 	[Option 0][Var 0][BR]
 	[Option 1][Var 1][BR]
@@ -114,7 +114,7 @@
 
 #message:2F:013
 {
-	[Style Choice pos=15,25 size=115,34]
+	[Style Choice pos=15,25 size=130,34]
 	[StartChoice]
 	[Option 0][Var 0][BR]
 	[EndChoice][End]
@@ -204,7 +204,7 @@
 
 #message:2F:01F
 {
-	Space Koopa Territories[BR](Friendly)[End]
+	Space Koopa Dominion[BR](Friendly)[End]
 }
 
 #message:2F:020
@@ -281,12 +281,14 @@
 
 #message:2F:02B
 {
-	[Style Right]Excellent! Now choose up to two badges to the right.[Wait][End]
+	[Style Right]Excellent! Now choose up to two[BR]
+	badges to the right.[Wait][End]
 }
 
 #message:2F:02C
 {
-	[Style Right]Excellent! Now choose up to three badges to the right.[Wait][End]
+	[Style Right]Excellent! Now choose up to[BR]
+	three badges to the right.[Wait][End]
 }
 
 #message:2F:02D
@@ -321,7 +323,7 @@
 
 #message:2F:032
 {
-	[Style Choice pos=120,90 size=90,62]
+	[Style Choice pos=60,90 size=220,78]
 	[StartChoice]
 	[Option 0]HP [Var 0][BR]
 	[Option 1]FP [Var 1][BR]
@@ -332,47 +334,64 @@
 
 #message:2F:033
 {
-	[Style Right]You installed an HP component! The HP this ship provides increases by 5.[Wait][End]
+	[Style Right]You installed an HP component![BR]
+	The HP this ship provides[BR]
+	increases by 5.[Wait][End]
 }
 
 #message:2F:034
 {
-	[Style Right]You removed an HP component. The HP this ship provides decreases by 5.[Wait][End]
+	[Style Right]You removed an HP component.[BR]
+	The HP this ship provides[BR]
+	decreases by 5.[Wait][End]
 }
 
 #message:2F:035
 {
-	[Style Right]You installed an FP component! The FP this ship provides increases by 5.[Wait][End]
+	[Style Right]You installed an FP component![BR]
+	The FP this ship provides[BR]
+	increases by 5.[Wait][End]
 }
 
 #message:2F:036
 {
-	[Style Right]You removed an FP component. The FP this ship provides decreases by 5.[Wait][End]
+	[Style Right]You removed an FP component.[BR]
+	The FP this ship provides[BR]
+	decreases by 5.[Wait][End]
 }
 
 #message:2F:037
 {
-	[Style Right]You installed a BP component! The BP this ship provides increases by 3.[Wait][End]
+	[Style Right]You installed a BP component![BR]
+	The BP this ship provides[BR]
+	increases by 3.[Wait][End]
 }
 
 #message:2F:038
 {
-	[Style Right]You removed a BP component. The BP this ship provides decreases by 3.[Wait][End]
+	[Style Right]You removed a BP component.[BR]
+	The BP this ship provides[BR]
+	decreases by 3.[Wait][End]
 }
 
 #message:2F:039
 {
-	[Style Right]You installed a Badge component! You can now select one extra badge when using this ship.[Wait][End]
+	[Style Right]You installed a Badge component![BR]
+	You can now select one extra[BR]
+	badge when using this ship.[Wait][End]
 }
 
 #message:2F:03A
 {
-	[Style Right]You removed a Badge component. You can now select one fewer badge when using this ship.[Wait][End]
+	[Style Right]You removed a Badge component.[BR]
+	You can now select one less[BR]
+	badge when using this ship.[Wait][End]
 }
 
 #message:2F:03B
 {
-	[Style Right]You don't have any of the correct component.[Wait][End]
+	[Style Right]You don't have any of the[BR]
+	correct component.[Wait][End]
 }
 
 #message:2F:03C
@@ -477,5 +496,34 @@
 
 #message:2F:051
 {
-	[Style Right]You have all the badges you can carry for now. Time to pick a co-pilot![Wait][End]
+	[Style Right]You have all the badges you can[BR]
+	carry for now. Time to pick a[BR]
+	co-pilot![Wait][End]
+}
+
+#message:2F:052
+{
+	[Style Right]Hey there! If you need a[BR]
+	tutorial...[BR][Wait][Next]
+	You'll have to wait for Nine to[BR]
+	implement it![Wait][End]
+}
+
+#message:2F:053
+{
+	[Style Right]I will eventually teach you about[BR]
+	Ship Components.[Wait][End]
+}
+
+#message:2F:054
+{
+	[Style Right]Talk to me after you've picked[BR]
+	out a ship.[Wait][End]
+}
+
+#message:2F:055
+{
+	[Style Right]I'm a placeholder for Daisy. Want[BR]
+	to go kick Tatanga's butt[BR]
+	together?[Yield][End]
 }

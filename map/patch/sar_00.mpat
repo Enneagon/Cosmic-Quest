@@ -1,3 +1,7 @@
+#define .NpcID:Astro       01
+#define .NpcID:Merlon      02
+#define .NpcID:Daisy       03
+
 @ $Script_Main {
     Set   *GB_WorldLocation  .Location:GoombaRoad
     Call  SetCamPerspective  ( .Cam:Default 00000003 00000019 00000010 00001000 )
@@ -9,6 +13,7 @@
     Call  $Function_GetHammer (  )
     Set  *GB_StoryProgress  .Story:Ch0_FoundHammer
     Exec  $Script_BindStuff
+    Exec  $Script_MakeNPCs
     Exec  $Script_EnterMap
     Return
     End
@@ -34,6 +39,103 @@
     Bind $Script_ChooseShip1 .Trigger:WallPressA ~Collider:Ship1Collider 00000001 00000000
     Return
     End
+}
+
+#new:Script $Script_MakeNPCs
+{
+    Call  MakeNpcs  ( .False $NpcGroupList_Always )
+    Return
+    End
+}
+
+#new:NpcGroupList $NpcGroupList_Always
+{
+	00000003 $NpcGroup_Always 00000000
+    00000000 00000000 00000000
+}
+
+#new:NpcGroup $NpcGroup_Always
+{
+	.NpcID:Astro $NpcSettings_Standard ~Vec3f:Astro
+	00000001 $Script_Init_Astro 00000000 00000000 00000000
+	~NoDrops
+	~Movement:Astro
+	~AnimationTable:Astro
+	00000000 00000000 00000000 001A0066 % Tattle ID
+    %
+    .NpcID:Merlon $NpcSettings_Standard ~Vec3f:Merlon
+	00000001 $Script_Init_Merlon 00000000 00000000 00000000
+	~NoDrops
+	~Movement:Merlon
+	~AnimationTable:Merlon
+	00000000 00000000 00000000 001A0066 % Tattle ID
+    %
+    .NpcID:Daisy $NpcSettings_Standard ~Vec3f:Daisy
+	00000001 $Script_Init_Daisy 00000000 00000000 00000000
+	~NoDrops
+	~Movement:Daisy
+	~AnimationTable:Daisy
+	00000000 00000000 00000000 001A0066 % Tattle ID
+}
+
+#new:NpcSettings $NpcSettings_Standard
+{
+	00000000 001E0018 00000000 00000000 00000000 00000000 00000000 00000000
+	00000000 00000000 00630000
+}
+
+#new:Script $Script_Init_Astro
+{
+   14:  Call  BindNpcInteract   ( .Npc:Self $Script_Interact_Astro )
+        Return
+   1C:  End
+}
+
+#new:Script $Script_Init_Merlon
+{
+   14:  Call  BindNpcInteract   ( .Npc:Self $Script_Interact_Merlon )
+        Return
+   1C:  End
+}
+
+#new:Script $Script_Init_Daisy
+{
+   14:  Call  BindNpcInteract   ( .Npc:Self $Script_Interact_Daisy )
+        Return
+   1C:  End
+}
+
+#new:Script $Script_Interact_Astro
+{
+  Call  SpeakToPlayer ( .Npc:Self 00830404 00830401 00000000 002F0052 ) % String
+  Return
+  End
+}
+
+#new:Script $Script_Interact_Merlon
+{
+  Call  SpeakToPlayer ( .Npc:Self 00A50004 00A50001 00000000 002F0053 ) % String
+  Return
+  End
+}
+
+#new:Script $Script_Interact_Daisy
+{
+  If *GB_CurrentShip == 0`
+    Call  SpeakToPlayer ( .Npc:Self 00010001 00010001 00000000 002F0054 ) % String
+  Else
+    Call  SpeakToPlayer ( .Npc:Self 00010001 00010001 00000000 002F0055 ) % String
+    Call  ShowChoice ( 002F0001 )
+    If *Var0 == 00000000
+        Call CloseMessage ()
+        Set *GF_NewSector .True
+        Call GotoMapSpecial ( "sec_00" ~Entry:sec_00:SectorStart 0000000D )
+    Else
+        Call CloseMessage ()
+    EndIf
+  EndIf
+  Return
+  End
 }
 
 #new:Script $Script_ChooseShip1
@@ -79,13 +181,17 @@
         Exec $Script_AddStats
         Call EnableGroup ( ~Model:BadgeQuestionGroup .False )
         Call  MakeItemEntity    ( .Item:PowerSmash1 ~Vec3d:Badge1 .ItemSpawnMode:Decoration 00000000 )
+        Set *MapVar[0] *Var0
         Bind $Script_ChooseBadge1 .Trigger:WallPressA ~Collider:Badge1Collider 00000001 00000000
         Call  MakeItemEntity    ( .Item:Multibounce ~Vec3d:Badge2 .ItemSpawnMode:Decoration 00000000 )
-    %    Bind $Script_ChooseBadge2 .Trigger:WallPressA ~Collider:Badge2Collider 00000001 00000000
+        Set *MapVar[1] *Var0
+        Bind $Script_ChooseBadge2 .Trigger:WallPressA ~Collider:Badge2Collider 00000001 00000000
         Call  MakeItemEntity    ( .Item:HappyFlowerA ~Vec3d:Badge3 .ItemSpawnMode:Decoration 00000000 )
-    %    Bind $Script_ChooseBadge3 .Trigger:WallPressA ~Collider:Badge3Collider 00000001 00000000
+        Set *MapVar[2] *Var0
+        Bind $Script_ChooseBadge3 .Trigger:WallPressA ~Collider:Badge3Collider 00000001 00000000
         Call  MakeItemEntity    ( .Item:DodgeMaster ~Vec3d:Badge4 .ItemSpawnMode:Decoration 00000000 )
-    %    Bind $Script_ChooseBadge4 .Trigger:WallPressA ~Collider:Badge4Collider 00000001 00000000
+        Set *MapVar[3] *Var0
+        Bind $Script_ChooseBadge4 .Trigger:WallPressA ~Collider:Badge4Collider 00000001 00000000
         If *GF_Ship1BadgeComponent == .True
             Call  ShowMessageAtScreenPos    ( 002F002C  160`  40` ) % Choose Cruiser?
             Set *GB_StartingBadgesNumber 3`
@@ -148,13 +254,13 @@
                 Call  CloseMessage ()
                 Set *GF_Ship1BPComponent .False
                 Add *GB_BPComponents 1`
-                Call  ShowMessageAtScreenPos    ( 002F0038  160`  40` ) % Removed FP Component
+                Call  ShowMessageAtScreenPos    ( 002F0038  160`  40` ) % Removed BP Component
             Else
                 If *GB_BPComponents >= 1`
                     Call  CloseMessage ()
                     Set *GF_Ship1BPComponent .True
                     Sub *GB_BPComponents 1`
-                    Call ShowMessageAtScreenPos    ( 002F0037  160`  40` ) % Added FP Component
+                    Call ShowMessageAtScreenPos    ( 002F0037  160`  40` ) % Added BP Component
                 Else
                     Call  CloseMessage ()
                     Call ShowMessageAtScreenPos    ( 002F003B  160`  40` ) % No Component
@@ -165,13 +271,13 @@
                 Call  CloseMessage ()
                 Set *GF_Ship1BadgeComponent .False
                 Add *GB_BadgeComponents 1`
-                Call  ShowMessageAtScreenPos    ( 002F003A  160`  40` ) % Removed FP Component
+                Call  ShowMessageAtScreenPos    ( 002F003A  160`  40` ) % Removed Badge Component
             Else
                 If *GB_BadgeComponents >= 1`
                     Call  CloseMessage ()
                     Set *GF_Ship1BadgeComponent .True
                     Sub *GB_BadgeComponents 1`
-                    Call ShowMessageAtScreenPos    ( 002F0039  160`  40` ) % Added FP Component
+                    Call ShowMessageAtScreenPos    ( 002F0039  160`  40` ) % Added Badge Component
                 Else
                     Call  CloseMessage ()
                     Call ShowMessageAtScreenPos    ( 002F003B  160`  40` ) % No Component
@@ -189,7 +295,7 @@
     Add *Var7 10` % New HP
     Add *Var4 5`  % New FP
     Add *Var5 3`  % New BP
-    Add *Var6 1`  % New Level
+    Add *Var6 5`  % New Level
     Call $WriteAddress ( 8010F292 0 *Var7 0 .False ) % HP
     Call $WriteAddress ( 8010F293 0 *Var7 0 .False ) % Max HP 1
     Call $WriteAddress ( 8010F294 0 *Var7 0 .False ) % Max HP 2
@@ -212,6 +318,7 @@
             Call ShowChoice ( 002F0001 )
             If *Var0 == 00000000
                 Call CloseMessage ()
+                Call RemoveItemEntity ( *MapVar[0] )
                 Call AddBadge ( .Item:PowerSmash1 *Var0 )
                 Call ShowGotItem ( .Item:PowerSmash1 .True 00000000 )
                 Sub *GB_StartingBadgesNumber 1`
@@ -227,6 +334,7 @@
             Call ShowChoice ( 002F0001 )
             If *Var0 == 00000000
                 Call CloseMessage ()
+                Call RemoveItemEntity ( *MapVar[0] )
                 Call AddBadge ( .Item:DamageDodgeA *Var0 )
                 Call ShowGotItem ( .Item:DamageDodgeA .True 00000000 )
                 Sub *GB_StartingBadgesNumber 1`
@@ -242,6 +350,7 @@
             Call ShowChoice ( 002F0001 )
             If *Var0 == 00000000
                 Call CloseMessage ()
+                Call RemoveItemEntity ( *MapVar[0] )
                 Call AddBadge ( .Item:PowerRush *Var0 )
                 Call ShowGotItem ( .Item:PowerRush .True 00000000 )
                 Sub *GB_StartingBadgesNumber 1`
@@ -257,6 +366,7 @@
             Call ShowChoice ( 002F0001 )
             If *Var0 == 00000000
                 Call CloseMessage ()
+                Call RemoveItemEntity ( *MapVar[0] )
                 Call AddBadge ( .Item:IcePower *Var0 )
                 Call ShowGotItem ( .Item:IcePower .True 00000000 )
                 Sub *GB_StartingBadgesNumber 1`
@@ -272,8 +382,291 @@
             Call ShowChoice ( 002F0001 )
             If *Var0 == 00000000
                 Call CloseMessage ()
+                Call RemoveItemEntity ( *MapVar[0] )
                 Call AddBadge ( .Item:DoubleDip *Var0 )
                 Call ShowGotItem ( .Item:DoubleDip .True 00000000 )
+                Sub *GB_StartingBadgesNumber 1`
+                If *GB_StartingBadgesNumber == 0`
+                    Call ShowMessageAtScreenPos    ( 002F0051  160`  40` ) % Done
+                EndIf
+                Unbind
+            Else
+                Call CloseMessage ()
+            EndIf
+        EndSwitch
+    Else
+        Call ShowMessageAtScreenPos    ( 002F0051  160`  40` ) % Done
+    EndIf
+    Call DisablePlayerInput ( .False )
+    Return
+    End
+}
+
+#new:Script $Script_ChooseBadge2
+{
+    Call DisablePlayerInput ( .True )
+    If *GB_StartingBadgesNumber > 0`
+        Switch *GB_CurrentShip
+        Case == 1`
+            Call ShowMessageAtScreenPos    ( 002F003E  160`  40` ) % Badges!
+            Call ShowChoice ( 002F0001 )
+            If *Var0 == 00000000
+                Call CloseMessage ()
+                Call RemoveItemEntity ( *MapVar[1] )
+                Call AddBadge ( .Item:Multibounce *Var0 )
+                Call ShowGotItem ( .Item:Multibounce .True 00000000 )
+                Sub *GB_StartingBadgesNumber 1`
+                If *GB_StartingBadgesNumber == 0`
+                    Call ShowMessageAtScreenPos    ( 002F0051  160`  40` ) % Done
+                EndIf
+                Unbind
+            Else
+                Call CloseMessage ()
+            EndIf
+        Case == 2`
+            Call ShowMessageAtScreenPos    ( 002F0042  160`  40` ) % Badges!
+            Call ShowChoice ( 002F0001 )
+            If *Var0 == 00000000
+                Call CloseMessage ()
+                Call RemoveItemEntity ( *MapVar[1] )
+                Call AddBadge ( .Item:HappyHeartA *Var0 )
+                Call ShowGotItem ( .Item:HappyHeartA .True 00000000 )
+                Sub *GB_StartingBadgesNumber 1`
+                If *GB_StartingBadgesNumber == 0`
+                    Call ShowMessageAtScreenPos    ( 002F0051  160`  40` ) % Done
+                EndIf
+                Unbind
+            Else
+                Call CloseMessage ()
+            EndIf
+        Case == 3`
+            Call ShowMessageAtScreenPos    ( 002F0046  160`  40` ) % Badges!
+            Call ShowChoice ( 002F0001 )
+            If *Var0 == 00000000
+                Call CloseMessage ()
+                Call RemoveItemEntity ( *MapVar[1] )
+                Call AddBadge ( .Item:PowerQuake *Var0 )
+                Call ShowGotItem ( .Item:PowerQuake .True 00000000 )
+                Sub *GB_StartingBadgesNumber 1`
+                If *GB_StartingBadgesNumber == 0`
+                    Call ShowMessageAtScreenPos    ( 002F0051  160`  40` ) % Done
+                EndIf
+                Unbind
+            Else
+                Call CloseMessage ()
+            EndIf
+        Case == 4`
+            Call ShowMessageAtScreenPos    ( 002F004A  160`  40` ) % Badges!
+            Call ShowChoice ( 002F0001 )
+            If *Var0 == 00000000
+                Call CloseMessage ()
+                Call RemoveItemEntity ( *MapVar[1] )
+                Call AddBadge ( .Item:MoneyMoney *Var0 )
+                Call ShowGotItem ( .Item:MoneyMoney .True 00000000 )
+                Sub *GB_StartingBadgesNumber 1`
+                If *GB_StartingBadgesNumber == 0`
+                    Call ShowMessageAtScreenPos    ( 002F0051  160`  40` ) % Done
+                EndIf
+                Unbind
+            Else
+                Call CloseMessage ()
+            EndIf
+        Case == 5`
+            Call ShowMessageAtScreenPos    ( 002F004E  160`  40` ) % Badges!
+            Call ShowChoice ( 002F0001 )
+            If *Var0 == 00000000
+                Call CloseMessage ()
+                Call RemoveItemEntity ( *MapVar[1] )
+                Call AddBadge ( .Item:FeelingFine *Var0 )
+                Call ShowGotItem ( .Item:FeelingFine .True 00000000 )
+                Sub *GB_StartingBadgesNumber 1`
+                If *GB_StartingBadgesNumber == 0`
+                    Call ShowMessageAtScreenPos    ( 002F0051  160`  40` ) % Done
+                EndIf
+                Unbind
+            Else
+                Call CloseMessage ()
+            EndIf
+        EndSwitch
+    Else
+        Call ShowMessageAtScreenPos    ( 002F0051  160`  40` ) % Done
+    EndIf
+    Call DisablePlayerInput ( .False )
+    Return
+    End
+}
+
+#new:Script $Script_ChooseBadge3
+{
+    Call DisablePlayerInput ( .True )
+    If *GB_StartingBadgesNumber > 0`
+        Switch *GB_CurrentShip
+        Case == 1`
+            Call ShowMessageAtScreenPos    ( 002F003F  160`  40` ) % Badges!
+            Call ShowChoice ( 002F0001 )
+            If *Var0 == 00000000
+                Call CloseMessage ()
+                Call RemoveItemEntity ( *MapVar[2] )
+                Call AddBadge ( .Item:HappyFlowerA *Var0 )
+                Call ShowGotItem ( .Item:HappyFlowerA .True 00000000 )
+                Sub *GB_StartingBadgesNumber 1`
+                If *GB_StartingBadgesNumber == 0`
+                    Call ShowMessageAtScreenPos    ( 002F0051  160`  40` ) % Done
+                EndIf
+                Unbind
+            Else
+                Call CloseMessage ()
+            EndIf
+        Case == 2`
+            Call ShowMessageAtScreenPos    ( 002F0043  160`  40` ) % Badges!
+            Call ShowChoice ( 002F0001 )
+            If *Var0 == 00000000
+                Call CloseMessage ()
+                Call RemoveItemEntity ( *MapVar[2] )
+                Call AddBadge ( .Item:SpikeShield *Var0 )
+                Call ShowGotItem ( .Item:SpikeShield .True 00000000 )
+                Sub *GB_StartingBadgesNumber 1`
+                If *GB_StartingBadgesNumber == 0`
+                    Call ShowMessageAtScreenPos    ( 002F0051  160`  40` ) % Done
+                EndIf
+                Unbind
+            Else
+                Call CloseMessage ()
+            EndIf
+        Case == 3`
+            Call ShowMessageAtScreenPos    ( 002F0047  160`  40` ) % Badges!
+            Call ShowChoice ( 002F0001 )
+            If *Var0 == 00000000
+                Call CloseMessage ()
+                Call RemoveItemEntity ( *MapVar[2] )
+                Call AddBadge ( .Item:PowerPlusA *Var0 )
+                Call ShowGotItem ( .Item:PowerPlusA .True 00000000 )
+                Sub *GB_StartingBadgesNumber 1`
+                If *GB_StartingBadgesNumber == 0`
+                    Call ShowMessageAtScreenPos    ( 002F0051  160`  40` ) % Done
+                EndIf
+                Unbind
+            Else
+                Call CloseMessage ()
+            EndIf
+        Case == 4`
+            Call ShowMessageAtScreenPos    ( 002F004B  160`  40` ) % Badges!
+            Call ShowChoice ( 002F0001 )
+            If *Var0 == 00000000
+                Call CloseMessage ()
+                Call RemoveItemEntity ( *MapVar[2] )
+                Call AddBadge ( .Item:PrettyLucky *Var0 )
+                Call ShowGotItem ( .Item:PrettyLucky .True 00000000 )
+                Sub *GB_StartingBadgesNumber 1`
+                If *GB_StartingBadgesNumber == 0`
+                    Call ShowMessageAtScreenPos    ( 002F0051  160`  40` ) % Done
+                EndIf
+                Unbind
+            Else
+                Call CloseMessage ()
+            EndIf
+        Case == 5`
+            Call ShowMessageAtScreenPos    ( 002F004F  160`  40` ) % Badges!
+            Call ShowChoice ( 002F0001 )
+            If *Var0 == 00000000
+                Call CloseMessage ()
+                Call RemoveItemEntity ( *MapVar[2] )
+                Call AddBadge ( .Item:MegaQuake *Var0 )
+                Call ShowGotItem ( .Item:MegaQuake .True 00000000 )
+                Sub *GB_StartingBadgesNumber 1`
+                If *GB_StartingBadgesNumber == 0`
+                    Call ShowMessageAtScreenPos    ( 002F0051  160`  40` ) % Done
+                EndIf
+                Unbind
+            Else
+                Call CloseMessage ()
+            EndIf
+        EndSwitch
+    Else
+        Call ShowMessageAtScreenPos    ( 002F0051  160`  40` ) % Done
+    EndIf
+    Call DisablePlayerInput ( .False )
+    Return
+    End
+}
+
+#new:Script $Script_ChooseBadge4
+{
+    Call DisablePlayerInput ( .True )
+    If *GB_StartingBadgesNumber > 0`
+        Switch *GB_CurrentShip
+        Case == 1`
+            Call ShowMessageAtScreenPos    ( 002F0040  160`  40` ) % Badges!
+            Call ShowChoice ( 002F0001 )
+            If *Var0 == 00000000
+                Call CloseMessage ()
+                Call RemoveItemEntity ( *MapVar[3] )
+                Call AddBadge ( .Item:DodgeMaster *Var0 )
+                Call ShowGotItem ( .Item:DodgeMaster .True 00000000 )
+                Sub *GB_StartingBadgesNumber 1`
+                If *GB_StartingBadgesNumber == 0`
+                    Call ShowMessageAtScreenPos    ( 002F0051  160`  40` ) % Done
+                EndIf
+                Unbind
+            Else
+                Call CloseMessage ()
+            EndIf
+        Case == 2`
+            Call ShowMessageAtScreenPos    ( 002F0044  160`  40` ) % Badges!
+            Call ShowChoice ( 002F0001 )
+            If *Var0 == 00000000
+                Call CloseMessage ()
+                Call RemoveItemEntity ( *MapVar[3] )
+                Call AddBadge ( .Item:ZapTap *Var0 )
+                Call ShowGotItem ( .Item:ZapTap .True 00000000 )
+                Sub *GB_StartingBadgesNumber 1`
+                If *GB_StartingBadgesNumber == 0`
+                    Call ShowMessageAtScreenPos    ( 002F0051  160`  40` ) % Done
+                EndIf
+                Unbind
+            Else
+                Call CloseMessage ()
+            EndIf
+        Case == 3`
+            Call ShowMessageAtScreenPos    ( 002F0048  160`  40` ) % Badges!
+            Call ShowChoice ( 002F0001 )
+            If *Var0 == 00000000
+                Call CloseMessage ()
+                Call RemoveItemEntity ( *MapVar[3] )
+                Call AddBadge ( .Item:PowerBounce *Var0 )
+                Call ShowGotItem ( .Item:PowerBounce .True 00000000 )
+                Sub *GB_StartingBadgesNumber 1`
+                If *GB_StartingBadgesNumber == 0`
+                    Call ShowMessageAtScreenPos    ( 002F0051  160`  40` ) % Done
+                EndIf
+                Unbind
+            Else
+                Call CloseMessage ()
+            EndIf
+        Case == 4`
+            Call ShowMessageAtScreenPos    ( 002F004C  160`  40` ) % Badges!
+            Call ShowChoice ( 002F0001 )
+            If *Var0 == 00000000
+                Call CloseMessage ()
+                Call RemoveItemEntity ( *MapVar[3] )
+                Call AddBadge ( .Item:SleepStomp *Var0 )
+                Call ShowGotItem ( .Item:SleepStomp .True 00000000 )
+                Sub *GB_StartingBadgesNumber 1`
+                If *GB_StartingBadgesNumber == 0`
+                    Call ShowMessageAtScreenPos    ( 002F0051  160`  40` ) % Done
+                EndIf
+                Unbind
+            Else
+                Call CloseMessage ()
+            EndIf
+        Case == 5`
+            Call ShowMessageAtScreenPos    ( 002F0050  160`  40` ) % Badges!
+            Call ShowChoice ( 002F0001 )
+            If *Var0 == 00000000
+                Call CloseMessage ()
+                Call RemoveItemEntity ( *MapVar[3] )
+                Call AddBadge ( .Item:MegaJump *Var0 )
+                Call ShowGotItem ( .Item:MegaJump .True 00000000 )
                 Sub *GB_StartingBadgesNumber 1`
                 If *GB_StartingBadgesNumber == 0`
                     Call ShowMessageAtScreenPos    ( 002F0051  160`  40` ) % Done

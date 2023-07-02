@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Map name="sar_00" author="unnamed" background="kmr_bg" textures="kmr_tex">
+<Map name="sar_00" author="unnamed" background="sbk_bg" textures="kmr_tex">
 	<Editor>
-		<Camera pos="140.406479,116.468567,447.027924" pitch="10.000000" yaw="0.000000"/>
-		<Camera pos="168.720993,65536.000000,-76.089806"/>
+		<Camera pos="-32.362457,100.177025,240.560379" pitch="15.439991" yaw="1.759973"/>
+		<Camera pos="-253.633698,65536.000000,68.506729"/>
 		<Camera pos="65536.000000,28.346886,-84.792877"/>
 		<Camera pos="0.000000,-50.000000,65536.000000"/>
 	</Editor>
@@ -79,7 +79,7 @@
 		</Node>
 	</ZoneTree>
 	<MarkerTree>
-		<Node name="Root" id="5">
+		<Node name="Root" id="8">
 			<Node name="Entrances" id="0">
 				<Node name="GameStart" id="FFFFFFFF"/>
 			</Node>
@@ -87,6 +87,9 @@
 			<Node name="Badge2" id="2"/>
 			<Node name="Badge3" id="3"/>
 			<Node name="Badge4" id="4"/>
+			<Node name="Astro" id="5"/>
+			<Node name="Merlon" id="6"/>
+			<Node name="Daisy" id="7"/>
 		</Node>
 	</MarkerTree>
 	<LightSets>
@@ -3724,7 +3727,22 @@
 	</Zones>
 	<Markers>
 		<Marker ver="4" type="Root">
-			<MapObject name="Root" id="5"/>
+			<MapObject name="Root" id="8"/>
+		</Marker>
+		<Marker ver="4" type="NPC" pos="200,0,0" yaw="0.000000">
+			<MapObject name="Daisy" id="7"/>
+			<Movement type="Stationary" data="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
+			<Sprite sprite="1" palette="0" animations="1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
+		</Marker>
+		<Marker ver="4" type="NPC" pos="-300,0,0" yaw="0.000000">
+			<MapObject name="Merlon" id="6"/>
+			<Movement type="Stationary" data="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
+			<Sprite sprite="A5" palette="0" animations="1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
+		</Marker>
+		<Marker ver="4" type="NPC" pos="-100,0,0" yaw="0.000000">
+			<MapObject name="Astro" id="5"/>
+			<Movement type="Stationary" data="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
+			<Sprite sprite="83" palette="4" animations="1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
 		</Marker>
 		<Marker ver="4" type="Position" pos="220,29,-80" yaw="0.000000">
 			<MapObject name="Badge4" id="4"/>

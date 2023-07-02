@@ -254,7 +254,8 @@
         Call  ShowMessageAtScreenPos    ( 002F0002  160`  40` )
         Call  ShowChoice ( 002F0014 ) % One node choice - Tatanga Station!
         Call CloseMessage()
-            Call  PlayerMoveTo ( 400` 0` 60` )
+        Call  GetModelCenter ( ~Model:Node99 )
+        Call  PlayerMoveTo ( *Var0 *Var2 60` )
             Wait  20`
             Set *GB_CurrentNode 99`
             Call $Function_GetArbitraryByte ( *GB_LastArea 800740AB )
@@ -276,7 +277,8 @@
         Call  ShowMessageAtScreenPos    ( 002F0002  160`  40` )
         Call  ShowChoice ( 002F0013 ) % One node choice
         Call CloseMessage()
-            Call  PlayerMoveTo ( 200` 165` 60` )
+        Call  GetModelCenter ( ~Model:Node7g )
+        Call  PlayerMoveTo ( *Var0 *Var2 60` )
             Wait  20`
             Call $Function_GetArbitraryByte ( *GB_LastArea 800740AB )
             Call GetMapID ( *GB_LastMap )
@@ -319,7 +321,8 @@
         Call  ShowChoice ( 002F0006 )
         If  *Var0  ==  00000000
             Call CloseMessage()
-            Call  PlayerMoveTo ( 205` -125` 60` )
+            Call  GetModelCenter ( ~Model:Node6g )
+            Call  PlayerMoveTo ( *Var0 *Var2 60` )
             Wait  20`
             Call $Function_GetArbitraryByte ( *GB_LastArea 800740AB )
             Call GetMapID ( *GB_LastMap )
@@ -337,7 +340,8 @@
             EndSwitch
         Else
             Call CloseMessage()
-            Call  PlayerMoveTo ( 200` 165` 60` )
+            Call  GetModelCenter ( ~Model:Node7g )
+            Call  PlayerMoveTo ( *Var0 *Var2 60` )
             Wait  20`
             Call $Function_GetArbitraryByte ( *GB_LastArea 800740AB )
             Call GetMapID ( *GB_LastMap )
@@ -369,7 +373,8 @@
         Call  ShowMessageAtScreenPos    ( 002F0002  160`  40` )
         Call  ShowChoice ( 002F0013 ) % One node choice
         Call CloseMessage()
-            Call  PlayerMoveTo ( 205` -125` 60` )
+        Call  GetModelCenter ( ~Model:Node6g )
+        Call  PlayerMoveTo ( *Var0 *Var2 60` )
             Wait  20`
             Call $Function_GetArbitraryByte ( *GB_LastArea 800740AB )
             Call GetMapID ( *GB_LastMap )
@@ -412,7 +417,8 @@
         Call  ShowChoice ( 002F0006 )
         If  *Var0  ==  00000000
             Call CloseMessage()
-            Call  PlayerMoveTo ( 0` 0` 60` )
+            Call  GetModelCenter ( ~Model:Node4g )
+            Call  PlayerMoveTo ( *Var0 *Var2 60` )
             Wait  20`
             Call $Function_GetArbitraryByte ( *GB_LastArea 800740AB )
             Call GetMapID ( *GB_LastMap )
@@ -420,17 +426,18 @@
             Set *GB_CurrentNode 4`
             Switch *GB_Node4
             Case == 1`
-                Call  ShowMessageAtScreenPos    ( 002F0007  160`  40` ) % Encounter
+                Exec $Script_FriendlyPool
             Case == 2`
-                Call  ShowMessageAtScreenPos    ( 002F0008  160`  40` ) % Encounter
+                Exec $Script_NeutralPool
             Case == 3`
-                Call  ShowMessageAtScreenPos    ( 002F0009  160`  40` ) % Encounter
+                Exec $Script_HostilePool
             Case == 4`
-                Call  ShowMessageAtScreenPos    ( 002F000A  160`  40` ) % Encounter
+                Exec $Script_AnomalyPool
             EndSwitch
         Else
             Call CloseMessage()
-            Call  PlayerMoveTo ( 0` 300` 60` )
+            Call  GetModelCenter ( ~Model:Node5g )
+            Call  PlayerMoveTo ( *Var0 *Var2 60` )
             Wait  20`
             Call $Function_GetArbitraryByte ( *GB_LastArea 800740AB )
             Call GetMapID ( *GB_LastMap )
@@ -474,7 +481,8 @@
         Call  ShowChoice ( 002F0006 )
         If  *Var0  ==  00000000
             Call CloseMessage()
-            Call  PlayerMoveTo ( 0` -300` 60` )
+            Call  GetModelCenter ( ~Model:Node3g )
+            Call  PlayerMoveTo ( *Var0 *Var2 60` )
             Wait  20`
             Call $Function_GetArbitraryByte ( *GB_LastArea 800740AB )
             Call GetMapID ( *GB_LastMap )
@@ -492,7 +500,8 @@
             EndSwitch
         Else
             Call CloseMessage()
-            Call  PlayerMoveTo ( 0` 0` 60` )
+            Call  GetModelCenter ( ~Model:Node4g )
+            Call  PlayerMoveTo ( *Var0 *Var2 60` )
             Wait  20`
             Call $Function_GetArbitraryByte ( *GB_LastArea 800740AB )
             Call GetMapID ( *GB_LastMap )
@@ -536,7 +545,8 @@
         Call  ShowChoice ( 002F0006 )
         If  *Var0  ==  00000000
             Call CloseMessage()
-            Call  PlayerMoveTo ( -187` -137` 60` )
+            Call  GetModelCenter ( ~Model:Node1g )
+            Call  PlayerMoveTo ( *Var0 *Var2 60` )
             Wait  20`
             Call $Function_GetArbitraryByte ( *GB_LastArea 800740AB )
             Call GetMapID ( *GB_LastMap )
@@ -554,7 +564,8 @@
             EndSwitch
         Else
             Call CloseMessage()
-            Call  PlayerMoveTo ( -191` 163` 60` )
+            Call  GetModelCenter ( ~Model:Node2g )
+            Call  PlayerMoveTo ( *Var0 *Var2 60` )
             Wait  20`
             Call $Function_GetArbitraryByte ( *GB_LastArea 800740AB )
             Call GetMapID ( *GB_LastMap )

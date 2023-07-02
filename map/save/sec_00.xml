@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Map name="sec_00" author="unnamed" background="fla_bg" textures="kmr_tex">
 	<Editor>
-		<Camera pos="0.000000,1810.000000,-50.000000" pitch="90.000000" yaw="0.000000"/>
+		<Camera pos="0.000000,1809.997314,-46.858456" pitch="89.901085" yaw="0.000000"/>
 		<Camera pos="-30.520622,65536.000000,83.196556"/>
 		<Camera pos="65536.000000,27.706539,10.753750"/>
 		<Camera pos="14.056669,90.480934,65536.000000"/>
@@ -25196,7 +25196,7 @@
 					</TriangleList>
 				</TriangleBatch>
 			</HitMesh>
-			<Camera type="TYPE_4" flag="false" boomLength="1800.000000" boomPitch="90.000000" viewPitch="0.000000" posA="0,10,50" posB="0,10,-50" posC="10,0,10"/>
+			<Camera type="TYPE_4" flag="false" boomLength="1800.000000" boomPitch="89.900002" viewPitch="0.000000" posA="0,10,50" posB="0,10,-50" posC="10,0,10"/>
 		</Zone>
 	</Zones>
 	<Markers>
