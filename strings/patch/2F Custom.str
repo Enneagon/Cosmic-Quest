@@ -42,8 +42,8 @@
 {
 	[Style Choice pos=15,25 size=115,48]
 	[StartChoice]
-	[Option 0][Var 0] node[BR]
-	[Option 1][Var 1] node[BR]
+	[Option 0][Var 0][BR]
+	[Option 1][Var 1][BR]
 	[EndChoice][End]
 }
 
@@ -78,22 +78,22 @@
 
 #message:2F:00C
 {
-	Green[End]
+	Friendly Node[End]
 }
 
 #message:2F:00D
 {
-	Yellow[End]
+	Neutral Node[End]
 }
 
 #message:2F:00E
 {
-	Red[End]
+	Hostile Node[End]
 }
 
 #message:2F:00F
 {
-	Blue[End]
+	Anomaly[End]
 }
 
 #message:2F:010
@@ -116,7 +116,7 @@
 {
 	[Style Choice pos=15,25 size=115,34]
 	[StartChoice]
-	[Option 0][Var 0] node[BR]
+	[Option 0][Var 0][BR]
 	[EndChoice][End]
 }
 
@@ -176,4 +176,306 @@
 	include different component[BR]
 	types, or even ships!
 	[Wait][End]
+}
+
+#message:2F:01B
+{
+	[Style Right]No encounter found... yet.[Wait][End]
+}
+
+#message:2F:01C
+{
+	[Style Right]Next sector! Blast off![Yield][End]
+}
+
+#message:2F:01D
+{
+	[Style Choice pos=30,90 size=255,80]
+	[StartChoice]
+	[Option 0][Var 0][BR]
+	[Option 1][Var 1][BR]
+	[EndChoice][End]
+}
+
+#message:2F:01E
+{
+	Rosalina's Sector[BR](Friendly)[End]
+}
+
+#message:2F:01F
+{
+	Space Koopa Territories[BR](Friendly)[End]
+}
+
+#message:2F:020
+{
+	Gearmos Homeworlds[BR](Neutral)[End]
+}
+
+#message:2F:021
+{
+	Void of Space[BR](Neutral)[End]
+}
+
+#message:2F:022
+{
+	Bowser's Space Armada[BR](Hostile)[End]
+}
+
+#message:2F:023
+{
+	Space Pirate Sector[BR](Hostile)[End]
+}
+
+#message:2F:024
+{
+	Tatanga's Nebula[BR](Hostile)[End]
+}
+
+#message:2F:025
+{
+	Realm of the Worm God[BR](Hostile)[End]
+}
+
+#message:2F:026
+{
+	[Style Right]The Sarasaland Cruiser is a[BR]
+	balanced ship.[BR]
+	+[Var 0] HP, +[Var 1] FP, +[Var 2] BP.[BR][Wait][Next]
+	Choose the Sarasaland Cruiser[BR]
+	as your ship?[Yield][End]
+}
+
+#message:2F:027
+{
+	[Style Right]The Junior Junkship is a sturdy,[BR]
+	defensive ship.[BR]
+	+[Var 0] HP, +[Var 1] FP, +[Var 2] BP.[BR][Wait][Next]
+	Choose the Junior Junkship as[BR]
+	your ship?[Yield][End]
+}
+
+#message:2F:028
+{
+	[Style Right]The C.R.A.V. is a badge-focused[BR]
+	powerhouse.[BR]
+	+[Var 0] HP, +[Var 1] FP, +[Var 2] BP.[BR][Wait][Next]
+	Choose the C.R.A.V. as your ship?[Yield][End]
+}
+
+#message:2F:029
+{
+	[Style Right]The Shooting Star is a balanced[BR]
+	ship.[BR]
+	+[Var 0] HP, +[Var 1] FP, +[Var 2] BP.[BR][Wait][Next]
+	Choose the Shooting Star as your[BR]
+	ship?[Yield][End]
+}
+
+#message:2F:02A
+{
+	[Style Right]The Oinker is an FP-based ship.[BR]
+	+[Var 0] HP, +[Var 1] FP, +[Var 2] BP.[BR][Wait][Next]
+	Choose the Oinker as your ship?[Yield][End]
+}
+
+#message:2F:02B
+{
+	[Style Right]Excellent! Now choose up to two badges to the right.[Wait][End]
+}
+
+#message:2F:02C
+{
+	[Style Right]Excellent! Now choose up to three badges to the right.[Wait][End]
+}
+
+#message:2F:02D
+{
+	[Style Right]This ship is not available yet.[Wait][End]
+}
+
+#message:2F:02E
+{
+	[Style Choice pos=120,90 size=90,62]
+	[StartChoice]
+	[Option 0]Yes[BR]
+	[Option 1]No[BR]
+	[Option 2]Modify[BR]
+	[EndChoice cancel=1][End]
+}
+
+#message:2F:02F
+{
+	[Style Right]What would you like to modify?[Yield][End]
+}
+
+#message:2F:030
+{
+	(No component)[End]
+}
+
+#message:2F:031
+{
+	(Component installed)[End]
+}
+
+#message:2F:032
+{
+	[Style Choice pos=120,90 size=90,62]
+	[StartChoice]
+	[Option 0]HP [Var 0][BR]
+	[Option 1]FP [Var 1][BR]
+	[Option 2]BP [Var 2][BR]
+	[Option 3]Badges [Var 3][BR]
+	[EndChoice][End]
+}
+
+#message:2F:033
+{
+	[Style Right]You installed an HP component! The HP this ship provides increases by 5.[Wait][End]
+}
+
+#message:2F:034
+{
+	[Style Right]You removed an HP component. The HP this ship provides decreases by 5.[Wait][End]
+}
+
+#message:2F:035
+{
+	[Style Right]You installed an FP component! The FP this ship provides increases by 5.[Wait][End]
+}
+
+#message:2F:036
+{
+	[Style Right]You removed an FP component. The FP this ship provides decreases by 5.[Wait][End]
+}
+
+#message:2F:037
+{
+	[Style Right]You installed a BP component! The BP this ship provides increases by 3.[Wait][End]
+}
+
+#message:2F:038
+{
+	[Style Right]You removed a BP component. The BP this ship provides decreases by 3.[Wait][End]
+}
+
+#message:2F:039
+{
+	[Style Right]You installed a Badge component! You can now select one extra badge when using this ship.[Wait][End]
+}
+
+#message:2F:03A
+{
+	[Style Right]You removed a Badge component. You can now select one fewer badge when using this ship.[Wait][End]
+}
+
+#message:2F:03B
+{
+	[Style Right]You don't have any of the correct component.[Wait][End]
+}
+
+#message:2F:03C
+{
+	[Style Right]Do you want Power Smash?[Yield][End]
+}
+
+#message:2F:03E
+{
+	[Style Right]Do you want Multibounce?[Yield][End]
+}
+
+#message:2F:03F
+{
+	[Style Right]Do you want Happy Flower?[Yield][End]
+}
+
+#message:2F:040
+{
+	[Style Right]Do you want Dodge Master?[Yield][End]
+}
+
+#message:2F:041
+{
+	[Style Right]Do you want Damage Dodge?[Yield][End]
+}
+
+#message:2F:042
+{
+	[Style Right]Do you want Happy Heart?[Yield][End]
+}
+
+#message:2F:043
+{
+	[Style Right]Do you want Spike Shield?[Yield][End]
+}
+
+#message:2F:044
+{
+	[Style Right]Do you want Zap Tap?[Yield][End]
+}
+
+#message:2F:045
+{
+	[Style Right]Do you want Power Rush?[Yield][End]
+}
+
+#message:2F:046
+{
+	[Style Right]Do you want Power Quake?[Yield][End]
+}
+
+#message:2F:047
+{
+	[Style Right]Do you want Power Plus?[Yield][End]
+}
+
+#message:2F:048
+{
+	[Style Right]Do you want Power Bounce?[Yield][End]
+}
+
+#message:2F:049
+{
+	[Style Right]Do you want Ice Power?[Yield][End]
+}
+
+#message:2F:04A
+{
+	[Style Right]Do you want Money Money?[Yield][End]
+}
+
+#message:2F:04B
+{
+	[Style Right]Do you want Pretty Lucky?[Yield][End]
+}
+
+#message:2F:04C
+{
+	[Style Right]Do you want Sleep Stomp?[Yield][End]
+}
+
+#message:2F:04D
+{
+	[Style Right]Do you want Double Dip?[Yield][End]
+}
+
+#message:2F:04E
+{
+	[Style Right]Do you want Feeling Fine?[Yield][End]
+}
+
+#message:2F:04F
+{
+	[Style Right]Do you want Mega Quake?[Yield][End]
+}
+
+#message:2F:050
+{
+	[Style Right]Do you want Mega Jump?[Yield][End]
+}
+
+#message:2F:051
+{
+	[Style Right]You have all the badges you can carry for now. Time to pick a co-pilot![Wait][End]
 }

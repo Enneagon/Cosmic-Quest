@@ -19,3 +19,8 @@
 014 = GB_FPComponents
 015 = GB_BPComponents
 016 = GB_BadgeComponents
+017 = GB_HPComponentsTotal
+018 = GB_FPComponentsTotal
+019 = GB_BPComponentsTotal
+01A = GB_BadgeComponentsTotal
+01B = GB_StartingBadgesNumber

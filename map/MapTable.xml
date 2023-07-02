@@ -579,8 +579,10 @@
 		<Map name="ngo_00" nickname="Reset Room"/>
 	</Area>
 	<Area name="sar" nickname="Sarasaland">
+		<Map name="sar_00" nickname="Hangar Mockup"/>
 	</Area>
 	<Area name="sec" nickname="Sectors">
+		<Map name="sec_00" nickname="Mushroom Space"/>
 	</Area>
 	<Area name="enc" nickname="Encounters">
 	</Area>
