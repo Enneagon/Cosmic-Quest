@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Map name="sar_00" author="unnamed" background="sbk_bg" textures="kmr_tex">
 	<Editor>
-		<Camera pos="-32.362457,100.177025,240.560379" pitch="15.439991" yaw="1.759973"/>
+		<Camera pos="-0.422502,204.538879,633.726685" pitch="15.439991" yaw="1.759973"/>
 		<Camera pos="-253.633698,65536.000000,68.506729"/>
 		<Camera pos="65536.000000,28.346886,-84.792877"/>
 		<Camera pos="0.000000,-50.000000,65536.000000"/>
@@ -41,7 +41,7 @@
 		</Node>
 	</ModelTree>
 	<ColliderTree>
-		<Node name="Root" id="16">
+		<Node name="Root" id="17">
 			<Node name="Stage" id="2">
 				<Node name="main_floor" id="0"/>
 				<Node name="main_walls" id="1"/>
@@ -67,6 +67,7 @@
 			<Node name="Badge2Collider" id="13"/>
 			<Node name="Badge3Collider" id="14"/>
 			<Node name="Badge4Collider" id="15"/>
+			<Node name="main_floor" id="16"/>
 		</Node>
 	</ColliderTree>
 	<ZoneTree>
@@ -79,7 +80,7 @@
 		</Node>
 	</ZoneTree>
 	<MarkerTree>
-		<Node name="Root" id="8">
+		<Node name="Root" id="9">
 			<Node name="Entrances" id="0">
 				<Node name="GameStart" id="FFFFFFFF"/>
 			</Node>
@@ -90,6 +91,7 @@
 			<Node name="Astro" id="5"/>
 			<Node name="Merlon" id="6"/>
 			<Node name="Daisy" id="7"/>
+			<Node name="ChetRippo" id="8"/>
 		</Node>
 	</MarkerTree>
 	<LightSets>
@@ -2612,11 +2614,47 @@
 	</Models>
 	<Colliders>
 		<Collider ver="0" flags="0">
-			<MapObject name="Root" id="16"/>
+			<MapObject name="Root" id="17"/>
 			<HitObject type="ROOT"/>
 		</Collider>
 		<Collider ver="0" flags="0">
-			<MapObject name="Badge4Collider" id="15" hidden="true"/>
+			<MapObject name="main_floor" id="16"/>
+			<HitObject type="HIT"/>
+			<HitMesh ver="0">
+				<TriangleBatch ver="0">
+					<VertexTable>
+						<Vertex xyz="-207,-100,-500"/>
+						<Vertex xyz="-500,-100,-207"/>
+						<Vertex xyz="-500,-100,207"/>
+						<Vertex xyz="-207,-100,-500"/>
+						<Vertex xyz="-500,-100,207"/>
+						<Vertex xyz="-207,-100,500"/>
+						<Vertex xyz="-207,-100,-500"/>
+						<Vertex xyz="-207,-100,500"/>
+						<Vertex xyz="207,-100,500"/>
+						<Vertex xyz="-207,-100,-500"/>
+						<Vertex xyz="207,-100,500"/>
+						<Vertex xyz="500,-100,207"/>
+						<Vertex xyz="-207,-100,-500"/>
+						<Vertex xyz="500,-100,207"/>
+						<Vertex xyz="500,-100,-207"/>
+						<Vertex xyz="-207,-100,-500"/>
+						<Vertex xyz="500,-100,-207"/>
+						<Vertex xyz="207,-100,-500"/>
+					</VertexTable>
+					<TriangleList>
+						<Triangle ijk="0,1,2"/>
+						<Triangle ijk="3,4,5"/>
+						<Triangle ijk="6,7,8"/>
+						<Triangle ijk="9,10,11"/>
+						<Triangle ijk="12,13,14"/>
+						<Triangle ijk="15,16,17"/>
+					</TriangleList>
+				</TriangleBatch>
+			</HitMesh>
+		</Collider>
+		<Collider ver="0" flags="0">
+			<MapObject name="Badge4Collider" id="15"/>
 			<HitObject type="HIT"/>
 			<HitMesh ver="0">
 				<TriangleBatch ver="0">
@@ -2692,7 +2730,7 @@
 			</HitMesh>
 		</Collider>
 		<Collider ver="0" flags="0">
-			<MapObject name="Badge3Collider" id="14" hidden="true"/>
+			<MapObject name="Badge3Collider" id="14"/>
 			<HitObject type="HIT"/>
 			<HitMesh ver="0">
 				<TriangleBatch ver="0">
@@ -2768,7 +2806,7 @@
 			</HitMesh>
 		</Collider>
 		<Collider ver="0" flags="0">
-			<MapObject name="Badge2Collider" id="13" hidden="true"/>
+			<MapObject name="Badge2Collider" id="13"/>
 			<HitObject type="HIT"/>
 			<HitMesh ver="0">
 				<TriangleBatch ver="0">
@@ -2844,7 +2882,7 @@
 			</HitMesh>
 		</Collider>
 		<Collider ver="0" flags="0">
-			<MapObject name="Badge1Collider" id="12" hidden="true"/>
+			<MapObject name="Badge1Collider" id="12"/>
 			<HitObject type="HIT"/>
 			<HitMesh ver="0">
 				<TriangleBatch ver="0">
@@ -2920,7 +2958,7 @@
 			</HitMesh>
 		</Collider>
 		<Collider ver="0" flags="0">
-			<MapObject name="Ship5Collider" id="11" hidden="true"/>
+			<MapObject name="Ship5Collider" id="11"/>
 			<HitObject type="HIT"/>
 			<HitMesh ver="0">
 				<TriangleBatch ver="0">
@@ -2996,7 +3034,7 @@
 			</HitMesh>
 		</Collider>
 		<Collider ver="0" flags="0">
-			<MapObject name="Ship4Collider" id="10" hidden="true"/>
+			<MapObject name="Ship4Collider" id="10"/>
 			<HitObject type="HIT"/>
 			<HitMesh ver="0">
 				<TriangleBatch ver="0">
@@ -3072,7 +3110,7 @@
 			</HitMesh>
 		</Collider>
 		<Collider ver="0" flags="0">
-			<MapObject name="Ship3Collider" id="F" hidden="true"/>
+			<MapObject name="Ship3Collider" id="F"/>
 			<HitObject type="HIT"/>
 			<HitMesh ver="0">
 				<TriangleBatch ver="0">
@@ -3148,7 +3186,7 @@
 			</HitMesh>
 		</Collider>
 		<Collider ver="0" flags="0">
-			<MapObject name="Ship2Collider" id="E" hidden="true"/>
+			<MapObject name="Ship2Collider" id="E"/>
 			<HitObject type="HIT"/>
 			<HitMesh ver="0">
 				<TriangleBatch ver="0">
@@ -3224,7 +3262,7 @@
 			</HitMesh>
 		</Collider>
 		<Collider ver="0" flags="0">
-			<MapObject name="Ship1Collider" id="D" hidden="true"/>
+			<MapObject name="Ship1Collider" id="D"/>
 			<HitObject type="HIT"/>
 			<HitMesh ver="0">
 				<TriangleBatch ver="0">
@@ -3304,7 +3342,7 @@
 			<HitObject type="GROUP"/>
 		</Collider>
 		<Collider ver="0" flags="18000">
-			<MapObject name="npc_barrier_w" id="B" hidden="true"/>
+			<MapObject name="npc_barrier_w" id="B"/>
 			<HitObject type="HIT"/>
 			<HitMesh ver="0">
 				<TriangleBatch ver="0">
@@ -3322,7 +3360,7 @@
 			</HitMesh>
 		</Collider>
 		<Collider ver="0" flags="18000">
-			<MapObject name="npc_barrier_s" id="A" hidden="true"/>
+			<MapObject name="npc_barrier_s" id="A"/>
 			<HitObject type="HIT"/>
 			<HitMesh ver="0">
 				<TriangleBatch ver="0">
@@ -3340,7 +3378,7 @@
 			</HitMesh>
 		</Collider>
 		<Collider ver="0" flags="18000">
-			<MapObject name="npc_barrier_e" id="9" hidden="true"/>
+			<MapObject name="npc_barrier_e" id="9"/>
 			<HitObject type="HIT"/>
 			<HitMesh ver="0">
 				<TriangleBatch ver="0">
@@ -3358,7 +3396,7 @@
 			</HitMesh>
 		</Collider>
 		<Collider ver="0" flags="18000">
-			<MapObject name="npc_barrier_n" id="8" hidden="true"/>
+			<MapObject name="npc_barrier_n" id="8"/>
 			<HitObject type="HIT"/>
 			<HitMesh ver="0">
 				<TriangleBatch ver="0">
@@ -3380,7 +3418,7 @@
 			<HitObject type="GROUP"/>
 		</Collider>
 		<Collider ver="0" flags="0">
-			<MapObject name="exit_trigger_w" id="6" hidden="true"/>
+			<MapObject name="exit_trigger_w" id="6"/>
 			<HitObject type="HIT"/>
 			<HitMesh ver="0">
 				<TriangleBatch ver="0">
@@ -3398,7 +3436,7 @@
 			</HitMesh>
 		</Collider>
 		<Collider ver="0" flags="0">
-			<MapObject name="exit_trigger_s" id="5" hidden="true"/>
+			<MapObject name="exit_trigger_s" id="5"/>
 			<HitObject type="HIT"/>
 			<HitMesh ver="0">
 				<TriangleBatch ver="0">
@@ -3416,7 +3454,7 @@
 			</HitMesh>
 		</Collider>
 		<Collider ver="0" flags="0">
-			<MapObject name="exit_trigger_e" id="4" hidden="true"/>
+			<MapObject name="exit_trigger_e" id="4"/>
 			<HitObject type="HIT"/>
 			<HitMesh ver="0">
 				<TriangleBatch ver="0">
@@ -3434,7 +3472,7 @@
 			</HitMesh>
 		</Collider>
 		<Collider ver="0" flags="0">
-			<MapObject name="exit_trigger_n" id="3" hidden="true"/>
+			<MapObject name="exit_trigger_n" id="3"/>
 			<HitObject type="HIT"/>
 			<HitMesh ver="0">
 				<TriangleBatch ver="0">
@@ -3456,7 +3494,7 @@
 			<HitObject type="GROUP"/>
 		</Collider>
 		<Collider ver="0" flags="8000">
-			<MapObject name="main_walls" id="1" hidden="true"/>
+			<MapObject name="main_walls" id="1"/>
 			<HitObject type="HIT"/>
 			<HitMesh ver="0">
 				<TriangleBatch ver="0">
@@ -3580,7 +3618,7 @@
 			</HitMesh>
 		</Collider>
 		<Collider ver="0" flags="0">
-			<MapObject name="main_floor" id="0" hidden="true"/>
+			<MapObject name="main_floor" id="0"/>
 			<HitObject type="HIT"/>
 			<HitMesh ver="0">
 				<TriangleBatch ver="0">
@@ -3727,7 +3765,12 @@
 	</Zones>
 	<Markers>
 		<Marker ver="4" type="Root">
-			<MapObject name="Root" id="8"/>
+			<MapObject name="Root" id="9"/>
+		</Marker>
+		<Marker ver="4" type="NPC" pos="200,0,100" yaw="0.000000">
+			<MapObject name="ChetRippo" id="8"/>
+			<Movement type="Stationary" data="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
+			<Sprite sprite="A6" palette="0" animations="1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
 		</Marker>
 		<Marker ver="4" type="NPC" pos="200,0,0" yaw="0.000000">
 			<MapObject name="Daisy" id="7"/>

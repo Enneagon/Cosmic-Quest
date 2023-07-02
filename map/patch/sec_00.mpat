@@ -52,6 +52,7 @@
     Call EnableModel ( ~Model:Node0 .True )
     Call EnableModel ( ~Model:Node99 .True )
     Call RandInt ( 100` *Var0 )
+    ExecWait $Script_NodeModifiers
     Switch *Var0
     Case 0` to 60`
         Call EnableModel ( ~Model:Node1g .True )
@@ -66,7 +67,9 @@
         Call EnableModel ( ~Model:Node1b .True )
         Set *GB_Node1 4`
     EndSwitch
+    Set *Debug[0] *GB_Node1
     Call RandInt ( 100` *Var0 )
+    ExecWait $Script_NodeModifiers
     Switch *Var0
     Case 0` to 60`
         Call EnableModel ( ~Model:Node2g .True )
@@ -82,6 +85,7 @@
         Set *GB_Node2 4`
     EndSwitch
     Call RandInt ( 100` *Var0 )
+    ExecWait $Script_NodeModifiers
     Switch *Var0
     Case 0` to 60`
         Call EnableModel ( ~Model:Node3g .True )
@@ -97,6 +101,7 @@
         Set *GB_Node3 4`
     EndSwitch
     Call RandInt ( 100` *Var0 )
+    ExecWait $Script_NodeModifiers
     Switch *Var0
     Case 0` to 60`
         Call EnableModel ( ~Model:Node4g .True )
@@ -112,6 +117,7 @@
         Set *GB_Node4 4`
     EndSwitch
     Call RandInt ( 100` *Var0 )
+    ExecWait $Script_NodeModifiers
     Switch *Var0
     Case 0` to 60`
         Call EnableModel ( ~Model:Node5g .True )
@@ -127,6 +133,7 @@
         Set *GB_Node5 4`
     EndSwitch
     Call RandInt ( 100` *Var0 )
+    ExecWait $Script_NodeModifiers
     Switch *Var0
     Case 0` to 60`
         Call EnableModel ( ~Model:Node6g .True )
@@ -142,6 +149,7 @@
         Set *GB_Node6 4`
     EndSwitch
     Call RandInt ( 100` *Var0 )
+    ExecWait $Script_NodeModifiers
     Switch *Var0
     Case 0` to 60`
         Call EnableModel ( ~Model:Node7g .True )
@@ -157,6 +165,27 @@
         Set *GB_Node7 4`
     EndSwitch
     Set *GF_NewSector .False
+    Return
+    End
+}
+
+#new:Script $Script_NodeModifiers
+{
+    If *GF_AnomaliesPlus == .True
+        Add *Var0 10`
+        If *Var0 > 100`
+            Set *Var0 100`
+        EndIf
+    EndIf
+    If *GF_AnomaliesMinus == .True
+        Sub *Var0 10`
+        If *Var0 < 0`
+            Set *Var0 0`
+        EndIf
+    EndIf
+    If *GF_OopsAllAnomalies == .True
+        Set *Var0 100`
+    EndIf
     Return
     End
 }
@@ -263,17 +292,18 @@
             SetConst *GB_LastNode ~Entry:sec_00:Node99
             Exec $Script_TatangaStation
     Case == 5`
+        Wait 1`
         Switch *GB_Node7
         Case == 1`
-            Set *Var1 002F000C
+            Set *Var3 002F000C
         Case == 2`
-            Set *Var1 002F000D
+            Set *Var3 002F000D
         Case == 3`
-            Set *Var1 002F000E
+            Set *Var3 002F000E
         Case == 4`
-            Set *Var1 002F000F
+            Set *Var3 002F000F
         EndSwitch
-        Call  SetMessageString ( *Var1 00000000 )
+        Call  SetMessageString ( *Var3 00000000 )
         Call  ShowMessageAtScreenPos    ( 002F0002  160`  40` )
         Call  ShowChoice ( 002F0013 ) % One node choice
         Call CloseMessage()
@@ -295,28 +325,30 @@
                 Exec $Script_AnomalyPool
             EndSwitch
     Case == 4`
+        Wait 1`
         Switch *GB_Node6
         Case == 1`
-            Set *Var1 002F000C
+            Set *Var3 002F000C
         Case == 2`
-            Set *Var1 002F000D
+            Set *Var3 002F000D
         Case == 3`
-            Set *Var1 002F000E
+            Set *Var3 002F000E
         Case == 4`
-            Set *Var1 002F000F
+            Set *Var3 002F000F
         EndSwitch
-        Call  SetMessageString ( *Var1 00000000 )
+        Call  SetMessageString ( *Var3 00000000 )
+        Wait 1`
         Switch *GB_Node7
         Case == 1`
-            Set *Var1 002F000C
+            Set *Var3 002F000C
         Case == 2`
-            Set *Var1 002F000D
+            Set *Var3 002F000D
         Case == 3`
-            Set *Var1 002F000E
+            Set *Var3 002F000E
         Case == 4`
-            Set *Var1 002F000F
+            Set *Var3 002F000F
         EndSwitch
-        Call  SetMessageString ( *Var1 00000001 )
+        Call  SetMessageString ( *Var3 00000001 )
         Call  ShowMessageAtScreenPos    ( 002F0002  160`  40` )
         Call  ShowChoice ( 002F0006 )
         If  *Var0  ==  00000000
@@ -359,17 +391,18 @@
             EndSwitch
         EndIf
     Case == 3`
+        Wait 1`
         Switch *GB_Node6
         Case == 1`
-            Set *Var1 002F000C
+            Set *Var3 002F000C
         Case == 2`
-            Set *Var1 002F000D
+            Set *Var3 002F000D
         Case == 3`
-            Set *Var1 002F000E
+            Set *Var3 002F000E
         Case == 4`
-            Set *Var1 002F000F
+            Set *Var3 002F000F
         EndSwitch
-        Call  SetMessageString ( *Var1 00000000 )
+        Call  SetMessageString ( *Var3 00000000 )
         Call  ShowMessageAtScreenPos    ( 002F0002  160`  40` )
         Call  ShowChoice ( 002F0013 ) % One node choice
         Call CloseMessage()
@@ -391,28 +424,30 @@
                 Exec $Script_AnomalyPool
             EndSwitch
     Case == 2`
+        Wait 1`
         Switch *GB_Node4
         Case == 1`
-            Set *Var1 002F000C
+            Set *Var3 002F000C
         Case == 2`
-            Set *Var1 002F000D
+            Set *Var3 002F000D
         Case == 3`
-            Set *Var1 002F000E
+            Set *Var3 002F000E
         Case == 4`
-            Set *Var1 002F000F
+            Set *Var3 002F000F
         EndSwitch
-        Call  SetMessageString ( *Var1 00000000 )
+        Call  SetMessageString ( *Var3 00000000 )
+        Wait 1`
         Switch *GB_Node5
         Case == 1`
-            Set *Var1 002F000C
+            Set *Var3 002F000C
         Case == 2`
-            Set *Var1 002F000D
+            Set *Var3 002F000D
         Case == 3`
-            Set *Var1 002F000E
+            Set *Var3 002F000E
         Case == 4`
-            Set *Var1 002F000F
+            Set *Var3 002F000F
         EndSwitch
-        Call  SetMessageString ( *Var1 00000001 )
+        Call  SetMessageString ( *Var3 00000001 )
         Call  ShowMessageAtScreenPos    ( 002F0002  160`  40` )
         Call  ShowChoice ( 002F0006 )
         If  *Var0  ==  00000000
@@ -455,28 +490,30 @@
             EndSwitch
         EndIf
     Case == 1`
+        Wait 1`
         Switch *GB_Node3
         Case == 1`
-            Set *Var1 002F000C
+            Set *Var3 002F000C
         Case == 2`
-            Set *Var1 002F000D
+            Set *Var3 002F000D
         Case == 3`
-            Set *Var1 002F000E
+            Set *Var3 002F000E
         Case == 4`
-            Set *Var1 002F000F
+            Set *Var3 002F000F
         EndSwitch
-        Call  SetMessageString ( *Var1 00000000 )
+        Call  SetMessageString ( *Var3 00000000 )
+        Wait 1`
         Switch *GB_Node4
         Case == 1`
-            Set *Var1 002F000C
+            Set *Var3 002F000C
         Case == 2`
-            Set *Var1 002F000D
+            Set *Var3 002F000D
         Case == 3`
-            Set *Var1 002F000E
+            Set *Var3 002F000E
         Case == 4`
-            Set *Var1 002F000F
+            Set *Var3 002F000F
         EndSwitch
-        Call  SetMessageString ( *Var1 00000001 )
+        Call  SetMessageString ( *Var3 00000001 )
         Call  ShowMessageAtScreenPos    ( 002F0002  160`  40` )
         Call  ShowChoice ( 002F0006 )
         If  *Var0  ==  00000000
@@ -519,28 +556,35 @@
             EndSwitch
         EndIf
     Default
+        Wait 1`
         Switch *GB_Node1
         Case == 1`
-            Set *Var1 002F000C
+            Set *Var3 002F000C
+            Set *Debug[1] *Var3
         Case == 2`
-            Set *Var1 002F000D
+            Set *Var3 002F000D
+            Set *Debug[1] *Var3
         Case == 3`
-            Set *Var1 002F000E
+            Set *Var3 002F000E
+            Set *Debug[1] *Var3
         Case == 4`
-            Set *Var1 002F000F
+            Set *Var3 002F000F
+            Set *Debug[1] *Var3
         EndSwitch
-        Call  SetMessageString ( *Var1 00000000 )
+        Call  SetMessageString ( *Var3 00000000 )
+        Wait 1`
         Switch *GB_Node2
         Case == 1`
-            Set *Var1 002F000C
+            Set *Var3 002F000C
         Case == 2`
-            Set *Var1 002F000D
+            Set *Var3 002F000D
         Case == 3`
-            Set *Var1 002F000E
+            Set *Var3 002F000E
         Case == 4`
-            Set *Var1 002F000F
+            Set *Var3 002F000F
         EndSwitch
-        Call  SetMessageString ( *Var1 00000001 )
+        Set *Debug[0] *GB_Node1
+        Call  SetMessageString ( *Var3 00000001 )
         Call  ShowMessageAtScreenPos    ( 002F0002  160`  40` )
         Call  ShowChoice ( 002F0006 )
         If  *Var0  ==  00000000

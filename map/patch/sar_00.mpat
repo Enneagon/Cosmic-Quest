@@ -1,6 +1,7 @@
 #define .NpcID:Astro       01
 #define .NpcID:Merlon      02
 #define .NpcID:Daisy       03
+#define .NpcID:ChetRippo   04
 
 @ $Script_Main {
     Set   *GB_WorldLocation  .Location:GoombaRoad
@@ -11,6 +12,7 @@
     Exec  $Script_SetupMusic
     Call  $Function_LuckyStar (  )
     Call  $Function_GetHammer (  )
+    Call  AddCoin ( 50` )
     Set  *GB_StoryProgress  .Story:Ch0_FoundHammer
     Exec  $Script_BindStuff
     Exec  $Script_MakeNPCs
@@ -50,7 +52,7 @@
 
 #new:NpcGroupList $NpcGroupList_Always
 {
-	00000003 $NpcGroup_Always 00000000
+	00000004 $NpcGroup_Always 00000000
     00000000 00000000 00000000
 }
 
@@ -75,6 +77,13 @@
 	~NoDrops
 	~Movement:Daisy
 	~AnimationTable:Daisy
+	00000000 00000000 00000000 001A0066 % Tattle ID
+    %
+    .NpcID:ChetRippo $NpcSettings_Standard ~Vec3f:ChetRippo
+	00000001 $Script_Init_ChetRippo 00000000 00000000 00000000
+	~NoDrops
+	~Movement:ChetRippo
+	~AnimationTable:ChetRippo
 	00000000 00000000 00000000 001A0066 % Tattle ID
 }
 
@@ -105,6 +114,13 @@
    1C:  End
 }
 
+#new:Script $Script_Init_ChetRippo
+{
+   14:  Call  BindNpcInteract   ( .Npc:Self $Script_Interact_ChetRippo )
+        Return
+   1C:  End
+}
+
 #new:Script $Script_Interact_Astro
 {
   Call  SpeakToPlayer ( .Npc:Self 00830404 00830401 00000000 002F0052 ) % String
@@ -129,11 +145,57 @@
     If *Var0 == 00000000
         Call CloseMessage ()
         Set *GF_NewSector .True
+        Set *GB_CurrentNode 0`
         Call GotoMapSpecial ( "sec_00" ~Entry:sec_00:SectorStart 0000000D )
     Else
         Call CloseMessage ()
     EndIf
   EndIf
+  Return
+  End
+}
+
+#new:Script $Script_Interact_ChetRippo
+{
+  Call  SpeakToPlayer ( .Npc:Self 00A60004 00A60001 00000000 002F0056 ) % String
+  Call  ShowCoinCounter ( .True )
+  Call  SpeakToPlayer ( .Npc:Self 00A60004 00A60001 00000000 002F0057 ) % String
+  Call  ShowChoice ( 002F0058 )
+  Switch *Var0
+  Case == 0`
+    Call CloseMessage ()
+    Set *GF_AnomaliesPlus .True
+    Call  AddCoin ( -10` )
+    Call  SpeakToPlayer ( .Npc:Self 00A60004 00A60001 00000000 002F0059 ) % String
+    Call  ShowCoinCounter ( .False )
+    Call  GetNpcPos ( .Npc:Self *Var0 *Var1 *Var2 )
+    Call  PlaySoundAtNpc ( .Npc:Self .Sound:SmokeBurst 00000000 )
+    Call  PlayEffect    ( ~FX:BigSmokePuff *Var0 *Var1 *Var2 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 )
+    Call  SetNpcPos ( .Npc:Self 0` -100` 0` )
+  Case == 1`
+    Call CloseMessage ()
+    Set *GF_AnomaliesMinus .True
+    Call  AddCoin ( -10` )
+    Call  SpeakToPlayer ( .Npc:Self 00A60004 00A60001 00000000 002F0059 ) % String
+    Call  ShowCoinCounter ( .False )
+    Call  GetNpcPos ( .Npc:Self *Var0 *Var1 *Var2 )
+    Call  PlaySoundAtNpc ( .Npc:Self .Sound:SmokeBurst 00000000 )
+    Call  PlayEffect    ( ~FX:BigSmokePuff *Var0 *Var1 *Var2 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 )
+    Call  SetNpcPos ( .Npc:Self 0` -100` 0` )
+  Case == 2`
+    Call CloseMessage ()
+    Set *GF_OopsAllAnomalies .True
+    Call  AddCoin ( -25` )
+    Call  SpeakToPlayer ( .Npc:Self 00A60004 00A60001 00000000 002F0059 ) % String
+    Call  ShowCoinCounter ( .False )
+    Call  GetNpcPos ( .Npc:Self *Var0 *Var1 *Var2 )
+    Call  PlaySoundAtNpc ( .Npc:Self .Sound:SmokeBurst 00000000 )
+    Call  PlayEffect    ( ~FX:BigSmokePuff *Var0 *Var1 *Var2 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 )
+    Call  SetNpcPos ( .Npc:Self 0` -100` 0` )
+  Case == 3`
+    Call CloseMessage ()
+    Call  ShowCoinCounter ( .False )
+  EndSwitch
   Return
   End
 }

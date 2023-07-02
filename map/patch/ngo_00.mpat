@@ -50,10 +50,7 @@
   Call  $Function_RestoreStats (  )
   Exec  $Script_RemoveBadges
   Exec  $Script_RemovePartners
-  Set *GB_CurrentNode 0`
-  Set *GB_LastArea 0`
-  Set *GB_LastMap 0`
-  Set *GB_LastNode 0`
+  Exec  $Script_TurnOffStuff
   Call  GotoMapSpecial    ( "pro_00" ~Entry:pro_00:GameStart 00000007 ) % osr_00
   604:  Return
   60C:  End
@@ -165,7 +162,6 @@ SH  r0, FFEE (t0)
     SB t5, 0009 (t0) % level
     SB t6, 000C (t0) % set Coins to 0
     SB t6, 000D (t0) % set Coins to 0
-    SB t6, 000F (t0) % set Star Pieces to 0
     SB t6, 0010 (t0) % set Star Points to 0
     SB t6, 0012 (t0) % set current partner to 0
     JR RA
@@ -188,10 +184,26 @@ SH  r0, FFEE (t0)
 {
      UseArray 8010F304
      SetConst *Var[0] *Array[0] %stores the *address* of *Array[0] into *Var[0].
-     Loop 24`  % 32 * 4 = 128
+     Loop 24`  % 24 * 4 = 96
           Call SetValueByRef ( *Var[0] 00000000 ) %looks in *Var[0], finds the pointer to the *Array, sticks 00000000 in it
           Add *Var[0] 00000001  %MOVES THE ARRAY POINTER VIA ARITHMETIC
      EndLoop
+     Return
+     End
+}
+
+#new:Script $Script_TurnOffStuff
+{
+     Set *GB_CurrentNode 0`
+     Set *GB_LastArea 0`
+     Set *GB_LastMap 0`
+     Set *GB_LastNode 0`
+     Set *GF_SectorSeenRosalina .False
+     Set *GF_SectorSeenKoopa .False
+     Set *GF_SectorSeenGearmos .False
+     Set *GF_SectorSeenVoid .False
+     Set *GF_SectorSeenBowser .False
+     Set *GF_SectorSeenPirates .False
      Return
      End
 }

@@ -29,3 +29,6 @@
 01C = GF_Ship5FPComponent
 01D = GF_Ship5BPComponent
 01E = GF_Ship5BadgeComponent
+01F = GF_AnomaliesPlus
+020 = GF_AnomaliesMinus
+021 = GF_OopsAllAnomalies

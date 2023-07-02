@@ -527,3 +527,45 @@
 	to go kick Tatanga's butt[BR]
 	together?[Yield][End]
 }
+
+#message:2F:056
+{
+	[Style Right]Hey, Mario. Looking for a little[BR]
+	extra luck on your next run?[BR]
+	[Wait][Next]
+	For a small fee, I can increase[BR]
+	your odds of finding Anomalies on[BR]
+	your journey...[BR]
+	[Wait][Next]
+	But doing this will lower the[BR]
+	chance of finding friendly[BR]
+	encounters.[BR]
+	[Wait][Next]
+	I can also do the opposite. More[BR]
+	friendlies, but no Anomalies.
+	[Wait][End]
+}
+
+#message:2F:057
+{
+	[Style Right]What do you say?
+	[Yield][End]
+}
+
+#message:2F:058
+{
+	[Style Choice pos=40,90 size=255,78]
+	[StartChoice]
+	[Option 0]More Anomalies (10 coins)[BR]
+	[Option 1]No Anomalies (10 coins)[BR]
+	[Option 2]Oops, All Anomalies (25 coins)[BR]
+	[Option 3]No thanks[BR]
+	[EndChoice cancel=3][End]
+}
+
+#message:2F:059
+{
+	[Style Right]Heh heh heh... It's done. Good[BR]
+	luck out there.
+	[Wait][End]
+}
