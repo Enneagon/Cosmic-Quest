@@ -585,6 +585,7 @@
 		<Map name="sec_00" nickname="Mushroom Space"/>
 	</Area>
 	<Area name="enc" nickname="Encounters">
+		<Map name="enc_00" nickname="Chuck Quizmo"/>
 	</Area>
 	<Resource name="mac_tex" compressed="false"/>
 	<Resource name="tik_tex" compressed="false"/>

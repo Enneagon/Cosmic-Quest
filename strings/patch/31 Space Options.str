@@ -1,0 +1,489 @@
+#message:31:000
+{
+	[Style Choice pos=100,70 size=120,62]
+	[StartChoice]
+	[Option 0]Chewbacca[BR]
+	[Option 1]R2-D2[BR]
+	[Option 2]Yaddle[BR]
+	[EndChoice][Yield][End]
+}
+
+#message:31:001
+{
+	[Style Choice pos=117,70 size=106,62]
+	[StartChoice]
+	[Option 0]Mercury[BR]
+	[Option 1]Venus[BR]
+	[Option 2]Mars[BR]
+	[EndChoice][Yield][End]
+}
+
+#message:31:002
+{
+	[Style Choice pos=114,70 size=112,62]
+	[StartChoice]
+	[Option 0]The Ship[BR]
+	[Option 1]Firefly[BR]
+	[Option 2]Serenity[BR]
+	[EndChoice][Yield][End]
+}
+
+#message:31:003
+{
+	[Style Choice pos=126,70 size=68,62]
+	[StartChoice]
+	[Option 0]3[BR]
+	[Option 1]5[BR]
+	[Option 2]6[BR]
+	[EndChoice][Yield][End]
+}
+
+#message:31:004
+{
+	[Style Choice pos=98,70 size=134,62]
+	[StartChoice]
+	[Option 0]Amelia[BR]
+	[Option 1]Amara[BR]
+	[Option 2]Alexstrasza[BR]
+	[EndChoice][Yield][End]
+}
+
+#message:31:005
+{
+	[Style Choice pos=107,70 size=146,62]
+	[StartChoice]
+	[Option 0]Cake[BR]
+	[Option 1]Nothing[BR]
+	[Option 2]Burning Metal[BR]
+	[EndChoice][Yield][End]
+}
+
+#message:31:006
+{
+	[Style Choice pos=115,70 size=100,62]
+	[StartChoice]
+	[Option 0]Earth[BR]
+	[Option 1]Venus[BR]
+	[Option 2]Uranus[BR]
+	[EndChoice][Yield][End]
+}
+
+#message:31:007
+{
+	[Style Choice pos=117,70 size=86,62]
+	[StartChoice]
+	[Option 0]Blue[BR]
+	[Option 1]Green[BR]
+	[Option 2]Yellow[BR]
+	[EndChoice][Yield][End]
+}
+
+#message:31:008
+{
+	[Style Choice pos=81,70 size=178,62]
+	[StartChoice]
+	[Option 0]Space deliveries[BR]
+	[Option 1]Exploration[BR]
+	[Option 2]Blowing up planets[BR]
+	[EndChoice][Yield][End]
+}
+
+#message:31:009
+{
+	[Style Choice pos=99,70 size=122,62]
+	[StartChoice]
+	[Option 0]600 mps[BR]
+	[Option 1]600 rpm[BR]
+	[Option 2]600 rps[BR]
+	[EndChoice][Yield][End]
+}
+
+#message:31:00A
+{
+	[Style Choice pos=70,70 size=198,62]
+	[StartChoice]
+	[Option 0]Inside V21-C[BR]
+	[Option 1]The Boomerang Nebula[BR]
+	[Option 2]Earth[BR]
+	[EndChoice][Yield][End]
+}
+
+#message:31:00B
+{
+	[Style Choice pos=91,70 size=158,62]
+	[StartChoice]
+	[Option 0]Solar Flares[BR]
+	[Option 1]Solar Storms[BR]
+	[Option 2]Solar Tantrums[BR]
+	[EndChoice][Yield][End]
+}
+
+#message:31:00C
+{
+	[Style Choice pos=67,70 size=206,62]
+	[StartChoice]
+	[Option 0]Super Mario Galaxy 2[BR]
+	[Option 1]Super Mario Land[BR]
+	[Option 2]Hotel Mario[BR]
+	[EndChoice][Yield][End]
+}
+
+#message:31:00D
+{
+	[Style Choice pos=112,70 size=76,62]
+	[StartChoice]
+	[Option 0]121[BR]
+	[Option 1]181[BR]
+	[Option 2]256[BR]
+	[EndChoice][Yield][End]
+}
+
+#message:31:00E
+{
+	[Style Choice pos=82,70 size=166,62]
+	[StartChoice]
+	[Option 0]The Corona[BR]
+	[Option 1]The Atmosphere[BR]
+	[Option 2]Outer Plasma[BR]
+	[EndChoice][Yield][End]
+}
+
+#message:31:00F
+{
+	[Style Choice pos=103,70 size=114,62]
+	[StartChoice]
+	[Option 0]Corn[BR]
+	[Option 1]Beans[BR]
+	[Option 2]Potatoes[BR]
+	[EndChoice][Yield][End]
+}
+
+#message:31:010
+{
+	[Style Choice pos=67,70 size=206,62]
+	[StartChoice]
+	[Option 0]Solar Flare[BR]
+	[Option 1]Coronal Mass Ejection[BR]
+	[Option 2]A bad time[BR]
+	[EndChoice][Yield][End]
+}
+
+#message:31:011
+{
+	[Style Choice pos=97,70 size=126,62]
+	[StartChoice]
+	[Option 0]Explorer[BR]
+	[Option 1]America[BR]
+	[Option 2]Yorktown[BR]
+	[EndChoice][Yield][End]
+}
+
+#message:31:012
+{
+	[Style Choice pos=77,70 size=156,62]
+	[StartChoice]
+	[Option 0]Aliens[BR]
+	[Option 1]Rogue Planet[BR]
+	[Option 2]Solar Flare[BR]
+	[EndChoice][Yield][End]
+}
+
+#message:31:013
+{
+	[Style Choice pos=114,70 size=92,62]
+	[StartChoice]
+	[Option 0]CAGGE[BR]
+	[Option 1]GAFFC[BR]
+	[Option 2]CBCBC[BR]
+	[EndChoice][Yield][End]
+}
+
+#message:31:014
+{
+	[Style Choice pos=97,70 size=126,62]
+	[StartChoice]
+	[Option 0]Galaxy Gun[BR]
+	[Option 1]Omega 13[BR]
+	[Option 2]Ted[BR]
+	[EndChoice][Yield][End]
+}
+
+#message:31:015
+{
+	[Style Choice pos=97,70 size=106,62]
+	[StartChoice]
+	[Option 0]Aornis[BR]
+	[Option 1]Ripley[BR]
+	[Option 2]LV-426[BR]
+	[EndChoice][Yield][End]
+}
+
+#message:31:016
+{
+	[Style Choice pos=57,70 size=226,62]
+	[StartChoice]
+	[Option 0]The Eridanus Supervoid[BR]
+	[Option 1]The Mastodon Nebula[BR]
+	[Option 2]Volk's Space[BR]
+	[EndChoice][Yield][End]
+}
+
+#message:31:017
+{
+	[Style Choice pos=113,70 size=104,62]
+	[StartChoice]
+	[Option 0]Guitar[BR]
+	[Option 1]Piano[BR]
+	[Option 2]Ocarina[BR]
+	[EndChoice][Yield][End]
+}
+
+#message:31:018
+{
+	[Style Choice pos=117,70 size=96,62]
+	[StartChoice]
+	[Option 0]Male[BR]
+	[Option 1]Female[BR]
+	[Option 2]Neither[BR]
+	[EndChoice][Yield][End]
+}
+
+#message:31:019
+{
+	[Style Choice pos=78,70 size=174,62]
+	[StartChoice]
+	[Option 0]1 year[BR]
+	[Option 1]2 thousand years[BR]
+	[Option 2]3 million years[BR]
+	[EndChoice][Yield][End]
+}
+
+#message:31:01A
+{
+	[Style Choice pos=83,70 size=164,62]
+	[StartChoice]
+	[Option 0]12 Earth years[BR]
+	[Option 1]42 Earth years[BR]
+	[Option 2]196 Earth years[BR]
+	[EndChoice][Yield][End]
+}
+
+#message:31:01B
+{
+	[Style Choice pos=93,70 size=144,62]
+	[StartChoice]
+	[Option 0]Dwarf planet[BR]
+	[Option 1]Asteroid[BR]
+	[Option 2]Distant Star[BR]
+	[EndChoice][Yield][End]
+}
+
+#message:31:01C
+{
+	[Style Choice pos=92,70 size=166,62]
+	[StartChoice]
+	[Option 0]A plant[BR]
+	[Option 1]A roach[BR]
+	[Option 2]He had no friends[BR]
+	[EndChoice][Yield][End]
+}
+
+#message:31:01D
+{
+	[Style Choice pos=103,70 size=114,62]
+	[StartChoice]
+	[Option 0]Stella[BR]
+	[Option 1]Polari[BR]
+	[Option 2]Lumsworth[BR]
+	[EndChoice][Yield][End]
+}
+
+#message:31:01E
+{
+	[Style Choice pos=99,70 size=102,62]
+	[StartChoice]
+	[Option 0]Mars[BR]
+	[Option 1]Jupiter[BR]
+	[Option 2]Saturn[BR]
+	[EndChoice][Yield][End]
+}
+
+#message:31:01F
+{
+	[Style Choice pos=89,70 size=152,62]
+	[StartChoice]
+	[Option 0]Sol[BR]
+	[Option 1]Alpha Centauri[BR]
+	[Option 2]Polaris[BR]
+	[EndChoice][Yield][End]
+}
+
+#message:31:020
+{
+	[Style Choice pos=111,70 size=98,62]
+	[StartChoice]
+	[Option 0]Thwomp[BR]
+	[Option 1]Bomp[BR]
+	[Option 2]Rhomp[BR]
+	[EndChoice][Yield][End]
+}
+
+#message:31:021
+{
+	[Style Choice pos=106,70 size=108,62]
+	[StartChoice]
+	[Option 0]Pluto[BR]
+	[Option 1]Mercury[BR]
+	[Option 2]Mars[BR]
+	[EndChoice][Yield][End]
+}
+
+#message:31:022
+{
+	[Style Choice pos=90,70 size=170,62]
+	[StartChoice]
+	[Option 0]System Shock[BR]
+	[Option 1]Jupiter Window[BR]
+	[Option 2]Farewell to Earth[BR]
+	[EndChoice][Yield][End]
+}
+
+#message:31:023
+{
+	[Style Choice pos=96,70 size=128,62]
+	[StartChoice]
+	[Option 0]Haumea[BR]
+	[Option 1]Makemake[BR]
+	[Option 2]Gimli[BR]
+	[EndChoice][Yield][End]
+}
+
+#message:31:024
+{
+	[Style Choice pos=56,70 size=220,62]
+	[StartChoice]
+	[Option 0]Olympus Mons[BR]
+	[Option 1]Ionian Mons[BR]
+	[Option 2]Rheasilvia Central Peak[BR]
+	[EndChoice][Yield][End]
+}
+
+#message:31:025
+{
+	[Style Choice pos=92,70 size=156,62]
+	[StartChoice]
+	[Option 0]Sol[BR]
+	[Option 1]Polaris[BR]
+	[Option 2]Alpha Centauri[BR]
+	[EndChoice][Yield][End]
+}
+
+#message:31:026
+{
+	[Style Choice pos=129,70 size=82,62]
+	[StartChoice]
+	[Option 0]121[BR]
+	[Option 1]181[BR]
+	[Option 2]256[BR]
+	[EndChoice][Yield][End]
+}
+
+#message:31:027
+{
+	[Style Choice pos=84,70 size=152,62]
+	[StartChoice]
+	[Option 0]Rogue planet[BR]
+	[Option 1]Orphan planet[BR]
+	[Option 2]Lost[BR]
+	[EndChoice][Yield][End]
+}
+
+#message:31:028
+{
+	[Style Choice pos=86,70 size=168,62]
+	[StartChoice]
+	[Option 0]Mastodon Nebula[BR]
+	[Option 1]Tarantula Nebula[BR]
+	[Option 2]Boomerang Nebula[BR]
+	[EndChoice][Yield][End]
+}
+
+#message:31:029
+{
+	[Style Choice pos=36,70 size=255,62]
+	[StartChoice]
+	[Option 0]Alien[BR]
+	[Option 1]Grand Day Out[BR]
+	[Option 2]The Day The Earth Stood Still[BR]
+	[EndChoice][Yield][End]
+}
+
+#message:31:02A
+{
+	[Style Choice pos=67,70 size=196,62]
+	[StartChoice]
+	[Option 0]Buzz Aldrin[BR]
+	[Option 1]Yuri Gagarin[BR]
+	[Option 2]Valentina Tereshkova[BR]
+	[EndChoice][Yield][End]
+}
+
+#message:31:02B
+{
+	[Style Choice pos=102,70 size=116,62]
+	[StartChoice]
+	[Option 0]Venus[BR]
+	[Option 1]Jupiter[BR]
+	[Option 2]Neptune[BR]
+	[EndChoice][Yield][End]
+}
+
+#message:31:02C
+{
+	[Style Choice pos=102,70 size=116,62]
+	[StartChoice]
+	[Option 0]Meteo[BR]
+	[Option 1]Macbeth[BR]
+	[Option 2]Sector Z[BR]
+	[EndChoice][Yield][End]
+}
+
+#message:31:031
+{
+	[Style Choice pos=41,70 size=250,62]
+	[StartChoice]
+	[Option 0]Ordered by his Queen[BR]
+	[Option 1]To spite Bugs Bunny[BR]
+	[Option 2]Obstructs his view of Venus[BR]
+	[EndChoice][Yield][End]
+}
+
+#message:31:02E
+{
+	[Style Choice pos=86,70 size=148,62]
+	[StartChoice]
+	[Option 0]Watermelon[BR]
+	[Option 1]Starfruit[BR]
+	[Option 2]Hyper Cherry[BR]
+	[EndChoice][Yield][End]
+}
+
+#message:31:02F
+{
+	[Style Choice pos=117,70 size=86,62]
+	[StartChoice]
+	[Option 0]30[BR]
+	[Option 1]48[BR]
+	[Option 2]55[BR]
+	[EndChoice][Yield][End]
+}
+
+#message:31:030
+{
+	[Style Choice pos=75,70 size=170,62]
+	[StartChoice]
+	[Option 0]Swinetrek[BR]
+	[Option 1]Millennium Snorter[BR]
+	[Option 2]Oinker[BR]
+	[EndChoice][Yield][End]
+}

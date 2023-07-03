@@ -1,0 +1,511 @@
+#message:30:000
+{
+	[Style Right]
+	Question.[BR]
+	[Wait][Next]
+	In Star Wars, what non-speaking[BR]
+	character originally had dialogue?[BR]
+	[Yield][End]
+}
+
+#message:30:001
+{
+	[Style Right]
+	Question.[BR]
+	[Wait][Next]
+	Which is the brightest planet in[BR]
+	the night sky?[BR]
+	[Yield][End]
+}
+
+#message:30:002
+{
+	[Style Right]
+	Question.[BR]
+	[Wait][Next]
+	What is the name of the starship[BR]
+	in Firefly?[BR]
+	[BR]
+	[BR]
+	[Yield][End]
+}
+
+#message:30:003
+{
+	[Style Right]
+	Question.[BR]
+	[Wait][Next]
+	Aside from Earth, how many[BR]
+	planets can be seen without a[BR]
+	telescope?[BR]
+	[Yield][End]
+}
+
+#message:30:004
+{
+	[Style Right]
+	Question.[BR]
+	[Wait][Next]
+	What is the name of the ship's[BR]
+	captain in Treasure Planet?[BR]
+	[Yield][End]
+}
+
+#message:30:005
+{
+	[Style Right]
+	Question.[BR]
+	[Wait][Next]
+	What does space smell like?[BR]
+	[Yield][End]
+}
+
+#message:30:006
+{
+	[Style Right]
+	Question.[BR]
+	[Wait][Next]
+	Which planet in our solar system[BR]
+	spins backwards relative to the[BR]
+	others?[BR]
+	[Yield][End]
+}
+
+#message:30:007
+{
+	[Style Right]
+	Question.[BR]
+	[Wait][Next]
+	What colour is Mars' sunset?[BR]
+	[Yield][End]
+}
+
+#message:30:008
+{
+	[Style Right]
+	Question.[BR]
+	[Wait][Next]
+	In the film Dark Star, what is[BR]
+	the crew's job?[BR]
+	[Yield][End]
+}
+
+#message:30:009
+{
+	[Style Right]
+	Question.[BR]
+	[Wait][Next]
+	How fast can neutron stars[BR]
+	spin?[BR]
+	[Yield][End]
+}
+
+#message:30:00A
+{
+	[Style Right]
+	Question.[BR]
+	[Wait][Next]
+	Where is the coldest place in the[BR]
+	known universe?[BR]
+	[Yield][End]
+}
+
+#message:30:00B
+{
+	[Style Right]
+	Question.[BR]
+	[Wait][Next]
+	What are the storms produced[BR]
+	by the sun called?[BR]
+	[Yield][End]
+}
+
+#message:30:00C
+{
+	[Style Right]
+	Question.[BR]
+	[Wait][Next]
+	Super Mario Galaxy is one of two[BR]
+	Mario games where Bowser displays[BR]
+	the power to create electricity.[BR]
+	What is the other?[BR]
+	[Yield][End]
+}
+
+#message:30:00D
+{
+	[Style Right]
+	Question.[BR]
+	[Wait][Next]
+	In Super Mario Galaxy, how many[BR]
+	power stars are there?[BR]
+	[Yield][End]
+}
+
+#message:30:00E
+{
+	[Style Right]
+	Question.[BR]
+	[Wait][Next]
+	What is the sun's outer layer[BR]
+	called?[BR]
+	[Yield][End]
+}
+
+#message:30:00F
+{
+	[Style Right]
+	Question.[BR]
+	[Wait][Next]
+	What staple food is grown on[BR]
+	Mars in The Martian?[BR]
+	[Yield][End]
+}
+
+#message:30:010
+{
+	[Style Right]
+	Question.[BR]
+	[Wait][Next]
+	What is a massive release of[BR]
+	plasma from the sun called?[BR]
+	[Yield][End]
+}
+
+#message:30:011
+{
+	[Style Right]
+	Question.[BR]
+	[Wait][Next]
+	In the original treatment for[BR]
+	Star Trek, what was the name[BR]
+	of the ship?[BR]
+	[Yield][End]
+}
+
+#message:30:012
+{
+	[Style Right]
+	Question.[BR]
+	[Wait][Next]
+	What destroys the Earth in the[BR]
+	film Melancholia?[BR]
+	[Yield][End]
+}
+
+#message:30:013
+{
+	[Style Right]
+	Question.[BR]
+	[Wait][Next]
+	What sequence of five notes did[BR]
+	scientists use to communicate with[BR]
+	the UFO in Close Encounters of[BR]
+	the Third Kind?[BR]
+	[Yield][End]
+}
+
+#message:30:014
+{
+	[Style Right]
+	Question.[BR]
+	[Wait][Next]
+	What is the name of the secret[BR]
+	superweapon in Galaxy Quest?[BR]
+	[Yield][End]
+}
+
+#message:30:015
+{
+	[Style Right]
+	Question.[BR]
+	[Wait][Next]
+	In the film Alien, what is the[BR]
+	name of the planet where the[BR]
+	alien eggs were discovered?[BR]
+	[Yield][End]
+}
+
+#message:30:016
+{
+	[Style Right]
+	Question.[BR]
+	[Wait][Next]
+	What is the largest empty spot[BR]
+	in the known universe?[BR]
+	[Yield][End]
+}
+
+#message:30:017
+{
+	[Style Right]
+	Question.[BR]
+	[Wait][Next]
+	In concept art for Super Mario[BR]
+	Galaxy, what instrument was[BR]
+	Princess Rosalina shown to play?[BR]
+	[Yield][End]
+}
+
+#message:30:018
+{
+	[Style Right]
+	Question.[BR]
+	[Wait][Next]
+	What gender is E.T.?[BR]
+	[Yield][End]
+}
+
+#message:30:019
+{
+	[Style Right]
+	Question.[BR]
+	[Wait][Next]
+	In Red Dwarf, how long was[BR]
+	David Lister frozen in stasis?[BR]
+	[Yield][End]
+}
+
+#message:30:01A
+{
+	[Style Right]
+	Question.[BR]
+	[Wait][Next]
+	How long is one year on Jupiter?[BR]
+	[Yield][End]
+}
+
+#message:30:01B
+{
+	[Style Right]
+	Question.[BR]
+	[Wait][Next]
+	What is Vesta?[BR]
+	[Yield][End]
+}
+
+#message:30:01C
+{
+	[Style Right]
+	Question.[BR]
+	[Wait][Next]
+	Who was WALL-E's only friend[BR]
+	before meeting EVE?[BR]
+	[BR]
+	[Yield][End]
+}
+
+#message:30:01D
+{
+	[Style Right]
+	Question.[BR]
+	[Wait][Next]
+	In Super Mario Galaxy, what is[BR]
+	the name of the Luma that is[BR]
+	always by Rosalina's side?[BR]
+	[Yield][End]
+}
+
+#message:30:01E
+{
+	[Style Right]
+	Question.[BR]
+	[Wait][Next]
+	Deimos is a moon of what planet?[BR]
+	[BR]
+	[Yield][End]
+}
+
+#message:30:01F
+{
+	[Style Right]
+	Question.[BR]
+	[Wait][Next]
+	Which star is the Alpha Ursa[BR]
+	Minoris?[BR]
+	[Yield][End]
+}
+
+#message:30:020
+{
+	[Style Right]
+	Question.[BR]
+	[Wait][Next]
+	Which enemy made its first[BR]
+	appearance in Super Mario[BR]
+	Galaxy 2?[BR]
+	[Yield][End]
+}
+
+#message:30:021
+{
+	[Style Right]
+	Question.[BR]
+	[Wait][Next]
+	Which is the smallest planet in[BR]
+	our solar system?[BR]
+	[Yield][End]
+}
+
+#message:30:022
+{
+	[Style Right]
+	Question.[BR]
+	[Wait][Next]
+	Which of the following was NOT a[BR]
+	working title for 2001: A Space[BR]
+	Odyssey?[BR]
+	[Yield][End]
+}
+
+#message:30:023
+{
+	[Style Right]
+	Question.[BR]
+	[Wait][Next]
+	Which of the following is NOT a[BR]
+	dwarf planet?[BR]
+	[Yield][End]
+}
+
+#message:30:024
+{
+	[Style Right]
+	Question.[BR]
+	[Wait][Next]
+	What is the tallest mountain in[BR]
+	our solar system?[BR]
+	[BR]
+	[Yield][End]
+}
+
+#message:30:025
+{
+	[Style Right]
+	Question.[BR]
+	[Wait][Next]
+	Which star is nearest to Earth?[BR]
+	[Yield][End]
+}
+
+#message:30:026
+{
+	[Style Right]
+	Question.[BR]
+	[Wait][Next]
+	How many known moons are in our[BR]
+	solar system?[BR]
+	[Yield][End]
+}
+
+#message:30:027
+{
+	[Style Right]
+	Question.[BR]
+	[Wait][Next]
+	What is a planet that doesn't[BR]
+	orbit a star?[BR]
+	[Yield][End]
+}
+
+#message:30:028
+{
+	[Style Right]
+	Question.[BR]
+	[Wait][Next]
+	What is the largest nebula in the[BR]
+	known universe?[BR]
+	[Yield][End]
+}
+
+#message:30:029
+{
+	[Style Right]
+	Question.[BR]
+	[Wait][Next]
+	What film was the first to[BR]
+	depict humans encountering[BR]
+	extraterrestrial life?[BR]
+	[Yield][End]
+}
+
+#message:30:02A
+{
+	[Style Right]
+	Question.[BR]
+	[Wait][Next]
+	Who was the first person to travel into space?[BR]
+	[Yield][End]
+}
+
+#message:30:02B
+{
+	[Style Right]
+	Question.[BR]
+	[Wait][Next]
+	Which planet in our solar system[BR]
+	has the fastest rotation?[BR]
+	[Yield][End]
+}
+
+#message:30:02C
+{
+	[Style Right]
+	Question.[BR]
+	[Wait][Next]
+	Which is the only level in Star[BR]
+	Fox 64 to not feature a boss?[BR]
+	[Yield][End]
+}
+
+#message:30:02D
+{
+	[Style Right]
+	Question.[BR]
+	[Wait][Next]
+	Why is Marvin the Martian trying[BR]
+	to destroy the Earth?[BR]
+	[Yield][End]
+}
+
+#message:30:02E
+{
+	[Style Right]
+	Question.[BR]
+	[Wait][Next]
+	In Super Mario Galaxy, what[BR]
+	fruit can be found after[BR]
+	collecting 9999 star bits on one[BR]
+	save file?[BR]
+	[Yield][End]
+}
+
+#message:30:02F
+{
+	[Style Right]
+	Question.[BR]
+	[Wait][Next]
+	Not counting the bonus UFO, how[BR]
+	many aliens attacked at once in[BR]
+	classic Space Invaders?[BR]
+	[Yield][End]
+}
+
+#message:30:030
+{
+	[Style Right]
+	Question.[BR]
+	[Wait][Next]
+	What was the name of the ship[BR]
+	in Pigs in Space?[BR]
+	[Yield][End]
+}
+
+#message:30:031
+{
+	[Style Right]
+	Question.[BR]
+	[Wait][Next]
+	Think you can take me, punk?[BR]
+	[Yield][End]
+}
