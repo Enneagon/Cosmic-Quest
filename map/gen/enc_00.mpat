@@ -39,7 +39,7 @@
 
 #new:Script $Script_SetupMusic
 {
-	Call  SetMusicTrack ( 00000000 .Song:FuzzyAttack 00000000 00000008 )
+	Call  SetMusicTrack ( 00000000 .Song:DryDryDesert 00000000 00000008 )
 	Call  ClearAmbientSounds ( 250` )
 	Return
 	End

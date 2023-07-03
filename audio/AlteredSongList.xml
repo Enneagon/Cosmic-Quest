@@ -7,3 +7,5 @@
 <Song id="15" BGM="bgm/38_109.bgm"/> <!-- DryDryOutpost / Wolfen Mercenaries -->
 <Song id="16" BGM="bgm/36_827.bgm"/> <!-- MtRugged / Zoness -->
 <Song id="87" BGM="bgm/10_135.bgm"/> <!-- GameOver / Hurricane -->
+<Song id="02" BGM="bgm/00_117.bgm"/> <!-- NormalBattle / CTBattle -->
+<Song id="17" BGM="bgm/37_202.bgm"/> <!-- DryDryDesert / CTFairground -->
