@@ -740,9 +740,10 @@
         Goto 2
     EndIf
     Label 0
+    Wait 1`
     Call  RandInt ( 4` *Var0 )
     Add *Var0 1`
-    Wait 1
+    Wait 1`
     Switch *Var0
     Case == 1`
         If *MF_SectorSeenRosalina == .False
@@ -782,9 +783,10 @@
     EndSwitch
     Call  SetMessageString ( *VarF 00000000 )
     Label 1
+    Wait 1`
     Call  RandInt ( 4` *Var0 )
     Add *Var0 1`
-    Wait 1
+    Wait 1`
     Switch *Var0
     Case == 1`
         If *MF_SectorSeenRosalina == .False

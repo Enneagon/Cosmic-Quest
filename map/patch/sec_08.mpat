@@ -543,6 +543,12 @@
 #new:Script $Script_NextSector
 {
     Set *MB_SectorsCompleted 0`
+    Set *MF_SectorSeenRosalina .False
+    Set *MF_SectorSeenKoopa .False
+    Set *MF_SectorSeenGearmos .False
+    Set *MF_SectorSeenVoid .False
+    Set *MF_SectorSeenBowser .False
+    Set *MF_SectorSeenPirates .False
     Call  PlayerMoveTo ( 900` 0` 40` )
     Wait  20`
     Set *VarF 002F0025
