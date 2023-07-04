@@ -388,7 +388,7 @@
         EndSwitch
         Call  SetMessageString ( *Var3 00000000 )
         Wait 1`
-        Switch *MB_Node7
+        Switch *MB_Node8
         Case == 1`
             Set *Var3 002F000C
         Case == 2`
@@ -413,14 +413,14 @@
             Exec $Script_RosalinasComet
         Else
             Call CloseMessage()
-            Call  GetModelCenter ( ~Model:Node7g )
+            Call  GetModelCenter ( ~Model:Node8g )
             Call  PlayerMoveTo ( *Var0 *Var2 60` )
             Wait  20`
             Call $Function_GetArbitraryByte ( *MB_LastArea 800740AB )
             Call GetMapID ( *MB_LastMap )
-            SetConst *MB_LastNode ~Entry:sec_01:Node7
-            Set *MB_CurrentNode 7`
-            Switch *MB_Node7
+            SetConst *MB_LastNode ~Entry:sec_01:Node8
+            Set *MB_CurrentNode 8`
+            Switch *MB_Node8
             Case == 1`
                 Exec $Script_FriendlyPool
             Case == 2`
@@ -813,11 +813,14 @@
         Set *VarF 002F0024
         Goto 2
     EndIf
-    Label 0
-    Wait 1`
     Call  RandInt ( 4` *Var0 )
+    Label 0
     Add *Var0 1`
     Wait 1`
+    If *Var0 == 6`
+        Set *Var0 0`
+    EndIf
+    Wait 1
     Switch *Var0
     Case == 1`
         If *MF_SectorSeenKoopa == .False
@@ -856,11 +859,14 @@
         EndIf
     EndSwitch
     Call  SetMessageString ( *VarF 00000000 )
-    Label 1
-    Wait 1`
     Call  RandInt ( 4` *Var0 )
+    Label 1
     Add *Var0 1`
-    Wait 1`
+    Wait 1
+    If *Var0 == 6`
+        Set *Var0 0`
+    EndIf
+    Wait 1
     Switch *Var0
     Case == 1`
         If *MF_SectorSeenKoopa == .False

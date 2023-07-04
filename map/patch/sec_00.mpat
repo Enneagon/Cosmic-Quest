@@ -722,9 +722,14 @@
         Set *MF_SectorSeenPirates .True
     EndSwitch
     Call  SetMessageString ( *VarF 00000000 )
-    Label 0
     Call  RandInt ( 5` *Var0 )
+    Label 0
     Add *Var0 1`
+    Wait 1
+    If *Var0 == 7`
+        Set *Var0 0`
+    EndIf
+    Wait 1`
     Switch *Var0
     Case == 1`
         If *MF_SectorSeenRosalina == .False

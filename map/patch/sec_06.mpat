@@ -681,10 +681,13 @@
         Set *VarF 002F0024
         Goto 2
     EndIf
-    Label 0
-    Wait 1`
     Call  RandInt ( 4` *Var0 )
+    Label 0
     Add *Var0 1`
+    Wait 1
+    If *Var0 == 6`
+        Set *Var0 0`
+    EndIf
     Wait 1
     Switch *Var0
     Case == 1`
@@ -724,10 +727,13 @@
         EndIf
     EndSwitch
     Call  SetMessageString ( *VarF 00000000 )
-    Label 1
-    Wait 1`
     Call  RandInt ( 4` *Var0 )
+    Label 1
     Add *Var0 1`
+    Wait 1
+    If *Var0 == 6`
+        Set *Var0 0`
+    EndIf
     Wait 1
     Switch *Var0
     Case == 1`
