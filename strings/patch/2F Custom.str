@@ -114,7 +114,7 @@
 
 #message:2F:013
 {
-	[Style Choice pos=15,25 size=130,34]
+	[Style Choice pos=15,25 size=135,34]
 	[StartChoice]
 	[Option 0][Var 0][BR]
 	[EndChoice][End]
@@ -568,4 +568,12 @@
 	[Style Right]Heh heh heh... It's done. Good[BR]
 	luck out there.
 	[Wait][End]
+}
+
+#message:2F:05A
+{
+	[Style Choice pos=30,90 size=200,46]
+	[StartChoice]
+	[Option 0][Var 0][BR]
+	[EndChoice][End]
 }

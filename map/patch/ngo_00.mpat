@@ -45,7 +45,9 @@
   5D4:  	Wait  94`
   5E0:  	Call  SetPanTarget  ( .Cam:Default  0`  0`  1000` )
   5FC:  EndThread
-  Wait 240`
+  Wait 220`
+  Call  FadeOutMusic ( 00000000 1000` )
+  Wait 30`
   Call  $Function_ClearInventory (  )
   Call  $Function_RestoreStats (  )
   Exec  $Script_RemoveBadges
@@ -194,16 +196,16 @@ SH  r0, FFEE (t0)
 
 #new:Script $Script_TurnOffStuff
 {
-     Set *GB_CurrentNode 0`
-     Set *GB_LastArea 0`
-     Set *GB_LastMap 0`
-     Set *GB_LastNode 0`
-     Set *GF_SectorSeenRosalina .False
-     Set *GF_SectorSeenKoopa .False
-     Set *GF_SectorSeenGearmos .False
-     Set *GF_SectorSeenVoid .False
-     Set *GF_SectorSeenBowser .False
-     Set *GF_SectorSeenPirates .False
+     Set *MB_CurrentNode 0`
+     Set *MB_LastArea 0`
+     Set *MB_LastMap 0`
+     Set *MB_LastNode 0`
+     Set *MF_SectorSeenRosalina .False
+     Set *MF_SectorSeenKoopa .False
+     Set *MF_SectorSeenGearmos .False
+     Set *MF_SectorSeenVoid .False
+     Set *MF_SectorSeenBowser .False
+     Set *MF_SectorSeenPirates .False
      Return
      End
 }

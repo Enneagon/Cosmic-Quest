@@ -124,7 +124,7 @@
 #new:Script $Script_Interact_Toad3
 {
   Call  SpeakToPlayer ( .Npc:Self 00830004 00830001 00000000 002F0012 ) % String
-  Call  GotoMapByID ( *GB_LastArea *GB_LastMap *GB_LastNode )
+  Call  GotoMapByID ( *MB_LastArea *MB_LastMap *MB_LastNode )
   Return
   End
 }
@@ -184,8 +184,8 @@
         Call  PlaySound ( 0215 )
         Wait    1
       EndLoop
-      Add *GB_HPComponents 1`
-      Call SetMessageValue ( *GB_HPComponents 00000000 )
+      Add *MB_HPComponents 1`
+      Call SetMessageValue ( *MB_HPComponents 00000000 )
       Call  SpeakToPlayer ( .NpcID:Merlow 00B20004 00B20001 00000000 002F001A ) % String
     EndIf
     Call CloseMessage ( )

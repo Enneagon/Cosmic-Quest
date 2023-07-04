@@ -47,8 +47,8 @@
     Call  ShowChoice ( 002F0001 )
     If  *Var0  ==  00000000
         Call CloseMessage()
-        Set *GB_CurrentShip 1`
-        Set *GF_NewSector .True
+        Set *MB_CurrentShip 1`
+        Set *MF_NewSector .True
         Call $StartingStats1 (  )
         Call GotoMap ( "pro_03" ~Entry:pro_03:SectorStart )
     Else
@@ -66,8 +66,8 @@
     Call  ShowChoice ( 002F0001 )
     If  *Var0  ==  00000000
         Call CloseMessage()
-        Set *GB_CurrentShip 2`
-        Set *GF_NewSector .True
+        Set *MB_CurrentShip 2`
+        Set *MF_NewSector .True
         Call $StartingStats2 (  )
         Call GotoMap ( "pro_03" ~Entry:pro_03:SectorStart )
     Else

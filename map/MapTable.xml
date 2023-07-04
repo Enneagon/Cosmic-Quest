@@ -583,6 +583,14 @@
 	</Area>
 	<Area name="sec" nickname="Sectors">
 		<Map name="sec_00" nickname="Mushroom Space"/>
+		<Map name="sec_01" nickname="Rosalina's Sector"/>
+		<Map name="sec_02" nickname="Koopa Dominion"/>
+		<Map name="sec_03" nickname="Gearmos Home"/>
+		<Map name="sec_04" nickname="Void of Space"/>
+		<Map name="sec_05" nickname="Bowser's Armada"/>
+		<Map name="sec_06" nickname="Pirate Sector"/>
+		<Map name="sec_07" nickname="Tatanga"/>
+		<Map name="sec_08" nickname="Worm God"/>
 	</Area>
 	<Area name="enc" nickname="Encounters">
 		<Map name="enc_00" nickname="Chuck Quizmo"/>

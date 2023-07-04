@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Map name="sar_00" author="unnamed" background="sbk_bg" textures="kmr_tex">
 	<Editor>
-		<Camera pos="-0.422502,204.538879,633.726685" pitch="15.439991" yaw="1.759973"/>
+		<Camera pos="6.235872,189.105087,260.449951" pitch="30.479982" yaw="359.039856"/>
 		<Camera pos="-253.633698,65536.000000,68.506729"/>
 		<Camera pos="65536.000000,28.346886,-84.792877"/>
 		<Camera pos="0.000000,-50.000000,65536.000000"/>
@@ -3767,7 +3767,7 @@
 		<Marker ver="4" type="Root">
 			<MapObject name="Root" id="9"/>
 		</Marker>
-		<Marker ver="4" type="NPC" pos="200,0,100" yaw="0.000000">
+		<Marker ver="4" type="NPC" pos="300,0,100" yaw="0.000000">
 			<MapObject name="ChetRippo" id="8"/>
 			<Movement type="Stationary" data="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
 			<Sprite sprite="A6" palette="0" animations="1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
@@ -3782,7 +3782,7 @@
 			<Movement type="Stationary" data="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
 			<Sprite sprite="A5" palette="0" animations="1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
 		</Marker>
-		<Marker ver="4" type="NPC" pos="-100,0,0" yaw="0.000000">
+		<Marker ver="4" type="NPC" pos="-100,0,100" yaw="0.000000">
 			<MapObject name="Astro" id="5"/>
 			<Movement type="Stationary" data="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
 			<Sprite sprite="83" palette="4" animations="1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>

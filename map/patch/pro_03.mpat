@@ -6,7 +6,7 @@
     Call  SetCamLeadPlayer   ( .Cam:Default .False )
     Exec  $Script_SetupMusic
     Exec  $Script_ShipBindsToMario
-    If *GF_NewSector == .True
+    If *MF_NewSector == .True
         Exec  $Script_RandomizeNodes
     Else
         Exec  $Script_RestoreNodes
@@ -20,7 +20,7 @@
 #new:Script $Script_ShipBindsToMario
 {
     Call EnableGroup ( ~Model:Ships .False )
-    Switch *GB_CurrentShip
+    Switch *MB_CurrentShip
     Case == 1`    
         Call EnableGroup ( ~Model:Rocket1 .True )
         Thread
@@ -55,108 +55,108 @@
     Switch *Var0
     Case 0` to 40`
         Call EnableModel ( ~Model:Node1g .True )
-        Set *GB_Node1 1`
+        Set *MB_Node1 1`
     Case 41` to 70`
         Call EnableModel ( ~Model:Node1y .True )
-        Set *GB_Node1 2`
+        Set *MB_Node1 2`
     Case 71` to 90`
         Call EnableModel ( ~Model:Node1r .True )
-        Set *GB_Node1 3`
+        Set *MB_Node1 3`
     Case 91` to 100`
         Call EnableModel ( ~Model:Node1b .True )
-        Set *GB_Node1 4`
+        Set *MB_Node1 4`
     EndSwitch
     Call RandInt ( 100` *Var0 )
     Switch *Var0
     Case 0` to 40`
         Call EnableModel ( ~Model:Node2g .True )
-        Set *GB_Node2 1`
+        Set *MB_Node2 1`
     Case 41` to 70`
         Call EnableModel ( ~Model:Node2y .True )
-        Set *GB_Node2 2`
+        Set *MB_Node2 2`
     Case 71` to 90`
         Call EnableModel ( ~Model:Node2r .True )
-        Set *GB_Node2 3`
+        Set *MB_Node2 3`
     Case 91` to 100`
         Call EnableModel ( ~Model:Node2b .True )
-        Set *GB_Node2 4`
+        Set *MB_Node2 4`
     EndSwitch
     Call RandInt ( 100` *Var0 )
     Switch *Var0
     Case 0` to 40`
         Call EnableModel ( ~Model:Node3g .True )
-        Set *GB_Node3 1`
+        Set *MB_Node3 1`
     Case 41` to 70`
         Call EnableModel ( ~Model:Node3y .True )
-        Set *GB_Node3 2`
+        Set *MB_Node3 2`
     Case 71` to 90`
         Call EnableModel ( ~Model:Node3r .True )
-        Set *GB_Node3 3`
+        Set *MB_Node3 3`
     Case 91` to 100`
         Call EnableModel ( ~Model:Node3b .True )
-        Set *GB_Node3 4`
+        Set *MB_Node3 4`
     EndSwitch
     Call RandInt ( 100` *Var0 )
     Switch *Var0
     Case 0` to 40`
         Call EnableModel ( ~Model:Node4g .True )
-        Set *GB_Node4 1`
+        Set *MB_Node4 1`
     Case 41` to 70`
         Call EnableModel ( ~Model:Node4y .True )
-        Set *GB_Node4 2`
+        Set *MB_Node4 2`
     Case 71` to 90`
         Call EnableModel ( ~Model:Node4r .True )
-        Set *GB_Node4 3`
+        Set *MB_Node4 3`
     Case 91` to 100`
         Call EnableModel ( ~Model:Node4b .True )
-        Set *GB_Node4 4`
+        Set *MB_Node4 4`
     EndSwitch
     Call RandInt ( 100` *Var0 )
     Switch *Var0
     Case 0` to 40`
         Call EnableModel ( ~Model:Node5g .True )
-        Set *GB_Node5 1`
+        Set *MB_Node5 1`
     Case 41` to 70`
         Call EnableModel ( ~Model:Node5y .True )
-        Set *GB_Node5 2`
+        Set *MB_Node5 2`
     Case 71` to 90`
         Call EnableModel ( ~Model:Node5r .True )
-        Set *GB_Node5 3`
+        Set *MB_Node5 3`
     Case 91` to 100`
         Call EnableModel ( ~Model:Node5b .True )
-        Set *GB_Node5 4`
+        Set *MB_Node5 4`
     EndSwitch
     Call RandInt ( 100` *Var0 )
     Switch *Var0
     Case 0` to 40`
         Call EnableModel ( ~Model:Node6g .True )
-        Set *GB_Node6 1`
+        Set *MB_Node6 1`
     Case 41` to 70`
         Call EnableModel ( ~Model:Node6y .True )
-        Set *GB_Node6 2`
+        Set *MB_Node6 2`
     Case 71` to 90`
         Call EnableModel ( ~Model:Node6r .True )
-        Set *GB_Node6 3`
+        Set *MB_Node6 3`
     Case 91` to 100`
         Call EnableModel ( ~Model:Node6b .True )
-        Set *GB_Node6 4`
+        Set *MB_Node6 4`
     EndSwitch
     Call RandInt ( 100` *Var0 )
     Switch *Var0
     Case 0` to 40`
         Call EnableModel ( ~Model:Node7g .True )
-        Set *GB_Node7 1`
+        Set *MB_Node7 1`
     Case 41` to 70`
         Call EnableModel ( ~Model:Node7y .True )
-        Set *GB_Node7 2`
+        Set *MB_Node7 2`
     Case 71` to 90`
         Call EnableModel ( ~Model:Node7r .True )
-        Set *GB_Node7 3`
+        Set *MB_Node7 3`
     Case 91` to 100`
         Call EnableModel ( ~Model:Node7b .True )
-        Set *GB_Node7 4`
+        Set *MB_Node7 4`
     EndSwitch
-    Set *GF_NewSector .False
+    Set *MF_NewSector .False
     Return
     End
 }
@@ -166,7 +166,7 @@
     Call EnableGroup ( ~Model:WarpNodes .False )
     Call EnableModel ( ~Model:Node0 .True )
     Call EnableModel ( ~Model:Node99 .True )
-    Switch *GB_Node1
+    Switch *MB_Node1
     Case == 1`
         Call EnableModel ( ~Model:Node1g .True )
     Case == 2`
@@ -176,7 +176,7 @@
     Case == 4`
         Call EnableModel ( ~Model:Node1b .True )
     EndSwitch
-    Switch *GB_Node2
+    Switch *MB_Node2
     Case == 1`
         Call EnableModel ( ~Model:Node2g .True )
     Case == 2`
@@ -186,7 +186,7 @@
     Case == 4`
         Call EnableModel ( ~Model:Node2b .True )
     EndSwitch
-    Switch *GB_Node3
+    Switch *MB_Node3
     Case == 1`
         Call EnableModel ( ~Model:Node3g .True )
     Case == 2`
@@ -196,7 +196,7 @@
     Case == 4`
         Call EnableModel ( ~Model:Node3b .True )
     EndSwitch
-    Switch *GB_Node4
+    Switch *MB_Node4
     Case == 1`
         Call EnableModel ( ~Model:Node4g .True )
     Case == 2`
@@ -206,7 +206,7 @@
     Case == 4`
         Call EnableModel ( ~Model:Node4b .True )
     EndSwitch
-    Switch *GB_Node5
+    Switch *MB_Node5
     Case == 1`
         Call EnableModel ( ~Model:Node5g .True )
     Case == 2`
@@ -216,7 +216,7 @@
     Case == 4`
         Call EnableModel ( ~Model:Node5b .True )
     EndSwitch
-    Switch *GB_Node6
+    Switch *MB_Node6
     Case == 1`
         Call EnableModel ( ~Model:Node6g .True )
     Case == 2`
@@ -226,7 +226,7 @@
     Case == 4`
         Call EnableModel ( ~Model:Node6b .True )
     EndSwitch
-    Switch *GB_Node7
+    Switch *MB_Node7
     Case == 1`
         Call EnableModel ( ~Model:Node7g .True )
     Case == 2`
@@ -242,11 +242,11 @@
 
 @ $Script_Main_Callback_AfterEnterMap {
     Call  DisablePlayerInput ( .True )
-    Switch *GB_CurrentNode
+    Switch *MB_CurrentNode
     Case == 99`
         Call  ShowMessageAtScreenPos    ( 002F0015  160`  40` )
-        Set *GB_CurrentNode 0`
-        Set *GF_NewSector .True
+        Set *MB_CurrentNode 0`
+        Set *MF_NewSector .True
         Call GotoMap ( "pro_03" ~Entry:pro_03:SectorStart )
         Return
     CaseOR == 7`
@@ -256,12 +256,12 @@
         Call CloseMessage()
             Call  PlayerMoveTo ( 400` 0` 60` )
             Wait  20`
-            Set *GB_CurrentNode 99`
-            Call $Function_GetArbitraryByte ( *GB_LastArea 800740AB )
-            Call GetMapID ( *GB_LastMap )
-            SetConst *GB_LastNode ~Entry:pro_03:Node99
+            Set *MB_CurrentNode 99`
+            Call $Function_GetArbitraryByte ( *MB_LastArea 800740AB )
+            Call GetMapID ( *MB_LastMap )
+            SetConst *MB_LastNode ~Entry:pro_03:Node99
     Case == 5`
-        Switch *GB_Node7
+        Switch *MB_Node7
         Case == 1`
             Set *Var1 002F000C
         Case == 2`
@@ -277,8 +277,8 @@
         Call CloseMessage()
             Call  PlayerMoveTo ( 200` 165` 60` )
             Wait  20`
-            Set *GB_CurrentNode 7`
-            Switch *GB_Node7
+            Set *MB_CurrentNode 7`
+            Switch *MB_Node7
             Case == 1`
                 Call  ShowMessageAtScreenPos    ( 002F0007  160`  40` ) % Encounter
             Case == 2`
@@ -288,11 +288,11 @@
             Case == 4`
                 Call  ShowMessageAtScreenPos    ( 002F000A  160`  40` ) % Encounter
             EndSwitch
-            Call $Function_GetArbitraryByte ( *GB_LastArea 800740AB )
-            Call GetMapID ( *GB_LastMap )
-            SetConst *GB_LastNode ~Entry:pro_03:Node7
+            Call $Function_GetArbitraryByte ( *MB_LastArea 800740AB )
+            Call GetMapID ( *MB_LastMap )
+            SetConst *MB_LastNode ~Entry:pro_03:Node7
     Case == 4`
-        Switch *GB_Node6
+        Switch *MB_Node6
         Case == 1`
             Set *Var1 002F000C
         Case == 2`
@@ -303,7 +303,7 @@
             Set *Var1 002F000F
         EndSwitch
         Call  SetMessageString ( *Var1 00000000 )
-        Switch *GB_Node7
+        Switch *MB_Node7
         Case == 1`
             Set *Var1 002F000C
         Case == 2`
@@ -320,8 +320,8 @@
             Call CloseMessage()
             Call  PlayerMoveTo ( 205` -125` 60` )
             Wait  20`
-            Set *GB_CurrentNode 6`
-            Switch *GB_Node6
+            Set *MB_CurrentNode 6`
+            Switch *MB_Node6
             Case == 1`
                 Call  ShowMessageAtScreenPos    ( 002F0007  160`  40` ) % Encounter
             Case == 2`
@@ -331,15 +331,15 @@
             Case == 4`
                 Call  ShowMessageAtScreenPos    ( 002F000A  160`  40` ) % Encounter
             EndSwitch
-            Call $Function_GetArbitraryByte ( *GB_LastArea 800740AB )
-            Call GetMapID ( *GB_LastMap )
-            SetConst *GB_LastNode ~Entry:pro_03:Node6
+            Call $Function_GetArbitraryByte ( *MB_LastArea 800740AB )
+            Call GetMapID ( *MB_LastMap )
+            SetConst *MB_LastNode ~Entry:pro_03:Node6
         Else
             Call CloseMessage()
             Call  PlayerMoveTo ( 200` 165` 60` )
             Wait  20`
-            Set *GB_CurrentNode 7`
-            Switch *GB_Node7
+            Set *MB_CurrentNode 7`
+            Switch *MB_Node7
             Case == 1`
                 Call  ShowMessageAtScreenPos    ( 002F0007  160`  40` ) % Encounter
             Case == 2`
@@ -349,12 +349,12 @@
             Case == 4`
                 Call  ShowMessageAtScreenPos    ( 002F000A  160`  40` ) % Encounter
             EndSwitch
-            Call $Function_GetArbitraryByte ( *GB_LastArea 800740AB )
-            Call GetMapID ( *GB_LastMap )
-            SetConst *GB_LastNode ~Entry:pro_03:Node7
+            Call $Function_GetArbitraryByte ( *MB_LastArea 800740AB )
+            Call GetMapID ( *MB_LastMap )
+            SetConst *MB_LastNode ~Entry:pro_03:Node7
         EndIf
     Case == 3`
-        Switch *GB_Node6
+        Switch *MB_Node6
         Case == 1`
             Set *Var1 002F000C
         Case == 2`
@@ -370,8 +370,8 @@
         Call CloseMessage()
             Call  PlayerMoveTo ( 205` -125` 60` )
             Wait  20`
-            Set *GB_CurrentNode 6`
-            Switch *GB_Node6
+            Set *MB_CurrentNode 6`
+            Switch *MB_Node6
             Case == 1`
                 Call  ShowMessageAtScreenPos    ( 002F0007  160`  40` ) % Encounter
             Case == 2`
@@ -381,11 +381,11 @@
             Case == 4`
                 Call  ShowMessageAtScreenPos    ( 002F000A  160`  40` ) % Encounter
             EndSwitch
-            Call $Function_GetArbitraryByte ( *GB_LastArea 800740AB )
-            Call GetMapID ( *GB_LastMap )
-            SetConst *GB_LastNode ~Entry:pro_03:Node6
+            Call $Function_GetArbitraryByte ( *MB_LastArea 800740AB )
+            Call GetMapID ( *MB_LastMap )
+            SetConst *MB_LastNode ~Entry:pro_03:Node6
     Case == 2`
-        Switch *GB_Node4
+        Switch *MB_Node4
         Case == 1`
             Set *Var1 002F000C
         Case == 2`
@@ -396,7 +396,7 @@
             Set *Var1 002F000F
         EndSwitch
         Call  SetMessageString ( *Var1 00000000 )
-        Switch *GB_Node5
+        Switch *MB_Node5
         Case == 1`
             Set *Var1 002F000C
         Case == 2`
@@ -413,8 +413,8 @@
             Call CloseMessage()
             Call  PlayerMoveTo ( 0` 0` 60` )
             Wait  20`
-            Set *GB_CurrentNode 4`
-            Switch *GB_Node4
+            Set *MB_CurrentNode 4`
+            Switch *MB_Node4
             Case == 1`
                 Call  ShowMessageAtScreenPos    ( 002F0007  160`  40` ) % Encounter
             Case == 2`
@@ -424,15 +424,15 @@
             Case == 4`
                 Call  ShowMessageAtScreenPos    ( 002F000A  160`  40` ) % Encounter
             EndSwitch
-            Call $Function_GetArbitraryByte ( *GB_LastArea 800740AB )
-            Call GetMapID ( *GB_LastMap )
-            SetConst *GB_LastNode ~Entry:pro_03:Node4
+            Call $Function_GetArbitraryByte ( *MB_LastArea 800740AB )
+            Call GetMapID ( *MB_LastMap )
+            SetConst *MB_LastNode ~Entry:pro_03:Node4
         Else
             Call CloseMessage()
             Call  PlayerMoveTo ( 0` 300` 60` )
             Wait  20`
-            Set *GB_CurrentNode 5`
-            Switch *GB_Node5
+            Set *MB_CurrentNode 5`
+            Switch *MB_Node5
             Case == 1`
                 Call  ShowMessageAtScreenPos    ( 002F0007  160`  40` ) % Encounter
             Case == 2`
@@ -442,12 +442,12 @@
             Case == 4`
                 Call  ShowMessageAtScreenPos    ( 002F000A  160`  40` ) % Encounter
             EndSwitch
-            Call $Function_GetArbitraryByte ( *GB_LastArea 800740AB )
-            Call GetMapID ( *GB_LastMap )
-            SetConst *GB_LastNode ~Entry:pro_03:Node5
+            Call $Function_GetArbitraryByte ( *MB_LastArea 800740AB )
+            Call GetMapID ( *MB_LastMap )
+            SetConst *MB_LastNode ~Entry:pro_03:Node5
         EndIf
     Case == 1`
-        Switch *GB_Node3
+        Switch *MB_Node3
         Case == 1`
             Set *Var1 002F000C
         Case == 2`
@@ -458,7 +458,7 @@
             Set *Var1 002F000F
         EndSwitch
         Call  SetMessageString ( *Var1 00000000 )
-        Switch *GB_Node4
+        Switch *MB_Node4
         Case == 1`
             Set *Var1 002F000C
         Case == 2`
@@ -475,8 +475,8 @@
             Call CloseMessage()
             Call  PlayerMoveTo ( 0` -300` 60` )
             Wait  20`
-            Set *GB_CurrentNode 3`
-            Switch *GB_Node3
+            Set *MB_CurrentNode 3`
+            Switch *MB_Node3
             Case == 1`
                 Call  ShowMessageAtScreenPos    ( 002F0007  160`  40` ) % Encounter
             Case == 2`
@@ -486,15 +486,15 @@
             Case == 4`
                 Call  ShowMessageAtScreenPos    ( 002F000A  160`  40` ) % Encounter
             EndSwitch
-            Call $Function_GetArbitraryByte ( *GB_LastArea 800740AB )
-            Call GetMapID ( *GB_LastMap )
-            SetConst *GB_LastNode ~Entry:pro_03:Node3
+            Call $Function_GetArbitraryByte ( *MB_LastArea 800740AB )
+            Call GetMapID ( *MB_LastMap )
+            SetConst *MB_LastNode ~Entry:pro_03:Node3
         Else
             Call CloseMessage()
             Call  PlayerMoveTo ( 0` 0` 60` )
             Wait  20`
-            Set *GB_CurrentNode 4`
-            Switch *GB_Node4
+            Set *MB_CurrentNode 4`
+            Switch *MB_Node4
             Case == 1`
                 Call  ShowMessageAtScreenPos    ( 002F0007  160`  40` ) % Encounter
             Case == 2`
@@ -504,12 +504,12 @@
             Case == 4`
                 Call  ShowMessageAtScreenPos    ( 002F000A  160`  40` ) % Encounter
             EndSwitch
-            Call $Function_GetArbitraryByte ( *GB_LastArea 800740AB )
-            Call GetMapID ( *GB_LastMap )
-            SetConst *GB_LastNode ~Entry:pro_03:Node4
+            Call $Function_GetArbitraryByte ( *MB_LastArea 800740AB )
+            Call GetMapID ( *MB_LastMap )
+            SetConst *MB_LastNode ~Entry:pro_03:Node4
         EndIf
     Default
-        Switch *GB_Node1
+        Switch *MB_Node1
         Case == 1`
             Set *Var1 002F000C
         Case == 2`
@@ -520,7 +520,7 @@
             Set *Var1 002F000F
         EndSwitch
         Call  SetMessageString ( *Var1 00000000 )
-        Switch *GB_Node2
+        Switch *MB_Node2
         Case == 1`
             Set *Var1 002F000C
         Case == 2`
@@ -537,8 +537,8 @@
             Call CloseMessage()
             Call  PlayerMoveTo ( -187` -137` 60` )
             Wait  20`
-            Set *GB_CurrentNode 1`
-            Switch *GB_Node1
+            Set *MB_CurrentNode 1`
+            Switch *MB_Node1
             Case == 1`
                 Call  ShowMessageAtScreenPos    ( 002F0007  160`  40` ) % Encounter
             Case == 2`
@@ -548,15 +548,15 @@
             Case == 4`
                 Call  ShowMessageAtScreenPos    ( 002F000A  160`  40` ) % Encounter
             EndSwitch
-            Call $Function_GetArbitraryByte ( *GB_LastArea 800740AB )
-            Call GetMapID ( *GB_LastMap )
-            SetConst *GB_LastNode ~Entry:pro_03:Node1
+            Call $Function_GetArbitraryByte ( *MB_LastArea 800740AB )
+            Call GetMapID ( *MB_LastMap )
+            SetConst *MB_LastNode ~Entry:pro_03:Node1
         Else
             Call CloseMessage()
             Call  PlayerMoveTo ( -191` 163` 60` )
             Wait  20`
-            Set *GB_CurrentNode 2`
-            Switch *GB_Node2
+            Set *MB_CurrentNode 2`
+            Switch *MB_Node2
             Case == 1`
                 Call  ShowMessageAtScreenPos    ( 002F0007  160`  40` ) % Encounter
             Case == 2`
@@ -566,9 +566,9 @@
             Case == 4`
                 Call  ShowMessageAtScreenPos    ( 002F000A  160`  40` ) % Encounter
             EndSwitch
-            Call $Function_GetArbitraryByte ( *GB_LastArea 800740AB )
-            Call GetMapID ( *GB_LastMap )
-            SetConst *GB_LastNode ~Entry:pro_03:Node2
+            Call $Function_GetArbitraryByte ( *MB_LastArea 800740AB )
+            Call GetMapID ( *MB_LastMap )
+            SetConst *MB_LastNode ~Entry:pro_03:Node2
         EndIf
     EndSwitch
     Call RandInt ( 9` *Var0 )

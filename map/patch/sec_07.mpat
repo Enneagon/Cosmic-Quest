@@ -54,117 +54,129 @@
     Call RandInt ( 100` *Var0 )
     ExecWait $Script_NodeModifiers
     Switch *Var0
-    Case 0` to 60`
+    Case 0` to 10`
         Call EnableModel ( ~Model:Node1g .True )
         Set *MB_Node1 1`
-    Case 61` to 80`
+    Case 11` to 20`
         Call EnableModel ( ~Model:Node1y .True )
         Set *MB_Node1 2`
-    Case 81` to 95`
+    Case 21` to 90`
         Call EnableModel ( ~Model:Node1r .True )
         Set *MB_Node1 3`
-    Case 95` to 100`
+    Case 91` to 100`
         Call EnableModel ( ~Model:Node1b .True )
         Set *MB_Node1 4`
     EndSwitch
-    Set *Debug[0] *MB_Node1
     Call RandInt ( 100` *Var0 )
     ExecWait $Script_NodeModifiers
     Switch *Var0
-    Case 0` to 60`
+    Case 0` to 10`
         Call EnableModel ( ~Model:Node2g .True )
         Set *MB_Node2 1`
-    Case 61` to 80`
+    Case 11` to 20`
         Call EnableModel ( ~Model:Node2y .True )
         Set *MB_Node2 2`
-    Case 81` to 95`
+    Case 21` to 90`
         Call EnableModel ( ~Model:Node2r .True )
         Set *MB_Node2 3`
-    Case 95` to 100`
+    Case 91` to 100`
         Call EnableModel ( ~Model:Node2b .True )
         Set *MB_Node2 4`
     EndSwitch
     Call RandInt ( 100` *Var0 )
     ExecWait $Script_NodeModifiers
     Switch *Var0
-    Case 0` to 60`
+    Case 0` to 10`
         Call EnableModel ( ~Model:Node3g .True )
         Set *MB_Node3 1`
-    Case 61` to 80`
+    Case 11` to 20`
         Call EnableModel ( ~Model:Node3y .True )
         Set *MB_Node3 2`
-    Case 81` to 95`
+    Case 21` to 90`
         Call EnableModel ( ~Model:Node3r .True )
         Set *MB_Node3 3`
-    Case 95` to 100`
+    Case 91` to 100`
         Call EnableModel ( ~Model:Node3b .True )
         Set *MB_Node3 4`
     EndSwitch
     Call RandInt ( 100` *Var0 )
     ExecWait $Script_NodeModifiers
     Switch *Var0
-    Case 0` to 60`
+    Case 0` to 10`
         Call EnableModel ( ~Model:Node4g .True )
         Set *MB_Node4 1`
-    Case 61` to 80`
+    Case 11` to 20`
         Call EnableModel ( ~Model:Node4y .True )
         Set *MB_Node4 2`
-    Case 81` to 95`
+    Case 21` to 90`
         Call EnableModel ( ~Model:Node4r .True )
         Set *MB_Node4 3`
-    Case 95` to 100`
+    Case 91` to 100`
         Call EnableModel ( ~Model:Node4b .True )
         Set *MB_Node4 4`
     EndSwitch
     Call RandInt ( 100` *Var0 )
     ExecWait $Script_NodeModifiers
     Switch *Var0
-    Case 0` to 60`
+    Case 0` to 10`
         Call EnableModel ( ~Model:Node5g .True )
         Set *MB_Node5 1`
-    Case 61` to 80`
+    Case 11` to 20`
         Call EnableModel ( ~Model:Node5y .True )
         Set *MB_Node5 2`
-    Case 81` to 95`
+    Case 21` to 90`
         Call EnableModel ( ~Model:Node5r .True )
         Set *MB_Node5 3`
-    Case 95` to 100`
+    Case 91` to 100`
         Call EnableModel ( ~Model:Node5b .True )
         Set *MB_Node5 4`
     EndSwitch
-    Call RandInt ( 100` *Var0 )
-    ExecWait $Script_NodeModifiers
     Switch *Var0
-    Case 0` to 60`
+    Case 0` to 10`
         Call EnableModel ( ~Model:Node6g .True )
         Set *MB_Node6 1`
-    Case 61` to 80`
+    Case 11` to 20`
         Call EnableModel ( ~Model:Node6y .True )
         Set *MB_Node6 2`
-    Case 81` to 95`
+    Case 21` to 90`
         Call EnableModel ( ~Model:Node6r .True )
         Set *MB_Node6 3`
-    Case 95` to 100`
+    Case 91` to 100`
         Call EnableModel ( ~Model:Node6b .True )
         Set *MB_Node6 4`
     EndSwitch
     Call RandInt ( 100` *Var0 )
     ExecWait $Script_NodeModifiers
     Switch *Var0
-    Case 0` to 60`
+    Case 0` to 10`
         Call EnableModel ( ~Model:Node7g .True )
         Set *MB_Node7 1`
-    Case 61` to 80`
+    Case 11` to 20`
         Call EnableModel ( ~Model:Node7y .True )
         Set *MB_Node7 2`
-    Case 81` to 95`
+    Case 21` to 90`
         Call EnableModel ( ~Model:Node7r .True )
         Set *MB_Node7 3`
-    Case 95` to 100`
+    Case 91` to 100`
         Call EnableModel ( ~Model:Node7b .True )
         Set *MB_Node7 4`
     EndSwitch
-    Set *MF_NewSector .False
+    Call RandInt ( 100` *Var0 )
+    ExecWait $Script_NodeModifiers
+    Switch *Var0
+    Case 0` to 10`
+        Call EnableModel ( ~Model:Node8g .True )
+        Set *MB_Node8 1`
+    Case 11` to 20`
+        Call EnableModel ( ~Model:Node8y .True )
+        Set *MB_Node8 2`
+    Case 21` to 90`
+        Call EnableModel ( ~Model:Node8r .True )
+        Set *MB_Node8 3`
+    Case 91` to 100`
+        Call EnableModel ( ~Model:Node8b .True )
+        Set *MB_Node8 4`
+    EndSwitch
     Return
     End
 }
@@ -265,13 +277,27 @@
     Case == 4`
         Call EnableModel ( ~Model:Node7b .True )
     EndSwitch
+    Switch *MB_Node8
+    Case == 1`
+        Call EnableModel ( ~Model:Node8g .True )
+    Case == 2`
+        Call EnableModel ( ~Model:Node8y .True )
+    Case == 3`
+        Call EnableModel ( ~Model:Node8r .True )
+    Case == 4`
+        Call EnableModel ( ~Model:Node8b .True )
+    EndSwitch
     Return
     End
 }
 
 @ $Script_Main_Callback_AfterEnterMap {
     Call  DisablePlayerInput ( .True )
-    Set *MF_DisableFootstepSFX .True
+    Call  DisablePlayerPhysics ( .True )
+    If *MF_NewSector == .True
+        Exec $Script_StarterPool
+        Return
+    EndIf
     Switch *MB_CurrentNode
     Case == 99`
         Call  ShowMessageAtScreenPos    ( 002F0015  160`  40` )
@@ -280,8 +306,8 @@
         Exec $Script_NextSector
         Return
     EndCaseGroup
+    CaseOR == 8`
     CaseOR == 7`
-    CaseOR == 6`
         Call  ShowMessageAtScreenPos    ( 002F0002  160`  40` )
         Call  ShowChoice ( 002F0014 ) % One node choice - Tatanga Station!
         Call CloseMessage()
@@ -291,57 +317,29 @@
             Set *MB_CurrentNode 99`
             Call $Function_GetArbitraryByte ( *MB_LastArea 800740AB )
             Call GetMapID ( *MB_LastMap )
-            SetConst *MB_LastNode ~Entry:sec_00:Node99
+            SetConst *MB_LastNode ~Entry:sec_07:Node99
             Exec $Script_TatangaStation
     EndCaseGroup
-    Case == 5`
+    CaseOR == 6`
+    CaseOR == 5`
         Wait 1`
         Switch *MB_Node7
         Case == 1`
             Set *Var3 002F000C
+            Set *Debug[1] *Var3
         Case == 2`
             Set *Var3 002F000D
+            Set *Debug[1] *Var3
         Case == 3`
             Set *Var3 002F000E
+            Set *Debug[1] *Var3
         Case == 4`
             Set *Var3 002F000F
-        EndSwitch
-        Call  SetMessageString ( *Var3 00000000 )
-        Call  ShowMessageAtScreenPos    ( 002F0002  160`  40` )
-        Call  ShowChoice ( 002F0013 ) % One node choice
-        Call CloseMessage()
-        Call  GetModelCenter ( ~Model:Node7g )
-        Call  PlayerMoveTo ( *Var0 *Var2 60` )
-            Wait  20`
-            Call $Function_GetArbitraryByte ( *MB_LastArea 800740AB )
-            Call GetMapID ( *MB_LastMap )
-            SetConst *MB_LastNode ~Entry:sec_00:Node7
-            Set *MB_CurrentNode 7`
-            Switch *MB_Node7
-            Case == 1`
-                Exec $Script_FriendlyPool
-            Case == 2`
-                Exec $Script_NeutralPool
-            Case == 3`
-                Exec $Script_HostilePool
-            Case == 4`
-                Exec $Script_AnomalyPool
-            EndSwitch
-    Case == 4`
-        Wait 1`
-        Switch *MB_Node6
-        Case == 1`
-            Set *Var3 002F000C
-        Case == 2`
-            Set *Var3 002F000D
-        Case == 3`
-            Set *Var3 002F000E
-        Case == 4`
-            Set *Var3 002F000F
+            Set *Debug[1] *Var3
         EndSwitch
         Call  SetMessageString ( *Var3 00000000 )
         Wait 1`
-        Switch *MB_Node7
+        Switch *MB_Node8
         Case == 1`
             Set *Var3 002F000C
         Case == 2`
@@ -356,14 +354,14 @@
         Call  ShowChoice ( 002F0006 )
         If  *Var0  ==  00000000
             Call CloseMessage()
-            Call  GetModelCenter ( ~Model:Node6g )
+            Call  GetModelCenter ( ~Model:Node7g )
             Call  PlayerMoveTo ( *Var0 *Var2 60` )
             Wait  20`
             Call $Function_GetArbitraryByte ( *MB_LastArea 800740AB )
             Call GetMapID ( *MB_LastMap )
-            SetConst *MB_LastNode ~Entry:sec_00:Node6
-            Set *MB_CurrentNode 6`
-            Switch *MB_Node6
+            SetConst *MB_LastNode ~Entry:sec_07:Node7
+            Set *MB_CurrentNode 7`
+            Switch *MB_Node7
             Case == 1`
                 Exec $Script_FriendlyPool
             Case == 2`
@@ -375,14 +373,14 @@
             EndSwitch
         Else
             Call CloseMessage()
-            Call  GetModelCenter ( ~Model:Node7g )
+            Call  GetModelCenter ( ~Model:Node8g )
             Call  PlayerMoveTo ( *Var0 *Var2 60` )
             Wait  20`
             Call $Function_GetArbitraryByte ( *MB_LastArea 800740AB )
             Call GetMapID ( *MB_LastMap )
-            SetConst *MB_LastNode ~Entry:sec_00:Node7
-            Set *MB_CurrentNode 7`
-            Switch *MB_Node7
+            SetConst *MB_LastNode ~Entry:sec_07:Node8
+            Set *MB_CurrentNode 8`
+            Switch *MB_Node8
             Case == 1`
                 Exec $Script_FriendlyPool
             Case == 2`
@@ -393,54 +391,27 @@
                 Exec $Script_AnomalyPool
             EndSwitch
         EndIf
-    Case == 3`
-        Wait 1`
-        Switch *MB_Node6
-        Case == 1`
-            Set *Var3 002F000C
-        Case == 2`
-            Set *Var3 002F000D
-        Case == 3`
-            Set *Var3 002F000E
-        Case == 4`
-            Set *Var3 002F000F
-        EndSwitch
-        Call  SetMessageString ( *Var3 00000000 )
-        Call  ShowMessageAtScreenPos    ( 002F0002  160`  40` )
-        Call  ShowChoice ( 002F0013 ) % One node choice
-        Call CloseMessage()
-        Call  GetModelCenter ( ~Model:Node6g )
-        Call  PlayerMoveTo ( *Var0 *Var2 60` )
-            Wait  20`
-            Call $Function_GetArbitraryByte ( *MB_LastArea 800740AB )
-            Call GetMapID ( *MB_LastMap )
-            SetConst *MB_LastNode ~Entry:sec_00:Node6
-            Set *MB_CurrentNode 6`
-            Switch *MB_Node6
-            Case == 1`
-                Exec $Script_FriendlyPool
-            Case == 2`
-                Exec $Script_NeutralPool
-            Case == 3`
-                Exec $Script_HostilePool
-            Case == 4`
-                Exec $Script_AnomalyPool
-            EndSwitch
-    Case == 2`
-        Wait 1`
-        Switch *MB_Node4
-        Case == 1`
-            Set *Var3 002F000C
-        Case == 2`
-            Set *Var3 002F000D
-        Case == 3`
-            Set *Var3 002F000E
-        Case == 4`
-            Set *Var3 002F000F
-        EndSwitch
-        Call  SetMessageString ( *Var3 00000000 )
+    EndCaseGroup
+    CaseOR == 4`
+    CaseOR == 3`
         Wait 1`
         Switch *MB_Node5
+        Case == 1`
+            Set *Var3 002F000C
+            Set *Debug[1] *Var3
+        Case == 2`
+            Set *Var3 002F000D
+            Set *Debug[1] *Var3
+        Case == 3`
+            Set *Var3 002F000E
+            Set *Debug[1] *Var3
+        Case == 4`
+            Set *Var3 002F000F
+            Set *Debug[1] *Var3
+        EndSwitch
+        Call  SetMessageString ( *Var3 00000000 )
+        Wait 1`
+        Switch *MB_Node6
         Case == 1`
             Set *Var3 002F000C
         Case == 2`
@@ -455,31 +426,12 @@
         Call  ShowChoice ( 002F0006 )
         If  *Var0  ==  00000000
             Call CloseMessage()
-            Call  GetModelCenter ( ~Model:Node4g )
-            Call  PlayerMoveTo ( *Var0 *Var2 60` )
-            Wait  20`
-            Call $Function_GetArbitraryByte ( *MB_LastArea 800740AB )
-            Call GetMapID ( *MB_LastMap )
-            SetConst *MB_LastNode ~Entry:sec_00:Node4
-            Set *MB_CurrentNode 4`
-            Switch *MB_Node4
-            Case == 1`
-                Exec $Script_FriendlyPool
-            Case == 2`
-                Exec $Script_NeutralPool
-            Case == 3`
-                Exec $Script_HostilePool
-            Case == 4`
-                Exec $Script_AnomalyPool
-            EndSwitch
-        Else
-            Call CloseMessage()
             Call  GetModelCenter ( ~Model:Node5g )
             Call  PlayerMoveTo ( *Var0 *Var2 60` )
             Wait  20`
             Call $Function_GetArbitraryByte ( *MB_LastArea 800740AB )
             Call GetMapID ( *MB_LastMap )
-            SetConst *MB_LastNode ~Entry:sec_00:Node5
+            SetConst *MB_LastNode ~Entry:sec_07:Node5
             Set *MB_CurrentNode 5`
             Switch *MB_Node5
             Case == 1`
@@ -491,18 +443,43 @@
             Case == 4`
                 Exec $Script_AnomalyPool
             EndSwitch
+        Else
+            Call CloseMessage()
+            Call  GetModelCenter ( ~Model:Node6g )
+            Call  PlayerMoveTo ( *Var0 *Var2 60` )
+            Wait  20`
+            Call $Function_GetArbitraryByte ( *MB_LastArea 800740AB )
+            Call GetMapID ( *MB_LastMap )
+            SetConst *MB_LastNode ~Entry:sec_07:Node6
+            Set *MB_CurrentNode 6`
+            Switch *MB_Node6
+            Case == 1`
+                Exec $Script_FriendlyPool
+            Case == 2`
+                Exec $Script_NeutralPool
+            Case == 3`
+                Exec $Script_HostilePool
+            Case == 4`
+                Exec $Script_AnomalyPool
+            EndSwitch
         EndIf
-    Case == 1`
+    EndCaseGroup
+    CaseOR == 2`
+    CaseOR == 1`
         Wait 1`
         Switch *MB_Node3
         Case == 1`
             Set *Var3 002F000C
+            Set *Debug[1] *Var3
         Case == 2`
             Set *Var3 002F000D
+            Set *Debug[1] *Var3
         Case == 3`
             Set *Var3 002F000E
+            Set *Debug[1] *Var3
         Case == 4`
             Set *Var3 002F000F
+            Set *Debug[1] *Var3
         EndSwitch
         Call  SetMessageString ( *Var3 00000000 )
         Wait 1`
@@ -526,7 +503,7 @@
             Wait  20`
             Call $Function_GetArbitraryByte ( *MB_LastArea 800740AB )
             Call GetMapID ( *MB_LastMap )
-            SetConst *MB_LastNode ~Entry:sec_00:Node3
+            SetConst *MB_LastNode ~Entry:sec_07:Node3
             Set *MB_CurrentNode 3`
             Switch *MB_Node3
             Case == 1`
@@ -545,7 +522,7 @@
             Wait  20`
             Call $Function_GetArbitraryByte ( *MB_LastArea 800740AB )
             Call GetMapID ( *MB_LastMap )
-            SetConst *MB_LastNode ~Entry:sec_00:Node4
+            SetConst *MB_LastNode ~Entry:sec_07:Node4
             Set *MB_CurrentNode 4`
             Switch *MB_Node4
             Case == 1`
@@ -558,6 +535,7 @@
                 Exec $Script_AnomalyPool
             EndSwitch
         EndIf
+    EndCaseGroup
     Default
         Wait 1`
         Switch *MB_Node1
@@ -586,7 +564,6 @@
         Case == 4`
             Set *Var3 002F000F
         EndSwitch
-        Set *Debug[0] *MB_Node1
         Call  SetMessageString ( *Var3 00000001 )
         Call  ShowMessageAtScreenPos    ( 002F0002  160`  40` )
         Call  ShowChoice ( 002F0006 )
@@ -597,7 +574,7 @@
             Wait  20`
             Call $Function_GetArbitraryByte ( *MB_LastArea 800740AB )
             Call GetMapID ( *MB_LastMap )
-            SetConst *MB_LastNode ~Entry:sec_00:Node1
+            SetConst *MB_LastNode ~Entry:sec_07:Node1
             Set *MB_CurrentNode 1`
             Switch *MB_Node1
             Case == 1`
@@ -616,7 +593,7 @@
             Wait  20`
             Call $Function_GetArbitraryByte ( *MB_LastArea 800740AB )
             Call GetMapID ( *MB_LastMap )
-            SetConst *MB_LastNode ~Entry:sec_00:Node2
+            SetConst *MB_LastNode ~Entry:sec_07:Node2
             Set *MB_CurrentNode 2`
             Switch *MB_Node2
             Case == 1`
@@ -630,6 +607,19 @@
             EndSwitch
         EndIf
     EndSwitch
+    Return
+    End
+}
+
+#new:Script $Script_StarterPool
+{
+    Set *MF_NewSector .False
+    Call RandInt ( 100` *Var0 )
+    Switch *Var0
+    Case 0` to 100`
+        Call  ShowMessageAtScreenPos    ( 002F001B  160`  40` ) % No Encounter!
+    EndSwitch
+    Exec $Script_Main_Callback_AfterEnterMap
     Return
     End
 }
@@ -696,115 +686,15 @@
 
 #new:Script $Script_NextSector
 {
-    Set *MB_SectorsCompleted 1`
-    Call  PlayerMoveTo ( 800` 0` 40` )
+    Add *MB_SectorsCompleted 1`
+    Call  PlayerMoveTo ( 900` 0` 40` )
     Wait  20`
-    Call  RandInt ( 5` *Var0 )
-    Add *Var0 1`
-    Switch *Var0
-    Case == 1`
-        Set *VarF 002F001E
-        Set *MF_SectorSeenRosalina .True
-    Case == 2`
-        Set *VarF 002F001F
-        Set *MF_SectorSeenKoopa .True
-    Case == 3`
-        Set *VarF 002F0020
-        Set *MF_SectorSeenGearmos .True
-    Case == 4`
-        Set *VarF 002F0021
-        Set *MF_SectorSeenVoid .True
-    Case == 5`
-        Set *VarF 002F0022
-        Set *MF_SectorSeenBowser .True
-    Case == 6`
-        Set *VarF 002F0023
-        Set *MF_SectorSeenPirates .True
-    EndSwitch
+    Set *VarF 002F0025
     Call  SetMessageString ( *VarF 00000000 )
-    Label 0
-    Call  RandInt ( 5` *Var0 )
-    Add *Var0 1`
-    Switch *Var0
-    Case == 1`
-        If *MF_SectorSeenRosalina == .False
-            Set *VarE 002F001E
-            Set *MF_SectorSeenRosalina .True
-        Else
-            Goto 0
-        EndIf
-    Case == 2`
-        If *MF_SectorSeenKoopa == .False
-            Set *VarE 002F001F
-            Set *MF_SectorSeenKoopa .True
-        Else
-            Goto 0
-        EndIf
-    Case == 3`
-        If *MF_SectorSeenGearmos == .False
-            Set *VarE 002F0020
-            Set *MF_SectorSeenGearmos .True
-        Else
-            Goto 0
-        EndIf
-    Case == 4`
-        If *MF_SectorSeenVoid == .False
-            Set *VarE 002F0021
-            Set *MF_SectorSeenVoid .True
-        Else
-            Goto 0
-        EndIf
-    Case == 5`
-        If *MF_SectorSeenBowser == .False
-            Set *VarE 002F0022
-            Set *MF_SectorSeenBowser .True
-        Else
-            Goto 0
-        EndIf
-    Case == 6`
-        If *MF_SectorSeenPirates == .False
-            Set *VarE 002F0023
-            Set *MF_SectorSeenPirates .True
-        Else
-            Goto 0
-        EndIf
-    EndSwitch
-    Call  SetMessageString ( *VarE 00000001 )
     Call  ShowMessageAtScreenPos    ( 002F001C  160`  40` ) % Next Sector!
-    Call  ShowChoice ( 002F001D )
-    If *Var0 == 00000000
-        Call CloseMessage ()
-        Switch *VarF
-        Case == 002F001E
-            Call GotoMapSpecial ( "sec_01" ~Entry:sec_01:SectorStart 0000000D )    % Rosalina's Sector!
-        Case == 002F001F
-            Call GotoMapSpecial ( "sec_02" ~Entry:sec_02:SectorStart 0000000D )    % Koopa Dominion!
-        Case == 002F0020
-            Call GotoMapSpecial ( "sec_03" ~Entry:sec_03:SectorStart 0000000D )    % Gearmos Homeworlds!
-        Case == 002F0021
-            Call GotoMapSpecial ( "sec_04" ~Entry:sec_04:SectorStart 0000000D )    % Void of Space!
-        Case == 002F0022
-            Call GotoMapSpecial ( "sec_05" ~Entry:sec_05:SectorStart 0000000D )    % Bowser's Space Armada!
-        Case == 002F0023
-            Call GotoMapSpecial ( "sec_06" ~Entry:sec_06:SectorStart 0000000D )    % Space Pirate Sector!
-        EndSwitch
-    Else
-        Call CloseMessage ()
-        Switch *VarE
-        Case == 002F001E
-            Call GotoMapSpecial ( "sec_01" ~Entry:sec_01:SectorStart 0000000D )    % Rosalina's Sector!
-        Case == 002F001F
-            Call GotoMapSpecial ( "sec_02" ~Entry:sec_02:SectorStart 0000000D )    % Koopa Dominion!
-        Case == 002F0020
-            Call GotoMapSpecial ( "sec_03" ~Entry:sec_03:SectorStart 0000000D )    % Gearmos Homeworlds!
-        Case == 002F0021
-            Call GotoMapSpecial ( "sec_04" ~Entry:sec_04:SectorStart 0000000D )    % Void of Space!
-        Case == 002F0022
-            Call GotoMapSpecial ( "sec_05" ~Entry:sec_05:SectorStart 0000000D )    % Bowser's Space Armada!
-        Case == 002F0023
-            Call GotoMapSpecial ( "sec_06" ~Entry:sec_06:SectorStart 0000000D )    % Space Pirate Sector!
-        EndSwitch
-    EndIf
+    Call  ShowChoice ( 002F005A )
+    Call CloseMessage ()
+    Call GotoMapSpecial ( "sec_08" ~Entry:sec_08:SectorStart 0000000D )    % Realm of the Worm God!
     Return
     End
 }

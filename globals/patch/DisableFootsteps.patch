@@ -1,0 +1,19 @@
+% adds global flag to control SFX of Mario's footsteps
+@Hook 800E512C % Function_try_player_footstep_sounds[94]
+{
+    PUSH    A0
+    LI      A1, *MF_DisableFootstepSFX
+    JAL     ~Func:get_variable
+    CLEAR   A0
+    POP     A0
+
+    BNE     V0, R0, .SkipSFX
+    NOP
+
+    JAL     ~Func:sfx_play_sound_at_player
+    CLEAR   A1
+
+    .SkipSFX
+    J       800E5098[9C] % Function_try_player_footstep_sounds[9C]
+    NOP
+}
