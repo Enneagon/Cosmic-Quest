@@ -1,81 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<SpriteSheet maxComponents="1" paletteGroups="2">
+<SpriteSheet maxComponents="1" paletteGroups="5">
 	<PaletteList>
-		<Palette id="0" src="Palette_00.png"/>
-		<Palette id="1" src="Palette_01.png"/>
-		<Palette id="2" name="Palette_02" src="Palette_02.png"/>
-		<Palette id="3" name="Palette_03" src="Palette_03.png"/>
-		<Palette id="4" name="Palette_04" src="Palette_04.png"/>
+		<Palette id="0" name="Astro_Koopa_Green" src="Palette_00.png"/>
+		<Palette id="1" name="Astro_Koopa_Red" src="Palette_01.png"/>
+		<Palette id="2" name="Astro_Koopa_Blue" src="Palette_02.png"/>
+		<Palette id="3" name="Astro_Koopa_Yellow" src="Palette_03.png"/>
+		<Palette id="4" name="Astro_Koopa_Purple" src="Palette_04.png"/>
 	</PaletteList>
 	<RasterList>
-		<Raster id="0" palette="0" src="Raster_00.png"/>
-		<Raster id="1" palette="0" src="Raster_01.png"/>
-		<Raster id="2" palette="0" src="Raster_02.png"/>
-		<Raster id="3" palette="0" src="Raster_03.png"/>
-		<Raster id="4" palette="0" src="Raster_04.png"/>
-		<Raster id="5" palette="0" src="Raster_05.png"/>
-		<Raster id="6" palette="0" src="Raster_06.png"/>
-		<Raster id="7" palette="0" src="Raster_07.png"/>
-		<Raster id="8" name="Raster_0D" palette="0" src="Raster_0D.png"/>
+		<Raster id="0" name="Idle1" palette="0" src="Raster_03.png"/>
+		<Raster id="1" name="Idle2" palette="0" src="Raster_04.png"/>
+		<Raster id="2" name="Idle3" palette="0" src="Raster_0D.png"/>
+		<Raster id="3" name="Walk1" palette="0" src="Raster_00.png"/>
+		<Raster id="4" name="Walk2" palette="0" src="Raster_01.png"/>
+		<Raster id="5" name="Walk3" palette="0" src="Raster_02.png"/>
+		<Raster id="6" name="Talk" palette="0" src="Raster_05.png"/>
+		<Raster id="7" palette="0" src="Raster_06.png"/>
+		<Raster id="8" palette="0" src="Raster_07.png"/>
 	</RasterList>
 	<AnimationList>
-		<Animation name="Anim_00">
+		<Animation name="Still">
 			<Component name="Comp_00" xyz="0,0,0">
-				<Command val="1003"/>
+				<Command val="1000"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
 		</Animation>
-		<Animation name="Anim_01">
+		<Animation name="Idle">
 			<Component name="Comp_00" xyz="0,0,0">
-				<Command val="1004"/>
+				<Command val="1001"/>
 				<Command val="E"/>
-				<Command val="1003"/>
+				<Command val="1000"/>
 				<Command val="E"/>
 				<Command val="7000"/>
 				<Command val="9"/>
-				<Command val="1008"/>
+				<Command val="1002"/>
 				<Command val="4"/>
-				<Command val="1003"/>
+				<Command val="1000"/>
 				<Command val="6"/>
 				<Command val="7006"/>
 				<Command val="2"/>
-				<Command val="1003"/>
-				<Command val="2"/>
-				<Command val="2000"/>
-			</Component>
-		</Animation>
-		<Animation name="Anim_02">
-			<Component name="Comp_00" xyz="0,0,0">
-				<Command val="1002"/>
-				<Command val="4"/>
-				<Command val="1001"/>
-				<Command val="6"/>
 				<Command val="1000"/>
-				<Command val="8"/>
-				<Command val="1001"/>
-				<Command val="6"/>
-				<Command val="2000"/>
-			</Component>
-		</Animation>
-		<Animation name="Anim_03">
-			<Component name="Comp_00" xyz="0,0,0">
-				<Command val="1002"/>
-				<Command val="2"/>
-				<Command val="1001"/>
-				<Command val="2"/>
-				<Command val="1000"/>
-				<Command val="4"/>
-				<Command val="1001"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
 		</Animation>
-		<Animation name="Anim_04">
+		<Animation name="Walk">
 			<Component name="Comp_00" xyz="0,0,0">
 				<Command val="1005"/>
+				<Command val="4"/>
+				<Command val="1004"/>
 				<Command val="6"/>
 				<Command val="1003"/>
+				<Command val="8"/>
+				<Command val="1004"/>
+				<Command val="6"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="Run">
+			<Component name="Comp_00" xyz="0,0,0">
+				<Command val="1005"/>
+				<Command val="2"/>
+				<Command val="1004"/>
+				<Command val="2"/>
+				<Command val="1003"/>
+				<Command val="4"/>
+				<Command val="1004"/>
+				<Command val="2"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="Talk">
+			<Component name="Comp_00" xyz="0,0,0">
+				<Command val="1006"/>
+				<Command val="6"/>
+				<Command val="1000"/>
 				<Command val="6"/>
 				<Command val="2000"/>
 			</Component>
