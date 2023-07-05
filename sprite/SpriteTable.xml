@@ -55,7 +55,7 @@
 		<Sprite id="34" src="34" name="Swooper"/>
 		<Sprite id="35" src="35" name="Stone Chomp"/>
 		<Sprite id="36" src="36" name="Putrid Piranha"/>
-		<Sprite id="37" src="37" name="Piranha Plant"/>
+		<Sprite id="37" src="37 - Astro Piranha Plant" name="Astro Piranha Plant"/>
 		<Sprite id="38" src="38" name="Sentinel"/>
 		<Sprite id="39" src="39" name="World Clubba"/>
 		<Sprite id="3A" src="3A" name="Battle Clubba"/>
@@ -131,7 +131,7 @@
 		<Sprite id="80" src="80" name="World Bowser"/>
 		<Sprite id="81" src="81" name="Battle Bowser"/>
 		<Sprite id="82" src="82" name="Luigi"/>
-		<Sprite id="83" src="83" name="Toad"/>
+		<Sprite id="83" src="83 - Astro Toad" name="Astro Toad"/>
 		<Sprite id="84" src="84" name="Three Sisters"/>
 		<Sprite id="85" src="85" name="Vanna T"/>
 		<Sprite id="86" src="86" name="Toad Kid"/>
@@ -143,14 +143,14 @@
 		<Sprite id="8C" src="8C" name="Train Station Toad"/>
 		<Sprite id="8D" src="8D" name="Fishmael"/>
 		<Sprite id="8E" src="8E" name="Artist Toad"/>
-		<Sprite id="8F" src="8F" name="Koopa"/>
+		<Sprite id="8F" src="8F - Astro Koopa" name="Astro Koopa"/>
 		<Sprite id="90" src="90" name="Koopa Without Shell"/>
 		<Sprite id="91" src="91" name="World Bombomb"/>
 		<Sprite id="92" src="92" name="Whacka"/>
 		<Sprite id="93" src="93" name="Dryite"/>
 		<Sprite id="94" src="94" name="Mouser"/>
 		<Sprite id="95" src="95" name="Boo"/>
-		<Sprite id="96" src="96" name="Yoshi"/>
+		<Sprite id="96" src="96 - Astro Yoshi" name="Astro Yoshi"/>
 		<Sprite id="97" src="97" name="Yoshi Kid"/>
 		<Sprite id="98" src="98" name="Raven"/>
 		<Sprite id="99" src="99" name="Bubulb"/>

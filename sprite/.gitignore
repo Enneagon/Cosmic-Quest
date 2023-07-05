@@ -1,0 +1,12 @@
+# Unignore general src ignore so we can be more specific
+!*/src
+
+# Original game data
+*/src/[0-9A-F][0-9A-F]
+player/src/shared
+
+# Altered/Custom Sprites
+!/sprite/npc/src/8F
+!/sprite/npc/src/37
+!/sprite/npc/src/83
+!/sprite/npc/src/96

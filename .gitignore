@@ -31,12 +31,6 @@ mod.cfg
 !/image/bg/obk_bg.png
 !/image/bg/omo_bg.png
 
-# Altered/Custom Sprites
-!/sprite/npc/src/8F/*.*
-!/sprite/npc/src/37/*.*
-!/sprite/npc/src/83/*.*
-!/sprite/npc/src/96/*.*
-
 # Altered Music
 !/audio/bgm/01_118.bgm
 !/audio/bgm/0D_184.bgm
