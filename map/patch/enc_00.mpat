@@ -8,7 +8,9 @@
     Call  SetCamEnabled      ( .Cam:Default .True )
     Call  SetCamLeadPlayer   ( .Cam:Default .False )
     Exec  $Script_SetupMusic
-    Call  MakeNpcs  ( .False $NpcGroupList_Chuck )
+    If *GB_CompletedQuizzes <= 50`
+         Call  MakeNpcs  ( .False $NpcGroupList_Chuck )
+    EndIf
     Exec  $Script_EnterMap
     Return
     End
@@ -187,7 +189,7 @@
 
 #new:NpcSettings $NpcSettings_Chuck
 {
-	00AF0001 0023001C $Script_80247628 $Script_8024769C 00000000 00000000 $Script_8024771C 00000000
+	00AF0001 0023001C 00000000 $Script_802468F8 00000000 00000000 00000000 00000000
 	00000D01 00000000 00630000
 }
 
@@ -214,12 +216,6 @@
 #new:Script $Script_802468F8
 {
     Set *Debug[0] 1`
-    0:  If  *GB_CompletedQuizzes  >  0000003F
-   10:  	Set   *Var0  00000000
-   20:  	Return
-   28:  EndIf
-   30:  Call  GetPlayerPos  ( *Array[1] *Array[2] *Array[3] )
-   48:  Call  NpcFacePlayer ( .Npc:Self 00000010 )
    5C:  If  *GB_CompletedQuizzes  ==  0000003F
    6C:  	Call  SpeakToPlayer ( .Npc:Self 00AF0004 00AF0001 00000000 0008000A ) % Kaaaa-wiiiizzz! It's everyone's favorite quizmaste ...
    8C:  Else
@@ -237,33 +233,8 @@
   158:  	Set   *Var0  00000000
   168:  	Return
   170:  EndIf
-  178:  Set   *GF_Quizmo_TakingQuiz  .True
-  188:  Call  $Function_80241588 ( )
-  194:  Call  $Function_8024189C ( )
-  1A0:  Exec  $Script_8024535C
-  1AC:  Call  DisablePartnerAI  ( 00000000 )
-  1BC:  Call  SetNpcFlagBits    ( .Npc:Partner 00000200 .False )
-  1D4:  Call  SetNpcFlagBits    ( .NpcID:ChuckQuizmo_10 00000200 .False )
-  1EC:  Call  SetNpcFlagBits    ( .Npc:Partner 00000148 .True )
-  204:  Call  SetNpcFlagBits    ( .NpcID:ChuckQuizmo_10 00000100 .True )
-  21C:  Call  SetNpcAnimation   ( .Npc:Partner 00000106 )
-  230:  Exec  $Script_80245A84 *Var1
   240:  Call  ContinueSpeech    ( .Npc:Self 00AF0004 00AF0001 00000000 0008000B ) % Then let's go to the question!
   260:  Call  PlaySound ( 00000089 )
-  270:  Loop
-  27C:  	DoesScriptExist  *Var1 *Var0
-  28C:  	If  *Var0  ==  00000000
-  29C:  		BreakLoop
-  2A4:  	EndIf
-  2AC:  	Wait  1`
-  2B8:  EndLoop
-  2C0:  Call  $Function_80241BE0 ( )
-  2CC:  Loop  00000005
-  2D8:  	Call  GetPlayerPos  ( *Var0 *Var1 *Var2 )
-  2F0:  	Add   *Var1  00000001
-  300:  	Call  SetPlayerPos  ( *Var0 *Var1 *Var2 )
-  318:  	Wait  2`
-  324:  EndLoop
   32C:  Set   *Var0  00300000 % Where the quiz questions are
   33C:  Add   *Var0  *GB_CompletedQuizzes
   34C:  Call  SpeakToPlayer ( .Npc:Self 00AF0005 00AF0006 00000000 *Var0 ) % variable string ID
@@ -277,26 +248,11 @@
   3D8:  Exec  $Script_80245AF8
   3E4:  Wait  15`
   3F0:  Call  PlaySound     ( 0000008D )
-  400:  Call  $Function_80241EE0    ( *Var0 )
-  410:  Set   *Array[4]  00000000
-  420:  Call  $Function_802424D4 ( )
   42C:  Wait  40`
-  438:  Call  $Function_80241B5C ( )
-  444:  Thread
-  44C:  	Wait  110`
+  438:  Call  $Function_80241B5C ( ) %Get Quiz Answers
   458:  	Call  CloseChoice ( )
-  464:  	Set   *Array[4]  00000000
-  474:  EndThread
   47C:  If  *Var0  ==  00000001
   48C:  	Call  SetNpcAnimation   ( .NpcID:ChuckQuizmo_10 00AF0007 )
-  4A0:  	Set   *Array[4]  00000001
-  4B0:  	Thread
-  4B8:  		Call  $Function_80241EAC    ( 00000001 )
-  4C8:  		Wait  6`
-  4D4:  		Wait  6`
-  4E0:  		Wait  6`
-  4EC:  		Call  $Function_80241EAC    ( 00000002 )
-  4FC:  	EndThread
   504:  	Thread
   50C:  		Call  PlaySound ( 0000021C )
   51C:  		Wait  6`
@@ -307,22 +263,18 @@
   560:  		Call  PlaySound ( 0000021C )
   570:  	EndThread
   578:  	Call  PlaySound ( 0000008A )
-  588:  	Call  $Function_80241F78 ( )
   594:  	Thread
   59C:  		Wait  15`
   5A8:  		Call  GetPlayerPos  ( *Var0 *Var1 *Var2 )
   5C0:  		Add   *Var1  00000032
-  5D0:  		Call  $Function_802420F0    ( 00000000 00000000 00000053 *Var0 *Var2 )
   5F0:  		Call  PlayEffect    ( ~FX:Steam:Ring *Var0 *Var1 *Var2 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 )
   634:  		Call  PlayEffect    ( ~FX:Confetti:Burst2 *Var0 *Var1 *Var2 00000001 0000003C 00000000 00000000 00000000 00000000 00000000 00000000 00000000 )
   678:  		Wait  15`
   684:  		Add   *Var1  FFFFFFFD
-  694:  		Call  $Function_802420F0    ( 00000000 00000000 0000003A *Var0 *Var2 )
   6B4:  		Call  PlayEffect    ( ~FX:Steam:Ring *Var0 *Var1 *Var2 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 )
   6F8:  		Call  PlayEffect    ( ~FX:Confetti:Burst2 *Var0 *Var1 *Var2 00000001 0000003C 00000000 00000000 00000000 00000000 00000000 00000000 00000000 )
   73C:  		Wait  15`
   748:  		Add   *Var1  0000001E
-  758:  		Call  $Function_802420F0    ( 00000000 00000000 0000005D *Var0 *Var2 )
   778:  		Call  PlayEffect    ( ~FX:Steam:Ring *Var0 *Var1 *Var2 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 )
   7BC:  		Call  PlayEffect    ( ~FX:Confetti:Burst2 *Var0 *Var1 *Var2 00000001 0000003C 00000000 00000000 00000000 00000000 00000000 00000000 00000000 )
   800:  		Wait  15`
@@ -333,39 +285,21 @@
   840:  	If  *GB_CompletedQuizzes  >  0000003F
   850:  		Call  ContinueSpeech    ( .Npc:Self FFFFFFFF FFFFFFFF 00000000 00080010 ) % Correct!! Congratulations! This is my last prize!  ...
   870:  		Call  SetNpcAnimation   ( .NpcID:ChuckQuizmo_10 00AF0006 )
-  884:  		Loop
-  890:  			DoesScriptExist  *Var1 *Var0
-  8A0:  			If  *Var0  ==  00000000
-  8B0:  				BreakLoop
-  8B8:  			EndIf
-  8C0:  			Wait  1`
-  8CC:  		EndLoop
   8D4:  		Call  SetNpcAnimation   ( .NpcID:ChuckQuizmo_10 00AF0005 )
   8E8:  		Set   *Var0  0000015C
   8F8:  		Set   *Var1  00000003
   908:  		ExecWait  $Script_802451BC
   914:  		Call  AddStarPieces     ( 00000001 )
-  924:  		Call  $Function_80241EAC    ( 0000000F )
-  934:  		Call  $Function_80241F60 ( )
   940:  		Call  SetMessageValue   ( *GB_CompletedQuizzes 00000000 )
   954:  		Call  SpeakToPlayer     ( .Npc:Self 00AF0004 00AF0001 00000000 00080011 ) % You've managed to correctly answer all questions.  ...
   974:  	Else
   97C:  		Call  ContinueSpeech    ( .Npc:Self FFFFFFFF FFFFFFFF 00000000 0008000E ) % Correct! Congratulations! Here's your Star Piece!
   99C:  		Call  SetNpcAnimation   ( .NpcID:ChuckQuizmo_10 00AF0006 )
-  9B0:  		Loop
-  9BC:  			DoesScriptExist  *Var1 *Var0
-  9CC:  			If  *Var0  ==  00000000
-  9DC:  				BreakLoop
-  9E4:  			EndIf
-  9EC:  			Wait  1`
-  9F8:  		EndLoop
   A00:  		Call  SetNpcAnimation   ( .NpcID:ChuckQuizmo_10 00AF0005 )
   A14:  		Set   *Var0  0000015C
   A24:  		Set   *Var1  00000001
   A34:  		ExecWait  $Script_802451BC
   A40:  		Call  AddStarPieces     ( 00000001 )
-  A50:  		Call  $Function_80241EAC    ( 0000000F )
-  A60:  		Call  $Function_80241F60 ( )
   A6C:  		Call  SetMessageValue   ( *GB_CompletedQuizzes 00000000 )
   A80:  		If  *GB_CompletedQuizzes  ==  00000001
   A90:  			Call  SetMessageString  ( 8014C294 00000001 )
@@ -377,25 +311,15 @@
   AF0:  	Set   *Var0  00000001
   B00:  Else
   B08:  	Call  SetNpcAnimation   ( .NpcID:ChuckQuizmo_10 00AF0009 )
-  B1C:  	Set   *Array[4]  00000002
   B2C:  	Call  PlaySound ( 0000021D )
   B3C:  	Call  PlaySound ( 0000008B )
-  B4C:  	Exec  $Script_80246848 *Var1
+  B4C:  	Exec  $Script_8024667C
   B5C:  	Call  GetPlayerPos      ( *Var2 *Var3 *Var4 )
   B74:  	Call  PlayEffect        ( ~FX:DeadLeaves:Gust1 *Var2 *Var3 *Var4 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 )
   BB8:  	Call  ContinueSpeech    ( .Npc:Self FFFFFFFF FFFFFFFF 00000000 0008000D ) % Oops! Tough luck, pal! Wrong answer! Better luck n ...
   BD8:  	Call  SetNpcAnimation   ( .NpcID:ChuckQuizmo_10 00AF000A )
-  BEC:  	Loop
-  BF8:  		DoesScriptExist  *Var1 *Var0
-  C08:  		If  *Var0  ==  00000000
-  C18:  			BreakLoop
-  C20:  		EndIf
-  C28:  		Wait  1`
-  C34:  	EndLoop
   C3C:  	Set   *Var0  00000000
   C4C:  EndIf
-  C54:  Call  $Function_80241EE0    ( FFFFFFFF )
-  C64:  Call  EnablePartnerAI ( )
   C70:  Thread
   C78:  	Wait  30`
   C84:  	Call  PlaySound ( 0000008F )
@@ -404,28 +328,19 @@
   CA4:  	Wait  45`
   CB0:  	Call  StopSound ( 00000089 )
   CC0:  EndThread
-  CC8:  Call  $Function_80241F94 ( )
-  CD4:  Call  $Function_80241DF8 ( )
   CE0:  ExecWait  $Script_802452AC
-  CEC:  Exec  $Script_802455F4
-  CF8:  Call  $Function_802419E8 ( )
-  D04:  Call  $Function_8024159C ( )
-  D10:  Set   *GF_Quizmo_TakingQuiz  .False
   D20:  Return
   D28:  End
 }
 
 #new:Script $Script_802452AC
 {
-    0:  Call  $Function_80241FAC ( )
-    C:  If  *Var0  <=  00000001
    1C:  	Call  GetNpcPos ( .Npc:Self *Var0 *Var1 *Var2 )
    38:  	Add   *Var1  0000012C
    48:  	Call  SetNpcJumpscale   ( .Npc:Self 00000001 )
    5C:  	Call  SetNpcAnimation   ( .Npc:Self 00AF000C )
    70:  	Wait  40`
    7C:  	Call  SetNpcPos ( .Npc:Self  0`  -1000`  0` )
-   98:  EndIf
    A0:  Return
    A8:  End
 }
@@ -568,7 +483,6 @@
    74:  	Wait  2`
    80:  EndLoop
    88:  Wait  20`
-   94:  ExecWait  $Script_802466BC
    A0:  Return
    A8:  End
 }
@@ -784,7 +698,6 @@
    74:  EndLoop
    7C:  Wait  20`
    88:  Kill  *Var1
-   94:  ExecWait  $Script_802466BC
    A0:  Return
    A8:  End
 }
@@ -792,9 +705,6 @@
 #new:Script $Script_8024667C
 {
     0:  Call  SetPlayerAnimation    ( .PlayerAnim:ShockStill )
-   10:  Loop
-   1C:  	Wait  1`
-   28:  EndLoop
    30:  Return
    38:  End
 }
@@ -1753,6 +1663,6 @@
 
 #new:ByteTable $QuizAnswers
 {
-	02010102 02000200 02010002 01010002 00020100 00020100 02010102 02010101
-	00020202 02000101 02010201 02000001 01000102 01000202 01020002 02010101
+	01010201 00020100 02020101 02000002 01020101 01020000 02020001 01010001
+	02010002 02020100 01020101 02020002 00000102 01000202 01020002 02010101
 }

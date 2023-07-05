@@ -204,32 +204,44 @@
 {
     Call  DisablePlayerInput ( .True )
     Set *Var6 0`
-    If *MF_Ship1HPComponent == .True
+    Switch *MB_Ship1HPComponent
+    Case == 2`
         Set *Var7 15`
         Set *Var1 002F0031
         Add *Var6 1`
-    Else
+    Case == 1`
+        Set *Var7 10`
+        Set *Var1 002F005A
+    Case == 0`
         Set *Var7 10`
         Set *Var1 002F0030
-    EndIf
+    EndSwitch
     Call SetMessageValue ( *Var7 00000000 )
-    If *MF_Ship1FPComponent == .True
+    Switch *MB_Ship1FPComponent
+    Case == 2`
         Set *Var4 10`
         Set *Var2 002F0031
         Add *Var6 1`
-    Else
+    Case == 1`
+        Set *Var4 5`
+        Set *Var2 002F005A
+    Case == 0`
         Set *Var4 5`
         Set *Var2 002F0030
-    EndIf
+    EndSwitch
     Call SetMessageValue ( *Var4 00000001 )
-    If *MF_Ship1BPComponent == .True
+    Switch *MB_Ship1BPComponent
+    Case == 2`
         Set *Var5 6`
         Set *Var3 002F0031
         Add *Var6 1`
-    Else
+    Case == 1`
+        Set *Var5 3`
+        Set *Var3 002F005A
+    Case == 0`
         Set *Var5 3`
         Set *Var3 002F0030
-    EndIf
+    EndSwitch
     Call SetMessageValue ( *Var5 00000002 )
     Call  ShowMessageAtScreenPos    ( 002F0026  160`  40` ) % Choose Cruiser?
     Call  ShowChoice ( 002F002E )
@@ -237,7 +249,7 @@
     Case == 00000000
         Call  CloseMessage ()
         Set *MB_CurrentShip 1`
-        If *MF_Ship1BadgeComponent == .True
+        If *MB_Ship1BadgeComponent == 2`
             Add *Var6 1`
         EndIf
         Exec $Script_AddStats
@@ -254,7 +266,7 @@
         Call  MakeItemEntity    ( .Item:DodgeMaster ~Vec3d:Badge4 .ItemSpawnMode:Decoration 00000000 )
         Set *MapVar[3] *Var0
         Bind $Script_ChooseBadge4 .Trigger:WallPressA ~Collider:Badge4Collider 00000001 00000000
-        If *MF_Ship1BadgeComponent == .True
+        If *MB_Ship1BadgeComponent == 2`
             Call  ShowMessageAtScreenPos    ( 002F002C  160`  40` ) % Choose Cruiser?
             Set *MB_StartingBadgesNumber 3`
         Else
@@ -265,11 +277,14 @@
         Call  CloseMessage ()
     Case == 00000002
         Call  CloseMessage ()
-        If *MF_Ship1BadgeComponent == .True
+        Switch *MB_Ship1BadgeComponent
+        Case == 2`
             Set *Var4 002F0031
-        Else
+        Case == 1`
+            Set *Var4 002F005A
+        Case == 0`
             Set *Var4 002F0030
-        EndIf
+        EndSwitch
         Call  SetMessageString ( *Var1 00000000 )
         Call  SetMessageString ( *Var2 00000001 )
         Call  SetMessageString ( *Var3 00000002 )
@@ -278,73 +293,91 @@
         Call  ShowChoice ( 002F0032 )
         Switch *Var0
         Case == 00000000
-            If *MF_Ship1HPComponent == .True
+            Switch *MB_Ship1HPComponent
+            Case == 2`
                 Call  CloseMessage ()
-                Set *MF_Ship1HPComponent .False
-                Add *MB_HPComponents 1`
-                Call  ShowMessageAtScreenPos    ( 002F0033  160`  40` ) % Removed HP Component
-            Else
+                Set *MB_Ship1HPComponent 1`
+                Call  ShowMessageAtScreenPos    ( 002F0034  160`  40` ) % Removed HP Component
+            Case == 1`
+                Call  CloseMessage ()
+                Set *MB_Ship1HPComponent 2`
+                Call ShowMessageAtScreenPos    ( 002F0033  160`  40` ) % Added HP Component
+            Case == 0`
                 If *MB_HPComponents >= 1`
                     Call  CloseMessage ()
-                    Set *MF_Ship1HPComponent .True
+                    Set *MB_Ship1HPComponent 2`
                     Sub *MB_HPComponents 1`
-                    Call ShowMessageAtScreenPos    ( 002F0034  160`  40` ) % Added HP Component
+                    Call ShowMessageAtScreenPos    ( 002F0033  160`  40` ) % Added HP Component
                 Else
                     Call  CloseMessage ()
                     Call ShowMessageAtScreenPos    ( 002F003B  160`  40` ) % No Component
                 EndIf
-            EndIf
+            EndSwitch
         Case == 00000001
-            If *MF_Ship1FPComponent == .True
+            Switch *MB_Ship1FPComponent
+            Case == 2`
                 Call  CloseMessage ()
-                Set *MF_Ship1FPComponent .False
-                Add *MB_FPComponents 1`
+                Set *MB_Ship1FPComponent 1`
                 Call  ShowMessageAtScreenPos    ( 002F0036  160`  40` ) % Removed FP Component
-            Else
+            Case == 1`
+                Call  CloseMessage ()
+                Set *MB_Ship1FPComponent 2`
+                Call ShowMessageAtScreenPos    ( 002F0035  160`  40` ) % Added FP Component
+            Case == 0`
                 If *MB_FPComponents >= 1`
                     Call  CloseMessage ()
-                    Set *MF_Ship1FPComponent .True
+                    Set *MB_Ship1FPComponent 2`
                     Sub *MB_FPComponents 1`
                     Call ShowMessageAtScreenPos    ( 002F0035  160`  40` ) % Added FP Component
                 Else
                     Call  CloseMessage ()
                     Call ShowMessageAtScreenPos    ( 002F003B  160`  40` ) % No Component
                 EndIf
-            EndIf
+            EndSwitch
         Case == 00000002
-            If *MF_Ship1BPComponent == .True
+            Switch *MB_Ship1BPComponent
+            Case == 2`
                 Call  CloseMessage ()
-                Set *MF_Ship1BPComponent .False
-                Add *MB_BPComponents 1`
-                Call  ShowMessageAtScreenPos    ( 002F0038  160`  40` ) % Removed BP Component
-            Else
+                Set *MB_Ship1BPComponent 1`
+                Call  ShowMessageAtScreenPos    ( 002F0038  160`  40` ) % Removed HP Component
+            Case == 1`
+                Call  CloseMessage ()
+                Set *MB_Ship1BPComponent 2`
+                Call ShowMessageAtScreenPos    ( 002F0037  160`  40` ) % Added HP Component
+            Case == 0`
                 If *MB_BPComponents >= 1`
                     Call  CloseMessage ()
-                    Set *MF_Ship1BPComponent .True
+                    Set *MB_Ship1BPComponent 2`
                     Sub *MB_BPComponents 1`
-                    Call ShowMessageAtScreenPos    ( 002F0037  160`  40` ) % Added BP Component
+                    Call ShowMessageAtScreenPos    ( 002F0037  160`  40` ) % Added HP Component
                 Else
                     Call  CloseMessage ()
                     Call ShowMessageAtScreenPos    ( 002F003B  160`  40` ) % No Component
                 EndIf
-            EndIf
+            EndSwitch
         Case == 00000003
-            If *MF_Ship1BadgeComponent == .True
+            Switch *MB_Ship1BadgeComponent
+            Case == 2`
                 Call  CloseMessage ()
-                Set *MF_Ship1BadgeComponent .False
-                Add *MB_BadgeComponents 1`
-                Call  ShowMessageAtScreenPos    ( 002F003A  160`  40` ) % Removed Badge Component
-            Else
+                Set *MB_Ship1BadgeComponent 1`
+                Call  ShowMessageAtScreenPos    ( 002F003A  160`  40` ) % Removed HP Component
+            Case == 1`
+                Call  CloseMessage ()
+                Set *MB_Ship1BadgeComponent 2`
+                Call ShowMessageAtScreenPos    ( 002F0039  160`  40` ) % Added HP Component
+            Case == 0`
                 If *MB_BadgeComponents >= 1`
                     Call  CloseMessage ()
-                    Set *MF_Ship1BadgeComponent .True
+                    Set *MB_Ship1BadgeComponent 2`
                     Sub *MB_BadgeComponents 1`
-                    Call ShowMessageAtScreenPos    ( 002F0039  160`  40` ) % Added Badge Component
+                    Call ShowMessageAtScreenPos    ( 002F0039  160`  40` ) % Added HP Component
                 Else
                     Call  CloseMessage ()
                     Call ShowMessageAtScreenPos    ( 002F003B  160`  40` ) % No Component
                 EndIf
-            EndIf
+            EndSwitch
+        Default
+            Call  CloseMessage ()
         EndSwitch
     EndSwitch
     Call  DisablePlayerInput ( .False )

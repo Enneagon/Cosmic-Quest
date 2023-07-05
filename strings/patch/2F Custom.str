@@ -329,7 +329,7 @@
 	[Option 1]FP [Var 1][BR]
 	[Option 2]BP [Var 2][BR]
 	[Option 3]Badges [Var 3][BR]
-	[EndChoice][End]
+	[EndChoice cancel=4][End]
 }
 
 #message:2F:033
@@ -341,7 +341,7 @@
 
 #message:2F:034
 {
-	[Style Right]You removed an HP component.[BR]
+	[Style Right]You disabled an HP component.[BR]
 	The HP this ship provides[BR]
 	decreases by 5.[Wait][End]
 }
@@ -355,7 +355,7 @@
 
 #message:2F:036
 {
-	[Style Right]You removed an FP component.[BR]
+	[Style Right]You disabled an FP component.[BR]
 	The FP this ship provides[BR]
 	decreases by 5.[Wait][End]
 }
@@ -369,7 +369,7 @@
 
 #message:2F:038
 {
-	[Style Right]You removed a BP component.[BR]
+	[Style Right]You disabled a BP component.[BR]
 	The BP this ship provides[BR]
 	decreases by 3.[Wait][End]
 }
@@ -383,7 +383,7 @@
 
 #message:2F:03A
 {
-	[Style Right]You removed a Badge component.[BR]
+	[Style Right]You disabled a Badge component.[BR]
 	You can now select one less[BR]
 	badge when using this ship.[Wait][End]
 }
@@ -576,4 +576,9 @@
 	[StartChoice]
 	[Option 0][Var 0][BR]
 	[EndChoice][End]
+}
+
+#message:2F:05B
+{
+	(Component disabled)[End]
 }
