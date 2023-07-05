@@ -582,3 +582,9 @@
 {
 	(Component disabled)[End]
 }
+
+#message:2F:05C
+{
+	[Style Right]You've already chosen a ship.
+	[Wait][End]
+}
