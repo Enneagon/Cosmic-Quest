@@ -202,6 +202,10 @@
 
 #new:Script $Script_ChooseShip1
 {
+    If *MB_CurrentShip != 0`
+        Call  ShowMessageAtScreenPos    ( 002F005C  160`  40` ) % Choose Cruiser?
+        Return
+    EndIf
     Call  DisablePlayerInput ( .True )
     Set *Var6 0`
     Switch *MB_Ship1HPComponent
