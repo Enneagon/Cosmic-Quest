@@ -47,7 +47,7 @@
 		<Sprite id="2C" src="2C" name="Bombomb"/>
 		<Sprite id="2D" src="2D" name="Bullet Bill"/>
 		<Sprite id="2E" src="2E" name="Bill Blaster"/>
-		<Sprite id="2F" src="2F" name="Monty Mole"/>
+		<Sprite id="2F" src="2F - Meteor Mole" name="Meteor Mole"/>
 		<Sprite id="30" src="30" name="Cleft"/>
 		<Sprite id="31" src="31" name="Pokey"/>
 		<Sprite id="32" src="32" name="Bandit"/>
