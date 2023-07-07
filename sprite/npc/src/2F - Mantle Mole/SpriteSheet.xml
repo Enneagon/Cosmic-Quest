@@ -1,0 +1,547 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SpriteSheet maxComponents="2" paletteGroups="2">
+	<PaletteList>
+		<Palette id="0" name="Mantle_Mole" src="Mantle_Mole.png"/>
+		<Palette id="1" name="Mushroom" src="Mushroom.png"/>
+		<Palette id="2" name="Spike_Ball" src="Spike_Ball.png"/>
+		<Palette id="3" name="Burnt" src="Burnt.png"/>
+	</PaletteList>
+	<RasterList>
+		<Raster id="0" name="Idle1" palette="0" src="Raster_00.png"/>
+		<Raster id="1" name="Idle2" palette="0" src="Raster_01.png"/>
+		<Raster id="2" name="Idle3" palette="0" src="Raster_1A.png"/>
+		<Raster id="3" name="Walk1" palette="0" src="Raster_09.png"/>
+		<Raster id="4" name="Walk2" palette="0" src="Raster_0A.png"/>
+		<Raster id="5" name="Walk3" palette="0" src="Raster_0B.png"/>
+		<Raster id="6" name="Throw1" palette="0" src="Raster_03.png"/>
+		<Raster id="7" name="Throw2" palette="0" src="Raster_04.png"/>
+		<Raster id="8" name="Throw3" palette="0" src="Raster_05.png"/>
+		<Raster id="9" name="Throw4" palette="0" src="Raster_06.png"/>
+		<Raster id="A" name="Throw5" palette="0" src="Raster_07.png"/>
+		<Raster id="B" name="Throw6" palette="0" src="Raster_08.png"/>
+		<Raster id="C" name="Rock" palette="0" src="Raster_0E.png"/>
+		<Raster id="D" name="Mushroom" palette="1" src="Raster_25.png"/>
+		<Raster id="E" name="SpikeBall" palette="2" src="Raster_26.png"/>
+		<Raster id="F" name="Hurt1" palette="0" src="Raster_02.png"/>
+		<Raster id="10" name="Hurt2" palette="0" src="Raster_12.png"/>
+		<Raster id="11" name="Scare" palette="0" src="Raster_11.png"/>
+		<Raster id="12" name="Death1" palette="0" src="Raster_0F.png"/>
+		<Raster id="13" name="Death2" palette="0" src="Raster_10.png"/>
+		<Raster id="14" name="Burnt1" palette="3" src="Raster_13.png"/>
+		<Raster id="15" name="Burnt2" palette="3" src="Raster_14.png"/>
+		<Raster id="16" name="Burnt3" palette="3" src="Raster_15.png"/>
+		<Raster id="17" name="Burnt4" palette="3" src="Raster_1D.png"/>
+		<Raster id="18" name="Burnt5" palette="3" src="Raster_1E.png"/>
+		<Raster id="19" name="Tease1" palette="0" src="Raster_19.png"/>
+		<Raster id="1A" name="Tease2" palette="0" src="Raster_1B.png"/>
+		<Raster id="1B" name="Tease3" palette="0" src="Raster_1C.png"/>
+		<Raster id="1C" name="PopOut" palette="0" src="Raster_0C.png"/>
+		<Raster id="1D" name="MoleHole" palette="0" src="Raster_0D.png"/>
+		<Raster id="1E" name="EmptyHole1" palette="3" src="Raster_16.png"/>
+		<Raster id="1F" name="EmptyHole2" palette="3" src="Raster_17.png"/>
+		<Raster id="20" name="EmptyHole3" palette="3" src="Raster_18.png"/>
+		<Raster id="21" name="Dust1" palette="3" src="Raster_1F.png"/>
+		<Raster id="22" name="Dust2" palette="3" src="Raster_20.png"/>
+		<Raster id="23" name="Dust3" palette="3" src="Raster_21.png"/>
+		<Raster id="24" name="Dust4" palette="3" src="Raster_22.png"/>
+		<Raster id="25" name="Dust5" palette="3" src="Raster_23.png"/>
+		<Raster id="26" name="Dust6" palette="3" src="Raster_24.png"/>
+	</RasterList>
+	<AnimationList>
+		<Animation name="Still">
+			<Component name="Body" xyz="0,0,0">
+				<Command val="1000"/>
+				<Command val="2"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="Idle1">
+			<Component name="Body" xyz="0,0,0">
+				<Command val="1000"/>
+				<Command val="20"/>
+				<Command val="1001"/>
+				<Command val="20"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="Idle2">
+			<Component name="Body" xyz="0,0,0">
+				<Command val="1005"/>
+				<Command val="A"/>
+				<Command val="1002"/>
+				<Command val="8"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="Walk">
+			<Component name="Body" xyz="0,0,0">
+				<Command val="1003"/>
+				<Command val="C"/>
+				<Command val="1004"/>
+				<Command val="4"/>
+				<Command val="1005"/>
+				<Command val="4"/>
+				<Command val="1004"/>
+				<Command val="4"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="Run">
+			<Component name="Body" xyz="0,0,0">
+				<Command val="1003"/>
+				<Command val="2"/>
+				<Command val="1004"/>
+				<Command val="2"/>
+				<Command val="1005"/>
+				<Command val="2"/>
+				<Command val="1004"/>
+				<Command val="2"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="Throw1">
+			<Component name="Body" xyz="0,0,0">
+				<Command val="1006"/>
+				<Command val="4"/>
+				<Command val="1007"/>
+				<Command val="20"/>
+				<Command val="1006"/>
+				<Command val="4"/>
+				<Command val="1008"/>
+				<Command val="3"/>
+				<Command val="1009"/>
+				<Command val="20"/>
+				<Command val="100A"/>
+				<Command val="2"/>
+				<Command val="100B"/>
+				<Command val="20"/>
+				<Command val="200C"/>
+			</Component>
+		</Animation>
+		<Animation name="Throw2">
+			<Component name="Body" xyz="0,0,0">
+				<Command val="1007"/>
+				<Command val="2"/>
+				<Command val="1006"/>
+				<Command val="4"/>
+				<Command val="1008"/>
+				<Command val="3"/>
+				<Command val="1009"/>
+				<Command val="20"/>
+				<Command val="100A"/>
+				<Command val="2"/>
+				<Command val="100B"/>
+				<Command val="20"/>
+				<Command val="200A"/>
+			</Component>
+		</Animation>
+		<Animation name="PreThrow">
+			<Component name="Body" xyz="0,0,0">
+				<Command val="1006"/>
+				<Command val="4"/>
+				<Command val="1007"/>
+				<Command val="20"/>
+				<Command val="1006"/>
+				<Command val="4"/>
+				<Command val="1008"/>
+				<Command val="3"/>
+				<Command val="1009"/>
+				<Command val="20"/>
+				<Command val="2008"/>
+			</Component>
+		</Animation>
+		<Animation name="PostThrow">
+			<Component name="Body" xyz="0,0,0">
+				<Command val="1009"/>
+				<Command val="2"/>
+				<Command val="100A"/>
+				<Command val="2"/>
+				<Command val="100B"/>
+				<Command val="20"/>
+				<Command val="2004"/>
+			</Component>
+		</Animation>
+		<Animation name="Rock">
+			<Component name="Rock" xyz="0,0,0">
+				<Command val="100C"/>
+				<Command val="2"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="Mushroom">
+			<Component name="Mushroom" xyz="0,0,0">
+				<Command val="100D"/>
+				<Command val="2"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="SpikeBall">
+			<Component name="Spike_Ball" xyz="0,0,0">
+				<Command val="100E"/>
+				<Command val="2"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="Hurt">
+			<Component name="Body" xyz="0,0,0">
+				<Command val="100F"/>
+				<Command val="5"/>
+				<Command val="1010"/>
+				<Command val="5"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="Scare1">
+			<Component name="Body" xyz="0,0,0">
+				<Command val="1000"/>
+				<Command val="14"/>
+				<Command val="1006"/>
+				<Command val="A"/>
+				<Command val="1011"/>
+				<Command val="2"/>
+				<Command val="3001"/>
+				<Command val="0"/>
+				<Command val="C"/>
+				<Command val="0"/>
+				<Command val="1012"/>
+				<Command val="4"/>
+				<Command val="3001"/>
+				<Command val="0"/>
+				<Command val="12"/>
+				<Command val="0"/>
+				<Command val="1013"/>
+				<Command val="4"/>
+				<Command val="3001"/>
+				<Command val="0"/>
+				<Command val="18"/>
+				<Command val="0"/>
+				<Command val="1012"/>
+				<Command val="4"/>
+				<Command val="2012"/>
+			</Component>
+			<Component name="Hole" xyz="0,0,-2">
+				<Command val="1007"/>
+				<Command val="1"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="Scare2">
+			<Component name="Body" xyz="0,24,0">
+				<Command val="1012"/>
+				<Command val="6"/>
+				<Command val="3001"/>
+				<Command val="0"/>
+				<Command val="FFF8"/>
+				<Command val="0"/>
+				<Command val="1013"/>
+				<Command val="6"/>
+				<Command val="2000"/>
+			</Component>
+			<Component name="Hole" xyz="0,0,-2">
+				<Command val="1007"/>
+				<Command val="2"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="Scare3">
+			<Component name="Body" xyz="0,0,0">
+				<Command val="3001"/>
+				<Command val="0"/>
+				<Command val="18"/>
+				<Command val="0"/>
+				<Command val="1012"/>
+				<Command val="4"/>
+				<Command val="3001"/>
+				<Command val="0"/>
+				<Command val="12"/>
+				<Command val="0"/>
+				<Command val="1013"/>
+				<Command val="4"/>
+				<Command val="3001"/>
+				<Command val="0"/>
+				<Command val="C"/>
+				<Command val="0"/>
+				<Command val="1012"/>
+				<Command val="4"/>
+				<Command val="1011"/>
+				<Command val="4"/>
+				<Command val="1006"/>
+				<Command val="4"/>
+				<Command val="1007"/>
+				<Command val="1"/>
+				<Command val="2016"/>
+			</Component>
+			<Component name="Hole" xyz="0,0,-2">
+				<Command val="1007"/>
+				<Command val="1"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="Death">
+			<Component name="Body" xyz="0,24,0">
+				<Command val="1012"/>
+				<Command val="6"/>
+				<Command val="3001"/>
+				<Command val="0"/>
+				<Command val="FFF8"/>
+				<Command val="0"/>
+				<Command val="1013"/>
+				<Command val="6"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="BurntHurt1">
+			<Component name="Body" xyz="0,0,0">
+				<Command val="1014"/>
+				<Command val="6"/>
+				<Command val="1015"/>
+				<Command val="6"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="BurntHurt2">
+			<Component name="Body" xyz="0,0,0">
+				<Command val="1016"/>
+				<Command val="6"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="BurntDeath">
+			<Component name="Body" xyz="0,24,0">
+				<Command val="1017"/>
+				<Command val="6"/>
+				<Command val="3001"/>
+				<Command val="0"/>
+				<Command val="FFF8"/>
+				<Command val="0"/>
+				<Command val="1018"/>
+				<Command val="6"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="TeaseStill">
+			<Component name="Body" xyz="0,0,0">
+				<Command val="1019"/>
+				<Command val="2"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="Tease">
+			<Component name="Body" xyz="0,0,0">
+				<Command val="101A"/>
+				<Command val="6"/>
+				<Command val="101B"/>
+				<Command val="6"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="PopUp">
+			<Component name="Body" xyz="0,0,0">
+				<Command val="5000"/>
+				<Command val="4B"/>
+				<Command val="3001"/>
+				<Command val="0"/>
+				<Command val="2"/>
+				<Command val="0"/>
+				<Command val="1020"/>
+				<Command val="2"/>
+				<Command val="5000"/>
+				<Command val="64"/>
+				<Command val="1020"/>
+				<Command val="2"/>
+				<Command val="5000"/>
+				<Command val="5E"/>
+				<Command val="3001"/>
+				<Command val="0"/>
+				<Command val="1"/>
+				<Command val="0"/>
+				<Command val="101F"/>
+				<Command val="2"/>
+				<Command val="5000"/>
+				<Command val="64"/>
+				<Command val="101F"/>
+				<Command val="2"/>
+				<Command val="5000"/>
+				<Command val="5E"/>
+				<Command val="101E"/>
+				<Command val="2"/>
+				<Command val="5000"/>
+				<Command val="64"/>
+				<Command val="101E"/>
+				<Command val="2"/>
+				<Command val="5000"/>
+				<Command val="5C"/>
+				<Command val="3001"/>
+				<Command val="0"/>
+				<Command val="1"/>
+				<Command val="0"/>
+				<Command val="1007"/>
+				<Command val="2"/>
+				<Command val="5000"/>
+				<Command val="64"/>
+				<Command val="1007"/>
+				<Command val="4"/>
+				<Command val="1006"/>
+				<Command val="4"/>
+				<Command val="1000"/>
+				<Command val="4"/>
+				<Command val="100B"/>
+				<Command val="4"/>
+				<Command val="1001"/>
+				<Command val="4"/>
+				<Command val="1000"/>
+				<Command val="2"/>
+				<Command val="2034"/>
+			</Component>
+		</Animation>
+		<Animation name="PopDown">
+			<Component name="Body" xyz="0,0,0">
+				<Command val="1000"/>
+				<Command val="2"/>
+				<Command val="1001"/>
+				<Command val="4"/>
+				<Command val="100B"/>
+				<Command val="4"/>
+				<Command val="1000"/>
+				<Command val="4"/>
+				<Command val="1006"/>
+				<Command val="4"/>
+				<Command val="1007"/>
+				<Command val="2"/>
+				<Command val="5000"/>
+				<Command val="56"/>
+				<Command val="3001"/>
+				<Command val="0"/>
+				<Command val="1"/>
+				<Command val="0"/>
+				<Command val="1007"/>
+				<Command val="2"/>
+				<Command val="101E"/>
+				<Command val="2"/>
+				<Command val="5000"/>
+				<Command val="56"/>
+				<Command val="3001"/>
+				<Command val="0"/>
+				<Command val="1"/>
+				<Command val="0"/>
+				<Command val="101E"/>
+				<Command val="2"/>
+				<Command val="5000"/>
+				<Command val="64"/>
+				<Command val="3001"/>
+				<Command val="0"/>
+				<Command val="1"/>
+				<Command val="0"/>
+				<Command val="101F"/>
+				<Command val="2"/>
+				<Command val="5000"/>
+				<Command val="56"/>
+				<Command val="3001"/>
+				<Command val="0"/>
+				<Command val="1"/>
+				<Command val="0"/>
+				<Command val="101F"/>
+				<Command val="2"/>
+				<Command val="5000"/>
+				<Command val="64"/>
+				<Command val="1020"/>
+				<Command val="2"/>
+				<Command val="2030"/>
+			</Component>
+		</Animation>
+		<Animation name="BurrowUp">
+			<Component name="Body" xyz="0,0,0">
+				<Command val="1007"/>
+				<Command val="2"/>
+				<Command val="1006"/>
+				<Command val="4"/>
+				<Command val="1000"/>
+				<Command val="4"/>
+				<Command val="100B"/>
+				<Command val="4"/>
+				<Command val="1001"/>
+				<Command val="4"/>
+				<Command val="1000"/>
+				<Command val="2"/>
+				<Command val="200A"/>
+			</Component>
+		</Animation>
+		<Animation name="BurrowDown">
+			<Component name="Body" xyz="0,0,0">
+				<Command val="1000"/>
+				<Command val="2"/>
+				<Command val="1001"/>
+				<Command val="4"/>
+				<Command val="100B"/>
+				<Command val="4"/>
+				<Command val="1000"/>
+				<Command val="4"/>
+				<Command val="1006"/>
+				<Command val="4"/>
+				<Command val="1007"/>
+				<Command val="2"/>
+				<Command val="200A"/>
+			</Component>
+		</Animation>
+		<Animation name="PopOut">
+			<Component name="Body" xyz="0,0,0">
+				<Command val="101C"/>
+				<Command val="2"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="MoleHole">
+			<Component name="Mole_Hole" xyz="0,0,0">
+				<Command val="101D"/>
+				<Command val="2"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="EmptyHole">
+			<Component name="Hole" xyz="0,0,0">
+				<Command val="1007"/>
+				<Command val="2"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="Dust">
+			<Component name="Dust" xyz="0,0,0">
+				<Command val="1021"/>
+				<Command val="6"/>
+				<Command val="3001"/>
+				<Command val="0"/>
+				<Command val="8"/>
+				<Command val="0"/>
+				<Command val="1022"/>
+				<Command val="6"/>
+				<Command val="3001"/>
+				<Command val="0"/>
+				<Command val="18"/>
+				<Command val="0"/>
+				<Command val="1023"/>
+				<Command val="6"/>
+				<Command val="3001"/>
+				<Command val="0"/>
+				<Command val="26"/>
+				<Command val="0"/>
+				<Command val="1024"/>
+				<Command val="8"/>
+				<Command val="3001"/>
+				<Command val="0"/>
+				<Command val="2C"/>
+				<Command val="0"/>
+				<Command val="1025"/>
+				<Command val="8"/>
+				<Command val="3001"/>
+				<Command val="0"/>
+				<Command val="30"/>
+				<Command val="0"/>
+				<Command val="1026"/>
+				<Command val="8"/>
+				<Command val="8000"/>
+				<Command val="A"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+	</AnimationList>
+</SpriteSheet>
