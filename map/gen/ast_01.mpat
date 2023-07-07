@@ -1,4 +1,4 @@
-% Auto-generated script for pro_02
+% Auto-generated script for ast_01
 
 #new:Header $Header
 {
@@ -27,20 +27,9 @@
 	End
 }
 
-#new:Function_Init $Function_Init
-{
-	PUSH    RA
-	LIA     A0, 800B0CF0
-	LIA     A1, "kmr_tex"
-	JAL     800654F0 % sprintf
-	RESERVED
-	CLEAR  V0
-	JPOP   RA
-}
-
 #new:Script $Script_SetupMusic
 {
-	Call  SetMusicTrack ( 00000000 .Song:PleasantPath 00000000 00000008 )
+	Call  SetMusicTrack ( 00000000 .Song:SpecialBattle 00000000 00000008 )
 	Call  ClearAmbientSounds ( 250` )
 	Return
 	End

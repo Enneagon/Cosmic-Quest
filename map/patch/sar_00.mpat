@@ -11,8 +11,8 @@
     Call  SetCamLeadPlayer   ( .Cam:Default .False )
     Exec  $Script_SetupMusic
     Call  $Function_LuckyStar (  )
-    Call  $Function_GetHammer (  )
-    Call  AddCoin ( 50` )
+%    Call  $Function_GetHammer (  )
+%    Call  AddCoin ( 50` )
     Set  *GB_StoryProgress  .Story:Ch0_FoundHammer
     Exec  $Script_BindStuff
     Exec  $Script_MakeNPCs
@@ -31,9 +31,10 @@
 
 #new:Function $Function_GetHammer
 {
-    0:  SAB       R0, 8010F291
-    8:  JR        RA
-    C:  LI        V0, 2
+    LI        V0, 3
+    SAB       V0, 8010F291
+    JR        RA
+    LI        V0, 2
 }
 
 #new:Script $Script_BindStuff

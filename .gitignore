@@ -43,3 +43,7 @@ mod.cfg
 !/audio/bgm/10_135.bgm
 !/audio/bgm/00_117.bgm
 !/audio/bgm/37_202.bgm
+
+# Altered Textures
+!/image/texture/ast_tex.txa
+!/image/texture/ast_tex/*.*

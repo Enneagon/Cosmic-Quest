@@ -6,7 +6,8 @@
     Call  SetCamLeadPlayer   ( .Cam:Default .False )
     Exec  $Script_SetupMusic
     Exec  $Script_ShipBindsToMario
-    Exec  $Script_BindAsteroids
+    Exec  $Script_BindObstacles
+    Exec  $Script_SetupEnemy
     Exec  $Script_EnterMap
     Exec  $Script_Main_Callback_AfterEnterMap
     Return
@@ -18,7 +19,6 @@
     Thread
         Loop
             Call  GetPlayerPos ( *Var0 *Var1 *Var2 )
-            Sub  *Var0 80`
             Call  TranslateModel ( ~Model:Rocket1 *Var0 00000000 *Var2 )
             Wait  1`
         EndLoop
@@ -27,11 +27,51 @@
     End
 }
 
-#new:Script $Script_BindAsteroids
+#new:Script $Script_BindObstacles
 {
-    Bind $Script_SphereBlowUp1 .Trigger:WallTouch ~Collider:SphereCollider1 00000001 00000000
-    Bind $Script_SphereBlowUp2 .Trigger:WallTouch ~Collider:SphereCollider2 00000001 00000000
-    Bind $Script_SphereBlowUp3 .Trigger:WallTouch ~Collider:SphereCollider3 00000001 00000000
+    Bind $Script_SphereBlowUp1 .Trigger:FloorAbove ~Collider:Obstacle1 00000001 00000000
+    Bind $Script_SphereBlowUp2 .Trigger:FloorAbove ~Collider:Obstacle2 00000001 00000000
+    Bind $Script_SphereBlowUp3 .Trigger:FloorAbove ~Collider:Obstacle3 00000001 00000000
+    Bind $Script_BulletBlowUp1 .Trigger:FloorAbove ~Collider:BulletCollider1 00000001 00000000
+    Call  ModifyColliderFlags   ( 00000000 ~Collider:BulletCollider1 7FFFFE00 )
+    Call  EnableGroup ( ~Model:Bullets .False )
+    Return
+    End
+}
+
+#new:Script $Script_SetupEnemy
+{
+    Thread
+        Loop
+            Call GetPlayerPos ( *Var0 *Var1 *Var2 )
+            If *Var2 <= 2000
+                Sub *Var2 666`
+                Call MakeLerp ( 0` 400` 120` .Easing:CosInOut )
+                Loop
+                    Call  UpdateLerp ( )
+                    Call GetPlayerPos ( 00000000 00000000 *Var2 )
+                    Sub *Var2 666`
+                    Call  TranslateModel ( ~Model:Enemy1 *Var0 00000000 *Var2 )
+                    Wait  1`
+                    If  *Var1  ==  00000000
+                  		BreakLoop
+                 	EndIf
+                EndLoop
+                Wait 1`
+                Call MakeLerp ( 400` 0` 120` .Easing:CosInOut )
+                Loop
+                    Call  UpdateLerp ( )
+                    Call GetPlayerPos ( 00000000 00000000 *Var2 )
+                    Sub *Var2 666`
+                    Call  TranslateModel ( ~Model:Enemy1 *Var0 00000000 *Var2 )
+                    Wait  1`
+                    If  *Var1  ==  00000000
+                  		BreakLoop
+                 	EndIf
+                EndLoop
+            EndIf
+        EndLoop
+    EndThread
     Return
     End
 }
@@ -39,10 +79,10 @@
 @ $Script_Main_Callback_AfterEnterMap {
     Wait 20`
     Call ParentColliderToModel ( ~Collider:MovingCollider ~Model:MovingWall )
-    Call MakeLerp ( 0` 9000` 750` .Easing:Linear )
+    Call MakeLerp ( 0` -9000` 750` .Easing:Linear )
             Loop
                 Call  UpdateLerp ( )
-                Call  TranslateModel ( ~Model:MovingWall *Var0 00000000 00000000 )
+                Call  TranslateModel ( ~Model:MovingWall 00000000 00000000 *Var0 )
                 Call  UpdateColliderTransform ( ~Collider:MovingCollider )
                 Wait  1`
                 If  *Var1  ==  00000000
@@ -55,11 +95,11 @@
 
 #new:Script $Script_SphereBlowUp1
 {
+    Unbind
     Call  PlaySoundAtModel ( ~Model:SphereModel1 .Sound:BombBlast 00000000 )
     Call  GetModelCenter ( ~Model:SphereModel1 )
-    Call  PlayEffect ( ~FX:Explosion1 *Var0 *Var1 *Var2 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 )
+    Call  PlayEffect ( ~FX:ShockWave:LargeWhite *Var0 *Var1 *Var2 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 )
     Call  EnableModel ( ~Model:SphereModel1 .False )
-    Call  ModifyColliderFlags   ( 00000000 ~Collider:SphereCollider1 7FFFFE00 )
     Call  $Function_DamageShip (  )
     Return
     End
@@ -67,11 +107,11 @@
 
 #new:Script $Script_SphereBlowUp2
 {
+    Unbind
     Call  PlaySoundAtModel ( ~Model:SphereModel2 .Sound:BombBlast 00000000 )
     Call  GetModelCenter ( ~Model:SphereModel2 )
-    Call  PlayEffect ( ~FX:Explosion1 *Var0 *Var1 *Var2 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 )
+    Call  PlayEffect ( ~FX:ShockWave:LargeWhite *Var0 *Var1 *Var2 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 )
     Call  EnableModel ( ~Model:SphereModel2 .False )
-    Call  ModifyColliderFlags   ( 00000000 ~Collider:SphereCollider2 7FFFFE00 )
     Call  $Function_DamageShip (  )
     Return
     End
@@ -79,11 +119,23 @@
 
 #new:Script $Script_SphereBlowUp3
 {
+    Unbind
     Call  PlaySoundAtModel ( ~Model:SphereModel3 .Sound:BombBlast 00000000 )
     Call  GetModelCenter ( ~Model:SphereModel3 )
-    Call  PlayEffect ( ~FX:Explosion1 *Var0 *Var1 *Var2 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 )
+    Call  PlayEffect ( ~FX:ShockWave:LargeWhite *Var0 *Var1 *Var2 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 )
     Call  EnableModel ( ~Model:SphereModel3 .False )
-    Call  ModifyColliderFlags   ( 00000000 ~Collider:SphereCollider3 7FFFFE00 )
+    Call  $Function_DamageShip (  )
+    Return
+    End
+}
+
+#new:Script $Script_BulletBlowUp1
+{
+    Unbind
+    Call  PlaySoundAtModel ( ~Model:Bullet1 .Sound:BombBlast 00000000 )
+    Call  GetModelCenter ( ~Model:Bullet1 )
+    Call  PlayEffect ( ~FX:ShockWave:LargeWhite *Var0 *Var1 *Var2 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 )
+    Call  EnableModel ( ~Model:Bullet1 .False )
     Call  $Function_DamageShip (  )
     Return
     End

@@ -1,0 +1,424 @@
+@ $Script_Main {
+    Set   *GB_WorldLocation  .Location:GoombaRoad
+    Call  SetCamPerspective  ( .Cam:Default 00000003 00000019 00000010 00001000 )
+    Call  SetCamBGColor      ( .Cam:Default 00000000 00000000 00000000 )
+    Call  SetCamEnabled      ( .Cam:Default .True
+    Call  SetCamLeadPlayer   ( .Cam:Default .False )
+    Exec  $Script_SetupMusic
+    Exec  $Script_ShipBindsToMario
+    Exec  $Script_BindObstacles
+    Exec  $Script_EnterMap
+    Set *MF_SpacePerfectBonus .True
+    Set *MF_SpaceFailState .False
+    Exec  $Script_Main_Callback_AfterEnterMap
+    Return
+    End
+}
+
+#new:Script $Script_ShipBindsToMario
+{
+    Thread
+        If *MapFlag[0] == .True
+            Return
+        EndIf
+        Set *MapFlag[0] .True
+        Loop
+            Call  GetPlayerPos ( *Var0 *Var1 *Var2 )
+            Call  TranslateModel ( ~Model:Rocket1 *Var0 00000000 *Var2 )
+            Wait  1`
+        EndLoop
+    EndThread
+    Return
+    End
+}
+
+#new:Script $Script_BindObstacles
+{
+    Bind $Script_WeaponAttack .Trigger:FloorPressA ~Collider:FloorCollider 00000001 00000000
+    Bind $Script_BulletBlowUp1 .Trigger:FloorAbove ~Collider:BulletCollider1 00000001 00000000
+    Call ParentColliderToModel ( ~Collider:BulletCollider1 ~Model:Bullet1 )
+    Bind $Script_BulletBlowUp2 .Trigger:FloorAbove ~Collider:BulletCollider2 00000001 00000000
+    Call ParentColliderToModel ( ~Collider:BulletCollider2 ~Model:Bullet2 )
+    Bind $Script_BulletBlowUp3 .Trigger:FloorAbove ~Collider:BulletCollider3 00000001 00000000
+    Call ParentColliderToModel ( ~Collider:BulletCollider3 ~Model:Bullet3 )
+    Call EnableGroup ( ~Model:Bullets .False )
+    Call  ModifyColliderFlags   ( 00000000 ~Collider:BulletCollider1 7FFFFE00 )
+    Call  ModifyColliderFlags   ( 00000000 ~Collider:BulletCollider2 7FFFFE00 )
+    Call  ModifyColliderFlags   ( 00000000 ~Collider:BulletCollider3 7FFFFE00 )
+    Call ParentColliderToModel ( ~Collider:Enemy1Collider ~Model:Enemy1 )
+    Bind $Script_Enemy1Ram .Trigger:FloorAbove ~Collider:Enemy1Collider 00000001 00000000
+    Return
+    End
+}
+
+@ $Script_Main_Callback_AfterEnterMap {
+    Set *MapVar[1] 9` % Ship HP
+    Exec $Script_EnemyDamage
+    Wait 20`
+    Call MakeLerp ( 0` 1500` 120` .Easing:CosInOut )
+        Loop
+            Call  UpdateLerp ( )
+            Call  TranslateModel ( ~Model:Enemy1 00000000 00000000 *Var0 )
+            Wait  1`
+            If  *Var1  ==  00000000
+                BreakLoop
+            EndIf
+        EndLoop
+    Wait 30`
+    Exec $Script_FiringSequence
+        Call MakeLerp ( 0` 250` 90` .Easing:CosInOut )
+            Loop
+                Call  UpdateLerp ( )
+                Call  TranslateModel ( ~Model:Enemy1 *Var0 00000000 1500` )
+                Wait  1`
+                If  *Var1  ==  00000000
+                    BreakLoop
+                EndIf
+            EndLoop
+    Loop 4`
+        Wait 1`
+        Call MakeLerp ( 250` -250` 180` .Easing:CosInOut )
+            Loop
+                Call  UpdateLerp ( )
+                Call  TranslateModel ( ~Model:Enemy1 *Var0 00000000 1500` )
+                Wait  1`
+                If  *Var1  ==  00000000
+                    BreakLoop
+                EndIf
+                If  *MapVar[1]  <=  00000000
+                    Goto 0
+                EndIf
+            EndLoop
+            Wait 1`
+        Call MakeLerp ( -250` 250` 180` .Easing:CosInOut )
+            Loop
+                Call  UpdateLerp ( )
+                Call  TranslateModel ( ~Model:Enemy1 *Var0 00000000 1500` )
+                Wait  1`
+                If  *Var1  ==  00000000
+                    BreakLoop
+                EndIf
+                If  *MapVar[1]  <=  00000000
+                    Goto 0
+                EndIf
+            EndLoop
+    EndLoop
+    Call MakeLerp ( 250` 0` 90` .Easing:CosInOut )
+            Loop
+                Call  UpdateLerp ( )
+                Call  TranslateModel ( ~Model:Enemy1 *Var0 00000000 1500` )
+                Wait  1`
+                If  *Var1  ==  00000000
+                    BreakLoop
+                EndIf
+                If  *MapVar[1]  <=  00000000
+                    Goto 0
+                EndIf
+            EndLoop
+            Wait 1`
+            Set *MapFlag[3] .True
+        Call MakeLerp ( 1500` 0` 120` .Easing:CosInOut )
+            Loop
+                Call  UpdateLerp ( )
+                Call  TranslateModel ( ~Model:Enemy1 00000000 00000000 *Var0 )
+                Wait  1`
+                If  *Var1  ==  00000000
+                    BreakLoop
+                EndIf
+                If  *MapVar[1]  <=  00000000
+                    Goto 0
+                EndIf
+            EndLoop
+    Return
+    Label 0
+    Call GetModelCenter ( ~Model:Enemy1 )
+    Wait 10`
+    Call  PlayEffect ( ~FX:SmokeBurst:Red *Var0 *Var1 *Var2 *Fixed[4.0] 0000000A 00000000 00000000 00000000 00000000 00000000 00000000 00000000 )
+    Wait 10`
+    Call  PlayEffect ( ~FX:SmokeBurst:Red *Var0 *Var1 *Var2 *Fixed[5.0] 0000000A 00000000 00000000 00000000 00000000 00000000 00000000 00000000 )
+    Wait 10`
+    Call  PlayEffect ( ~FX:SmokeBurst:Red *Var0 *Var1 *Var2 *Fixed[6.0] 0000000A 00000000 00000000 00000000 00000000 00000000 00000000 00000000 )
+    Call GetModelCenter ( ~Model:Enemy1 )
+    Set *Var7 *Var0
+    Set *Var5 1`
+    Call MakeLerp ( 1500` 2000` 60` .Easing:Linear )
+            Loop
+                Call  UpdateLerp ( )
+                Call  TranslateModel ( ~Model:Enemy1 *Var7 00000000 *Var0 )
+                Call  RotateGroup ( ~Model:EnemyShip1 *Var5 00000000 *Var5 00000000 )
+                Call  UpdateColliderTransform ( ~Collider:Enemy1Collider )
+                Add *Var5 1`
+                Wait  1`
+                Set *Debug[0] *Var7
+                If  *Var1  ==  00000000
+                    BreakLoop
+                EndIf
+            EndLoop
+        Call GetModelCenter ( ~Model:Enemy1 )
+        Call  PlayEffect ( ~FX:Explosion3 *Var0 *Var1 *Var2 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 )
+        Call EnableModel ( ~Model:Enemy1 .False )
+        Call  ModifyColliderFlags   ( 00000000 ~Collider:Enemy1Collider 7FFFFE00 )
+        Add *MB_EnemiesDestroyed 5`
+        Wait 30`
+        Exec $Script_MissionComplete
+    Return
+    End
+}
+
+#new:Script $Script_FiringSequence
+{
+    Thread
+        Loop   
+            Call PlaySoundAtModel ( ~Model:Enemy1 .Sound:BombBlast 00000000 )
+            Call GetModelCenter ( ~Model:Enemy1 )
+            Add *Var2 15`  
+            Call TranslateGroup ( ~Model:EnemyBullets *Var0 *Var1 *Var2 )
+            Call EnableGroup ( ~Model:EnemyBullets .True )
+            Call UpdateColliderTransform ( ~Collider:BulletCollider1 )
+            Call  ModifyColliderFlags   ( 00000001 ~Collider:BulletCollider1 7FFFFE00 )
+            Call UpdateColliderTransform ( ~Collider:BulletCollider2 )
+            Call  ModifyColliderFlags   ( 00000001 ~Collider:BulletCollider2 7FFFFE00 )
+            Call UpdateColliderTransform ( ~Collider:BulletCollider3 )
+            Call  ModifyColliderFlags   ( 00000001 ~Collider:BulletCollider3 7FFFFE00 )
+            Exec $Script_BulletsMove
+            Wait 60`
+            If *MapVar[1] <= 0`
+                BreakLoop
+            EndIf
+            If *MapFlag[3] == .True
+                BreakLoop
+            EndIf
+        EndLoop
+    EndThread
+    Return
+    End
+}
+
+#new:Script $Script_BulletsMove
+{
+    Thread
+        Call GetModelCenter ( ~Model:Bullet1 )
+        Set *Var3 *Var2
+        Set *Var4 *Var0
+        Call MakeLerp ( *Var3 250` 45` .Easing:Linear )
+            Loop
+                Call  UpdateLerp ( )
+                Call  TranslateModel ( ~Model:Bullet1 *Var4 00000000 *Var0 )
+                Call  UpdateColliderTransform ( ~Collider:BulletCollider1 )
+                Wait  1`
+                If  *Var1  ==  00000000
+                    BreakLoop
+                EndIf
+            EndLoop
+        Call EnableModel ( ~Model:Bullet1 .False )
+        Call  ModifyColliderFlags   ( 00000000 ~Collider:BulletCollider1 7FFFFE00 )
+    EndThread
+    Thread
+        Call GetModelCenter ( ~Model:Bullet2 )
+        Set *Var3 *Var2
+        Set *Var5 *Var0
+        Call MakeLerp ( *Var3 250` 45` .Easing:Linear )
+            Loop
+                Call  UpdateLerp ( )
+                Call  TranslateModel ( ~Model:Bullet2 *Var5 00000000 *Var0 )
+                Call  UpdateColliderTransform ( ~Collider:BulletCollider2 )
+                Add *Var5 3`
+                Wait  1`
+                If  *Var1  ==  00000000
+                    BreakLoop
+                EndIf
+            EndLoop
+        Call EnableModel ( ~Model:Bullet2 .False )
+        Call  ModifyColliderFlags   ( 00000000 ~Collider:BulletCollider2 7FFFFE00 )
+    EndThread
+    Thread
+        Call GetModelCenter ( ~Model:Bullet3 )
+        Set *Var3 *Var2
+        Set *Var6 *Var0
+        Call MakeLerp ( *Var3 250` 45` .Easing:Linear )
+            Loop
+                Call  UpdateLerp ( )
+                Call  TranslateModel ( ~Model:Bullet3 *Var6 00000000 *Var0 )
+                Call  UpdateColliderTransform ( ~Collider:BulletCollider3 )
+                Sub *Var6 3`
+                Wait  1`
+                If  *Var1  ==  00000000
+                    BreakLoop
+                EndIf
+            EndLoop
+        Call EnableModel ( ~Model:Bullet3 .False )
+        Call  ModifyColliderFlags   ( 00000000 ~Collider:BulletCollider3 7FFFFE00 )
+    EndThread
+    Return
+    End
+}
+
+#new:Script $Script_BulletBlowUp1
+{
+    Call  ModifyColliderFlags   ( 00000000 ~Collider:BulletCollider1 7FFFFE00 )
+    Call  PlaySoundAtModel ( ~Model:Bullet1 .Sound:HitBlock 00000000 )
+    Call  GetModelCenter ( ~Model:Bullet1 )
+    Call  PlayEffect ( ~FX:ShockWave:LargeWhite *Var0 *Var1 *Var2 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 )
+    Call  EnableModel ( ~Model:Bullet1 .False )
+    Call  $Function_DamageShip (  )
+    Wait 1`
+    Exec  $Script_CheckDamage
+    Return
+    End
+}
+
+#new:Script $Script_BulletBlowUp2
+{
+    Call  ModifyColliderFlags   ( 00000000 ~Collider:BulletCollider2 7FFFFE00 )
+    Call  PlaySoundAtModel ( ~Model:Bullet2 .Sound:HitBlock 00000000 )
+    Call  GetModelCenter ( ~Model:Bullet2 )
+    Call  PlayEffect ( ~FX:ShockWave:LargeWhite *Var0 *Var1 *Var2 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 )
+    Call  EnableModel ( ~Model:Bullet2 .False )
+    Call  $Function_DamageShip (  )
+    Wait 1`
+    Exec  $Script_CheckDamage
+    Return
+    End
+}
+
+#new:Script $Script_BulletBlowUp3
+{
+    Call  ModifyColliderFlags   ( 00000000 ~Collider:BulletCollider3 7FFFFE00 )
+    Call  PlaySoundAtModel ( ~Model:Bullet3 .Sound:HitBlock 00000000 )
+    Call  GetModelCenter ( ~Model:Bullet3 )
+    Call  PlayEffect ( ~FX:ShockWave:LargeWhite *Var0 *Var1 *Var2 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 )
+    Call  EnableModel ( ~Model:Bullet3 .False )
+    Call  $Function_DamageShip (  )
+    Wait 1`
+    Exec  $Script_CheckDamage
+    Return
+    End
+}
+
+#new:Script $Script_Enemy1Ram
+{
+    Call  PlaySoundAtModel ( ~Model:Bullet3 .Sound:HitBlock 00000000 )
+    Call  $Function_DamageShip (  )
+    Wait 1`
+    Exec  $Script_CheckDamage
+    Wait 10`
+    Return
+    End
+}
+
+#new:Script $Script_CheckDamage
+{
+    Set *MF_SpacePerfectBonus .False
+    Call $Function_GetArbitraryByte ( *Var0 8010F292 )
+    Set *Debug[1] *Var0
+    If *Var0 == 1`
+        Call DisablePlayerInput ( .True )
+        Set *MF_SpaceFailState .True
+        Call  ShowMessageAtScreenPos    ( 002F005D  160`  40` ) % We gotta get outta here!
+        Set *MB_SpaceCoins 0`
+        Set *MB_EnemiesDestroyed 0`
+        Call GotoMap ( "sar_00" ~Entry:sar_00:GameStart )
+    EndIf
+    Return
+    End
+}
+
+#new:Function $Function_DamageShip
+{
+    LA        v0, 8010F290 %Load Address of current HP
+    LBU       t0, 2 (v0) %Load value of the address, current HP
+    ADDIU     t0, t0, -1 %Subtract 1 from current HP, apply value to t0
+    ADDIU      t1, t0, -1 %Subtract 1 from t0, apply to t1
+    BLTZ      t1, .o31 %Jump to .031 if t1 is less than 0 (Does nothing if HP was 1)
+    NOP                 %Extra space so the if statement can work
+    SB        t0, 2 (v0) %Set the current HP value to t0
+    .o31 %Label!
+    JR RA
+    ORI v0, r0, 2
+}
+
+#new:Script $Script_WeaponAttack
+{
+    If *MapFlag[1] == .True
+        Return
+    EndIf
+    Set *MapFlag[1] .True
+    Set *MapFlag[2] .False
+    Call GetPlayerPos ( *Var0 *Var1 *Var2 )
+    Sub *Var2 15`  
+    Call TranslateModel ( ~Model:ShipBullet1 *Var0 *Var1 *Var2 )
+    Set *MapVar[0] *Var0
+    Call EnableModel ( ~Model:ShipBullet1 .True )
+    Call MakeLerp ( *Var3 -1000` 30` .Easing:Linear )
+            Loop
+                Call  UpdateLerp ( )
+                Call  TranslateModel ( ~Model:ShipBullet1 *MapVar[0] 00000000 *Var0 )
+                Wait  1`
+                If  *Var1  ==  00000000
+                    BreakLoop
+                EndIf
+                If  *MapFlag[2]  ==  .True
+                    Call  TranslateModel ( ~Model:ShipBullet1 00000000 00000000 00000000 )
+                    Set *MapFlag[2] .False
+                    BreakLoop
+                EndIf
+            EndLoop
+    Call  TranslateModel ( ~Model:ShipBullet1 00000000 00000000 00000000 )
+    Call  EnableModel ( ~Model:ShipBullet1 .False )
+    Set *MapFlag[1] .False
+    Return
+    End
+}
+
+#new:Script $Script_EnemyDamage
+{
+    Loop
+        Call GetModelCenter ( ~Model:Enemy1 )
+        Set *Var3 *Var0
+        Set *Var4 *Var2
+        Call GetModelCenter ( ~Model:ShipBullet1 )
+        Call GetDist2D ( *Var5 *Var0 *Var2 *Var3 *Var4 )
+        If *Var5 <= 200`
+            Call  PlaySoundAtModel ( ~Model:ShipBullet1 .Sound:HitBlock 00000000 )
+            Call  PlayEffect ( ~FX:ShockWave:LargeWhite *Var0 *Var1 *Var2 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 )
+            Call  EnableModel ( ~Model:ShipBullet1 .False )
+            Sub *MapVar[1] 1`
+            Set *Debug[2] *MapVar[1]
+            Set *MapFlag[2] .True
+            Wait 10`
+        EndIf
+        If *MapVar[1] <= 0`
+            BreakLoop
+        EndIf
+        Wait 1`
+    EndLoop
+    Return
+    End
+}
+
+#new:Script $Script_MissionComplete
+{
+    If *MF_SpaceFailState == .True
+        Return
+    EndIf
+    Call DisablePlayerInput ( .True )
+    Call SetMessageValue ( *MB_SpaceCoins 00000000 )
+    Call SetMessageValue ( *MB_EnemiesDestroyed 00000001 )
+    Set *Var0 = ( *MB_SpaceCoins + *MB_EnemiesDestroyed )
+    If *MF_SpacePerfectBonus == .True
+        Call SetMessageValue ( 10` 00000002 )
+        Add *Var0 10`
+    Else
+        Call SetMessageValue ( 0` 00000002 )
+    EndIf
+    Set *Var1 *Var0
+    Call SetMessageValue ( *Var0 00000003 )
+    Call  ShowMessageAtScreenPos    ( 002F005E  160`  40` ) % Mission Complete!
+    Call  AddCoin ( *Var1 )
+    Wait 60`
+    Set *MB_SpaceCoins 0`
+    Set *MB_EnemiesDestroyed 0`
+    Call GotoMap ( "sar_00" ~Entry:sar_00:GameStart )
+    Return
+    End
+}

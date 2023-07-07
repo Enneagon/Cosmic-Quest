@@ -588,3 +588,21 @@
 	[Style Right]You've already chosen a ship.
 	[Wait][End]
 }
+
+#message:2F:05D
+{
+	[Style Right]We've taken heavy damage! We[BR]
+	need to get out of here!
+	[Wait][End]
+}
+
+#message:2F:05E
+{
+	[Style Right]Mission complete![BR]
+	[Wait][Next]
+	Coins: [Var 0][BR]
+	Enemies Defeated: [Var 1][BR]
+	Perfect Bonus: [Var 2][BR]
+	Total: [Var 3]
+	[Wait][End]
+}

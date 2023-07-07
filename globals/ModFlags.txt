@@ -17,3 +17,5 @@
 010 = MF_AnomaliesMinus
 011 = MF_OopsAllAnomalies
 012 = MF_DisableFootstepSFX
+013 = MF_SpacePerfectBonus
+014 = MF_SpaceFailState

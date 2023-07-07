@@ -1,0 +1,298 @@
+@ $Script_Main {
+    Set   *GB_WorldLocation  .Location:GoombaRoad
+    Call  SetCamPerspective  ( .Cam:Default 00000003 00000019 00000010 00001000 )
+    Call  SetCamBGColor      ( .Cam:Default 00000000 00000000 00000000 )
+    Call  SetCamEnabled      ( .Cam:Default .True
+    Call  SetCamLeadPlayer   ( .Cam:Default .False )
+    Exec  $Script_SetupMusic
+    Exec  $Script_ShipBindsToMario
+    Exec  $Script_BindObstacles
+    Exec  $Script_EnterMap
+    Set *MF_SpacePerfectBonus .True
+    Set *MF_SpaceFailState .False
+    Exec  $Script_Main_Callback_AfterEnterMap
+    Return
+    End
+}
+
+#new:Script $Script_ShipBindsToMario
+{
+    Thread
+        If *MapFlag[0] == .True
+            Return
+        EndIf
+        Set *MapFlag[0] .True
+        Loop
+            Call  GetPlayerPos ( *Var0 *Var1 *Var2 )
+            Call  TranslateModel ( ~Model:Rocket1 *Var0 00000000 *Var2 )
+            Wait  1`
+        EndLoop
+    EndThread
+    Return
+    End
+}
+
+#new:Script $Script_BindObstacles
+{
+    Bind $Script_SphereBlowUp1 .Trigger:FloorAbove ~Collider:Obstacle1 00000001 00000000
+    Bind $Script_SphereBlowUp2 .Trigger:FloorAbove ~Collider:Obstacle2 00000001 00000000
+    Bind $Script_SphereBlowUp3 .Trigger:FloorAbove ~Collider:Obstacle3 00000001 00000000
+    Bind $Script_CoinGet1 .Trigger:FloorAbove ~Collider:CoinCollider1 00000001 00000000
+    Bind $Script_CoinGet2 .Trigger:FloorAbove ~Collider:CoinCollider2 00000001 00000000
+    Bind $Script_CoinGet3 .Trigger:FloorAbove ~Collider:CoinCollider3 00000001 00000000
+    Return
+    End
+}
+
+@ $Script_Main_Callback_AfterEnterMap {
+    Wait 30`
+    Thread
+    Call MakeLerp ( 0` 2500` 120` .Easing:Linear )
+        Loop
+            Call  UpdateLerp ( )
+            Call  TranslateModel ( ~Model:Moon1 00000000 00000000 *Var0 )
+            Wait  1`
+            If  *Var1  ==  00000000
+                BreakLoop
+            EndIf
+        EndLoop
+    Call EnableModel ( ~Model:Moon1 .False )
+    EndThread
+    Wait 30`
+    Thread
+        Call MakeLerp ( 0` 2500` 90` .Easing:Linear )
+            Loop
+                Call  UpdateLerp ( )
+                Call  TranslateGroup ( ~Model:MiniAsteroids 00000000 00000000 *Var0 )
+                Wait  1`
+                If  *Var1  ==  00000000
+                    BreakLoop
+                EndIf
+            EndLoop
+        Call EnableGroup ( ~Model:MiniAsteroids .False )
+    EndThread
+    Call ParentColliderToModel ( ~Collider:Obstacle1 ~Model:Asteroid1 )
+    Wait 60`
+    Thread
+        Call MakeLerp ( 0` 2500` 120` .Easing:Linear )
+            Loop
+                Call  UpdateLerp ( )
+                Call  TranslateModel ( ~Model:Asteroid1 00000000 00000000 *Var0 )
+                Call  UpdateColliderTransform ( ~Collider:Obstacle1 )
+                Wait  1`
+                If  *Var1  ==  00000000
+                    BreakLoop
+                EndIf
+            EndLoop
+        Call EnableModel ( ~Model:Asteroid1 .False )
+        Call  ModifyColliderFlags   ( 00000000 ~Collider:Obstacle1 7FFFFE00 )
+    EndThread
+    Call ParentColliderToModel ( ~Collider:CoinCollider1 ~Model:Coin1 )
+    Call ParentColliderToModel ( ~Collider:CoinCollider2 ~Model:Coin2 )
+    Call ParentColliderToModel ( ~Collider:CoinCollider3 ~Model:Coin3 )
+    Wait 30`
+    Thread
+        Call MakeLerp ( 0` 2500` 120` .Easing:Linear )
+            Loop
+                Call  UpdateLerp ( )
+                Call  TranslateGroup ( ~Model:Coins 00000000 00000000 *Var0 )
+                Call  UpdateColliderTransform ( ~Collider:CoinCollider1 )
+                Call  UpdateColliderTransform ( ~Collider:CoinCollider2 )
+                Call  UpdateColliderTransform ( ~Collider:CoinCollider3 )
+                Wait  1`
+                If  *Var1  ==  00000000
+                    BreakLoop
+                EndIf
+            EndLoop
+        Call EnableModel ( ~Model:Asteroid1 .False )
+        Call  ModifyColliderFlags   ( 00000000 ~Collider:Obstacle1 7FFFFE00 )
+    EndThread
+    Wait 15`
+    Call ParentColliderToModel ( ~Collider:Obstacle2 ~Model:Asteroid2 )
+    Thread
+        Call MakeLerp ( 0` 2500` 120` .Easing:Linear )
+            Loop
+                Call  UpdateLerp ( )
+                Call  TranslateModel ( ~Model:Asteroid2 00000000 00000000 *Var0 )
+                Call  UpdateColliderTransform ( ~Collider:Obstacle2 )
+                Wait  1`
+                If  *Var1  ==  00000000
+                    BreakLoop
+                EndIf
+            EndLoop
+        Call EnableModel ( ~Model:Asteroid2 .False )
+        Call  ModifyColliderFlags   ( 00000000 ~Collider:Obstacle2 7FFFFE00 )
+    EndThread
+    Call ParentColliderToModel ( ~Collider:Obstacle3 ~Model:Asteroid3 )
+    Wait 45`
+    Thread
+        Call MakeLerp ( 0` 2500` 120` .Easing:Linear )
+            Loop
+                Call  UpdateLerp ( )
+                Call  TranslateModel ( ~Model:Asteroid3 00000000 00000000 *Var0 )
+                Call  UpdateColliderTransform ( ~Collider:Obstacle3 )
+                Wait  1`
+                If  *Var1  ==  00000000
+                    BreakLoop
+                EndIf
+            EndLoop
+        Call EnableModel ( ~Model:Asteroid3 .False )
+        Call  ModifyColliderFlags   ( 00000000 ~Collider:Obstacle3 7FFFFE00 )
+    EndThread
+    Wait 150`
+    ExecWait $Script_MissionComplete
+    Return
+    End
+}
+
+#new:Script $Script_SphereBlowUp1
+{
+    Call  ModifyColliderFlags   ( 00000000 ~Collider:Obstacle1 7FFFFE00 )
+    Call  PlaySoundAtModel ( ~Model:Asteroid1 .Sound:BombBlast 00000000 )
+    Call  GetModelCenter ( ~Model:Asteroid1 )
+    Call  PlayEffect ( ~FX:ShockWave:LargeWhite *Var0 *Var1 *Var2 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 )
+    Call  EnableModel ( ~Model:Asteroid1 .False )
+    Call  $Function_DamageShip (  )
+    Wait 1`
+    Exec  $Script_CheckDamage
+    Return
+    End
+}
+
+#new:Script $Script_SphereBlowUp2
+{
+    Call  ModifyColliderFlags   ( 00000000 ~Collider:Obstacle2 7FFFFE00 )
+    Call  PlaySoundAtModel ( ~Model:Asteroid2 .Sound:BombBlast 00000000 )
+    Call  GetModelCenter ( ~Model:Asteroid2 )
+    Call  PlayEffect ( ~FX:ShockWave:LargeWhite *Var0 *Var1 *Var2 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 )
+    Call  EnableModel ( ~Model:Asteroid2 .False )
+    Call  $Function_DamageShip (  )
+    Wait 1`
+    Exec  $Script_CheckDamage
+    Return
+    End
+}
+
+#new:Script $Script_SphereBlowUp3
+{
+    Call  ModifyColliderFlags   ( 00000000 ~Collider:Obstacle3 7FFFFE00 )
+    Call  PlaySoundAtModel ( ~Model:Asteroid3 .Sound:BombBlast 00000000 )
+    Call  GetModelCenter ( ~Model:Asteroid3 )
+    Call  PlayEffect ( ~FX:ShockWave:LargeWhite *Var0 *Var1 *Var2 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 )
+    Call  EnableModel ( ~Model:Asteroid3 .False )
+    Call  $Function_DamageShip (  )
+    Wait 1`
+    Exec  $Script_CheckDamage
+    Return
+    End
+}
+
+#new:Script $Script_CoinGet1
+{
+    Call  ModifyColliderFlags   ( 00000000 ~Collider:CoinCollider1 7FFFFE00 )
+    Call  PlaySoundAtModel ( ~Model:Coin1 00000211 00000000 )
+    Call  EnableModel ( ~Model:Coin1 .False )
+    Add *MB_SpaceCoins 1`
+    Return
+    End
+}
+
+#new:Script $Script_CoinGet2
+{
+    Call  ModifyColliderFlags   ( 00000000 ~Collider:CoinCollider2 7FFFFE00 )
+    Call  PlaySoundAtModel ( ~Model:Coin2 00000211 00000000 )
+    Call  EnableModel ( ~Model:Coin2 .False )
+    Add *MB_SpaceCoins 1`
+    Return
+    End
+}
+
+#new:Script $Script_CoinGet3
+{
+    Call  ModifyColliderFlags   ( 00000000 ~Collider:CoinCollider3 7FFFFE00 )
+    Call  PlaySoundAtModel ( ~Model:Coin3 00000211 00000000 )
+    Call  EnableModel ( ~Model:Coin3 .False )
+    Add *MB_SpaceCoins 1`
+    Return
+    End
+}
+
+#new:Script $Script_CheckDamage
+{
+    Set *MF_SpacePerfectBonus .False
+    Call $Function_GetArbitraryByte ( *Var0 8010F292 )
+    If *Var0 == 1`
+        Call DisablePlayerInput ( .True )
+        Set *MF_SpaceFailState .True
+        Call  ShowMessageAtScreenPos    ( 002F005D  160`  40` ) % We gotta get outta here!
+        Set *MB_SpaceCoins 0`
+        Set *MB_EnemiesDestroyed 0`
+        Call GotoMap ( "sar_00" ~Entry:sar_00:GameStart )
+    EndIf
+    Return
+    End
+}
+
+#new:Function $Function_DamageShip
+{
+    LA        v0, 8010F290 %Load Address of current HP
+    LBU       t0, 2 (v0) %Load value of the address, current HP
+    ADDIU     t0, t0, -1 %Subtract 1 from current HP, apply value to t0
+    ADDIU      t1, t0, -1 %Subtract 1 from t0, apply to t1
+    BLTZ      t1, .o31 %Jump to .031 if t1 is less than 0 (Does nothing if HP was 1)
+    NOP                 %Extra space so the if statement can work
+    SB        t0, 2 (v0) %Set the current HP value to t0
+    .o31 %Label!
+    JR RA
+    ORI v0, r0, 2
+}
+
+#new:Script $Script_MissionComplete
+{
+    If *MF_SpaceFailState == .True
+        Return
+    EndIf
+    Call DisablePlayerInput ( .True )
+    Call SetMessageValue ( *MB_SpaceCoins 00000000 )
+    Call SetMessageValue ( *MB_EnemiesDestroyed 00000001 )
+    Set *Var0 = ( *MB_SpaceCoins + *MB_EnemiesDestroyed )
+    If *MF_SpacePerfectBonus == .True
+        Call SetMessageValue ( 10` 00000002 )
+        Add *Var0 10`
+    Else
+        Call SetMessageValue ( 0` 00000002 )
+    EndIf
+    Set *Var1 *Var0
+    Call SetMessageValue ( *Var0 00000003 )
+    Call  ShowMessageAtScreenPos    ( 002F005E  160`  40` ) % Mission Complete!
+    Call  AddCoin ( *Var1 )
+    Wait 60`
+    Set *MB_SpaceCoins 0`
+    Set *MB_EnemiesDestroyed 0`
+    Call GotoMap ( "sar_00" ~Entry:sar_00:GameStart )
+    Return
+    End
+}
+/%
+#new:Function_Init $Function_Init {
+    PUSH    RA
+    %
+    % Override map geometry
+    %LIA       A0, 800D9230
+    % LIA       A1, "XXX_shape"
+    % JAL       800654F0
+    % RESERVED
+    % Override map collision
+    % LIA       A0, 800D91E0
+    % LIA       A1, "XXX_hit"
+    % JAL       800654F0
+    RESERVED
+    % %Override texture package
+    LIA        A0, 800B0CF0
+    LIA        A1, "ast_tex"
+    JAL        800654F0
+    RESERVED
+    % Done
+    DADDU    V0, R0, R0
+    JPOP    RA
+}

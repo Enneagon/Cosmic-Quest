@@ -1,0 +1,31 @@
+newmtl m_ast_coin
+Ka 1 1 1
+Kd 1 1 1
+Ks 1 1 1
+Ns 0
+map_Ka ast_coin.png
+map_Kd ast_coin.png
+
+newmtl m_ast_planetsurface3
+Ka 1 1 1
+Kd 1 1 1
+Ks 1 1 1
+Ns 0
+map_Ka ast_planetsurface3.png
+map_Kd ast_planetsurface3.png
+
+newmtl m_ast_shiptech8
+Ka 1 1 1
+Kd 1 1 1
+Ks 1 1 1
+Ns 0
+map_Ka ast_shiptech8.png
+map_Kd ast_shiptech8.png
+
+newmtl m_ast_sinistar
+Ka 1 1 1
+Kd 1 1 1
+Ks 1 1 1
+Ns 0
+map_Ka ast_sinistar.png
+map_Kd ast_sinistar.png

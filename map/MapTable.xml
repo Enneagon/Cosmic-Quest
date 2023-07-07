@@ -595,6 +595,11 @@
 	<Area name="enc" nickname="Encounters">
 		<Map name="enc_00" nickname="Chuck Quizmo"/>
 	</Area>
+	<Area name="ast" nickname="Asteroid Minigames">
+		<Map name="ast_00" nickname="Asteroids 1"/>
+		<Map name="ast_01" nickname="Enemy 1"/>
+		<Map name="ast_02" nickname="Sinistar"/>
+	</Area>
 	<Resource name="mac_tex" compressed="false"/>
 	<Resource name="tik_tex" compressed="false"/>
 	<Resource name="kgr_tex" compressed="false"/>
@@ -650,4 +655,5 @@
 	<Resource name="party_akari" compressed="true"/>
 	<Resource name="party_opuku" compressed="true"/>
 	<Resource name="party_pokopi" compressed="true"/>
+	<Resource name="ast_tex" nickname="Asteroids" compressed="false"/>
 </MapTable>

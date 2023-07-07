@@ -1,0 +1,47 @@
+tex: ast_coin
+{
+	img: ast_coin.png
+	{
+		format: CI-4
+		hwrap: clamp
+		vwrap: clamp
+	}
+	filter: yes
+	combine: 8
+}
+
+tex: ast_planetsurface3
+{
+	img: ast_planetsurface3.png
+	{
+		format: CI-4
+		hwrap: repeat
+		vwrap: repeat
+	}
+	filter: yes
+	combine: 8
+}
+
+tex: ast_shiptech8
+{
+	img: ast_shiptech8.png
+	{
+		format: CI-4
+		hwrap: repeat
+		vwrap: repeat
+	}
+	filter: yes
+	combine: 8
+}
+
+tex: ast_sinistar
+{
+	img: ast_sinistar.png
+	{
+		format: CI-4
+		hwrap: clamp
+		vwrap: clamp
+	}
+	filter: yes
+	combine: 8
+}

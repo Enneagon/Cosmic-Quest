@@ -53,7 +53,7 @@
   Exec  $Script_RemoveBadges
   Exec  $Script_RemovePartners
   Exec  $Script_TurnOffStuff
-  Call  GotoMapSpecial    ( "pro_00" ~Entry:pro_00:GameStart 00000007 ) % osr_00
+  Call  GotoMapSpecial    ( "sar_00" ~Entry:sar_00:GameStart 00000007 ) % osr_00
   604:  Return
   60C:  End
 }

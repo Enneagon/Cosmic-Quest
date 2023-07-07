@@ -1,4 +1,4 @@
-% Auto-generated script for pro_02
+% Auto-generated script for ast_00
 
 #new:Header $Header
 {
@@ -25,17 +25,6 @@
 	Exec  $Script_Main_Callback_AfterEnterMap
 	Return
 	End
-}
-
-#new:Function_Init $Function_Init
-{
-	PUSH    RA
-	LIA     A0, 800B0CF0
-	LIA     A1, "kmr_tex"
-	JAL     800654F0 % sprintf
-	RESERVED
-	CLEAR  V0
-	JPOP   RA
 }
 
 #new:Script $Script_SetupMusic

@@ -45,3 +45,5 @@
 02E = MB_Ship5FPComponent
 02F = MB_Ship5BPComponent
 030 = MB_Ship5BadgeComponent
+031 = MB_SpaceCoins
+032 = MB_EnemiesDestroyed
