@@ -150,7 +150,7 @@
     Call  ModifyColliderFlags   ( 00000000 ~Collider:Obstacle1 7FFFFE00 )
     Call  PlaySoundAtModel ( ~Model:Asteroid1 .Sound:BombBlast 00000000 )
     Call  GetModelCenter ( ~Model:Asteroid1 )
-    Call  PlayEffect ( ~FX:ShockWave:LargeWhite *Var0 *Var1 *Var2 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 )
+    Call  PlayEffect ( ~FX:Explosion3 *Var0 *Var1 *Var2 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 )
     Call  EnableModel ( ~Model:Asteroid1 .False )
     Call  $Function_DamageShip (  )
     Wait 1`
@@ -164,7 +164,7 @@
     Call  ModifyColliderFlags   ( 00000000 ~Collider:Obstacle2 7FFFFE00 )
     Call  PlaySoundAtModel ( ~Model:Asteroid2 .Sound:BombBlast 00000000 )
     Call  GetModelCenter ( ~Model:Asteroid2 )
-    Call  PlayEffect ( ~FX:ShockWave:LargeWhite *Var0 *Var1 *Var2 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 )
+    Call  PlayEffect ( ~FX:Explosion3 *Var0 *Var1 *Var2 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 )
     Call  EnableModel ( ~Model:Asteroid2 .False )
     Call  $Function_DamageShip (  )
     Wait 1`
@@ -178,7 +178,7 @@
     Call  ModifyColliderFlags   ( 00000000 ~Collider:Obstacle3 7FFFFE00 )
     Call  PlaySoundAtModel ( ~Model:Asteroid3 .Sound:BombBlast 00000000 )
     Call  GetModelCenter ( ~Model:Asteroid3 )
-    Call  PlayEffect ( ~FX:ShockWave:LargeWhite *Var0 *Var1 *Var2 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 )
+    Call  PlayEffect ( ~FX:Explosion3 *Var0 *Var1 *Var2 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 )
     Call  EnableModel ( ~Model:Asteroid3 .False )
     Call  $Function_DamageShip (  )
     Wait 1`

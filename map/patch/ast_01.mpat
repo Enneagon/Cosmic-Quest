@@ -345,11 +345,10 @@
     Set *MapFlag[1] .True
     Set *MapFlag[2] .False
     Call GetPlayerPos ( *Var0 *Var1 *Var2 )
-    Sub *Var2 15`  
-    Call TranslateModel ( ~Model:ShipBullet1 *Var0 *Var1 *Var2 )
+    Sub *Var2 15`
     Set *MapVar[0] *Var0
     Call EnableModel ( ~Model:ShipBullet1 .True )
-    Call MakeLerp ( *Var3 -1000` 30` .Easing:Linear )
+    Call MakeLerp ( *Var2 -1000` 30` .Easing:Linear )
             Loop
                 Call  UpdateLerp ( )
                 Call  TranslateModel ( ~Model:ShipBullet1 *MapVar[0] 00000000 *Var0 )
