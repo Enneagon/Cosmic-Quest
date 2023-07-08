@@ -580,6 +580,7 @@
 	</Area>
 	<Area name="sar" nickname="Sarasaland">
 		<Map name="sar_00" nickname="Hangar Mockup"/>
+		<Map name="sar_01" nickname="Launchpad"/>
 	</Area>
 	<Area name="sec" nickname="Sectors">
 		<Map name="sec_00" nickname="Mushroom Space"/>

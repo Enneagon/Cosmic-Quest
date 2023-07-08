@@ -59,6 +59,30 @@ tex: sta_ryusei_gou_btif
 	combine: 8
 }
 
+tex: sta_skystartif
+{
+	img: sta_skystartif.png
+	{
+		format: CI-4
+		hwrap: repeat
+		vwrap: repeat
+	}
+	filter: yes
+	combine: 8
+}
+
+tex: sta_star_objtif
+{
+	img: sta_star_objtif.png
+	{
+		format: CI-4
+		hwrap: clamp
+		vwrap: clamp
+	}
+	filter: yes
+	combine: 8
+}
+
 tex: sta_yellow_blocktif
 {
 	img: sta_yellow_blocktif.png

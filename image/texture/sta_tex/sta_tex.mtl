@@ -32,6 +32,22 @@ Ns 0
 map_Ka sta_plane_blocktif.png
 map_Kd sta_plane_blocktif.png
 
+newmtl m_sta_skystartif
+Ka 1 1 1
+Kd 1 1 1
+Ks 1 1 1
+Ns 0
+map_Ka sta_skystartif.png
+map_Kd sta_skystartif.png
+
+newmtl m_sta_star_objtif
+Ka 1 1 1
+Kd 1 1 1
+Ks 1 1 1
+Ns 0
+map_Ka sta_star_objtif.png
+map_Kd sta_star_objtif.png
+
 newmtl m_sta_ryusei_gou_btif
 Ka 1 1 1
 Kd 1 1 1

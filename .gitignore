@@ -30,6 +30,7 @@ mod.cfg
 !/image/bg/nok_bg.png
 !/image/bg/obk_bg.png
 !/image/bg/omo_bg.png
+!/image/bg/star_bg.png
 
 # Altered Music
 !/audio/bgm/01_118.bgm
@@ -46,6 +47,7 @@ mod.cfg
 !/audio/bgm/34_110.bgm
 !/audio/bgm/35_111.bgm
 !/audio/bgm/0E_187.bgm
+!/audio/bgm/39_113.bgm
 
 # Altered Textures
 !/image/texture/ast_tex.txa

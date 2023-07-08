@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Map name="sar_00" author="unnamed" textures="sta_tex">
 	<Editor>
-		<Camera pos="-554.730835,93.560265,-150.000000" pitch="6.000000" yaw="90.000000"/>
-		<Camera pos="-170.120911,65536.000000,36.886497"/>
+		<Camera pos="-325.340607,126.866257,-525.063904" pitch="17.999996" yaw="138.319824"/>
+		<Camera pos="-424.306610,65536.000000,-299.693146"/>
 		<Camera pos="65536.000000,213.152817,-97.891968"/>
-		<Camera pos="-93.300110,-41.077988,65536.000000"/>
+		<Camera pos="-421.769958,-2.445205,65536.000000"/>
 	</Editor>
 	<ModelTree>
-		<Node name="Root" id="26">
+		<Node name="Root" id="27">
 			<Node name="Stage" id="0"/>
 			<Node name="Rocket1" id="6">
 				<Node name="Rocket1" id="1"/>
@@ -51,6 +51,7 @@
 			</Node>
 			<Node name="OutsideWalls" id="24"/>
 			<Node name="OutsideFloor" id="25"/>
+			<Node name="Blocker" id="26"/>
 		</Node>
 	</ModelTree>
 	<ColliderTree>
@@ -112,9 +113,35 @@
 	</LightSets>
 	<Models>
 		<Model ver="2" type="ROOT" lightset="0">
-			<MapObject name="Root" id="26"/>
-			<BoundingBox empty="false" min="-540,0,-540" max="300,120,300"/>
+			<MapObject name="Root" id="27"/>
+			<BoundingBox empty="false" min="-620,0,-540" max="300,200,300"/>
 			<PropertyList>
+			</PropertyList>
+		</Model>
+		<Model ver="2" type="MODEL" lightset="0">
+			<MapObject name="Blocker" id="26"/>
+			<ShapeMesh ver="3" texture="sta_star_objtif">
+				<DisplayList>
+					<F3DEX2 cmd="E7000000,0"/>
+					<F3DEX2 cmd="D9FDFFFF,0"/>
+					<F3DEX2 cmd="D9FFFFFF,200400"/>
+					<TriangleBatch ver="0">
+						<VertexTable>
+							<Vertex xyz="-620,200,-300" uv="490,1144"/>
+							<Vertex xyz="-420,0,-300" uv="1514,120"/>
+							<Vertex xyz="-620,0,-300" uv="490,120"/>
+							<Vertex xyz="-420,200,-300" uv="1514,1144"/>
+						</VertexTable>
+						<TriangleList>
+							<Triangle ijk="0,1,2"/>
+							<Triangle ijk="1,0,3"/>
+						</TriangleList>
+					</TriangleBatch>
+				</DisplayList>
+			</ShapeMesh>
+			<PropertyList>
+				<Property v="5C,0,1"/>
+				<Property v="5F,0,0"/>
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
@@ -196,7 +223,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="Split Model" id="22" hidden="true"/>
+			<MapObject name="Split Model" id="22"/>
 			<ShapeMesh ver="3" texture="sta_shiptech1">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -4155,7 +4182,7 @@
 		</Generators>
 		<Camera vfov="25" near="16" far="4096" bgcolor="0,0,0" leadsPlayer="false"/>
 		<Fog world="0,10,10,10,255,950,1000" entity="0,10,10,10,255,950,1000"/>
-		<Options location="1F" hasMusic="false" hasSounds="false" sounds="1" hasShading="false" shadingName="None"/>
+		<Options location="1F" hasMusic="true" song="1A" hasSounds="false" sounds="1" hasShading="false" shadingName="None"/>
 		<Override tex="true"/>
 	</ScriptData>
 </Map>

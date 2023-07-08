@@ -14,6 +14,30 @@ Ns 0
 map_Ka ast_planetsurface3.png
 map_Kd ast_planetsurface3.png
 
+newmtl m_ast_shiptech4
+Ka 1 1 1
+Kd 1 1 1
+Ks 1 1 1
+Ns 0
+map_Ka ast_shiptech4.png
+map_Kd ast_shiptech4.png
+
+newmtl m_ast_shiptech6
+Ka 1 1 1
+Kd 1 1 1
+Ks 1 1 1
+Ns 0
+map_Ka ast_shiptech6.png
+map_Kd ast_shiptech6.png
+
+newmtl m_ast_shiptech7
+Ka 1 1 1
+Kd 1 1 1
+Ks 1 1 1
+Ns 0
+map_Ka ast_shiptech7.png
+map_Kd ast_shiptech7.png
+
 newmtl m_ast_shiptech8
 Ka 1 1 1
 Kd 1 1 1
@@ -22,6 +46,22 @@ Ns 0
 map_Ka ast_shiptech8.png
 map_Kd ast_shiptech8.png
 
+newmtl m_ast_shiptech10
+Ka 1 1 1
+Kd 1 1 1
+Ks 1 1 1
+Ns 0
+map_Ka ast_shiptech10.png
+map_Kd ast_shiptech10.png
+
+newmtl m_ast_shiptube
+Ka 1 1 1
+Kd 1 1 1
+Ks 1 1 1
+Ns 0
+map_Ka ast_shiptube.png
+map_Kd ast_shiptube.png
+
 newmtl m_ast_sinistar
 Ka 1 1 1
 Kd 1 1 1
@@ -29,3 +69,20 @@ Ks 1 1 1
 Ns 0
 map_Ka ast_sinistar.png
 map_Kd ast_sinistar.png
+
+
+newmtl m_ast_iseki_floortif
+Ka 1 1 1
+Kd 1 1 1
+Ks 1 1 1
+Ns 0
+map_Ka ast_iseki_floortif.png
+map_Kd ast_iseki_floortif.png
+
+newmtl m_ast_suna3tif
+Ka 1 1 1
+Kd 1 1 1
+Ks 1 1 1
+Ns 0
+map_Ka ast_suna3tif.png
+map_Kd ast_suna3tif.png

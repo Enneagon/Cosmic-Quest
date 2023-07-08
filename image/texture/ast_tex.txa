@@ -22,6 +22,42 @@ tex: ast_planetsurface3
 	combine: 8
 }
 
+tex: ast_shiptech4
+{
+	img: ast_shiptech4.png
+	{
+		format: CI-4
+		hwrap: repeat
+		vwrap: repeat
+	}
+	filter: yes
+	combine: 8
+}
+
+tex: ast_shiptech6
+{
+	img: ast_shiptech6.png
+	{
+		format: CI-4
+		hwrap: repeat
+		vwrap: repeat
+	}
+	filter: yes
+	combine: 8
+}
+
+tex: ast_shiptech7
+{
+	img: ast_shiptech7.png
+	{
+		format: CI-4
+		hwrap: repeat
+		vwrap: repeat
+	}
+	filter: yes
+	combine: 8
+}
+
 tex: ast_shiptech8
 {
 	img: ast_shiptech8.png
@@ -34,6 +70,30 @@ tex: ast_shiptech8
 	combine: 8
 }
 
+tex: ast_shiptech10
+{
+	img: ast_shiptech10.png
+	{
+		format: CI-4
+		hwrap: repeat
+		vwrap: repeat
+	}
+	filter: yes
+	combine: 8
+}
+
+tex: ast_shiptube
+{
+	img: ast_shiptube.png
+	{
+		format: CI-4
+		hwrap: repeat
+		vwrap: mirror
+	}
+	filter: yes
+	combine: 8
+}
+
 tex: ast_sinistar
 {
 	img: ast_sinistar.png
@@ -41,6 +101,31 @@ tex: ast_sinistar
 		format: CI-4
 		hwrap: clamp
 		vwrap: clamp
+	}
+	filter: yes
+	combine: 8
+}
+
+
+tex: ast_iseki_floortif
+{
+	img: ast_iseki_floortif.png
+	{
+		format: CI-4
+		hwrap: repeat
+		vwrap: repeat
+	}
+	filter: yes
+	combine: 8
+}
+
+tex: ast_suna3tif
+{
+	img: ast_suna3tif.png
+	{
+		format: CI-4
+		hwrap: repeat
+		vwrap: repeat
 	}
 	filter: yes
 	combine: 8
