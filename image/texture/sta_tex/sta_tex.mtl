@@ -1,0 +1,49 @@
+newmtl m_sta_shiptech1
+Ka 1 1 1
+Kd 1 1 1
+Ks 1 1 1
+Ns 0
+map_Ka sta_shiptech1.png
+map_Kd sta_shiptech1.png
+
+newmtl m_sta_shiptech5
+Ka 1 1 1
+Kd 1 1 1
+Ks 1 1 1
+Ns 0
+map_Ka sta_shiptech5.png
+map_Kd sta_shiptech5.png
+
+
+
+newmtl m_sta_checktif
+Ka 1 1 1
+Kd 1 1 1
+Ks 1 1 1
+Ns 0
+map_Ka sta_checktif.png
+map_Kd sta_checktif.png
+
+newmtl m_sta_plane_blocktif
+Ka 1 1 1
+Kd 1 1 1
+Ks 1 1 1
+Ns 0
+map_Ka sta_plane_blocktif.png
+map_Kd sta_plane_blocktif.png
+
+newmtl m_sta_ryusei_gou_btif
+Ka 1 1 1
+Kd 1 1 1
+Ks 1 1 1
+Ns 0
+map_Ka sta_ryusei_gou_btif.png
+map_Kd sta_ryusei_gou_btif.png
+
+newmtl m_sta_yellow_blocktif
+Ka 1 1 1
+Kd 1 1 1
+Ks 1 1 1
+Ns 0
+map_Ka sta_yellow_blocktif.png
+map_Kd sta_yellow_blocktif.png

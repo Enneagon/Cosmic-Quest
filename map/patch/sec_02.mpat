@@ -743,8 +743,8 @@
     Label 0
     Add *Var0 1`
     Wait 1
-    If *Var0 == 6`
-        Set *Var0 0`
+    If *Var0 >= 6`
+        Set *Var0 1`
     EndIf
     Wait 1`
     Switch *Var0
@@ -789,8 +789,8 @@
     Label 1
     Add *Var0 1`
     Wait 1
-    If *Var0 == 6`
-        Set *Var0 0`
+    If *Var0 >= 6`
+        Set *Var0 1`
     EndIf
     Wait 1
     Switch *Var0

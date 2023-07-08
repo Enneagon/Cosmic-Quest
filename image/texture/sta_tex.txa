@@ -1,0 +1,72 @@
+tex: sta_shiptech1
+{
+	img: sta_shiptech1.png
+	{
+		format: CI-4
+		hwrap: repeat
+		vwrap: repeat
+	}
+	filter: yes
+	combine: 8
+}
+
+tex: sta_shiptech5
+{
+	img: sta_shiptech5.png
+	{
+		format: CI-4
+		hwrap: repeat
+		vwrap: repeat
+	}
+	filter: yes
+	combine: 8
+}
+
+
+tex: sta_checktif
+{
+	img: sta_checktif.png
+	{
+		format: CI-4
+		hwrap: repeat
+		vwrap: repeat
+	}
+	filter: yes
+	combine: 8
+}
+
+tex: sta_plane_blocktif
+{
+	img: sta_plane_blocktif.png
+	{
+		format: CI-4
+		hwrap: repeat
+		vwrap: repeat
+	}
+	filter: yes
+	combine: 8
+}
+
+tex: sta_ryusei_gou_btif
+{
+	img: sta_ryusei_gou_btif.png
+	{
+		format: CI-4
+		hwrap: repeat
+		vwrap: repeat
+	}
+	filter: yes
+	combine: 8
+}
+
+tex: sta_yellow_blocktif
+{
+	img: sta_yellow_blocktif.png
+	{
+		format: CI-4
+		hwrap: repeat
+		vwrap: clamp
+	}
+	filter: yes
+	combine: 8
+}

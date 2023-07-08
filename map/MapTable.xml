@@ -657,4 +657,5 @@
 	<Resource name="party_opuku" compressed="true"/>
 	<Resource name="party_pokopi" compressed="true"/>
 	<Resource name="ast_tex" nickname="Asteroids" compressed="false"/>
+	<Resource name="sta_tex" nickname="Stations/Hangar" compressed="false"/>
 </MapTable>

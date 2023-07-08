@@ -40,6 +40,24 @@
 #new:Script $Script_BindStuff
 {
     Bind $Script_ChooseShip1 .Trigger:WallPressA ~Collider:Ship1Collider 00000001 00000000
+    Bind $Script_WallsOff .Trigger:FloorAbove ~Collider:OuterWallsOff 00000001 00000000
+    Bind $Script_WallsOn .Trigger:FloorAbove ~Collider:OuterWallsOn 00000001 00000000
+    Return
+    End
+}
+
+#new:Script $Script_WallsOff
+{
+    Call EnableModel ( ~Model:OutsideWalls .False )
+    Call EnableModel ( ~Model:OutsideFloor .False )
+    Return
+    End
+}
+
+#new:Script $Script_WallsOn
+{
+    Call EnableModel ( ~Model:OutsideWalls .True )
+    Call EnableModel ( ~Model:OutsideFloor .True )
     Return
     End
 }
@@ -144,10 +162,28 @@
     Call  SpeakToPlayer ( .Npc:Self 00010001 00010001 00000000 002F0055 ) % String
     Call  ShowChoice ( 002F0001 )
     If *Var0 == 00000000
+        Call DisablePlayerInput ( .True )
         Call CloseMessage ()
-        Set *MF_NewSector .True
-        Set *MB_CurrentNode 0`
-        Call GotoMapSpecial ( "sec_00" ~Entry:sec_00:SectorStart 0000000D )
+        Call UseSettingsFrom ( .Cam:Default 0` -100` 0` )
+        Call  PanToTarget       ( .Cam:Default 00000000 00000001 )
+        Wait 60`
+        Call PlaySoundAtModel ( ~Model:OutDoor .Sound:MetalDoorOpen 00000000 )
+        Call MakeLerp ( 0` -110` 60` .Easing:CosInOut )
+            Loop
+                Call  UpdateLerp ( )
+                Call  TranslateModel ( ~Model:OutDoor *Var0 00000000 1` )
+                Wait  1`
+                If  *Var1  ==  00000000
+                    BreakLoop
+                EndIf
+            EndLoop
+        Wait 45`
+        Call GetPlayerPos ( *Var0 *Var1 *Var2 )
+        Call ResetCam ( .Cam:Default 5` )
+        Wait 30`
+        Call  SetNpcPos ( .Npc:Self 0` -100` 0` )
+        Call  ModifyColliderFlags   ( 00000000 ~Collider:DoorCollider 7FFFFE00 )
+        Call DisablePlayerInput ( .False )
     Else
         Call CloseMessage ()
     EndIf
@@ -204,7 +240,9 @@
 #new:Script $Script_ChooseShip1
 {
     If *MB_CurrentShip != 0`
+        Call  DisablePlayerInput ( .True )
         Call  ShowMessageAtScreenPos    ( 002F005C  160`  40` ) % Choose Cruiser?
+        Call  DisablePlayerInput ( .False )
         Return
     EndIf
     Call  DisablePlayerInput ( .True )
@@ -780,6 +818,18 @@
         Call ShowMessageAtScreenPos    ( 002F0051  160`  40` ) % Done
     EndIf
     Call DisablePlayerInput ( .False )
+    Return
+    End
+}
+
+@ $Script_ToLaunchpad {
+    SetGroup 0000001B
+    Set *MF_NewSector .True
+    Set *MB_CurrentNode 0`
+    Call     UseExitHeading ( 60` ~Entry:Exit )
+    Exec     ExitWalk
+    Call GotoMapSpecial ( "sec_00" ~Entry:sec_00:SectorStart 0000000D )
+    Wait  100`
     Return
     End
 }

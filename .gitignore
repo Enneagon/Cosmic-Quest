@@ -50,3 +50,5 @@ mod.cfg
 # Altered Textures
 !/image/texture/ast_tex.txa
 !/image/texture/ast_tex/*.*
+!/image/texture/sta_tex.txa
+!/image/texture/sta_tex/*.*
