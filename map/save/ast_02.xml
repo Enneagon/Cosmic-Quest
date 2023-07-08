@@ -927,7 +927,7 @@
 		</Generators>
 		<Camera vfov="25" near="16" far="4096" bgcolor="0,0,0" leadsPlayer="false"/>
 		<Fog world="0,10,10,10,255,950,1000" entity="0,10,10,10,255,950,1000"/>
-		<Options callbacks="AfterEnter" location="1F" hasMusic="true" song="4" hasSounds="false" sounds="1" hasShading="false" shadingName="None"/>
+		<Options callbacks="AfterEnter" location="1F" hasMusic="true" song="5" hasSounds="false" sounds="1" hasShading="false" shadingName="None"/>
 		<Override tex="true"/>
 	</ScriptData>
 </Map>

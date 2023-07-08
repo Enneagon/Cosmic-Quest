@@ -1,5 +1,7 @@
 <Song id="03" BGM="bgm/01_118.bgm"/> <!-- SpecialBattle / Boss 01 --> 
 <Song id="04" BGM="bgm/0D_184.bgm"/> <!-- JrTroopaBattle / Boss 02 -->
+<Song id="05" BGM="bgm/0E_187.bgm"/> <!-- FinalBowserBattle / CornBoss -->
+
 <Song id="11" BGM="bgm/30_103.bgm"/> <!-- PleasantPath / Eladard -->
 <Song id="12" BGM="bgm/31_105.bgm"/> <!-- FuzzyAttack / FoxTrot -->
 <Song id="13" BGM="bgm/32_106.bgm"/> <!-- KoopaVillage / Map Screen -->
@@ -9,3 +11,5 @@
 <Song id="87" BGM="bgm/10_135.bgm"/> <!-- GameOver / Hurricane -->
 <Song id="02" BGM="bgm/00_117.bgm"/> <!-- NormalBattle / CTBattle -->
 <Song id="17" BGM="bgm/37_202.bgm"/> <!-- DryDryDesert / CTFairground -->
+<Song id="18" BGM="bgm/34_110.bgm"/> <!-- DryDryRuins / Meteo -->
+<Song id="19" BGM="bgm/35_111.bgm"/> <!-- RuinsBasement / SF Main Theme -->

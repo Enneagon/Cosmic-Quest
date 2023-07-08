@@ -43,7 +43,7 @@
 }
 
 @ $Script_Main_Callback_AfterEnterMap {
-    Loop 100`
+    Loop 1000`
         Wait 120`
         Call RandInt ( 99` *Var0 )
         Add *Var0 1`

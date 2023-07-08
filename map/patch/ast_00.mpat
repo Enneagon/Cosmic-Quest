@@ -273,26 +273,3 @@
     Return
     End
 }
-/%
-#new:Function_Init $Function_Init {
-    PUSH    RA
-    %
-    % Override map geometry
-    %LIA       A0, 800D9230
-    % LIA       A1, "XXX_shape"
-    % JAL       800654F0
-    % RESERVED
-    % Override map collision
-    % LIA       A0, 800D91E0
-    % LIA       A1, "XXX_hit"
-    % JAL       800654F0
-    RESERVED
-    % %Override texture package
-    LIA        A0, 800B0CF0
-    LIA        A1, "ast_tex"
-    JAL        800654F0
-    RESERVED
-    % Done
-    DADDU    V0, R0, R0
-    JPOP    RA
-}
