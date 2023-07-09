@@ -1,0 +1,64 @@
+#new:Function $SetMaxHPByDifficulty
+{
+	PUSH 	RA, S0, S1
+	LW		S0, C (A0) %get args ptr from script context
+	LW  	A1, 0 (S0) %get first arg
+	JAL 	~Func:get_variable %in case a variable was passed to us, get its value out
+	COPY	 S1, A0		%save script context ptr for later
+	COPY 	S0, V0 	%result in V0 - store it
+	JAL 	80269D6C		%~Func:get_actor
+	LW 		A0, 148 (A0)  %we just need the actor handle from the script context now
+	%V0 now has actor pointer!
+	COPY 	S1, V0			%put actor pointer in S1 now
+	LB		A0, 1B8 (S1)	
+	SB		S0, 1B9 (S1)	%store val to max HP
+	SB		S0, 1B8 (S1)	%store val to current HP
+	POP		RA, S0, S1
+	JR		RA
+	ADDIU	V0, R0, 2	%required for fns from scripts.
+}
+
+#export $SetMaxHPByDifficulty
+
+%now for the function that intercepts values from our handy-dandy attack table!
+
+
+% we want to pull out starting from EnemyDamageTarget (8027CCB4)+94 
+%8027CCB4 + 94 = 8027CD48
+%8027CD48 - 800D1720 = 1AB628
+@Hook 1AB628
+{
+%result of the getvariable is in V0. if this is of the form 8000####, we process it further, otherwise we let it slide.
+%safe vars to use = V0, A0, A1
+%be ready to PUSH ANYTHING ELSE!
+	PUSH    A2
+    LUI 	A1, FFFF
+	AND		A1, V0, A1
+	LUI		A0, 8000
+	BNE		A1, A0, .done
+	NOP
+	%fall-through to this point indicates table lookup
+    LAB     A0, 800DBD72    % Get the value of that gamebyte, Total Difficulty
+	ANDI	V0, V0, FFFF	%clear upper half of word - what's left is table row index
+	SLL		A2, V0, 3		%2*2*2 - row size is 8 bytes
+    SLL     V0, V0, 1       %*2 - row size is 2 bytes
+    ADDU    V0, V0, A2      % Add 2 rows to 8 rows
+	ADDU	V0, V0, A0		%add Total Difficulty value
+	LTB		V0, V0 ($AttackValues)	%get table byte
+    POP     A2
+	.done
+	%if we got here normally the only thing that has changed is A0
+	SH			V0, 17E (S1)	%in original code - eaten by hook
+	J 			8027CD50		% 8027CCB4+9C
+	LW			A1, 0 (S0)		%in original code
+}
+
+#new:Data $AttackValues
+{
+1b 1b 2b 2b 2b 3b 3b 3b 3b 4b % .DMG_Mole_Rock
+2b 3b 3b 4b 4b 4b 5b 5b 5b 6b % .DMG_Mole_Spikes
+}
+
+#export $AttackValues
+#export .DMG_Mole_Rock 80000000
+#export .DMG_Mole_Spikes 80000001

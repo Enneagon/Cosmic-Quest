@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Map name="enc_00" author="unnamed" background="kmr_bg" textures="kmr_tex">
 	<Editor>
-		<Camera pos="27.271984,97.042862,110.302383" pitch="13.757219" yaw="354.720215"/>
+		<Camera pos="-80.251877,52.044693,38.044205" pitch="24.637209" yaw="344.320099"/>
 		<Camera pos="0.000000,65536.000000,0.000000"/>
 		<Camera pos="65536.000000,-50.000000,0.000000"/>
 		<Camera pos="-162.478088,143.304718,65536.000000"/>
@@ -60,12 +60,13 @@
 		</Node>
 	</ZoneTree>
 	<MarkerTree>
-		<Node name="Root" id="3">
+		<Node name="Root" id="4">
 			<Node name="Entrances" id="0">
 				<Node name="EncounterStart" id="FFFFFFFF"/>
 			</Node>
 			<Node name="ChuckQuizmo_10" id="1"/>
 			<Node name="Test" id="2"/>
+			<Node name="Mole" id="3"/>
 		</Node>
 	</MarkerTree>
 	<LightSets>
@@ -897,7 +898,12 @@
 	</Zones>
 	<Markers>
 		<Marker ver="4" type="Root">
-			<MapObject name="Root" id="3"/>
+			<MapObject name="Root" id="4"/>
+		</Marker>
+		<Marker ver="4" type="NPC" pos="-100,0,0" yaw="0.000000">
+			<MapObject name="Mole" id="3"/>
+			<Movement type="Stationary" data="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
+			<Sprite sprite="2F" palette="0" animations="2,3,4,4,0,0,0,0,0,0,0,0,0,0,0,0"/>
 		</Marker>
 		<Marker ver="4" type="NPC" pos="100,0,0" yaw="0.000000">
 			<MapObject name="Test" id="2"/>

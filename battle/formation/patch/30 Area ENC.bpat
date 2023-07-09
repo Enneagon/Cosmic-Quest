@@ -1,0 +1,67 @@
+#import newenemy/MantleMole.bpat
+
+#new:FormationTable $FormationTable
+{
+	00000000 00000002 $Formation_00 $Stage_8021F90C 00000000
+	00000000 00000000 00000000 00000000 00000000
+}
+
+#new:Formation $Formation_00
+{
+	$MantleMole 00000001 0000000A 00000000 00000000 00000000 00000000
+	$MantleMole 00000002 00000009 00000000 00000000 00000000 00000000
+}
+
+#new:StageTable $StageTable
+{
+	$ASCII_80220150 $Stage_8021F90C
+	00000000 00000000
+}
+
+#new:ASCII $ASCII_80220150
+{
+	"sbk_01"
+}
+
+#new:Stage $Stage_8021F90C
+{
+	$ASCII_80220028  % sbk_tex
+	$ASCII_80220018  % sbk_bt02_shape
+	$ASCII_80220008  % sbk_bt02_hit
+	00000000
+	00000000
+	$ASCII_80220000  % sbk_bg
+	$ForegroundModelList_8021F8F8
+	00000000
+	00000000
+	00000000
+}
+
+#new:ASCII $ASCII_80220000
+{
+	"sbk_bg"
+}
+
+#new:ASCII $ASCII_80220008
+{
+	"sbk_bt02_hit"
+}
+
+#new:ASCII $ASCII_80220018
+{
+	"sbk_bt02_shape"
+}
+
+#new:ASCII $ASCII_80220028
+{
+	"sbk_tex"
+}
+
+#new:ForegroundModelList $ForegroundModelList_8021F8F8
+{
+	~Model:sbk_bt02:o322
+	~Model:sbk_bt02:o321
+	~Model:sbk_bt02:o320
+	~Model:sbk_bt02:o319
+	00000000
+}

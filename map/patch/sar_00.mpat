@@ -828,7 +828,7 @@
     Set *MB_CurrentNode 0`
     Call     UseExitHeading ( 60` ~Entry:Exit )
     Exec     ExitWalk
-    Call GotoMapSpecial ( "sec_00" ~Entry:sec_00:SectorStart 0000000D )
+    Call GotoMapSpecial ( "sar_01" ~Entry:sar_01:Entry 0000000D )
     Wait  100`
     Return
     End

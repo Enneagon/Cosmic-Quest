@@ -47,3 +47,5 @@
 030 = MB_Ship5BadgeComponent
 031 = MB_SpaceCoins
 032 = MB_EnemiesDestroyed
+033 = MB_DifficultyLevel
+034 = MB_TotalDifficulty

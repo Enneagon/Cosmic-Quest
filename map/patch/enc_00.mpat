@@ -19,7 +19,8 @@
 #new:NpcGroupList $NpcGroupList_Chuck
 {
 	00000001 $NpcGroup_Chuck 00000000
-    00000001 $NpcGroup_Test 00000000
+    00000001 $NpcGroup_Test 30000000
+    00000001 $NpcGroup_Mole 30000000
     00000000 00000000 00000000
 }
 
@@ -30,6 +31,16 @@
 	~NoDrops
 	~Movement:Test
 	~AnimationTable:Test
+	00000000 00000000 00000000 001A0066 % Tattle ID
+}
+
+#new:NpcGroup $NpcGroup_Mole
+{
+	.NpcID:Test $NpcSettings_Standard ~Vec3f:Mole
+	00002C01 $Script_Init_Mole 00000000 00000000 00000000
+	~NoDrops
+	~Movement:Mole
+	~AnimationTable:Mole
 	00000000 00000000 00000000 001A0066 % Tattle ID
 }
 
@@ -48,7 +59,9 @@
 
 #new:Script $Script_Interact_Test
 {
-  Call  SpeakToPlayer ( .Npc:Self 00010004 00010001 00000000 002F0052 ) % String
+  Set *MB_DifficultyLevel 2`
+  Set *Debug[0] *MB_DifficultyLevel
+     Call  SpeakToPlayer ( .Npc:Self 00010004 00010001 00000000 002F0052 ) % String
   Call  $Function_80241E90    ( 00000001 00000001 ) % Get Goombario
   Set   *GB_StoryProgress  .Story:Ch0_GoombarioJoinedParty
   Call  EnablePartnerAI ( )
@@ -163,9 +176,35 @@
   180:  ADDIU     SP, SP, 28
 }
 
+#new:Script $Script_Init_Mole
+{
+   14:  Call  BindNpcInteract   ( .Npc:Self $Script_Interact_Mole )
+   Call  BindNpcDefeat     ( .Npc:Self $Script_Defeat_Mole )
+        Return
+   1C:  End
+}
 
+#new:Script $Script_Interact_Mole
+{
+     Call  SpeakToPlayer ( .Npc:Self 00010004 00010001 00000000 002F0052 ) % String
+     Call StartBossBattle ( .Song:NormalBattle )
+  Return
+  End
+}
 
-
+#new:Script $Script_Defeat_Mole
+{
+    0:  Call  GetBattleOutcome  ( *Var0 )
+   10:  Switch  *Var0
+   1C:  	Case  ==  .Outcome:PlayerWon % 0
+        	     Call  SetMusicTrack ( 00000000 .Song:WhaleTheme 00000000 00000008 )
+               Call  DoNpcDefeat ( )
+   5C:  	Case  ==  .Outcome:PlayerLost % 1
+   7C:  	Case  ==  .Outcome:PlayerFled % 2
+   9C:  EndSwitch
+   A4:  Return
+   AC:  End
+}
 
 
 
@@ -215,7 +254,11 @@
 
 #new:Script $Script_802468F8
 {
-    Set *Debug[0] 1`
+     Call $WriteAddress ( 800DBD72 0 2` 0 .False ) % Difficulty
+     Call $Function_GetArbitraryByte ( *Var0 800DBD72 )
+     Set *Debug[1] *Var0
+     Set *MB_DifficultyLevel 2`
+     Set *Debug[0] *MB_DifficultyLevel
    5C:  If  *GB_CompletedQuizzes  ==  0000003F
    6C:  	Call  SpeakToPlayer ( .Npc:Self 00AF0004 00AF0001 00000000 0008000A ) % Kaaaa-wiiiizzz! It's everyone's favorite quizmaste ...
    8C:  Else

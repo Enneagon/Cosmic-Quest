@@ -29,8 +29,8 @@
 
 % Mantle Mole Stats
 #define .HP:MantleMole 3`b
-#define .Damage:Rock 1`
-#define .Damage:SpikeBall 3`
+% .DMG_Mole_Rock % 1-3
+% .DMG_Mole_Spikes % 2-5
 
 #new:Actor $MantleMole
 {
@@ -214,6 +214,8 @@ $EmptyMoleHole $Vector3D_80226FB8_27 00000000 00000001 00000000 00000000 0000000
 
 #new:Script $Script_Init_MantleMole 
 {
+    Set *Var0 = ( *MB_DifficultyLevel + *MB_SectorsCompleted + 3` ) % Add to Minimum HP
+    Call  $SetMaxHPByDifficulty ( *Var0 ) % Dynamically sets HP
     Call  BindTakeTurn      ( .Actor:Self $Script_TakeTurn_MantleMole )
     Call  BindIdle  ( .Actor:Self $Script_Idle_MantleMole )
     Call  BindHandleEvent   ( .Actor:Self $Script_HandleEvent_MantleMole )
@@ -439,14 +441,14 @@ $EmptyMoleHole $Vector3D_80226FB8_27 00000000 00000001 00000000 00000000 0000000
     Wait  2`
         Switch *Var3
         Case == 00000005
-            Call  EnemyDamageTarget ( .Actor:Self *Var0 ~Flags:DamageType:NoContact 00000000 00000000 .Damage:SpikeBall 00000020 )
+            Call  EnemyDamageTarget ( .Actor:Self *Var0 ~Flags:DamageType:NoContact 00000000 00000000 .DMG_Mole_Spikes 00000020 )
         Case == 00000004
             Call  SetPartFlagBits   ( .Actor:Self *Var3 00000001 .True )
             Call  PlaySoundAtPart      ( .Actor:Self 00000003 0000025C )
             Call $Function_SetHP (  )
             Call  FXRecoverHP   ( *Var0 *Var1 *Var2 2` ) %display amount to heal hp (heals 5 currently)
         Default
-            Call  EnemyDamageTarget ( .Actor:Self *Var0 ~Flags:DamageType:NoContact 00000000 00000000 .Damage:Rock 00000020 )
+            Call  EnemyDamageTarget ( .Actor:Self *Var0 ~Flags:DamageType:NoContact 00000000 00000000 .DMG_Mole_Rock 00000020 )
         EndSwitch
     Switch  *Var0 
         CaseOR  ==  .HitResult:Hit % 0

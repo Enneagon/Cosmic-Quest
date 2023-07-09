@@ -357,7 +357,6 @@
                     BreakLoop
                 EndIf
                 If  *MapFlag[2]  ==  .True
-                    Call  TranslateModel ( ~Model:ShipBullet1 00000000 00000000 00000000 )
                     Set *MapFlag[2] .False
                     BreakLoop
                 EndIf
