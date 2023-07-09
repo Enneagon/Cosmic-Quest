@@ -25,12 +25,14 @@
     [StatusIcon]   10`b  20`b % dx dy
     }
     
-    #new:DefenseTable $DefenseTable_MantleMole{
+    #new:DefenseTable $DefenseTable_MantleMole
+    {
     .Element:Normal 00000000
     .Element:End
     }
     
-    #new:StatusTable $StatusTable_MantleMole{
+    #new:StatusTable $StatusTable_MantleMole
+    {
     .Status:Normal      0`
     .Status:Default     0`
     .Status:Sleep      90`
@@ -55,12 +57,13 @@
     .Status:End
     }
     
-    #new:PartsTable $PartsTable_MantleMole{
-    00020000 01000000 FE1000FF $IdleAnimations_80226E9C_27 $DefenseTable_MantleMole00000000 00000000 00F90000 00000000 
-    80800001 020000F1 FE0C00FF $IdleAnimations_80226E9C_27 $DefenseTable_MantleMole00000000 00000000 00F90000 00000000 
-    00120001 03000000 000000FF $IdleAnimations_80226EE8_27 $DefenseTable_MantleMole00000000 00000000 00000000 00000000 
-    00120001 04000000 000000FF $IdleAnimations_Shroom $DefenseTable_MantleMole00000000 00000000 00000000 00000000 
-    00120001 05000000 000000FF $IdleAnimations_Spikeball $DefenseTable_MantleMole00000000 00000000 00000000 00000000 
+    #new:PartsTable $PartsTable_MantleMole
+    {
+    00020000 01000000 FE1000FF $IdleAnimations_80226E9C_27 $DefenseTable_MantleMole 00000000 00000000 00F90000 00000000 
+    80800001 020000F1 FE0C00FF $IdleAnimations_80226E9C_27 $DefenseTable_MantleMole 00000000 00000000 00F90000 00000000 
+    00120001 03000000 000000FF $IdleAnimations_80226EE8_27 $DefenseTable_MantleMole 00000000 00000000 00000000 00000000 
+    00120001 04000000 000000FF $IdleAnimations_Shroom $DefenseTable_MantleMole 00000000 00000000 00000000 00000000 
+    00120001 05000000 000000FF $IdleAnimations_Spikeball $DefenseTable_MantleMole 00000000 00000000 00000000 00000000 
     }
     
     #new:IdleAnimations $IdleAnimations_80226E9C_27 {
@@ -164,21 +167,24 @@
        AC:  End
     }
     
-    #new:Script $Script_Init_MantleMole{
-        0:  Call  BindTakeTurn      ( .Actor:Self $Script_TakeTurn_MantleMole)
-       14:  Call  BindIdle  ( .Actor:Self $Script_Idle_MantleMole)
-       28:  Call  BindHandleEvent   ( .Actor:Self $Script_HandleEvent_MantleMole)
+    #new:Script $Script_Init_MantleMole
+    {
+        0:  Call  BindTakeTurn      ( .Actor:Self $Script_TakeTurn_MantleMole )
+       14:  Call  BindIdle  ( .Actor:Self $Script_Idle_MantleMole )
+       28:  Call  BindHandleEvent   ( .Actor:Self $Script_HandleEvent_MantleMole )
        3C:  Call  SetActorFlagBits  ( .Actor:Self 00000004 .True )
        54:  Return
        5C:  End
     }
     
-    #new:Script $Script_Idle_MantleMole{
+    #new:Script $Script_Idle_MantleMole
+    {
         0:  Return
         8:  End
     }
     
-    #new:Script $Script_HandleEvent_MantleMole{
+    #new:Script $Script_HandleEvent_MantleMole
+    {
         0:  Call  UseIdleAnimation  ( .Actor:Self .False )
        14:  Call  EnableIdleScript  ( .Actor:Self 00000000 )
        28:  Call  GetLastElement    ( *VarE )
@@ -306,7 +312,8 @@
       780:  End
     }
     
-    #new:Script $Script_TakeTurn_MantleMole{
+    #new:Script $Script_TakeTurn_MantleMole
+    {
         0:  Call  UseIdleAnimation  ( .Actor:Self .False )
        14:  Call  EnableIdleScript  ( .Actor:Self 00000000 )
        28:  Call  SetTargetActor    ( .Actor:Self .Actor:Player )
