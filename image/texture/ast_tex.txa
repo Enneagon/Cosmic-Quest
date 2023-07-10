@@ -22,6 +22,18 @@ tex: ast_planetsurface3
 	combine: 8
 }
 
+tex: ast_rainbow
+{
+	img: ast_rainbow.png
+	{
+		format: CI-4
+		hwrap: repeat
+		vwrap: repeat
+	}
+	filter: yes
+	combine: 8
+}
+
 tex: ast_shiptech4
 {
 	img: ast_shiptech4.png
