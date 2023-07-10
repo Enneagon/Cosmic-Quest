@@ -606,3 +606,22 @@
 	Total: [Var 3]
 	[Wait][End]
 }
+
+#message:2F:05F
+{
+	[Style Right]I'm Test T., the friendly debug[BR]
+	Toad![BR]
+	What would you like to unlock?
+	[Yield][End]
+}
+
+#message:2F:060
+{
+	[Style Choice pos=40,90 size=185,78]
+	[StartChoice]
+	[Option 0]All ships, plz![BR]
+	[Option 1]All achieves, plz![BR]
+	[Option 2]All unlocks, plz![BR]
+	[Option 3]No thanks[BR]
+	[EndChoice cancel=3][End]
+}

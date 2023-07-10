@@ -2,6 +2,7 @@
 #define .NpcID:Merlon      02
 #define .NpcID:Daisy       03
 #define .NpcID:ChetRippo   04
+#define .NpcID:TestT       05
 
 @ $Script_Main {
     Set   *GB_WorldLocation  .Location:GoombaRoad
@@ -11,7 +12,7 @@
     Call  SetCamLeadPlayer   ( .Cam:Default .False )
     Exec  $Script_SetupMusic
     Call  $Function_LuckyStar (  )
-%    Call  $Function_GetHammer (  )
+    Call  $Function_GetHammer (  )
 %    Call  AddCoin ( 50` )
     Set  *GB_StoryProgress  .Story:Ch0_FoundHammer
     Exec  $Script_BindStuff
@@ -31,7 +32,7 @@
 
 #new:Function $Function_GetHammer
 {
-    LI        V0, 3
+    LI        V0, 0
     SAB       V0, 8010F291
     JR        RA
     LI        V0, 2
@@ -39,7 +40,27 @@
 
 #new:Script $Script_BindStuff
 {
+    Call EnableGroup ( ~Model:UnlockedShips .False )
     Bind $Script_ChooseShip1 .Trigger:WallPressA ~Collider:Ship1Collider 00000001 00000000
+    If *MF_Ship2Unlocked == .True
+        Call EnableModel ( ~Model:ShipQuestion2 .False )
+        Call EnableGroup ( ~Model:Rocket2 .True )
+        Bind $Script_ChooseShip2 .Trigger:WallPressA ~Collider:Ship2Collider 00000001 00000000
+    EndIf
+    If *MF_Ship3Unlocked == .True
+        Call EnableModel ( ~Model:ShipQuestion3 .False )
+        Bind $Script_ChooseShip3 .Trigger:WallPressA ~Collider:Ship3Collider 00000001 00000000
+    EndIf
+    If *MF_Ship4Unlocked == .True
+        Call EnableModel ( ~Model:ShipQuestion4 .False )
+        Call EnableGroup ( ~Model:Rocket4 .True )
+        Bind $Script_ChooseShip4 .Trigger:WallPressA ~Collider:Ship4Collider 00000001 00000000
+    EndIf
+    If *MF_Ship5Unlocked == .True
+        Call EnableModel ( ~Model:ShipQuestion5 .False )
+        Call EnableGroup ( ~Model:Rocket5 .True )
+        Bind $Script_ChooseShip5 .Trigger:WallPressA ~Collider:Ship5Collider 00000001 00000000
+    EndIf
     Bind $Script_WallsOff .Trigger:FloorAbove ~Collider:OuterWallsOff 00000001 00000000
     Bind $Script_WallsOn .Trigger:FloorAbove ~Collider:OuterWallsOn 00000001 00000000
     Return
@@ -65,6 +86,7 @@
 #new:Script $Script_MakeNPCs
 {
     Call  MakeNpcs  ( .False $NpcGroupList_Always )
+    Call  MakeNpcs  ( .False $NpcGroupList_Debug )
     Return
     End
 }
@@ -72,6 +94,12 @@
 #new:NpcGroupList $NpcGroupList_Always
 {
 	00000004 $NpcGroup_Always 00000000
+    00000000 00000000 00000000
+}
+
+#new:NpcGroupList $NpcGroupList_Debug
+{
+	00000001 $NpcGroup_Debug 00000000
     00000000 00000000 00000000
 }
 
@@ -103,6 +131,16 @@
 	~NoDrops
 	~Movement:ChetRippo
 	~AnimationTable:ChetRippo
+	00000000 00000000 00000000 001A0066 % Tattle ID
+}
+
+#new:NpcGroup $NpcGroup_Debug
+{
+	.NpcID:TestT $NpcSettings_Standard ~Vec3f:TestT
+	00000001 $Script_Init_TestT 00000000 00000000 00000000
+	~NoDrops
+	~Movement:TestT
+	~AnimationTable:TestT
 	00000000 00000000 00000000 001A0066 % Tattle ID
 }
 
@@ -138,6 +176,31 @@
    14:  Call  BindNpcInteract   ( .Npc:Self $Script_Interact_ChetRippo )
         Return
    1C:  End
+}
+
+#new:Script $Script_Init_TestT
+{
+   14:  Call  BindNpcInteract   ( .Npc:Self $Script_Interact_TestT )
+        Return
+   1C:  End
+}
+
+#new:Script $Script_Interact_TestT
+{
+  Call  SpeakToPlayer ( .Npc:Self 00830204 00830201 00000000 002F005F ) % String
+  Call  ShowChoice ( 002F0060 )
+  Switch *Var0 
+  Case == 00000000
+    Set *MF_Ship2Unlocked .True
+    Set *MF_Ship3Unlocked .True
+    Set *MF_Ship4Unlocked .True
+    Set *MF_Ship5Unlocked .True
+  Case == 00000001
+  Case == 00000002
+  EndSwitch
+  Call CloseMessage ()
+  Return
+  End
 }
 
 #new:Script $Script_Interact_Astro
@@ -412,6 +475,770 @@
                 If *MB_BadgeComponents >= 1`
                     Call  CloseMessage ()
                     Set *MB_Ship1BadgeComponent 2`
+                    Sub *MB_BadgeComponents 1`
+                    Call ShowMessageAtScreenPos    ( 002F0039  160`  40` ) % Added HP Component
+                Else
+                    Call  CloseMessage ()
+                    Call ShowMessageAtScreenPos    ( 002F003B  160`  40` ) % No Component
+                EndIf
+            EndSwitch
+        Default
+            Call  CloseMessage ()
+        EndSwitch
+    EndSwitch
+    Call  DisablePlayerInput ( .False )
+    Return
+    End
+}
+
+#new:Script $Script_ChooseShip2
+{
+    If *MB_CurrentShip != 0`
+        Call  DisablePlayerInput ( .True )
+        Call  ShowMessageAtScreenPos    ( 002F005C  160`  40` ) % Already Chose
+        Call  DisablePlayerInput ( .False )
+        Return
+    EndIf
+    Call  DisablePlayerInput ( .True )
+    Set *Var6 0`
+    Switch *MB_Ship2HPComponent
+    Case == 2`
+        Set *Var7 25`
+        Set *Var1 002F0031
+        Add *Var6 1`
+    Case == 1`
+        Set *Var7 20`
+        Set *Var1 002F005A
+    Case == 0`
+        Set *Var7 20`
+        Set *Var1 002F0030
+    EndSwitch
+    Call SetMessageValue ( *Var7 00000000 )
+    Switch *MB_Ship2FPComponent
+    Case == 2`
+        Set *Var4 5`
+        Set *Var2 002F0031
+        Add *Var6 1`
+    Case == 1`
+        Set *Var4 0`
+        Set *Var2 002F005A
+    Case == 0`
+        Set *Var4 0`
+        Set *Var2 002F0030
+    EndSwitch
+    Call SetMessageValue ( *Var4 00000001 )
+    Switch *MB_Ship2BPComponent
+    Case == 2`
+        Set *Var5 3`
+        Set *Var3 002F0031
+        Add *Var6 1`
+    Case == 1`
+        Set *Var5 0`
+        Set *Var3 002F005A
+    Case == 0`
+        Set *Var5 0`
+        Set *Var3 002F0030
+    EndSwitch
+    Call SetMessageValue ( *Var5 00000002 )
+    Call  ShowMessageAtScreenPos    ( 002F0027  160`  40` ) % Choose Cruiser?
+    Call  ShowChoice ( 002F002E )
+    Switch *Var0
+    Case == 00000000
+        Call  CloseMessage ()
+        Set *MB_CurrentShip 2`
+        If *MB_Ship2BadgeComponent == 2`
+            Add *Var6 1`
+        EndIf
+        Exec $Script_AddStats
+        Call EnableGroup ( ~Model:BadgeQuestionGroup .False )
+        Call  MakeItemEntity    ( .Item:DamageDodgeA ~Vec3d:Badge1 .ItemSpawnMode:Decoration 00000000 )
+        Set *MapVar[0] *Var0
+        Bind $Script_ChooseBadge1 .Trigger:WallPressA ~Collider:Badge1Collider 00000001 00000000
+        Call  MakeItemEntity    ( .Item:HappyHeartA ~Vec3d:Badge2 .ItemSpawnMode:Decoration 00000000 )
+        Set *MapVar[1] *Var0
+        Bind $Script_ChooseBadge2 .Trigger:WallPressA ~Collider:Badge2Collider 00000001 00000000
+        Call  MakeItemEntity    ( .Item:SpikeShield ~Vec3d:Badge3 .ItemSpawnMode:Decoration 00000000 )
+        Set *MapVar[2] *Var0
+        Bind $Script_ChooseBadge3 .Trigger:WallPressA ~Collider:Badge3Collider 00000001 00000000
+        Call  MakeItemEntity    ( .Item:ZapTap ~Vec3d:Badge4 .ItemSpawnMode:Decoration 00000000 )
+        Set *MapVar[3] *Var0
+        Bind $Script_ChooseBadge4 .Trigger:WallPressA ~Collider:Badge4Collider 00000001 00000000
+        If *MB_Ship2BadgeComponent == 2`
+            Call  ShowMessageAtScreenPos    ( 002F002C  160`  40` ) % Choose Cruiser?
+            Set *MB_StartingBadgesNumber 3`
+        Else
+            Call  ShowMessageAtScreenPos    ( 002F002B  160`  40` ) % Choose Cruiser?
+            Set *MB_StartingBadgesNumber 2`
+        EndIf
+    Case == 00000001
+        Call  CloseMessage ()
+    Case == 00000002
+        Call  CloseMessage ()
+        Switch *MB_Ship2BadgeComponent
+        Case == 2`
+            Set *Var4 002F0031
+        Case == 1`
+            Set *Var4 002F005A
+        Case == 0`
+            Set *Var4 002F0030
+        EndSwitch
+        Call  SetMessageString ( *Var1 00000000 )
+        Call  SetMessageString ( *Var2 00000001 )
+        Call  SetMessageString ( *Var3 00000002 )
+        Call  SetMessageString ( *Var4 00000003 )
+        Call  ShowMessageAtScreenPos    ( 002F002F  160`  40` ) % Modify Cruiser?
+        Call  ShowChoice ( 002F0032 )
+        Switch *Var0
+        Case == 00000000
+            Switch *MB_Ship2HPComponent
+            Case == 2`
+                Call  CloseMessage ()
+                Set *MB_Ship2HPComponent 1`
+                Call  ShowMessageAtScreenPos    ( 002F0034  160`  40` ) % Removed HP Component
+            Case == 1`
+                Call  CloseMessage ()
+                Set *MB_Ship2HPComponent 2`
+                Call ShowMessageAtScreenPos    ( 002F0033  160`  40` ) % Added HP Component
+            Case == 0`
+                If *MB_HPComponents >= 1`
+                    Call  CloseMessage ()
+                    Set *MB_Ship2HPComponent 2`
+                    Sub *MB_HPComponents 1`
+                    Call ShowMessageAtScreenPos    ( 002F0033  160`  40` ) % Added HP Component
+                Else
+                    Call  CloseMessage ()
+                    Call ShowMessageAtScreenPos    ( 002F003B  160`  40` ) % No Component
+                EndIf
+            EndSwitch
+        Case == 00000001
+            Switch *MB_Ship2FPComponent
+            Case == 2`
+                Call  CloseMessage ()
+                Set *MB_Ship2FPComponent 1`
+                Call  ShowMessageAtScreenPos    ( 002F0036  160`  40` ) % Removed FP Component
+            Case == 1`
+                Call  CloseMessage ()
+                Set *MB_Ship2FPComponent 2`
+                Call ShowMessageAtScreenPos    ( 002F0035  160`  40` ) % Added FP Component
+            Case == 0`
+                If *MB_FPComponents >= 1`
+                    Call  CloseMessage ()
+                    Set *MB_Ship2FPComponent 2`
+                    Sub *MB_FPComponents 1`
+                    Call ShowMessageAtScreenPos    ( 002F0035  160`  40` ) % Added FP Component
+                Else
+                    Call  CloseMessage ()
+                    Call ShowMessageAtScreenPos    ( 002F003B  160`  40` ) % No Component
+                EndIf
+            EndSwitch
+        Case == 00000002
+            Switch *MB_Ship2BPComponent
+            Case == 2`
+                Call  CloseMessage ()
+                Set *MB_Ship2BPComponent 1`
+                Call  ShowMessageAtScreenPos    ( 002F0038  160`  40` ) % Removed HP Component
+            Case == 1`
+                Call  CloseMessage ()
+                Set *MB_Ship2BPComponent 2`
+                Call ShowMessageAtScreenPos    ( 002F0037  160`  40` ) % Added HP Component
+            Case == 0`
+                If *MB_BPComponents >= 1`
+                    Call  CloseMessage ()
+                    Set *MB_Ship2BPComponent 2`
+                    Sub *MB_BPComponents 1`
+                    Call ShowMessageAtScreenPos    ( 002F0037  160`  40` ) % Added HP Component
+                Else
+                    Call  CloseMessage ()
+                    Call ShowMessageAtScreenPos    ( 002F003B  160`  40` ) % No Component
+                EndIf
+            EndSwitch
+        Case == 00000003
+            Switch *MB_Ship2BadgeComponent
+            Case == 2`
+                Call  CloseMessage ()
+                Set *MB_Ship2BadgeComponent 1`
+                Call  ShowMessageAtScreenPos    ( 002F003A  160`  40` ) % Removed HP Component
+            Case == 1`
+                Call  CloseMessage ()
+                Set *MB_Ship2BadgeComponent 2`
+                Call ShowMessageAtScreenPos    ( 002F0039  160`  40` ) % Added HP Component
+            Case == 0`
+                If *MB_BadgeComponents >= 1`
+                    Call  CloseMessage ()
+                    Set *MB_Ship2BadgeComponent 2`
+                    Sub *MB_BadgeComponents 1`
+                    Call ShowMessageAtScreenPos    ( 002F0039  160`  40` ) % Added HP Component
+                Else
+                    Call  CloseMessage ()
+                    Call ShowMessageAtScreenPos    ( 002F003B  160`  40` ) % No Component
+                EndIf
+            EndSwitch
+        Default
+            Call  CloseMessage ()
+        EndSwitch
+    EndSwitch
+    Call  DisablePlayerInput ( .False )
+    Return
+    End
+}
+
+#new:Script $Script_ChooseShip3
+{
+    If *MB_CurrentShip != 0`
+        Call  DisablePlayerInput ( .True )
+        Call  ShowMessageAtScreenPos    ( 002F005C  160`  40` ) % Already Chose
+        Call  DisablePlayerInput ( .False )
+        Return
+    EndIf
+    Call  DisablePlayerInput ( .True )
+    Set *Var6 0`
+    Switch *MB_Ship3HPComponent
+    Case == 2`
+        Set *Var7 5`
+        Set *Var1 002F0031
+        Add *Var6 1`
+    Case == 1`
+        Set *Var7 0`
+        Set *Var1 002F005A
+    Case == 0`
+        Set *Var7 0`
+        Set *Var1 002F0030
+    EndSwitch
+    Call SetMessageValue ( *Var7 00000000 )
+    Switch *MB_Ship3FPComponent
+    Case == 2`
+        Set *Var4 10`
+        Set *Var2 002F0031
+        Add *Var6 1`
+    Case == 1`
+        Set *Var4 5`
+        Set *Var2 002F005A
+    Case == 0`
+        Set *Var4 5`
+        Set *Var2 002F0030
+    EndSwitch
+    Call SetMessageValue ( *Var4 00000001 )
+    Switch *MB_Ship3BPComponent
+    Case == 2`
+        Set *Var5 12`
+        Set *Var3 002F0031
+        Add *Var6 1`
+    Case == 1`
+        Set *Var5 9`
+        Set *Var3 002F005A
+    Case == 0`
+        Set *Var5 9`
+        Set *Var3 002F0030
+    EndSwitch
+    Call SetMessageValue ( *Var5 00000002 )
+    Call  ShowMessageAtScreenPos    ( 002F0028  160`  40` ) % Choose Cruiser?
+    Call  ShowChoice ( 002F002E )
+    Switch *Var0
+    Case == 00000000
+        Call  CloseMessage ()
+        Set *MB_CurrentShip 3`
+        If *MB_Ship3BadgeComponent == 2`
+            Add *Var6 1`
+        EndIf
+        Exec $Script_AddStats
+        Call EnableGroup ( ~Model:BadgeQuestionGroup .False )
+        Call  MakeItemEntity    ( .Item:PowerRush ~Vec3d:Badge1 .ItemSpawnMode:Decoration 00000000 )
+        Set *MapVar[0] *Var0
+        Bind $Script_ChooseBadge1 .Trigger:WallPressA ~Collider:Badge1Collider 00000001 00000000
+        Call  MakeItemEntity    ( .Item:PowerQuake ~Vec3d:Badge2 .ItemSpawnMode:Decoration 00000000 )
+        Set *MapVar[1] *Var0
+        Bind $Script_ChooseBadge2 .Trigger:WallPressA ~Collider:Badge2Collider 00000001 00000000
+        Call  MakeItemEntity    ( .Item:PowerPlusA ~Vec3d:Badge3 .ItemSpawnMode:Decoration 00000000 )
+        Set *MapVar[2] *Var0
+        Bind $Script_ChooseBadge3 .Trigger:WallPressA ~Collider:Badge3Collider 00000001 00000000
+        Call  MakeItemEntity    ( .Item:PowerBounce ~Vec3d:Badge4 .ItemSpawnMode:Decoration 00000000 )
+        Set *MapVar[3] *Var0
+        Bind $Script_ChooseBadge4 .Trigger:WallPressA ~Collider:Badge4Collider 00000001 00000000
+        If *MB_Ship3BadgeComponent == 2`
+            Call  ShowMessageAtScreenPos    ( 002F002C  160`  40` ) % Choose Cruiser?
+            Set *MB_StartingBadgesNumber 3`
+        Else
+            Call  ShowMessageAtScreenPos    ( 002F002B  160`  40` ) % Choose Cruiser?
+            Set *MB_StartingBadgesNumber 2`
+        EndIf
+    Case == 00000001
+        Call  CloseMessage ()
+    Case == 00000002
+        Call  CloseMessage ()
+        Switch *MB_Ship3BadgeComponent
+        Case == 2`
+            Set *Var4 002F0031
+        Case == 1`
+            Set *Var4 002F005A
+        Case == 0`
+            Set *Var4 002F0030
+        EndSwitch
+        Call  SetMessageString ( *Var1 00000000 )
+        Call  SetMessageString ( *Var2 00000001 )
+        Call  SetMessageString ( *Var3 00000002 )
+        Call  SetMessageString ( *Var4 00000003 )
+        Call  ShowMessageAtScreenPos    ( 002F002F  160`  40` ) % Modify Cruiser?
+        Call  ShowChoice ( 002F0032 )
+        Switch *Var0
+        Case == 00000000
+            Switch *MB_Ship3HPComponent
+            Case == 2`
+                Call  CloseMessage ()
+                Set *MB_Ship3HPComponent 1`
+                Call  ShowMessageAtScreenPos    ( 002F0034  160`  40` ) % Removed HP Component
+            Case == 1`
+                Call  CloseMessage ()
+                Set *MB_Ship3HPComponent 2`
+                Call ShowMessageAtScreenPos    ( 002F0033  160`  40` ) % Added HP Component
+            Case == 0`
+                If *MB_HPComponents >= 1`
+                    Call  CloseMessage ()
+                    Set *MB_Ship3HPComponent 2`
+                    Sub *MB_HPComponents 1`
+                    Call ShowMessageAtScreenPos    ( 002F0033  160`  40` ) % Added HP Component
+                Else
+                    Call  CloseMessage ()
+                    Call ShowMessageAtScreenPos    ( 002F003B  160`  40` ) % No Component
+                EndIf
+            EndSwitch
+        Case == 00000001
+            Switch *MB_Ship3FPComponent
+            Case == 2`
+                Call  CloseMessage ()
+                Set *MB_Ship3FPComponent 1`
+                Call  ShowMessageAtScreenPos    ( 002F0036  160`  40` ) % Removed FP Component
+            Case == 1`
+                Call  CloseMessage ()
+                Set *MB_Ship3FPComponent 2`
+                Call ShowMessageAtScreenPos    ( 002F0035  160`  40` ) % Added FP Component
+            Case == 0`
+                If *MB_FPComponents >= 1`
+                    Call  CloseMessage ()
+                    Set *MB_Ship3FPComponent 2`
+                    Sub *MB_FPComponents 1`
+                    Call ShowMessageAtScreenPos    ( 002F0035  160`  40` ) % Added FP Component
+                Else
+                    Call  CloseMessage ()
+                    Call ShowMessageAtScreenPos    ( 002F003B  160`  40` ) % No Component
+                EndIf
+            EndSwitch
+        Case == 00000002
+            Switch *MB_Ship3BPComponent
+            Case == 2`
+                Call  CloseMessage ()
+                Set *MB_Ship3BPComponent 1`
+                Call  ShowMessageAtScreenPos    ( 002F0038  160`  40` ) % Removed HP Component
+            Case == 1`
+                Call  CloseMessage ()
+                Set *MB_Ship3BPComponent 2`
+                Call ShowMessageAtScreenPos    ( 002F0037  160`  40` ) % Added HP Component
+            Case == 0`
+                If *MB_BPComponents >= 1`
+                    Call  CloseMessage ()
+                    Set *MB_Ship3BPComponent 2`
+                    Sub *MB_BPComponents 1`
+                    Call ShowMessageAtScreenPos    ( 002F0037  160`  40` ) % Added HP Component
+                Else
+                    Call  CloseMessage ()
+                    Call ShowMessageAtScreenPos    ( 002F003B  160`  40` ) % No Component
+                EndIf
+            EndSwitch
+        Case == 00000003
+            Switch *MB_Ship3BadgeComponent
+            Case == 2`
+                Call  CloseMessage ()
+                Set *MB_Ship3BadgeComponent 1`
+                Call  ShowMessageAtScreenPos    ( 002F003A  160`  40` ) % Removed HP Component
+            Case == 1`
+                Call  CloseMessage ()
+                Set *MB_Ship3BadgeComponent 2`
+                Call ShowMessageAtScreenPos    ( 002F0039  160`  40` ) % Added HP Component
+            Case == 0`
+                If *MB_BadgeComponents >= 1`
+                    Call  CloseMessage ()
+                    Set *MB_Ship3BadgeComponent 2`
+                    Sub *MB_BadgeComponents 1`
+                    Call ShowMessageAtScreenPos    ( 002F0039  160`  40` ) % Added HP Component
+                Else
+                    Call  CloseMessage ()
+                    Call ShowMessageAtScreenPos    ( 002F003B  160`  40` ) % No Component
+                EndIf
+            EndSwitch
+        Default
+            Call  CloseMessage ()
+        EndSwitch
+    EndSwitch
+    Call  DisablePlayerInput ( .False )
+    Return
+    End
+}
+
+#new:Script $Script_ChooseShip4
+{
+    If *MB_CurrentShip != 0`
+        Call  DisablePlayerInput ( .True )
+        Call  ShowMessageAtScreenPos    ( 002F005C  160`  40` ) % Already Chose
+        Call  DisablePlayerInput ( .False )
+        Return
+    EndIf
+    Call  DisablePlayerInput ( .True )
+    Set *Var6 0`
+    Switch *MB_Ship4HPComponent
+    Case == 2`
+        Set *Var7 10`
+        Set *Var1 002F0031
+        Add *Var6 1`
+    Case == 1`
+        Set *Var7 5`
+        Set *Var1 002F005A
+    Case == 0`
+        Set *Var7 5`
+        Set *Var1 002F0030
+    EndSwitch
+    Call SetMessageValue ( *Var7 00000000 )
+    Switch *MB_Ship4FPComponent
+    Case == 2`
+        Set *Var4 15`
+        Set *Var2 002F0031
+        Add *Var6 1`
+    Case == 1`
+        Set *Var4 10`
+        Set *Var2 002F005A
+    Case == 0`
+        Set *Var4 10`
+        Set *Var2 002F0030
+    EndSwitch
+    Call SetMessageValue ( *Var4 00000001 )
+    Switch *MB_Ship4BPComponent
+    Case == 2`
+        Set *Var5 6`
+        Set *Var3 002F0031
+        Add *Var6 1`
+    Case == 1`
+        Set *Var5 3`
+        Set *Var3 002F005A
+    Case == 0`
+        Set *Var5 3`
+        Set *Var3 002F0030
+    EndSwitch
+    Call SetMessageValue ( *Var5 00000002 )
+    Call  ShowMessageAtScreenPos    ( 002F0029  160`  40` ) % Choose Cruiser?
+    Call  ShowChoice ( 002F002E )
+    Switch *Var0
+    Case == 00000000
+        Call  CloseMessage ()
+        Set *MB_CurrentShip 4`
+        If *MB_Ship4BadgeComponent == 2`
+            Add *Var6 1`
+        EndIf
+        Exec $Script_AddStats
+        Call EnableGroup ( ~Model:BadgeQuestionGroup .False )
+        Call  MakeItemEntity    ( .Item:IcePower ~Vec3d:Badge1 .ItemSpawnMode:Decoration 00000000 )
+        Set *MapVar[0] *Var0
+        Bind $Script_ChooseBadge1 .Trigger:WallPressA ~Collider:Badge1Collider 00000001 00000000
+        Call  MakeItemEntity    ( .Item:MoneyMoney ~Vec3d:Badge2 .ItemSpawnMode:Decoration 00000000 )
+        Set *MapVar[1] *Var0
+        Bind $Script_ChooseBadge2 .Trigger:WallPressA ~Collider:Badge2Collider 00000001 00000000
+        Call  MakeItemEntity    ( .Item:PrettyLucky ~Vec3d:Badge3 .ItemSpawnMode:Decoration 00000000 )
+        Set *MapVar[2] *Var0
+        Bind $Script_ChooseBadge3 .Trigger:WallPressA ~Collider:Badge3Collider 00000001 00000000
+        Call  MakeItemEntity    ( .Item:SleepStomp ~Vec3d:Badge4 .ItemSpawnMode:Decoration 00000000 )
+        Set *MapVar[3] *Var0
+        Bind $Script_ChooseBadge4 .Trigger:WallPressA ~Collider:Badge4Collider 00000001 00000000
+        If *MB_Ship4BadgeComponent == 2`
+            Call  ShowMessageAtScreenPos    ( 002F002C  160`  40` ) % Choose Cruiser?
+            Set *MB_StartingBadgesNumber 3`
+        Else
+            Call  ShowMessageAtScreenPos    ( 002F002B  160`  40` ) % Choose Cruiser?
+            Set *MB_StartingBadgesNumber 2`
+        EndIf
+    Case == 00000001
+        Call  CloseMessage ()
+    Case == 00000002
+        Call  CloseMessage ()
+        Switch *MB_Ship4BadgeComponent
+        Case == 2`
+            Set *Var4 002F0031
+        Case == 1`
+            Set *Var4 002F005A
+        Case == 0`
+            Set *Var4 002F0030
+        EndSwitch
+        Call  SetMessageString ( *Var1 00000000 )
+        Call  SetMessageString ( *Var2 00000001 )
+        Call  SetMessageString ( *Var3 00000002 )
+        Call  SetMessageString ( *Var4 00000003 )
+        Call  ShowMessageAtScreenPos    ( 002F002F  160`  40` ) % Modify Cruiser?
+        Call  ShowChoice ( 002F0032 )
+        Switch *Var0
+        Case == 00000000
+            Switch *MB_Ship4HPComponent
+            Case == 2`
+                Call  CloseMessage ()
+                Set *MB_Ship4HPComponent 1`
+                Call  ShowMessageAtScreenPos    ( 002F0034  160`  40` ) % Removed HP Component
+            Case == 1`
+                Call  CloseMessage ()
+                Set *MB_Ship4HPComponent 2`
+                Call ShowMessageAtScreenPos    ( 002F0033  160`  40` ) % Added HP Component
+            Case == 0`
+                If *MB_HPComponents >= 1`
+                    Call  CloseMessage ()
+                    Set *MB_Ship4HPComponent 2`
+                    Sub *MB_HPComponents 1`
+                    Call ShowMessageAtScreenPos    ( 002F0033  160`  40` ) % Added HP Component
+                Else
+                    Call  CloseMessage ()
+                    Call ShowMessageAtScreenPos    ( 002F003B  160`  40` ) % No Component
+                EndIf
+            EndSwitch
+        Case == 00000001
+            Switch *MB_Ship4FPComponent
+            Case == 2`
+                Call  CloseMessage ()
+                Set *MB_Ship4FPComponent 1`
+                Call  ShowMessageAtScreenPos    ( 002F0036  160`  40` ) % Removed FP Component
+            Case == 1`
+                Call  CloseMessage ()
+                Set *MB_Ship4FPComponent 2`
+                Call ShowMessageAtScreenPos    ( 002F0035  160`  40` ) % Added FP Component
+            Case == 0`
+                If *MB_FPComponents >= 1`
+                    Call  CloseMessage ()
+                    Set *MB_Ship4FPComponent 2`
+                    Sub *MB_FPComponents 1`
+                    Call ShowMessageAtScreenPos    ( 002F0035  160`  40` ) % Added FP Component
+                Else
+                    Call  CloseMessage ()
+                    Call ShowMessageAtScreenPos    ( 002F003B  160`  40` ) % No Component
+                EndIf
+            EndSwitch
+        Case == 00000002
+            Switch *MB_Ship4BPComponent
+            Case == 2`
+                Call  CloseMessage ()
+                Set *MB_Ship4BPComponent 1`
+                Call  ShowMessageAtScreenPos    ( 002F0038  160`  40` ) % Removed HP Component
+            Case == 1`
+                Call  CloseMessage ()
+                Set *MB_Ship4BPComponent 2`
+                Call ShowMessageAtScreenPos    ( 002F0037  160`  40` ) % Added HP Component
+            Case == 0`
+                If *MB_BPComponents >= 1`
+                    Call  CloseMessage ()
+                    Set *MB_Ship4BPComponent 2`
+                    Sub *MB_BPComponents 1`
+                    Call ShowMessageAtScreenPos    ( 002F0037  160`  40` ) % Added HP Component
+                Else
+                    Call  CloseMessage ()
+                    Call ShowMessageAtScreenPos    ( 002F003B  160`  40` ) % No Component
+                EndIf
+            EndSwitch
+        Case == 00000003
+            Switch *MB_Ship4BadgeComponent
+            Case == 2`
+                Call  CloseMessage ()
+                Set *MB_Ship4BadgeComponent 1`
+                Call  ShowMessageAtScreenPos    ( 002F003A  160`  40` ) % Removed HP Component
+            Case == 1`
+                Call  CloseMessage ()
+                Set *MB_Ship4BadgeComponent 2`
+                Call ShowMessageAtScreenPos    ( 002F0039  160`  40` ) % Added HP Component
+            Case == 0`
+                If *MB_BadgeComponents >= 1`
+                    Call  CloseMessage ()
+                    Set *MB_Ship4BadgeComponent 2`
+                    Sub *MB_BadgeComponents 1`
+                    Call ShowMessageAtScreenPos    ( 002F0039  160`  40` ) % Added HP Component
+                Else
+                    Call  CloseMessage ()
+                    Call ShowMessageAtScreenPos    ( 002F003B  160`  40` ) % No Component
+                EndIf
+            EndSwitch
+        Default
+            Call  CloseMessage ()
+        EndSwitch
+    EndSwitch
+    Call  DisablePlayerInput ( .False )
+    Return
+    End
+}
+
+#new:Script $Script_ChooseShip5
+{
+    If *MB_CurrentShip != 0`
+        Call  DisablePlayerInput ( .True )
+        Call  ShowMessageAtScreenPos    ( 002F005C  160`  40` ) % Already Chose
+        Call  DisablePlayerInput ( .False )
+        Return
+    EndIf
+    Call  DisablePlayerInput ( .True )
+    Set *Var6 0`
+    Switch *MB_Ship5HPComponent
+    Case == 2`
+        Set *Var7 5`
+        Set *Var1 002F0031
+        Add *Var6 1`
+    Case == 1`
+        Set *Var7 0`
+        Set *Var1 002F005A
+    Case == 0`
+        Set *Var7 0`
+        Set *Var1 002F0030
+    EndSwitch
+    Call SetMessageValue ( *Var7 00000000 )
+    Switch *MB_Ship5FPComponent
+    Case == 2`
+        Set *Var4 20`
+        Set *Var2 002F0031
+        Add *Var6 1`
+    Case == 1`
+        Set *Var4 15`
+        Set *Var2 002F005A
+    Case == 0`
+        Set *Var4 15`
+        Set *Var2 002F0030
+    EndSwitch
+    Call SetMessageValue ( *Var4 00000001 )
+    Switch *MB_Ship5BPComponent
+    Case == 2`
+        Set *Var5 6`
+        Set *Var3 002F0031
+        Add *Var6 1`
+    Case == 1`
+        Set *Var5 3`
+        Set *Var3 002F005A
+    Case == 0`
+        Set *Var5 3`
+        Set *Var3 002F0030
+    EndSwitch
+    Call SetMessageValue ( *Var5 00000002 )
+    Call  ShowMessageAtScreenPos    ( 002F002A  160`  40` ) % Choose Cruiser?
+    Call  ShowChoice ( 002F002E )
+    Switch *Var0
+    Case == 00000000
+        Call  CloseMessage ()
+        Set *MB_CurrentShip 5`
+        If *MB_Ship5BadgeComponent == 2`
+            Add *Var6 1`
+        EndIf
+        Exec $Script_AddStats
+        Call EnableGroup ( ~Model:BadgeQuestionGroup .False )
+        Call  MakeItemEntity    ( .Item:DoubleDip ~Vec3d:Badge1 .ItemSpawnMode:Decoration 00000000 )
+        Set *MapVar[0] *Var0
+        Bind $Script_ChooseBadge1 .Trigger:WallPressA ~Collider:Badge1Collider 00000001 00000000
+        Call  MakeItemEntity    ( .Item:FeelingFine ~Vec3d:Badge2 .ItemSpawnMode:Decoration 00000000 )
+        Set *MapVar[1] *Var0
+        Bind $Script_ChooseBadge2 .Trigger:WallPressA ~Collider:Badge2Collider 00000001 00000000
+        Call  MakeItemEntity    ( .Item:MegaQuake ~Vec3d:Badge3 .ItemSpawnMode:Decoration 00000000 )
+        Set *MapVar[2] *Var0
+        Bind $Script_ChooseBadge3 .Trigger:WallPressA ~Collider:Badge3Collider 00000001 00000000
+        Call  MakeItemEntity    ( .Item:MegaJump ~Vec3d:Badge4 .ItemSpawnMode:Decoration 00000000 )
+        Set *MapVar[3] *Var0
+        Bind $Script_ChooseBadge4 .Trigger:WallPressA ~Collider:Badge4Collider 00000001 00000000
+        If *MB_Ship5BadgeComponent == 2`
+            Call  ShowMessageAtScreenPos    ( 002F002C  160`  40` ) % Choose Cruiser?
+            Set *MB_StartingBadgesNumber 3`
+        Else
+            Call  ShowMessageAtScreenPos    ( 002F002B  160`  40` ) % Choose Cruiser?
+            Set *MB_StartingBadgesNumber 2`
+        EndIf
+    Case == 00000001
+        Call  CloseMessage ()
+    Case == 00000002
+        Call  CloseMessage ()
+        Switch *MB_Ship5BadgeComponent
+        Case == 2`
+            Set *Var4 002F0031
+        Case == 1`
+            Set *Var4 002F005A
+        Case == 0`
+            Set *Var4 002F0030
+        EndSwitch
+        Call  SetMessageString ( *Var1 00000000 )
+        Call  SetMessageString ( *Var2 00000001 )
+        Call  SetMessageString ( *Var3 00000002 )
+        Call  SetMessageString ( *Var4 00000003 )
+        Call  ShowMessageAtScreenPos    ( 002F002F  160`  40` ) % Modify Cruiser?
+        Call  ShowChoice ( 002F0032 )
+        Switch *Var0
+        Case == 00000000
+            Switch *MB_Ship5HPComponent
+            Case == 2`
+                Call  CloseMessage ()
+                Set *MB_Ship5HPComponent 1`
+                Call  ShowMessageAtScreenPos    ( 002F0034  160`  40` ) % Removed HP Component
+            Case == 1`
+                Call  CloseMessage ()
+                Set *MB_Ship5HPComponent 2`
+                Call ShowMessageAtScreenPos    ( 002F0033  160`  40` ) % Added HP Component
+            Case == 0`
+                If *MB_HPComponents >= 1`
+                    Call  CloseMessage ()
+                    Set *MB_Ship5HPComponent 2`
+                    Sub *MB_HPComponents 1`
+                    Call ShowMessageAtScreenPos    ( 002F0033  160`  40` ) % Added HP Component
+                Else
+                    Call  CloseMessage ()
+                    Call ShowMessageAtScreenPos    ( 002F003B  160`  40` ) % No Component
+                EndIf
+            EndSwitch
+        Case == 00000001
+            Switch *MB_Ship5FPComponent
+            Case == 2`
+                Call  CloseMessage ()
+                Set *MB_Ship5FPComponent 1`
+                Call  ShowMessageAtScreenPos    ( 002F0036  160`  40` ) % Removed FP Component
+            Case == 1`
+                Call  CloseMessage ()
+                Set *MB_Ship5FPComponent 2`
+                Call ShowMessageAtScreenPos    ( 002F0035  160`  40` ) % Added FP Component
+            Case == 0`
+                If *MB_FPComponents >= 1`
+                    Call  CloseMessage ()
+                    Set *MB_Ship5FPComponent 2`
+                    Sub *MB_FPComponents 1`
+                    Call ShowMessageAtScreenPos    ( 002F0035  160`  40` ) % Added FP Component
+                Else
+                    Call  CloseMessage ()
+                    Call ShowMessageAtScreenPos    ( 002F003B  160`  40` ) % No Component
+                EndIf
+            EndSwitch
+        Case == 00000002
+            Switch *MB_Ship5BPComponent
+            Case == 2`
+                Call  CloseMessage ()
+                Set *MB_Ship5BPComponent 1`
+                Call  ShowMessageAtScreenPos    ( 002F0038  160`  40` ) % Removed HP Component
+            Case == 1`
+                Call  CloseMessage ()
+                Set *MB_Ship5BPComponent 2`
+                Call ShowMessageAtScreenPos    ( 002F0037  160`  40` ) % Added HP Component
+            Case == 0`
+                If *MB_BPComponents >= 1`
+                    Call  CloseMessage ()
+                    Set *MB_Ship5BPComponent 2`
+                    Sub *MB_BPComponents 1`
+                    Call ShowMessageAtScreenPos    ( 002F0037  160`  40` ) % Added HP Component
+                Else
+                    Call  CloseMessage ()
+                    Call ShowMessageAtScreenPos    ( 002F003B  160`  40` ) % No Component
+                EndIf
+            EndSwitch
+        Case == 00000003
+            Switch *MB_Ship5BadgeComponent
+            Case == 2`
+                Call  CloseMessage ()
+                Set *MB_Ship5BadgeComponent 1`
+                Call  ShowMessageAtScreenPos    ( 002F003A  160`  40` ) % Removed HP Component
+            Case == 1`
+                Call  CloseMessage ()
+                Set *MB_Ship5BadgeComponent 2`
+                Call ShowMessageAtScreenPos    ( 002F0039  160`  40` ) % Added HP Component
+            Case == 0`
+                If *MB_BadgeComponents >= 1`
+                    Call  CloseMessage ()
+                    Set *MB_Ship5BadgeComponent 2`
                     Sub *MB_BadgeComponents 1`
                     Call ShowMessageAtScreenPos    ( 002F0039  160`  40` ) % Added HP Component
                 Else
