@@ -1,3 +1,5 @@
+% Script mostly by Quackles.
+
 #new:Function $SetMaxHPByDifficulty
 {
 	PUSH 	RA, S0, S1

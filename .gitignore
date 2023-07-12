@@ -48,6 +48,18 @@ mod.cfg
 !/audio/bgm/35_111.bgm
 !/audio/bgm/0E_187.bgm
 !/audio/bgm/39_113.bgm
+!/audio/bgm/3A_114.bgm
+!/audio/bgm/3B_141.bgm
+!/audio/bgm/3C_203.bgm
+!/audio/bgm/3D_115.bgm
+!/audio/bgm/3E_116.bgm
+!/audio/bgm/3F_838.bgm
+!/audio/bgm/41_291.bgm
+!/audio/bgm/4B_137.bgm
+!/audio/bgm/4C_138.bgm
+!/audio/bgm/02_191.bgm
+!/audio/bgm/03_120.bgm
+!/audio/bgm/04_119.bgm
 
 # Altered Textures
 !/image/texture/ast_tex.txa

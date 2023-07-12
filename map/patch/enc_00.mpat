@@ -1,5 +1,6 @@
 #define .NpcID:ChuckQuizmo_10            00
 #define .NpcID:Test            01
+#define .NpcID:Mole            02
 
 @ $Script_Main {
     Set   *GB_WorldLocation  .Location:GoombaRoad
@@ -18,8 +19,8 @@
 
 #new:NpcGroupList $NpcGroupList_Chuck
 {
-	00000001 $NpcGroup_Chuck 00000000
-    00000001 $NpcGroup_Test 30000000
+     00000001 $NpcGroup_Chuck 00000000
+    00000001 $NpcGroup_Test 00000000
     00000001 $NpcGroup_Mole 30000000
     00000000 00000000 00000000
 }
@@ -36,7 +37,7 @@
 
 #new:NpcGroup $NpcGroup_Mole
 {
-	.NpcID:Test $NpcSettings_Standard ~Vec3f:Mole
+	.NpcID:Mole $NpcSettings_Mole ~Vec3f:Mole
 	00002C01 $Script_Init_Mole 00000000 00000000 00000000
 	~NoDrops
 	~Movement:Mole
@@ -45,6 +46,12 @@
 }
 
 #new:NpcSettings $NpcSettings_Standard
+{
+	00000000 001E0018 00000000 00000000 00000000 00000000 00000000 00000000
+	00000000 00000000 00630000
+}
+
+#new:NpcSettings $NpcSettings_Mole
 {
 	00000000 001E0018 00000000 00000000 00000000 00000000 00000000 00000000
 	00000000 00000000 00630000
@@ -63,6 +70,7 @@
   Set *Debug[0] *MB_DifficultyLevel
      Call  SpeakToPlayer ( .Npc:Self 00010004 00010001 00000000 002F0052 ) % String
   Call  $Function_80241E90    ( 00000001 00000001 ) % Get Goombario
+  Call  $Function_802405D0 % Get Star Power
   Set   *GB_StoryProgress  .Story:Ch0_GoombarioJoinedParty
   Call  EnablePartnerAI ( )
   Return
@@ -176,6 +184,24 @@
   180:  ADDIU     SP, SP, 28
 }
 
+#new:Function $Function_802405D0
+{
+    0:  ADDIU     SP, SP, FFE8
+    4:  SW        RA, 10 (SP)
+    8:  JAL       ~Func:set_max_SP
+    C:  LI        A0, 4
+   10:  LA        V0, 8010F290
+   18:  LBU       V1, 3 (V0)
+   1C:  LBU       A0, 6 (V0)
+   20:  SB        V1, 2 (V0)
+   24:  JAL       ~Func:sync_status_menu
+   28:  SB        A0, 5 (V0)
+   2C:  LW        RA, 10 (SP)
+   30:  LI        V0, 2
+   34:  JR        RA
+   38:  ADDIU     SP, SP, 18
+}
+
 #new:Script $Script_Init_Mole
 {
    14:  Call  BindNpcInteract   ( .Npc:Self $Script_Interact_Mole )
@@ -198,10 +224,12 @@
    10:  Switch  *Var0
    1C:  	Case  ==  .Outcome:PlayerWon % 0
         	     Call  SetMusicTrack ( 00000000 .Song:WhaleTheme 00000000 00000008 )
-               Call  DoNpcDefeat ( )
+     %          Call  DoNpcDefeat ( )
    5C:  	Case  ==  .Outcome:PlayerLost % 1
    7C:  	Case  ==  .Outcome:PlayerFled % 2
    9C:  EndSwitch
+   Call DisablePlayerInput ( .False )
+   Call DisablePlayerInput ( .False )
    A4:  Return
    AC:  End
 }
@@ -1708,4 +1736,11 @@
 {
 	01010201 00020100 02020101 02000002 01020101 01020000 02020001 01010001
 	02010002 02020100 01020101 02020002 00000102 01000202 01020002 02010101
+}
+@ $Header {
+     [MainScript] $Script_Main
+     [Background] 80200000
+     [EntryList] $EntryList
+     [EntryCount] 1
+	[MapTattle]   001900BE
 }

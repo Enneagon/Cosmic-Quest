@@ -1,0 +1,14 @@
+% Script by Rain.
+
+#new:Function $Function_DoNothing
+{
+    JR RA
+    ORI V0, R0, 2
+}
+
+#export $Function_DoNothing
+
+@Function:Global 800EAEF4 {
+    J 800EB14C
+    NOP
+    }
