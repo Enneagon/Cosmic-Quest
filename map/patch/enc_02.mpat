@@ -1,0 +1,235 @@
+@ $Script_Main {
+    Set   *GB_WorldLocation  .Location:GoombaRoad
+    Call  SetCamPerspective  ( .Cam:Default 00000003 00000019 00000010 00001000 )
+    Call  SetCamBGColor      ( .Cam:Default 00000000 00000000 00000000 )
+    Call  SetCamEnabled      ( .Cam:Default .True )
+    Call  SetCamLeadPlayer   ( .Cam:Default .False )
+    Exec  $Script_SetupMusic
+    Exec  $Script_EngineMoves
+    Exec  $Script_EnterMap
+    Return
+    End
+}
+
+#new:Script $Script_EngineMoves
+{
+    Thread
+        Loop
+            Call MakeLerp ( 0` 20` 80` .Easing:Linear )
+            Loop
+                Call  UpdateLerp ( )
+                Call  TranslateModel ( ~Model:Piston1 00000000 *Var0 *Var0 )
+                Wait  1`
+                If  *Var1  ==  00000000
+                    BreakLoop
+                EndIf
+            EndLoop
+            Wait 10`
+            Call MakeLerp ( 20` 0` 20` .Easing:Linear )
+            Loop
+                Call  UpdateLerp ( )
+                Call  TranslateModel ( ~Model:Piston1 00000000 *Var0 *Var0 )
+                Wait  1`
+                If  *Var1  ==  00000000
+                    BreakLoop
+                EndIf
+            EndLoop
+            Call PlaySoundAtModel ( ~Model:Piston1 .Sound:MetalDoorClose 00000000 )
+            Wait 240`
+        EndLoop
+    EndThread
+    Thread
+        Wait 30`
+        Loop
+            Call MakeLerp ( 0` 20` 80` .Easing:Linear )
+            Loop
+                Call  UpdateLerp ( )
+                Call  TranslateModel ( ~Model:Piston2 *Var0 *Var0 *Var0 )
+                Wait  1`
+                If  *Var1  ==  00000000
+                    BreakLoop
+                EndIf
+            EndLoop
+            Wait 10`
+            Call MakeLerp ( 20` 0` 20` .Easing:Linear )
+            Loop
+                Call  UpdateLerp ( )
+                Call  TranslateModel ( ~Model:Piston2 *Var0 *Var0 *Var0 )
+                Wait  1`
+                If  *Var1  ==  00000000
+                    BreakLoop
+                EndIf
+            EndLoop
+            Call PlaySoundAtModel ( ~Model:Piston2 .Sound:MetalDoorClose 00000000 )
+            Wait 210`
+        EndLoop
+    EndThread
+    Thread
+        Wait 60`
+        Loop
+            Call MakeLerp ( 0` 20` 80` .Easing:Linear )
+            Loop
+                Call  UpdateLerp ( )
+                Call  TranslateModel ( ~Model:Piston3 *Var0 *Var0 00000000 )
+                Wait  1`
+                If  *Var1  ==  00000000
+                    BreakLoop
+                EndIf
+            EndLoop
+            Wait 10`
+            Call MakeLerp ( 20` 0` 20` .Easing:Linear )
+            Loop
+                Call  UpdateLerp ( )
+                Call  TranslateModel ( ~Model:Piston3 *Var0 *Var0 00000000 )
+                Wait  1`
+                If  *Var1  ==  00000000
+                    BreakLoop
+                EndIf
+            EndLoop
+            Call PlaySoundAtModel ( ~Model:Piston3 .Sound:MetalDoorClose 00000000 )
+            Wait 180`
+        EndLoop
+    EndThread
+    Thread
+        Wait 90`
+        Loop
+            Call MakeLerp ( 0` 20` 80` .Easing:Linear )
+            Loop
+                Call  UpdateLerp ( )
+                Set *Var2 = (*Var0 * -1`)
+                Call  TranslateModel ( ~Model:Piston4 *Var0 *Var0 *Var2 )
+                Wait  1`
+                If  *Var1  ==  00000000
+                    BreakLoop
+                EndIf
+            EndLoop
+            Wait 10`
+            Call MakeLerp ( 20` 0` 20` .Easing:Linear )
+            Loop
+                Call  UpdateLerp ( )
+                Set *Var2 = (*Var0 * -1`)
+                Call  TranslateModel ( ~Model:Piston4 *Var0 *Var0 *Var2 )
+                Wait  1`
+                If  *Var1  ==  00000000
+                    BreakLoop
+                EndIf
+            EndLoop
+            Call PlaySoundAtModel ( ~Model:Piston4 .Sound:MetalDoorClose 00000000 )
+            Wait 150`
+        EndLoop
+    EndThread
+    Thread
+        Wait 120`
+        Loop
+            Call MakeLerp ( 0` 20` 80` .Easing:Linear )
+            Loop
+                Call  UpdateLerp ( )
+                Set *Var2 = (*Var0 * -1`)
+                Call  TranslateModel ( ~Model:Piston5 00000000 *Var0 *Var2 )
+                Wait  1`
+                If  *Var1  ==  00000000
+                    BreakLoop
+                EndIf
+            EndLoop
+            Wait 10`
+            Call MakeLerp ( 20` 0` 20` .Easing:Linear )
+            Loop
+                Call  UpdateLerp ( )
+                Set *Var2 = (*Var0 * -1`)
+                Call  TranslateModel ( ~Model:Piston5 00000000 *Var0 *Var2 )
+                Wait  1`
+                If  *Var1  ==  00000000
+                    BreakLoop
+                EndIf
+            EndLoop
+            Call PlaySoundAtModel ( ~Model:Piston5 .Sound:MetalDoorClose 00000000 )
+            Wait 120`
+        EndLoop
+    EndThread
+    Thread
+        Wait 150`
+        Loop
+            Call MakeLerp ( 0` 20` 80` .Easing:Linear )
+            Loop
+                Call  UpdateLerp ( )
+                Set *Var2 = (*Var0 * -1`)
+                Call  TranslateModel ( ~Model:Piston6 *Var2 *Var0 *Var2 )
+                Wait  1`
+                If  *Var1  ==  00000000
+                    BreakLoop
+                EndIf
+            EndLoop
+            Wait 10`
+            Call MakeLerp ( 20` 0` 20` .Easing:Linear )
+            Loop
+                Call  UpdateLerp ( )
+                Set *Var2 = (*Var0 * -1`)
+                Call  TranslateModel ( ~Model:Piston6 *Var2 *Var0 *Var2 )
+                Wait  1`
+                If  *Var1  ==  00000000
+                    BreakLoop
+                EndIf
+            EndLoop
+            Call PlaySoundAtModel ( ~Model:Piston6 .Sound:MetalDoorClose 00000000 )
+            Wait 90`
+        EndLoop
+    EndThread
+    Thread
+        Wait 180`
+        Loop
+            Call MakeLerp ( 0` 20` 80` .Easing:Linear )
+            Loop
+                Call  UpdateLerp ( )
+                Set *Var2 = (*Var0 * -1`)
+                Call  TranslateModel ( ~Model:Piston7 *Var2 *Var0 00000000 )
+                Wait  1`
+                If  *Var1  ==  00000000
+                    BreakLoop
+                EndIf
+            EndLoop
+            Wait 10`
+            Call MakeLerp ( 20` 0` 20` .Easing:Linear )
+            Loop
+                Call  UpdateLerp ( )
+                Set *Var2 = (*Var0 * -1`)
+                Call  TranslateModel ( ~Model:Piston7 *Var2 *Var0 00000000 )
+                Wait  1`
+                If  *Var1  ==  00000000
+                    BreakLoop
+                EndIf
+            EndLoop
+            Call PlaySoundAtModel ( ~Model:Piston7 .Sound:MetalDoorClose 00000000 )
+            Wait 60`
+        EndLoop
+    EndThread
+    Thread
+        Wait 210`
+        Loop
+            Call MakeLerp ( 0` 20` 80` .Easing:Linear )
+            Loop
+                Call  UpdateLerp ( )
+                Set *Var2 = (*Var0 * -1`)
+                Call  TranslateModel ( ~Model:Piston8 *Var2 *Var0 *Var0 )
+                Wait  1`
+                If  *Var1  ==  00000000
+                    BreakLoop
+                EndIf
+            EndLoop
+            Wait 10`
+            Call MakeLerp ( 20` 0` 20` .Easing:Linear )
+            Loop
+                Call  UpdateLerp ( )
+                Set *Var2 = (*Var0 * -1`)
+                Call  TranslateModel ( ~Model:Piston8 *Var2 *Var0 *Var0 )
+                Wait  1`
+                If  *Var1  ==  00000000
+                    BreakLoop
+                EndIf
+            EndLoop
+            Call PlaySoundAtModel ( ~Model:Piston8 .Sound:MetalDoorClose 00000000 )
+            Wait 30`
+        EndLoop
+    EndThread
+    Return
+    End
+}

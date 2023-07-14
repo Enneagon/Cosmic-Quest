@@ -1,0 +1,64 @@
+@ $Script_Main {
+    Set   *GB_WorldLocation  .Location:GoombaRoad
+    Call  SetCamPerspective  ( .Cam:Default 00000003 00000019 00000010 00001000 )
+    Call  SetCamBGColor      ( .Cam:Default 00000000 00000000 00000000 )
+    Call  SetCamEnabled      ( .Cam:Default .True )
+    Call  SetCamLeadPlayer   ( .Cam:Default .False )
+    Exec  $Script_SetupMusic
+    Exec  $Script_EngineMoves
+    Exec  $Script_EnterMap
+    Return
+    End
+}
+
+#new:Script $Script_EngineMoves
+{
+    Thread
+        Loop
+            Call MakeLerp ( 0` 360` 180` .Easing:Linear )
+            SetF *Var2 *Fixed[1.0]
+            Loop
+                Call  UpdateLerp ( )
+                AddF *Var2 *Fixed[0.005]
+                Call  RotateModel ( ~Model:ManyCube *Var0 0` 1` 0` )
+                Call  ScaleModel ( ~Model:ManyCube *Var2 *Var2 *Var2 )
+                Wait  1`
+                If  *Var1  ==  00000000
+                    BreakLoop
+                EndIf
+            EndLoop
+            Call MakeLerp ( 0` 360` 180` .Easing:Linear )
+            Loop
+                Call  UpdateLerp ( )
+                SubF *Var2 *Fixed[0.005]
+                Call  RotateModel ( ~Model:ManyCube *Var0 0` 1` 0` )
+                Call  ScaleModel ( ~Model:ManyCube *Var2 *Var2 *Var2 )
+                Wait  1`
+                If  *Var1  ==  00000000
+                    BreakLoop
+                EndIf
+            EndLoop
+        EndLoop
+    EndThread
+/%
+    Thread
+        Loop
+            SetF *Var0 *Fixed[1.0]
+            Loop 5`
+                AddF *Var0 *Fixed[0.1]
+                Call ScaleModel ( ~Model:ManyCube *Var0 *Var0 *Var0 )
+                Wait 10`
+            EndLoop
+            Wait 10`
+            Loop 5`
+                SubF *Var0 *Fixed[0.1]
+                Call ScaleModel ( ~Model:ManyCube *Var0 *Var0 *Var0 )
+                Wait 10`
+            EndLoop
+            Wait 10`
+        EndLoop
+    EndThread
+%/
+    Return
+    End
+}

@@ -1,0 +1,37 @@
+#define .NpcID:EngineBunny       00
+
+@ $Script_Main {
+    Set   *GB_WorldLocation  .Location:GoombaRoad
+    Call  SetCamPerspective  ( .Cam:Default 00000003 00000019 00000010 00001000 )
+    Call  SetCamBGColor      ( .Cam:Default 00000000 00000000 00000000 )
+    Call  SetCamEnabled      ( .Cam:Default .True )
+    Call  SetCamLeadPlayer   ( .Cam:Default .False )
+    Exec  $Script_SetupMusic
+	Exec  $Script_SetupTexturePan
+    Call  MakeNpcs  ( .False $NpcGroupList_Bunny )
+    Exec  $Script_EnterMap
+    Return
+    End
+}
+
+#new:NpcGroupList $NpcGroupList_Bunny
+{
+	00000001 $NpcGroup_Bunny 00000000
+    00000000 00000000 00000000
+}
+
+#new:NpcGroup $NpcGroup_Bunny
+{
+  .NpcID:EngineBunny $NpcSettings_EngineBunny ~Vec3f:EngineBunny
+  00000001 00000000 00000000 00000000 00000000
+  ~NoDrops
+  ~Movement:EngineBunny
+  ~AnimationTable:EngineBunny
+  00000000 00000000 00000000 001A0066 % Tattle ID
+}
+
+#new:NpcSettings $NpcSettings_EngineBunny
+{
+	00000000 001E0018 00000000 00000000 00000000 00000000 00000000 00000000
+	00000000 00000000 00630000
+}

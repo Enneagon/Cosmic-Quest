@@ -596,6 +596,12 @@
 	</Area>
 	<Area name="enc" nickname="Encounters">
 		<Map name="enc_00" nickname="Chuck Quizmo"/>
+		<Map name="enc_01" nickname="Rosalina's Comet"/>
+		<Map name="enc_02" nickname="Engine Room 1"/>
+		<Map name="enc_03" nickname="Engine Room 2"/>
+		<Map name="enc_04" nickname="Engine Room 3"/>
+		<Map name="enc_05" nickname="Engine Room 4"/>
+		<Map name="enc_06" nickname="Engine Room 5"/>
 	</Area>
 	<Area name="ast" nickname="Asteroid Minigames">
 		<Map name="ast_00" nickname="Asteroids 1"/>

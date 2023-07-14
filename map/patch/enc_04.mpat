@@ -1,0 +1,28 @@
+@ $Script_Main {
+    Set   *GB_WorldLocation  .Location:GoombaRoad
+    Call  SetCamPerspective  ( .Cam:Default 00000003 00000019 00000010 00001000 )
+    Call  SetCamBGColor      ( .Cam:Default 00000000 00000000 00000000 )
+    Call  SetCamEnabled      ( .Cam:Default .True )
+    Call  SetCamLeadPlayer   ( .Cam:Default .False )
+    Exec  $Script_SetupMusic
+    Exec  $Script_EngineMoves
+    Exec  $Script_EnterMap
+    Return
+    End
+}
+
+#new:Script $Script_EngineMoves
+{
+    Thread
+        Loop
+            Wait 60`
+            Call  PlaySound ( 00002069 )
+            Call  PlayEffect        ( ~FX:Lightning -90` 90` 0` 90` 90` 0` *Fixed[1.0] 00000012 00000000 00000000 00000000 00000000 )
+            Wait 60`
+            Call  PlaySound ( 00002069 )
+            Call  PlayEffect        ( ~FX:Lightning 90` 90` 0` -90` 90` 0` *Fixed[1.0] 00000012 00000000 00000000 00000000 00000000 )
+        EndLoop
+    EndThread
+    Return
+    End
+}

@@ -1,0 +1,41 @@
+@ $Script_Main {
+    Set   *GB_WorldLocation  .Location:GoombaRoad
+    Call  SetCamPerspective  ( .Cam:Default 00000003 00000019 00000010 00001000 )
+    Call  SetCamBGColor      ( .Cam:Default 00000000 00000000 00000000 )
+    Call  SetCamEnabled      ( .Cam:Default .True )
+    Call  SetCamLeadPlayer   ( .Cam:Default .False )
+    Exec  $Script_SetupMusic
+    Exec  $Script_EngineMoves
+    Exec  $Script_EnterMap
+    Return
+    End
+}
+
+#new:Script $Script_EngineMoves
+{
+    Thread
+        Loop
+            Call MakeLerp ( 0` -360` 360` .Easing:Linear )
+                Loop
+                    Call  UpdateLerp ( )
+                    Call  RotateModel ( ~Model:Sun *Var0 00000000 1` 00000000 )
+                    Wait  1`
+                    If  *Var1  ==  00000000
+                        BreakLoop
+                    EndIf
+                EndLoop
+        EndLoop
+    EndThread
+    Thread
+        Loop
+            Wait 180`
+            Call  PlaySound ( .Sound:BigPowerUp )
+            Call  PlayEffect        ( ~FX:EnergyIn:Stars 0` 110` 0` *Fixed[3.0] 60` 00000000 00000000 00000000 00000000 )
+            Wait 180`
+            Call  PlaySound ( 00002069 )
+            Call  PlayEffect        ( ~FX:EnergyOut:LongStreaksSpin 0` 110` 0` *Fixed[3.0] 60` 00000000 00000000 00000000 00000000 )
+        EndLoop
+    EndThread
+    Return
+    End
+}
