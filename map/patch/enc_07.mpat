@@ -1,0 +1,70 @@
+@ $Script_Main {
+    Set   *GB_WorldLocation  .Location:GoombaRoad
+    Call  SetCamPerspective  ( .Cam:Default 00000003 00000019 00000010 00001000 )
+    Call  SetCamBGColor      ( .Cam:Default 00000000 00000000 00000000 )
+    Call  SetCamEnabled      ( .Cam:Default .True )
+    Call  SetCamLeadPlayer   ( .Cam:Default .False )
+    ExecWait $Script_RandomizeTerrain
+    Exec  $Script_SetupMusic
+    Exec  $Script_EnterMap
+    Return
+    End
+}
+
+#new:Script $Script_RandomizeTerrain
+{
+    %First, we turn off all but the essentials.
+    Call  EnableGroup ( ~Model:RandomLoad .False )
+    Call  ModifyColliderFlags   ( 00000000 ~Collider:ColliderRandom 7FFFFE00 )
+    %Then we choose between Group A and Group B. If Group A spawns, Group F has a chance to spawn too.
+    Call  RandInt ( 1` *Var0 )
+    Wait 1`
+    Switch *Var0
+    Case == 0`
+        Call  EnableGroup ( ~Model:LoadGroupA .True )
+        Call  ModifyColliderFlags   ( 00000001 ~Collider:ColliderGroupA 7FFFFE00 )
+        Call  RandInt ( 1` *Var0 )
+        Wait 1`
+        If *Var0 == 0`
+            Call  EnableGroup ( ~Model:LoadGroupF .True )
+            Call  ModifyColliderFlags   ( 00000001 ~Collider:ColliderGroupF 7FFFFE00 )
+        EndIf
+    Case == 1`
+        Call  EnableGroup ( ~Model:LoadGroupB .True )
+        Call  ModifyColliderFlags   ( 00000001 ~Collider:ColliderGroupB 7FFFFE00 )
+    EndSwitch
+    %Next, we randomly select for all other groups.
+    Call  RandInt ( 1` *Var0 )
+    Wait 1`
+    If *Var0 == 0`
+        Call  EnableGroup ( ~Model:LoadGroupC .True )
+        Call  ModifyColliderFlags   ( 00000001 ~Collider:ColliderGroupC 7FFFFE00 )
+    EndIf
+    Call  RandInt ( 1` *Var0 )
+    Wait 1`
+    If *Var0 == 0`
+        Call  EnableGroup ( ~Model:LoadGroupD .True )
+        Call  ModifyColliderFlags   ( 00000001 ~Collider:ColliderGroupD 7FFFFE00 )
+    EndIf
+    Call  RandInt ( 1` *Var0 )
+    Wait 1`
+    If *Var0 == 0`
+        Call  EnableGroup ( ~Model:LoadGroupE .True )
+        Call  ModifyColliderFlags   ( 00000001 ~Collider:ColliderGroupE 7FFFFE00 )
+    EndIf
+    Call  RandInt ( 1` *Var0 )
+    Wait 1`
+    If *Var0 == 0`
+        Call  EnableGroup ( ~Model:LoadGroupG .True )
+        Call  ModifyColliderFlags   ( 00000001 ~Collider:ColliderGroupG 7FFFFE00 )
+    EndIf
+    %If Orbulon is here, we can load his platform. Unfortunately, scenarios haven't been set up yet, so currently it's random too.
+    Call  RandInt ( 1` *Var0 )
+    Wait 1`
+    If *Var0 == 0`
+        Call  EnableGroup ( ~Model:LoadGroupO .True )
+        Call  ModifyColliderFlags   ( 00000001 ~Collider:ColliderGroupO 7FFFFE00 )
+    EndIf
+    Return
+    End
+}

@@ -602,6 +602,7 @@
 		<Map name="enc_04" nickname="Engine Room 3"/>
 		<Map name="enc_05" nickname="Engine Room 4"/>
 		<Map name="enc_06" nickname="Engine Room 5"/>
+		<Map name="enc_07" nickname="Bunny Asteroid"/>
 	</Area>
 	<Area name="ast" nickname="Asteroid Minigames">
 		<Map name="ast_00" nickname="Asteroids 1"/>
