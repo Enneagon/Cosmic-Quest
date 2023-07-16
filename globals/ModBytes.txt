@@ -49,3 +49,4 @@
 032 = MB_EnemiesDestroyed
 033 = MB_DifficultyLevel
 034 = MB_TotalDifficulty
+035 = MB_RandBadgesSeen

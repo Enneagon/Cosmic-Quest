@@ -1,0 +1,221 @@
+#new:Script $Script_GenerateRandomItem
+{
+    Call RandInt ( 99` *Var1 )
+    Add *Var1 1`
+    Wait 1`
+    Switch *Var1
+    Case 0` to 40`
+        Call RandInt ( 99` *Var2 )
+        Add *Var2 1`
+        Wait 1`
+        Switch *Var2
+        Case 1` to 15`
+            Set *Var2 .Item:Mushroom
+        Case 16` to 30`
+            Set *Var2 .Item:HoneySyrup
+        Case 31` to 40`
+            Set *Var2 .Item:SuperShroom
+        Case 41` to 50`
+            Set *Var2 .Item:MapleSyrup
+        Case 51` to 55`
+            Set *Var2 .Item:FireFlower
+        Case 56` to 65`
+            Set *Var2 .Item:HoneyShroom
+        Case 66` to 70`
+            Set *Var2 .Item:MapleSuper
+        Case 71` to 75`
+            Set *Var2 .Item:Cake
+        Case 76` to 80`
+            Set *Var2 .Item:BoiledEgg
+        Case 81` to 85`
+            Set *Var2 .Item:Mystery
+        Case 86` to 90`
+            Set *Var2 .Item:LifeShroom
+        Case 91` to 94`
+            Set *Var2 .Item:ThunderRage
+        Case 95` to 97`
+            Set *Var2 .Item:ShootingStar
+        Case 98` to 99`
+            Set *Var2 .Item:StopWatch
+        Case == 100`
+            Set *Var2 .Item:RepelGel
+        EndSwitch
+    Case 41` to 70`
+        Set *Var2 .Item:StarPiece
+    Case 71` to 100`
+        If *MB_RandBadgesSeen >= 20`
+            Set *Var2 .Item:StarPiece
+            Return
+        EndIf
+        Call RandInt ( 19` *Var2 )
+        Label 0
+        Add *Var2 1`
+        Wait 1`
+        Switch *Var2
+        Case == 1`
+            If *MF_Badge1Seen == .False
+                Set *Var2 .Item:AllorNothing
+                Set *MF_Badge1Seen .True
+                Add *MB_RandBadgesSeen 1`
+            Else
+                Goto 0
+            EndIf
+        Case == 2`
+            If *MF_Badge2Seen == .False
+                Set *Var2 .Item:ChillOut
+                Set *MF_Badge2Seen .True
+                Add *MB_RandBadgesSeen 1`
+            Else
+                Goto 0
+            EndIf
+        Case == 3`
+            If *MF_Badge3Seen == .False
+                Set *Var2 .Item:CloseCall
+                Set *MF_Badge3Seen .True
+                Add *MB_RandBadgesSeen 1`
+            Else
+                Goto 0
+            EndIf
+        Case == 4`
+            If *MF_Badge4Seen == .False
+                Set *Var2 .Item:DDownJump
+                Set *MF_Badge4Seen .True
+                Add *MB_RandBadgesSeen 1`
+            Else
+                Goto 0
+            EndIf
+        Case == 5`
+            If *MF_Badge5Seen == .False
+                Set *Var2 .Item:DamageDodgeB
+                Set *MF_Badge5Seen .True
+                Add *MB_RandBadgesSeen 1`
+            Else
+                Goto 0
+            EndIf
+        Case == 6`
+            If *MF_Badge6Seen == .False
+                Set *Var2 .Item:DefendPlusA
+                Set *MF_Badge6Seen .True
+                Add *MB_RandBadgesSeen 1`
+            Else
+                Goto 0
+            EndIf
+        Case == 7`
+            If *MF_Badge7Seen == .False
+                Set *Var2 .Item:DizzyStomp
+                Set *MF_Badge7Seen .True
+                Add *MB_RandBadgesSeen 1`
+            Else
+                Goto 0
+            EndIf
+        Case == 8`
+            If *MF_Badge8Seen == .False
+                Set *Var2 .Item:FireShield
+                Set *MF_Badge8Seen .True
+                Add *MB_RandBadgesSeen 1`
+            Else
+                Goto 0
+            EndIf
+        Case == 9`
+            If *MF_Badge9Seen == .False
+                Set *Var2 .Item:FlowerFinder
+                Set *MF_Badge9Seen .True
+                Add *MB_RandBadgesSeen 1`
+            Else
+                Goto 0
+            EndIf
+        Case == 10`
+            If *MF_Badge10Seen == .False
+                Set *Var2 .Item:FlowerSaverA
+                Set *MF_Badge10Seen .True
+                Add *MB_RandBadgesSeen 1`
+            Else
+                Goto 0
+            EndIf
+        Case == 11`
+            If *MF_Badge11Seen == .False
+                Set *Var2 .Item:FPPlusA
+                Set *MF_Badge11Seen .True
+                Add *MB_RandBadgesSeen 1`
+            Else
+                Goto 0
+            EndIf
+        Case == 12`
+            If *MF_Badge12Seen == .False
+                Set *Var2 .Item:HammerThrow
+                Set *MF_Badge12Seen .True
+                Add *MB_RandBadgesSeen 1`
+            Else
+                Goto 0
+            EndIf
+        Case == 13`
+            If *MF_Badge13Seen == .False
+                Set *Var2 .Item:HeartFinder
+                Set *MF_Badge13Seen .True
+                Add *MB_RandBadgesSeen 1`
+            Else
+                Goto 0
+            EndIf
+        Case == 14`
+            If *MF_Badge14Seen == .False
+                Set *Var2 .Item:HPPlusA
+                Set *MF_Badge14Seen .True
+                Add *MB_RandBadgesSeen 1`
+            Else
+                Goto 0
+            EndIf
+        Case == 15`
+            If *MF_Badge15Seen == .False
+                Set *Var2 .Item:JumpCharge
+                Set *MF_Badge15Seen .True
+                Add *MB_RandBadgesSeen 1`
+            Else
+                Goto 0
+            EndIf
+        Case == 16`
+            If *MF_Badge16Seen == .False
+                Set *Var2 .Item:MegaSmash
+                Set *MF_Badge16Seen .True
+                Add *MB_RandBadgesSeen 1`
+            Else
+                Goto 0
+            EndIf
+        Case == 17`
+            If *MF_Badge17Seen == .False
+                Set *Var2 .Item:Refund
+                Set *MF_Badge17Seen .True
+                Add *MB_RandBadgesSeen 1`
+            Else
+                Goto 0
+            EndIf
+        Case == 18`
+            If *MF_Badge18Seen == .False
+                Set *Var2 .Item:SJumpChg
+                Set *MF_Badge18Seen .True
+                Add *MB_RandBadgesSeen 1`
+            Else
+                Goto 0
+            EndIf
+        Case == 19`
+            If *MF_Badge19Seen == .False
+                Set *Var2 .Item:SSmashChg
+                Set *MF_Badge19Seen .True
+                Add *MB_RandBadgesSeen 1`
+            Else
+                Goto 0
+            EndIf
+        Case == 20`
+            If *MF_Badge20Seen == .False
+                Set *Var2 .Item:SpinSmash
+                Set *MF_Badge20Seen .True
+                Add *MB_RandBadgesSeen 1`
+            Else
+                Goto 0
+            EndIf
+        EndSwitch
+    EndSwitch
+    Return
+    End
+}
+
+#export $Script_GenerateRandomItem

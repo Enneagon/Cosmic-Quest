@@ -12,9 +12,24 @@
     If *GB_CompletedQuizzes <= 50`
          Call  MakeNpcs  ( .False $NpcGroupList_Chuck )
     EndIf
+    Exec  $Script_RandomPrize
     Exec  $Script_EnterMap
     Return
     End
+}
+
+#new:Script $Script_RandomPrize
+{
+     ExecWait $Script_GenerateRandomItem
+     Call MakeItemEntity ( *Var2 200` 0` -200` .ItemSpawnMode:Fixed_NeverVanish 00000000 )
+     ExecWait $Script_GenerateRandomItem
+     If *Var1 >= 71`
+          Call  MakeEntity ( .Entity:RedBlock -200` 60` -200` 0` *Var2 80000000 )
+     Else
+          Call  MakeEntity ( .Entity:YellowBlock -200` 60` -200` 0` *Var2 80000000 )
+     EndIf
+     Return
+     End
 }
 
 #new:NpcGroupList $NpcGroupList_Chuck

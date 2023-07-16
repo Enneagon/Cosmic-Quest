@@ -141,6 +141,8 @@
                     Goto 0
                 EndIf
             EndLoop
+    Wait 30`
+    Exec $Script_MissionComplete
     Return
     Label 0
     Call GetModelCenter ( ~Model:Enemy1 )
@@ -153,12 +155,13 @@
     Call GetModelCenter ( ~Model:Enemy1 )
     Set *Var7 *Var0
     Set *Var5 1`
-    Call MakeLerp ( 1500` 2000` 60` .Easing:Linear )
+    Call  ModifyColliderFlags   ( 00000001 ~Collider:Enemy1Collider 7FFFFE00 )
+    Call MakeLerp ( 1500` 2000` 60` .Easing:CosIn )
             Loop
                 Call  UpdateLerp ( )
                 Call  TranslateModel ( ~Model:Enemy1 *Var7 00000000 *Var0 )
-                Call  RotateGroup ( ~Model:EnemyShip1 *Var5 00000000 *Var5 00000000 )
                 Call  UpdateColliderTransform ( ~Collider:Enemy1Collider )
+                Call  RotateGroup ( ~Model:EnemyShip1 *Var5 00000000 *Var5 00000000 )
                 Add *Var5 1`
                 Wait  1`
                 Set *Debug[0] *Var7
@@ -167,6 +170,7 @@
                 EndIf
             EndLoop
         Call GetModelCenter ( ~Model:Enemy1 )
+        Call  PlaySoundAtModel ( ~Model:Enemy1 .Sound:Cannon2 00000000 )
         Call  PlayEffect ( ~FX:Explosion3 *Var0 *Var1 *Var2 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 )
         Call EnableModel ( ~Model:Enemy1 .False )
         Call  ModifyColliderFlags   ( 00000000 ~Collider:Enemy1Collider 7FFFFE00 )
@@ -322,7 +326,6 @@
 {
     Set *MF_SpacePerfectBonus .False
     Call $Function_GetArbitraryByte ( *Var0 8010F292 )
-    Set *Debug[1] *Var0
     If *Var0 == 1`
         Call DisablePlayerInput ( .True )
         Set *MF_SpaceFailState .True
@@ -360,9 +363,138 @@
     Sub *Var2 15`
     Set *MapVar[0] *Var0
     Switch *MB_CurrentShip
+    Case == 5`
+        Call RandInt ( 2` *Var0 )
+        Switch *Var0
+        Case == 0`
+            Call EnableModel ( ~Model:ShipBullet6 .True )
+            Call MakeLerp ( *Var2 -1000` 30` .Easing:Linear )
+                Loop
+                    Call  UpdateLerp ( )
+                    Call  TranslateModel ( ~Model:ShipBullet6 *MapVar[0] 00000000 *Var0 )
+                    Call RandInt ( 45` *Var2 )
+                    Sub *Var2 23`
+                    Add *MapVar[0] *Var2
+                    Wait  1`
+                    If  *Var1  ==  00000000
+                        BreakLoop
+                    EndIf
+                    If  *MapFlag[2]  ==  .True
+                        Set *MapFlag[2] .False
+                        BreakLoop
+                    EndIf
+                EndLoop
+            Call  TranslateModel ( ~Model:ShipBullet6 00000000 00000000 00000000 )
+            Call  EnableModel ( ~Model:ShipBullet6 .False )
+        Case == 1`
+            Call EnableModel ( ~Model:ShipBullet7 .True )
+            Call MakeLerp ( *Var2 -1000` 120` .Easing:CubicOut )
+            SetF *Var3 *Fixed[0.1]
+                Loop
+                    Call  UpdateLerp ( )
+                    Call  TranslateModel ( ~Model:ShipBullet7 *MapVar[0] 00000000 *Var0 )
+                    AddF *Var3 *Fixed[0.1]
+                    Call  ScaleModel ( ~Model:ShipBullet7 *Var3 *Var3 *Var3 )
+                    Wait  1`
+                    If  *Var1  ==  00000000
+                        BreakLoop
+                    EndIf
+                    If  *MapFlag[2]  ==  .True
+                        Set *MapFlag[2] .False
+                        BreakLoop
+                    EndIf
+                EndLoop
+            Call  TranslateModel ( ~Model:ShipBullet7 00000000 00000000 00000000 )
+            Call  EnableModel ( ~Model:ShipBullet7 .False )
+        Case == 2`
+            Call EnableModel ( ~Model:ShipBullet8 .True )
+            Call MakeLerp ( *Var2 -1000` 45` .Easing:Linear )
+                Loop
+                    Call  UpdateLerp ( )
+                    Call  TranslateModel ( ~Model:ShipBullet8 *MapVar[0] 00000000 *Var0 )
+                    Wait  1`
+                    If  *Var1  ==  00000000
+                        BreakLoop
+                    EndIf
+                    If  *MapFlag[2]  ==  .True
+                        Set *MapFlag[2] .False
+                        BreakLoop
+                    EndIf
+                EndLoop
+            Call  TranslateModel ( ~Model:ShipBullet8 00000000 00000000 00000000 )
+            Call  EnableModel ( ~Model:ShipBullet8 .False )
+        EndSwitch
+    Case == 4`
+        Set *MapFlag[4] .False
+        Set *MapFlag[5] .False
+        Call EnableModel ( ~Model:ShipBullet3 .True )
+        Call EnableModel ( ~Model:ShipBullet4 .True )
+        Call EnableModel ( ~Model:ShipBullet5 .True )
+        Thread
+            Call MakeLerp ( *Var2 -1000` 20` .Easing:Linear )
+            Loop
+                Call  UpdateLerp ( )
+                Call  TranslateModel ( ~Model:ShipBullet3 *MapVar[0] 00000000 *Var0 )
+                Wait  1`
+                If  *Var1  ==  00000000
+                    BreakLoop
+                EndIf
+                If  *MapFlag[2]  ==  .True
+                    Set *MapFlag[2] .False
+                    BreakLoop
+                EndIf
+            EndLoop
+            Call  TranslateModel ( ~Model:ShipBullet3 00000000 00000000 00000000 )
+            Call  EnableModel ( ~Model:ShipBullet3 .False )
+        EndThread
+        Thread
+            Call MakeLerp ( *Var2 -900` 20` .Easing:Linear )
+            Set *Var3 *MapVar[0]
+            Loop
+                Call  UpdateLerp ( )
+                Call  TranslateModel ( ~Model:ShipBullet4 *Var3 00000000 *Var0 )
+                Add *Var3 7`
+                Wait  1`
+                If  *Var1  ==  00000000
+                    BreakLoop
+                EndIf
+                If  *MapFlag[4]  ==  .True
+                    Set *MapFlag[4] .False
+                    BreakLoop
+                EndIf
+            EndLoop
+            Call  TranslateModel ( ~Model:ShipBullet4 00000000 00000000 00000000 )
+            Call  EnableModel ( ~Model:ShipBullet4 .False )
+        EndThread
+        Thread
+            Call MakeLerp ( *Var2 -900` 20` .Easing:Linear )
+            Set *Var4 *MapVar[0]
+            Loop
+                Call  UpdateLerp ( )
+                Call  TranslateModel ( ~Model:ShipBullet5 *Var4 00000000 *Var0 )
+                Sub *Var4 7`
+                Wait  1`
+                If  *Var1  ==  00000000
+                    BreakLoop
+                EndIf
+                If  *MapFlag[5]  ==  .True
+                    Set *MapFlag[5] .False
+                    BreakLoop
+                EndIf
+            EndLoop
+            Call  TranslateModel ( ~Model:ShipBullet5 00000000 00000000 00000000 )
+            Call  EnableModel ( ~Model:ShipBullet5 .False )
+        EndThread
+        Wait 20`
+    Case == 3`
+        Call  PlaySoundAtPlayer ( 00002069 00000000 )
+        Call  PlayEffect        ( ~FX:Lightning *Var0 0` *Var2 *Var0 0` -1000` *Fixed[10.0] 20` 00000000 00000000 00000000 00000000 )
+        Wait 20`
+        Set *MapFlag[1] .False
+        Wait 30`
     Case == 2`
         Call EnableModel ( ~Model:ShipBullet2 .True )
-        Call MakeLerp ( *Var2 -1000` 45` .Easing:Linear )
+        Call MakeLerp ( *Var2 -1000` 75` .Easing:CosIn )
             Loop
                 Call  UpdateLerp ( )
                 Call  TranslateModel ( ~Model:ShipBullet2 *MapVar[0] 00000000 *Var0 )
@@ -403,6 +535,105 @@
 #new:Script $Script_EnemyDamage
 {
     Switch *MB_CurrentShip
+    Case == 5`
+        Loop
+            Call GetModelCenter ( ~Model:Enemy1 )
+            Set *Var3 *Var0
+            Set *Var4 *Var2
+            Call GetModelCenter ( ~Model:ShipBullet6 )
+            Call GetDist2D ( *Var5 *Var0 *Var2 *Var3 *Var4 )
+            If *Var5 <= 200`
+                Call  PlaySoundAtModel ( ~Model:ShipBullet5 .Sound:HitBlock 00000000 )
+                Goto 1    
+            EndIf
+            Call GetModelCenter ( ~Model:ShipBullet7 )
+            Call GetDist2D ( *Var5 *Var0 *Var2 *Var3 *Var4 )
+            If *Var5 <= 200`
+                Call  PlaySoundAtModel ( ~Model:ShipBullet6 .Sound:HitBlock 00000000 )
+                Goto 1    
+            EndIf
+            Call GetModelCenter ( ~Model:ShipBullet8 )
+            Call GetDist2D ( *Var5 *Var0 *Var2 *Var3 *Var4 )
+            If *Var5 <= 200`
+                Call  PlaySoundAtModel ( ~Model:ShipBullet7 .Sound:HitBlock 00000000 )
+                Goto 1    
+            EndIf
+            Wait 1`
+            Goto 2
+            Label 1
+            Set *MapFlag[2] .True
+            Wait 2`
+            Call  PlayEffect ( ~FX:Explosion1 *Var0 *Var1 *Var2 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 )
+            Sub *MapVar[1] 2`
+            Set *Debug[2] *MapVar[1]
+            If *MapVar[1] <= 0`
+                BreakLoop
+            EndIf
+            Label 2
+            Wait 1`
+        EndLoop
+    Case == 4`
+        Loop
+            Call GetModelCenter ( ~Model:Enemy1 )
+            Set *Var3 *Var0
+            Set *Var4 *Var2
+            Call GetModelCenter ( ~Model:ShipBullet3 )
+            Call GetDist2D ( *Var5 *Var0 *Var2 *Var3 *Var4 )
+            If *Var5 <= 200`
+                Call  PlaySoundAtModel ( ~Model:ShipBullet3 .Sound:HitBlock 00000000 )
+                Set *MapFlag[2] .True
+                Goto 1    
+            EndIf
+            Call GetModelCenter ( ~Model:ShipBullet4 )
+            Call GetDist2D ( *Var5 *Var0 *Var2 *Var3 *Var4 )
+            If *Var5 <= 200`
+                Call  PlaySoundAtModel ( ~Model:ShipBullet4 .Sound:HitBlock 00000000 )
+                Set *MapFlag[4] .True
+                Goto 1    
+            EndIf
+            Call GetModelCenter ( ~Model:ShipBullet5 )
+            Call GetDist2D ( *Var5 *Var0 *Var2 *Var3 *Var4 )
+            If *Var5 <= 200`
+                Call  PlaySoundAtModel ( ~Model:ShipBullet5 .Sound:HitBlock 00000000 )
+                Set *MapFlag[5] .True
+                Goto 1    
+            EndIf
+            Wait 1`
+            Goto 2
+            Label 1
+            Wait 2`
+            Call  PlayEffect ( ~FX:Explosion1 *Var0 *Var1 *Var2 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 )
+            Sub *MapVar[1] 1`
+            Set *Debug[2] *MapVar[1]
+            If *MapVar[1] <= 0`
+                BreakLoop
+            EndIf
+            Label 2
+            Wait 1`
+        EndLoop
+    Case == 3`
+        Loop 
+            If *MapFlag[1] == .True
+               Call GetModelCenter ( ~Model:Enemy1 )
+                Call GetPlayerPos ( *Var1 00000000 00000000 )
+                Sub *Var0 *Var1
+                If *Var0 < 0`
+                    Mul *Var0 -1`
+                EndIf
+                Set *Debug[1] *Var0
+                If *Var0 <= 150`
+                    Call GetModelCenter ( ~Model:Enemy1 )
+                    Call  PlayEffect ( ~FX:Firework:Yellow *Var0 *Var1 *Var2 *Fixed[2.0] 30` 00000000 00000000 00000000 00000000 00000000 00000000 )
+                    Sub *MapVar[1] 2`
+                    Set *Debug[2] *MapVar[1]
+                    Wait 50`
+                EndIf
+                If *MapVar[1] <= 0`
+                    BreakLoop
+                EndIf
+            EndIf
+            Wait 1`
+        EndLoop
     Case == 2`
         Loop
             Call GetModelCenter ( ~Model:Enemy1 )
@@ -413,7 +644,6 @@
             If *Var5 <= 200`
                 Call  PlaySoundAtModel ( ~Model:ShipBullet2 .Sound:Cannon1 00000000 )
                 Call  PlayEffect ( ~FX:Explosion1 *Var0 *Var1 *Var2 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 )
-                Call  EnableModel ( ~Model:ShipBullet2 .False )
                 Sub *MapVar[1] 3`
                 Set *Debug[2] *MapVar[1]
                 Set *MapFlag[2] .True
@@ -433,8 +663,7 @@
             Call GetDist2D ( *Var5 *Var0 *Var2 *Var3 *Var4 )
             If *Var5 <= 200`
                 Call  PlaySoundAtModel ( ~Model:ShipBullet1 .Sound:HitBlock 00000000 )
-                Call  PlayEffect ( ~FX:ShockWave:LargeWhite *Var0 *Var1 *Var2 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 )
-                Call  EnableModel ( ~Model:ShipBullet1 .False )
+                Call  PlayEffect ( ~FX:Explosion1 *Var0 *Var1 *Var2 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 )
                 Sub *MapVar[1] 2`
                 Set *Debug[2] *MapVar[1]
                 Set *MapFlag[2] .True
@@ -476,3 +705,14 @@
     Return
     End
 }
+
+/% NOTES
+
+MapFlag[0] determines whether ship tracking is active, and prevents it from stacking. This should always be on.
+MapFlag[1] determines whether a friendly bullet is in flight, preventing it from stacking.
+MapFlag[2] determines whether a friendly bullet has hit anything, resetting it.
+MapFlag[3] determined whether the enemy's battle script is over, causing it to stop firing.
+MapFlag[4] and MapFlag[5] are as MapFlag[2], for the Shooting Star's two additional bullets.
+
+MapVar[0] is used to keep friendly bullets moving in a straight line.
+MapVar[1] tracks the enemy ship's HP. If below 1, it stops firing, stops checking for collision, and enters its crashing sequence.
