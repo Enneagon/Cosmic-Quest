@@ -86,7 +86,6 @@
 #new:Script $Script_MakeNPCs
 {
     Call  MakeNpcs  ( .False $NpcGroupList_Always )
-    Call  MakeNpcs  ( .False $NpcGroupList_Debug )
     Return
     End
 }
@@ -94,12 +93,7 @@
 #new:NpcGroupList $NpcGroupList_Always
 {
 	00000004 $NpcGroup_Always 00000000
-    00000000 00000000 00000000
-}
-
-#new:NpcGroupList $NpcGroupList_Debug
-{
-	00000001 $NpcGroup_Debug 00000000
+    00000001 $NpcGroup_Debug 00000000
     00000000 00000000 00000000
 }
 
@@ -152,9 +146,10 @@
 
 #new:Script $Script_Init_Astro
 {
-   14:  Call  BindNpcInteract   ( .Npc:Self $Script_Interact_Astro )
-        Return
-   1C:  End
+    Call SetNpcYaw ( .Npc:Self 90` )
+    Call  BindNpcInteract   ( .Npc:Self $Script_Interact_Astro )
+    Return
+    End
 }
 
 #new:Script $Script_Init_Merlon

@@ -625,3 +625,10 @@
 	[Option 3]No thanks[BR]
 	[EndChoice cancel=3][End]
 }
+
+#message:2F:061
+{
+	[NoSkip][Style Choice pos=35,20 size=255,108][Speed delay=2 chars=1]    Titanic Enemy Approaching[BR][BR]
+	[Pause 60][Size 26]  [SaveColor][Color:07][Speed delay=3 chars=1]STARSHIP TIAMAT[RestoreColor][SizeReset][BR][BR][BR]
+	[Pause 60]            [Speed delay=3 chars=1]No refuge![Pause 60][End]
+}

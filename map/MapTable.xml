@@ -609,6 +609,7 @@
 		<Map name="ast_01" nickname="Enemy 1"/>
 		<Map name="ast_02" nickname="Sinistar"/>
 		<Map name="ast_03" nickname="Space Bus"/>
+		<Map name="ast_04" nickname="Tiamat"/>
 	</Area>
 	<Resource name="mac_tex" compressed="false"/>
 	<Resource name="tik_tex" compressed="false"/>
