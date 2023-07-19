@@ -7843,7 +7843,7 @@
 				<Command val="2000"/>
 			</Component>
 		</Animation>
-		<Animation name="Anim_30">
+		<Animation name="Anim_29">
 			<Component name="Comp_00" xyz="10,0,0">
 				<Command val="100C"/>
 				<Command val="4"/>

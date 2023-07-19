@@ -49,7 +49,7 @@
 		<Sprite id="2E" src="2E" name="Bill Blaster"/>
 		<Sprite id="2F" src="2F - Mantle Mole" name="Mantle Mole"/>
 		<Sprite id="30" src="30" name="Cleft"/>
-		<Sprite id="31" src="31" name="Asteroid Pokey"/>
+		<Sprite id="31" src="31 - Asteroid Pokey" name="Asteroid Pokey"/>
 		<Sprite id="32" src="32" name="Bandit"/>
 		<Sprite id="33" src="33" name="Buzzy Beetle"/>
 		<Sprite id="34" src="34" name="Swooper"/>
@@ -179,7 +179,7 @@
 		<Sprite id="B0" src="B0" name="Merluvlee"/>
 		<Sprite id="B1" src="B1" name="Merlar"/>
 		<Sprite id="B2" src="B2" name="Merlow"/>
-		<Sprite id="B3" src="B3" name="Star Kid"/>
+		<Sprite id="B3" src="B3 - Space Hares" name="Space Hares"/>
 		<Sprite id="B4" src="B4" name="Kolorado Wife"/>
 		<Sprite id="B5" src="B5" name="Koopa Koot"/>
 		<Sprite id="B6" src="B6" name="Kolorado"/>

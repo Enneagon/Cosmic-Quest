@@ -59,8 +59,10 @@
 {
 1`b 1`b 2`b 2`b 2`b 3`b 3`b 3`b 3`b 4`b % .DMG_Mole_Rock
 2`b 3`b 3`b 4`b 4`b 4`b 5`b 5`b 5`b 6`b % .DMG_Mole_Spikes
+2`b 2`b 2`b 2`b 2`b 2`b 2`b 2`b 2`b 2`b % .DMG_Pokey_Segment
 }
 
 #export $AttackValues
 #export .DMG_Mole_Rock 80000000
 #export .DMG_Mole_Spikes 80000001
+#export .DMG_Pokey_Segment 80000002
