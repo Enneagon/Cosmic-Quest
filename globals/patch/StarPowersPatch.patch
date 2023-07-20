@@ -1,0 +1,306 @@
+% Script by Rain.
+
+%Prevent the Star Spirits menu from appearing for Mario
+
+/%
+@Function:Battle 802A6054 {
+    ORI v0, r0, 0
+    }
+
+    #define .HeadBonkID 0083s
+    #define .TattleID 0086s
+    #define .partialSPMultiplier 256`
+    
+    #new:Data $PartnerMovesArray {
+        %move ID 		%newSPCost (multiplied by partialSPMultiplier)
+        .HeadBonkID 	1s
+        .TattleID		2s
+        FFFFs 			FFFFs %terminate list with -1
+    }
+    #new:Data $IsCurMoveSPMove { 0 }
+    
+    @Hook:Battle 80263A14 {
+        ADDU s3, v0, a2 %restore from hook
+        %v1 currently holds move id
+        LI t0, $PartnerMovesArray
+        ADDIU t1, r0, FFFF %-1 ends list
+        .partnerMovesLoop
+        LH t2, 0000 (t0)
+        BEQ t2, t1, .isFPCost %hit end of list, calc using FP
+        NOP
+        BEQ t2, v1, .isSPCost
+        NOP
+        BEQ r0, r0, .partnerMovesLoop
+        ADDIU t0, t0, 4
+    
+        .isSPCost
+        LI s0, $IsCurMoveSPMove
+        ORI t1, r0, 1
+        SW t1, 0 (s0)
+        ORI v0, r0, .partialSPMultiplier
+        LH s0, 0002 (t0) %load new FP
+        MULTU s0, v0
+        NOP
+        NOP
+        MFLO s0
+        J 80263A1C
+        NOP
+    
+        .isFPCost
+        LI s0, $IsCurMoveSPMove
+        SW r0, 0 (s0)
+        J 80263A1C
+        LB s0, 0011 (s3)
+    }
+    
+    @Hook:Battle 80263A94 {
+        LAW v1, $IsCurMoveSPMove
+        LH v0, 0290 (fp)
+        BEQL v1, r0, .isFPMove
+        LB v0, 0005 (fp)
+        .isFPMove
+        J 80263A9C
+        SLT v0, v0, s0
+    }
+    
+    @Hook:Battle 80263C3C {
+        LAH v0, 800DC1EC %current move ID
+        LI t0, $PartnerMovesArray
+        ADDIU t1, r0, FFFF %-1 ends list
+        .partnerMovesLoop
+        LH v1, 0000 (t0)
+        BEQ v1, t1, .subtractFP
+        NOP
+        BEQ v1, v0, .subtractSP
+        NOP
+        BEQ r0, r0, .partnerMovesLoop
+        ADDIU t0, t0, 4 %point to next entry
+    
+        .subtractFP
+        LBU v0, 0005 (s2) %read fp
+        SUBU v0, v0, s0 %unchanged instruction
+        J 80263C48
+        SB v0, 0005 (s2) %store fp
+        .subtractSP
+        LH v0, 0290 (s2) %read from sp rather than fp
+        ORI v1, r0, .partialSPMultiplier
+        LH s0, 0002 (t0)
+        MULTU s0, v1
+        NOP
+        NOP
+        MFLO s0
+        SUBU v0, v0, s0 %unchanged instruction
+        J 80263C48
+        SH v0, 0290 (s2) %store to sp rather than fp
+    }
+    
+    @Function:Battle 80263C44 { %for clarity
+        NOP
+    }
+    
+    @Hook:Battle 80263C04 { %read from custom table instead of move table if SP move
+        %v1 currently holds move id
+        LI t0, $PartnerMovesArray
+        ADDIU t1, r0, FFFF %-1 ends list
+        .partnerMovesLoop
+        LH t2, 0000 (t0)
+        BEQ t2, t1, .isFPCost %hit end of list, calc using FP
+        NOP
+        BEQ t2, v1, .isSPCost
+        NOP
+        BEQ r0, r0, .partnerMovesLoop
+        ADDIU t0, t0, 4	
+    
+        .isSPCost
+        ORI v0, r0, .partialSPMultiplier
+        LH s0, 0002 (t0) %load new FP
+        MULTU s0, v0
+        NOP
+        NOP
+        MFLO s0
+        J 80263C0C
+        LW s1, 00D8 (a0)
+    
+        .isFPCost
+        LB s0, F071 (s0)
+        J 80263C0C
+        LW s1, 00D8 (a0)
+    }
+    
+    @Hook:Battle 802A8B14 { %display SP cost
+        %currently AT holds a pointer that can be offset into valid move options array (0x802AD510)
+        %a1 points to BattleStatus (800DC070)
+        LBU v1, 01DE (a1)
+        LI t0, $PartnerMovesArray
+        ADDIU t1, r0, FFFF %-1 ends list
+        .partnerMovesLoop
+        LH t2, 0000 (t0)
+        BEQ t2, t1, .isFPCost %hit end of list, calc using FP
+        NOP
+        BEQ t2, v1, .isSPCost
+        NOP
+        BEQ r0, r0, .partnerMovesLoop
+        ADDIU t0, t0, 4
+    
+        .isSPCost
+        ORI v0, r0, 2
+        SW v0, D510 (at) %set enabled bool to 2, signify to blink SP instead of FP
+        LH v0, 0002 (t0)
+        J 802A8B1C
+        LUI at, 802B
+        .isFPCost
+        LB	v0, 0011 (a3)
+        J 802A8B1C
+        LUI at, 802B
+    }
+    
+    @Hook:Battle 802A3FBC { %on SP move, blink SP not FP
+        ORI v1, r0, 1
+        BEQ v1, v0, .isFPMove
+        NOP
+        %is SP Move
+        JAL 800E9A60 %status_bar_start_blinking_sp
+        NOP
+        J 802A3FC4
+        NOP
+        .isFPMove
+        JAL 800E998C %status_bar_start_blinking_fp
+        NOP
+        J 802A3FC4
+        NOP
+    }
+    
+    @Hook:Battle 802A38BC {
+        JAL 800E99D0 %status_bar_stop_blinking_fp
+        NOP
+        JAL 800E9A94 %status_bar_stop_blinking_sp
+        NOP
+        J 802A38C4
+        NOP
+    }
+    
+    @Hook:Battle 802A4394 {
+        JAL 800E99D0 %status_bar_stop_blinking_fp
+        NOP
+        JAL 800E9A94 %status_bar_stop_blinking_sp
+        NOP
+        J 802A439C
+        NOP	
+    }
+    
+    @Data:Battle 802A36A0 {
+        10600005 %this is an asm instruction
+        %BNE v1, v0, 802A36B8 -> BEQ v1, r0, 802A36B8
+    }
+    
+    @Hook:Battle 802AB2EC { %hack - remove sp blinking every frame enemy names are active
+        JAL 801264EC %display enemy name
+        NOP
+        JAL 800E9A94 %status_bar_stop_blinking_sp
+        NOP
+        J 802AB2F4
+        NOP
+    }
+
+    % The following bits were written by me, Nine! I'm learning!
+
+    @Hook:Battle 802A30B8 { % FP image to POW image
+        ORI v1, r0, 1
+        LA A0, 80107638 % Set to FP by default
+        BEQ v1, v0, .isFPMove % If FP, skip over the next part
+        NOP
+        LA A0, 801076E8 % Set to POW if SP move
+        .isFPMove
+        J 802A311C
+        NOP
+    }
+
+    @Hook:Battle 802A30C8 { % FP image to POW image, reduced
+        ORI v1, r0, 1
+        LA A0, 80107664 % Set to FP by default
+        BEQ v1, v0, .isFPMove % If FP, skip over the next part
+        NOP
+        LA A0, 80107714 % Set to POW if SP move
+        .isFPMove
+        J 802A311C
+        NOP
+    }
+
+    @Hook:Battle 802A30D8 { % FP image to POW image, reduced x2
+        ORI v1, r0, 1
+        LA A0, 80107690 % Set to FP by default
+        BEQ v1, v0, .isFPMove % If FP, skip over the next part
+        NOP
+        LA A0, 80107740 % Set to POW if SP move
+        .isFPMove
+        J 802A313C
+        NOP
+    }
+
+    @Hook:Battle 802A40D0 { % FP image to POW image, not enough
+        ORI v1, r0, 1
+        BEQ v1, v0, .isFPMove
+        NOP
+        %is SP Move
+        LA        A0, 8010776C
+        J 802A40D8
+        NOP
+        .isFPMove
+        LA        A0, 801076BC
+        J 802A40D8
+        NOP
+    }
+
+    /%
+    Function that loads the 3 FP images: Function_802A2C84
+    The relevant section of the code:
+    434:  LA        A0, 80107638 <<< FP Cost
+  43C:  BEQ       R0, R0, .o498
+  440:  NOP
+        .o444
+  444:  LA        A0, 80107664 <<< x1 lowered FP cost
+  44C:  BEQ       R0, R0, .o498
+  450:  NOP
+        .o454
+  454:  LA        A0, 80107690 <<< x2 lowered FP cost
+  45C:  BEQ       R0, R0, .o4B8
+  460:  NOP
+
+    Function that loads the not enough FP code: Function_802A3C98
+    The relevant section of the code:
+    438:  LA        A1, 801076BC
+
+    Codes for POW costs:
+    801076E8 < POW cost
+    80107714 < POW cost 1x reduced
+    80107740 < POW cost 2x reduced
+    8010776C < POW not enough
+
+    Original:
+
+    @Hook:Battle 802A30B8 { % FP image to POW image
+        ORI v1, r0, 1
+        BEQ v1, v0, .isFPMove
+        NOP
+        %is SP Move
+        LA        A0, 801076E8 < Load the POW image
+        J 802A311C < Jump back into the main code at a safe point
+        NOP
+        .isFPMove
+        LA        A0, 80107638
+        J 802A311C
+        NOP
+    }
+
+    Optimized:
+
+    @Hook:Battle 802A30B8 { % FP image to POW image
+        ORI v1, r0, 1
+        LA A0, 80107638
+        BEQ v1, v0, .isFPMove
+        NOP
+        LA A0, 801076E8
+        .isFPMove
+        J 802A311C
+        NOP
+    }

@@ -234,6 +234,8 @@
 		<Sprite id="E7" src="E7" name="Parade Shy Guys"/>
 		<Sprite id="E8" src="E8" name="Parade Twink"/>
 		<Sprite id="E9" src="E9" name="Leaf"/>
+		<Sprite id="EA" src="EA - Yux" name="Yux"/>
+		<Sprite id="EB" src="EB - Logo" name="Logo"/>
 	</NpcSprites>
 	<PlayerSprites>
 		<Sprite id="1" src="01" name="Mario 1"/>

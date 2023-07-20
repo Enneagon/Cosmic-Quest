@@ -335,4 +335,7 @@
 			<PointLight flags="5" pos="141,3,25" color="84,70,83" coef="0.010000" unk="0"/>
 		</ShadingProfile>
 	</ShadingGroup>
+	<ShadingGroup>
+		<ShadingProfile name="und_00" power="1E" ambient="10,10,0"/>
+	</ShadingGroup>
 </SpriteShading>

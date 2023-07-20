@@ -695,12 +695,12 @@
 					<F3DEX2 cmd="D9FFFFFF,200400"/>
 					<TriangleBatch ver="0">
 						<VertexTable>
-							<Vertex xyz="-148,20,-170" uv="2048,521" rgba="-1,-1,-1,-1"/>
-							<Vertex xyz="0,20,-170" uv="512,521" rgba="-1,-1,-1,-1"/>
-							<Vertex xyz="0,20,-200" uv="512,521" rgba="-1,-1,-1,-1"/>
-							<Vertex xyz="-148,20,-170" uv="2048,521" rgba="-1,-1,-1,-1"/>
-							<Vertex xyz="0,20,-200" uv="512,521" rgba="-1,-1,-1,-1"/>
-							<Vertex xyz="-148,20,-200" uv="2048,521" rgba="-1,-1,-1,-1"/>
+							<Vertex xyz="-148,20,-170" uv="2048,521"/>
+							<Vertex xyz="0,20,-170" uv="512,521"/>
+							<Vertex xyz="0,20,-200" uv="512,521"/>
+							<Vertex xyz="-148,20,-170" uv="2048,521"/>
+							<Vertex xyz="0,20,-200" uv="512,521"/>
+							<Vertex xyz="-148,20,-200" uv="2048,521"/>
 						</VertexTable>
 						<TriangleList>
 							<Triangle ijk="0,1,2"/>
@@ -709,24 +709,24 @@
 					</TriangleBatch>
 					<TriangleBatch ver="0">
 						<VertexTable>
-							<Vertex xyz="0,0,-170" uv="528,36" rgba="-1,-1,-1,-1"/>
-							<Vertex xyz="0,20,-170" uv="528,521" rgba="-1,-1,-1,-1"/>
-							<Vertex xyz="-148,20,-170" uv="2064,521" rgba="-1,-1,-1,-1"/>
-							<Vertex xyz="0,0,-170" uv="528,36" rgba="-1,-1,-1,-1"/>
-							<Vertex xyz="-148,20,-170" uv="2064,521" rgba="-1,-1,-1,-1"/>
-							<Vertex xyz="-148,0,-170" uv="2064,36" rgba="-1,-1,-1,-1"/>
-							<Vertex xyz="0,0,-200" uv="1024,36" rgba="-1,-1,-1,-1"/>
-							<Vertex xyz="0,20,-200" uv="1024,521" rgba="-1,-1,-1,-1"/>
-							<Vertex xyz="0,20,-170" uv="512,521" rgba="-1,-1,-1,-1"/>
-							<Vertex xyz="0,0,-200" uv="512,36" rgba="-1,-1,-1,-1"/>
-							<Vertex xyz="0,20,-170" uv="512,521" rgba="-1,-1,-1,-1"/>
-							<Vertex xyz="0,0,-170" uv="1024,36" rgba="-1,-1,-1,-1"/>
-							<Vertex xyz="-148,0,-200" uv="2048,36" rgba="-1,-1,-1,-1"/>
-							<Vertex xyz="-148,20,-170" uv="2048,521" rgba="-1,-1,-1,-1"/>
-							<Vertex xyz="-148,20,-200" uv="1536,521" rgba="-1,-1,-1,-1"/>
-							<Vertex xyz="-148,0,-200" uv="1536,36" rgba="-1,-1,-1,-1"/>
-							<Vertex xyz="-148,0,-170" uv="2048,36" rgba="-1,-1,-1,-1"/>
-							<Vertex xyz="-148,20,-170" uv="1536,521" rgba="-1,-1,-1,-1"/>
+							<Vertex xyz="0,0,-170" uv="528,36"/>
+							<Vertex xyz="0,20,-170" uv="528,521"/>
+							<Vertex xyz="-148,20,-170" uv="2064,521"/>
+							<Vertex xyz="0,0,-170" uv="528,36"/>
+							<Vertex xyz="-148,20,-170" uv="2064,521"/>
+							<Vertex xyz="-148,0,-170" uv="2064,36"/>
+							<Vertex xyz="0,0,-200" uv="1024,36"/>
+							<Vertex xyz="0,20,-200" uv="1024,521"/>
+							<Vertex xyz="0,20,-170" uv="512,521"/>
+							<Vertex xyz="0,0,-200" uv="512,36"/>
+							<Vertex xyz="0,20,-170" uv="512,521"/>
+							<Vertex xyz="0,0,-170" uv="1024,36"/>
+							<Vertex xyz="-148,0,-200" uv="2048,36"/>
+							<Vertex xyz="-148,20,-170" uv="2048,521"/>
+							<Vertex xyz="-148,20,-200" uv="1536,521"/>
+							<Vertex xyz="-148,0,-200" uv="1536,36"/>
+							<Vertex xyz="-148,0,-170" uv="2048,36"/>
+							<Vertex xyz="-148,20,-170" uv="1536,521"/>
 						</VertexTable>
 						<TriangleList>
 							<Triangle ijk="0,1,2"/>

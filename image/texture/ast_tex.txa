@@ -26,7 +26,7 @@ tex: ast_planetsurface5
 {
 	img: ast_planetsurface5.png
 	{
-		format: CI-4
+		format: RGBA-16
 		hwrap: repeat
 		vwrap: repeat
 	}
