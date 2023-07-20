@@ -1,0 +1,39 @@
+@ $Script_Main {
+    Set   *GB_WorldLocation  .Location:GoombaRoad
+    Call  SetCamPerspective  ( .Cam:Default 00000003 00000019 00000010 00001000 )
+    Call  SetCamBGColor      ( .Cam:Default 00000000 00000000 00000000 )
+    Call  SetCamEnabled      ( .Cam:Default .True
+    Call  SetCamLeadPlayer   ( .Cam:Default .False )
+    Exec  $Script_SetupMusic
+    Exec  $Script_LoadShip
+    Exec  $Script_EnterMap
+    Return
+    End
+}
+
+#new:Script $Script_LoadShip
+{
+    Call EnableGroup ( ~Model:Rockets .False )
+    Switch *MB_CurrentShip
+    Case == 5`
+        Call EnableGroup ( ~Model:Rocket5 .True )
+    Case == 4`
+        Call EnableGroup ( ~Model:Rocket4 .True )
+    Case == 2`
+        Call EnableGroup ( ~Model:Rocket2 .True )
+    Default
+        Call EnableGroup ( ~Model:Rocket1 .True )
+    EndSwitch
+    Return
+    End
+}@ $Script_EnterMap {
+    Call  GetEntryID    ( *Var[0] )
+    Switch  *Var[0]
+        Default
+            Exec  $Script_CreateExitTriggers
+    EndSwitch
+    Call DisablePlayerInput ( .True )
+    Call  ShowMessageAtScreenPos    ( 002F0062  160`  40` ) % Next Sector!
+    Return
+    End
+}

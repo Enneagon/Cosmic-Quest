@@ -632,3 +632,8 @@
 	[Pause 60][Size 26]  [SaveColor][Color:07][Speed delay=3 chars=1]STARSHIP TIAMAT[RestoreColor][SizeReset][BR][BR][BR]
 	[Pause 60]            [Speed delay=3 chars=1]No refuge![Pause 60][End]
 }
+
+#message:2F:062
+{
+	[Style Right][NoSkip][Size 36][Down 8][Shake]     Three![Pause 60][Size 16][BR][BR][BR][Next][Size 36]      Two![Pause 60][Size 16][BR][BR][BR][Next][Size 36]      One![Pause 60][Size 16][BR][BR][BR][Next][Size 36]BLAST OFF!!![Pause 60][End]
+}

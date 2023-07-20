@@ -57,10 +57,10 @@
     Case 0` to 20`
         Call EnableModel ( ~Model:Node1g .True )
         Set *MB_Node1 1`
-    Case 21` to 50`
+    Case 21` to 55`
         Call EnableModel ( ~Model:Node1y .True )
         Set *MB_Node1 2`
-    Case 51` to 90`
+    Case 56` to 90`
         Call EnableModel ( ~Model:Node1r .True )
         Set *MB_Node1 3`
     Case 91` to 100`
@@ -73,10 +73,10 @@
     Case 0` to 20`
         Call EnableModel ( ~Model:Node2g .True )
         Set *MB_Node2 1`
-    Case 21` to 50`
+    Case 21` to 55`
         Call EnableModel ( ~Model:Node2y .True )
         Set *MB_Node2 2`
-    Case 51` to 90`
+    Case 56` to 90`
         Call EnableModel ( ~Model:Node2r .True )
         Set *MB_Node2 3`
     Case 91` to 100`
@@ -89,10 +89,10 @@
     Case 0` to 20`
         Call EnableModel ( ~Model:Node3g .True )
         Set *MB_Node3 1`
-    Case 21` to 50`
+    Case 21` to 55`
         Call EnableModel ( ~Model:Node3y .True )
         Set *MB_Node3 2`
-    Case 51` to 90`
+    Case 56` to 90`
         Call EnableModel ( ~Model:Node3r .True )
         Set *MB_Node3 3`
     Case 91` to 100`
@@ -105,10 +105,10 @@
     Case 0` to 20`
         Call EnableModel ( ~Model:Node4g .True )
         Set *MB_Node4 1`
-    Case 21` to 50`
+    Case 21` to 55`
         Call EnableModel ( ~Model:Node4y .True )
         Set *MB_Node4 2`
-    Case 51` to 90`
+    Case 56` to 90`
         Call EnableModel ( ~Model:Node4r .True )
         Set *MB_Node4 3`
     Case 91` to 100`
@@ -121,10 +121,10 @@
     Case 0` to 20`
         Call EnableModel ( ~Model:Node5g .True )
         Set *MB_Node5 1`
-    Case 21` to 50`
+    Case 21` to 55`
         Call EnableModel ( ~Model:Node5y .True )
         Set *MB_Node5 2`
-    Case 51` to 90`
+    Case 56` to 90`
         Call EnableModel ( ~Model:Node5r .True )
         Set *MB_Node5 3`
     Case 91` to 100`
@@ -135,10 +135,10 @@
     Case 0` to 20`
         Call EnableModel ( ~Model:Node6g .True )
         Set *MB_Node6 1`
-    Case 21` to 50`
+    Case 21` to 55`
         Call EnableModel ( ~Model:Node6y .True )
         Set *MB_Node6 2`
-    Case 51` to 90`
+    Case 56` to 90`
         Call EnableModel ( ~Model:Node6r .True )
         Set *MB_Node6 3`
     Case 91` to 100`
@@ -151,10 +151,10 @@
     Case 0` to 20`
         Call EnableModel ( ~Model:Node7g .True )
         Set *MB_Node7 1`
-    Case 21` to 50`
+    Case 21` to 55`
         Call EnableModel ( ~Model:Node7y .True )
         Set *MB_Node7 2`
-    Case 51` to 90`
+    Case 56` to 90`
         Call EnableModel ( ~Model:Node7r .True )
         Set *MB_Node7 3`
     Case 91` to 100`
@@ -167,10 +167,10 @@
     Case 0` to 20`
         Call EnableModel ( ~Model:Node8g .True )
         Set *MB_Node8 1`
-    Case 21` to 50`
+    Case 21` to 55`
         Call EnableModel ( ~Model:Node8y .True )
         Set *MB_Node8 2`
-    Case 51` to 90`
+    Case 56` to 90`
         Call EnableModel ( ~Model:Node8r .True )
         Set *MB_Node8 3`
     Case 91` to 100`
@@ -677,6 +677,115 @@
     Add *MB_SectorsCompleted 1`
     Call  PlayerMoveTo ( 900` 0` 40` )
     Wait  20`
+    If *MB_SectorsCompleted == 3`
+        Set *VarF 002F0024
+        Goto 2
+    EndIf
+    Call  RandInt ( 2` *Var0 )
+    Label 0
+    Add *Var0 1`
+    Wait 1
+    If *Var0 >= 4`
+        Set *Var0 1`
+    EndIf
+    Wait 1
+    Switch *Var0
+    Case == 1`
+        If *MF_SectorSeenRosalina == .False
+            Set *VarF 002F001E
+            Set *MF_SectorSeenRosalina .True
+        Else
+            Goto 0
+        EndIf
+    Case == 2`
+        If *MF_SectorSeenGearmos == .False
+            Set *VarF 002F0020
+            Set *MF_SectorSeenGearmos .True
+        Else
+            Goto 0
+        EndIf
+    Case == 3`
+        If *MF_SectorSeenBowser == .False
+            Set *VarF 002F0022
+            Set *MF_SectorSeenBowser .True
+        Else
+            Goto 0
+        EndIf
+    EndSwitch
+    Call  SetMessageString ( *VarF 00000000 )
+    Call  RandInt ( 2` *Var0 )
+    Label 1
+    Add *Var0 1`
+    Wait 1
+    If *Var0 >= 4`
+        Set *Var0 1`
+    EndIf
+    Wait 1
+    Switch *Var0
+    Case == 1`
+        If *MF_SectorSeenRosalina == .False
+            Set *VarE 002F001E
+            Set *MF_SectorSeenRosalina .True
+        Else
+            Goto 1
+        EndIf
+    Case == 2`
+        If *MF_SectorSeenGearmos == .False
+            Set *VarE 002F0020
+            Set *MF_SectorSeenGearmos .True
+        Else
+            Goto 1
+        EndIf
+    Case == 3`
+        If *MF_SectorSeenBowser == .False
+            Set *VarE 002F0022
+            Set *MF_SectorSeenBowser .True
+        Else
+            Goto 1
+        EndIf
+    EndSwitch
+    Call  SetMessageString ( *VarE 00000001 )
+    Call  ShowMessageAtScreenPos    ( 002F001C  160`  40` ) % Next Sector!
+    Call  ShowChoice ( 002F001D )
+    If *Var0 == 00000000
+        Call CloseMessage ()
+        Switch *VarF
+        Case == 002F001E
+            Call GotoMapSpecial ( "sec_01" ~Entry:sec_01:SectorStart 0000000D )    % Rosalina's Sector!
+        Case == 002F0020
+            Call GotoMapSpecial ( "sec_03" ~Entry:sec_03:SectorStart 0000000D )    % Gearmos Homeworlds!
+        Case == 002F0022
+            Call GotoMapSpecial ( "sec_05" ~Entry:sec_05:SectorStart 0000000D )    % Bowser's Space Armada!
+        EndSwitch
+    Else
+        Call CloseMessage ()
+        Switch *VarE
+        Case == 002F001E
+            Call GotoMapSpecial ( "sec_01" ~Entry:sec_01:SectorStart 0000000D )    % Rosalina's Sector!
+        Case == 002F0020
+            Call GotoMapSpecial ( "sec_03" ~Entry:sec_03:SectorStart 0000000D )    % Gearmos Homeworlds!
+        Case == 002F0022
+            Call GotoMapSpecial ( "sec_05" ~Entry:sec_05:SectorStart 0000000D )    % Bowser's Space Armada!
+        EndSwitch
+    EndIf
+    Return
+    Label 2
+    Call  SetMessageString ( *VarF 00000000 )
+    Call  ShowMessageAtScreenPos    ( 002F001C  160`  40` ) % Next Sector!
+    Call  ShowChoice ( 002F005A )
+    Call CloseMessage ()
+    Call GotoMapSpecial ( "sec_09" ~Entry:sec_09:SectorStart 0000000D )    % Tatanga's Nebula!
+    Return
+    End
+}
+
+
+/% Original Script
+#new:Script $Script_NextSector
+{
+    Add *MB_SectorsCompleted 1`
+    Call  PlayerMoveTo ( 900` 0` 40` )
+    Wait  20`
     If *MB_SectorsCompleted == 4`
         Set *VarF 002F0024
         Goto 2
@@ -814,3 +923,4 @@
     Return
     End
 }
+%/

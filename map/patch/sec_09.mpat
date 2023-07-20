@@ -1,0 +1,113 @@
+@ $Script_Main {
+    Set   *GB_WorldLocation  .Location:GoombaRoad
+    Call  SetCamPerspective  ( .Cam:Default 00000003 00000019 00000010 00001000 )
+    Call  SetCamBGColor      ( .Cam:Default 00000000 00000000 00000000 )
+    Call  SetCamEnabled      ( .Cam:Default .True
+    Call  SetCamLeadPlayer   ( .Cam:Default .False )
+    Exec  $Script_SetupMusic
+    Exec  $Script_ShipBindsToMario
+    Exec  $Script_EnterMap
+    Exec  $Script_Main_Callback_AfterEnterMap
+    Return
+    End
+}
+
+#new:Script $Script_ShipBindsToMario
+{
+    Call EnableGroup ( ~Model:Ships .False )
+    Switch *MB_CurrentShip
+    Case == 1`    
+        Call EnableGroup ( ~Model:Rocket1 .True )
+        Thread
+            Loop
+                Call  GetPlayerPos ( *Var0 *Var1 *Var2 )
+                Call  TranslateGroup ( ~Model:Rocket1 *Var0 00000000 *Var2 )
+                Wait  1`
+            EndLoop
+        EndThread
+    Case == 2`    
+        Call EnableGroup ( ~Model:Rocket2 .True )
+        Thread
+            Loop
+                Call  GetPlayerPos ( *Var0 *Var1 *Var2 )
+                Call  TranslateGroup ( ~Model:Rocket2 *Var0 00000000 *Var2 )
+                Call  RotateGroup ( ~Model:Rocket2 *MapVar[0] 00000000 00000001 00000000 )
+                Add  *MapVar[0] -1`
+                Wait  1`
+            EndLoop
+        EndThread
+    EndSwitch
+    Return
+    End
+}
+
+@ $Script_Main_Callback_AfterEnterMap {
+    Call  DisablePlayerInput ( .True )
+    Call  DisablePlayerPhysics ( .True )
+    If *MF_NewSector == .True
+        Exec $Script_StarterPool
+        Return
+    EndIf
+    Switch *MB_CurrentNode
+    Case == 99`
+        Call  ShowMessageAtScreenPos    ( 002F0015  160`  40` )
+        Set *MB_CurrentNode 0`
+        Set *MF_NewSector .True
+        Exec $Script_NextSector
+        Return
+    Default
+        Call  ShowMessageAtScreenPos    ( 002F0002  160`  40` )
+        Call  ShowChoice ( 002F0014 ) % One node choice - Tatanga Station!
+        Call CloseMessage()
+        Call  GetModelCenter ( ~Model:Node99 )
+        Call  PlayerMoveTo ( *Var0 *Var2 60` )
+            Wait  20`
+            Set *MB_CurrentNode 99`
+            Call $Function_GetArbitraryByte ( *MB_LastArea 800740AB )
+            Call GetMapID ( *MB_LastMap )
+            SetConst *MB_LastNode ~Entry:sec_07:Node99
+            Exec $Script_TatangaStation
+    EndSwitch
+    Return
+    End
+}
+
+#new:Script $Script_StarterPool
+{
+    Set *MF_NewSector .False
+    Call RandInt ( 100` *Var0 )
+    Switch *Var0
+    Case 0` to 100`
+        Call  ShowMessageAtScreenPos    ( 002F001B  160`  40` ) % No Encounter!
+    EndSwitch
+    Exec $Script_Main_Callback_AfterEnterMap
+    Return
+    End
+}
+
+#new:Script $Script_TatangaStation
+{
+    Call RandInt ( 100` *Var0 )
+    Switch *Var0
+    Case 0` to 100`
+        Call  ShowMessageAtScreenPos    ( 002F001B  160`  40` ) % No Encounter!
+    EndSwitch
+    Exec $Script_Main_Callback_AfterEnterMap
+    Return
+    End
+}
+
+#new:Script $Script_NextSector
+{
+    Add *MB_SectorsCompleted 1`
+    Call  PlayerMoveTo ( 900` 0` 40` )
+    Wait  20`
+    Set *VarF 002F0025
+    Call  SetMessageString ( *VarF 00000000 )
+    Call  ShowMessageAtScreenPos    ( 002F001C  160`  40` ) % Next Sector!
+    Call  ShowChoice ( 002F005A )
+    Call CloseMessage ()
+    Call GotoMapSpecial ( "sec_08" ~Entry:sec_08:SectorStart 0000000D )    % Realm of the Worm God!
+    Return
+    End
+}

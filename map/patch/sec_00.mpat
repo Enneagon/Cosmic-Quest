@@ -699,6 +699,100 @@
     Set *MB_SectorsCompleted 1`
     Call  PlayerMoveTo ( 800` 0` 40` )
     Wait  20`
+    Call  RandInt ( 3` *Var0 )
+    Add *Var0 1`
+    Switch *Var0
+    Case == 1`
+        Set *VarF 002F001E
+        Set *MF_SectorSeenRosalina .True
+    Case == 2`
+        Set *VarF 002F0020
+        Set *MF_SectorSeenGearmos .True
+    Case == 3`
+        Set *VarF 002F0022
+        Set *MF_SectorSeenBowser .True
+    Case == 4`
+        Set *VarF 002F0023
+        Set *MF_SectorSeenPirates .True
+    EndSwitch
+    Call  SetMessageString ( *VarF 00000000 )
+    Call  RandInt ( 3` *Var0 )
+    Label 0
+    Add *Var0 1`
+    Wait 1
+    If *Var0 == 5`
+        Set *Var0 0`
+    EndIf
+    Wait 1`
+    Switch *Var0
+    Case == 1`
+        If *MF_SectorSeenRosalina == .False
+            Set *VarE 002F001E
+            Set *MF_SectorSeenRosalina .True
+        Else
+            Goto 0
+        EndIf
+    Case == 2`
+        If *MF_SectorSeenGearmos == .False
+            Set *VarE 002F0020
+            Set *MF_SectorSeenGearmos .True
+        Else
+            Goto 0
+        EndIf
+    Case == 3`
+        If *MF_SectorSeenBowser == .False
+            Set *VarE 002F0022
+            Set *MF_SectorSeenBowser .True
+        Else
+            Goto 0
+        EndIf
+    Case == 4`
+        If *MF_SectorSeenPirates == .False
+            Set *VarE 002F0023
+            Set *MF_SectorSeenPirates .True
+        Else
+            Goto 0
+        EndIf
+    EndSwitch
+    Call  SetMessageString ( *VarE 00000001 )
+    Call  ShowMessageAtScreenPos    ( 002F001C  160`  40` ) % Next Sector!
+    Call  ShowChoice ( 002F001D )
+    If *Var0 == 00000000
+        Call CloseMessage ()
+        Switch *VarF
+        Case == 002F001E
+            Call GotoMapSpecial ( "sec_01" ~Entry:sec_01:SectorStart 0000000D )    % Rosalina's Sector!
+        Case == 002F0020
+            Call GotoMapSpecial ( "sec_03" ~Entry:sec_03:SectorStart 0000000D )    % Gearmos Homeworlds!
+        Case == 002F0022
+            Call GotoMapSpecial ( "sec_05" ~Entry:sec_05:SectorStart 0000000D )    % Bowser's Space Armada!
+        Case == 002F0023
+            Call GotoMapSpecial ( "sec_06" ~Entry:sec_06:SectorStart 0000000D )    % Space Pirate Sector!
+        EndSwitch
+    Else
+        Call CloseMessage ()
+        Switch *VarE
+        Case == 002F001E
+            Call GotoMapSpecial ( "sec_01" ~Entry:sec_01:SectorStart 0000000D )    % Rosalina's Sector!
+        Case == 002F0020
+            Call GotoMapSpecial ( "sec_03" ~Entry:sec_03:SectorStart 0000000D )    % Gearmos Homeworlds!
+        Case == 002F0022
+            Call GotoMapSpecial ( "sec_05" ~Entry:sec_05:SectorStart 0000000D )    % Bowser's Space Armada!
+        Case == 002F0023
+            Call GotoMapSpecial ( "sec_06" ~Entry:sec_06:SectorStart 0000000D )    % Space Pirate Sector!
+        EndSwitch
+    EndIf
+    Return
+    End
+}
+
+
+/% Original script
+#new:Script $Script_NextSector
+{
+    Set *MB_SectorsCompleted 1`
+    Call  PlayerMoveTo ( 800` 0` 40` )
+    Wait  20`
     Call  RandInt ( 5` *Var0 )
     Add *Var0 1`
     Switch *Var0
@@ -813,3 +907,4 @@
     Return
     End
 }
+%/

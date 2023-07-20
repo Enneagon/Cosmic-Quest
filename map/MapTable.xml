@@ -593,6 +593,7 @@
 		<Map name="sec_06" nickname="Pirate Sector"/>
 		<Map name="sec_07" nickname="Tatanga"/>
 		<Map name="sec_08" nickname="Worm God"/>
+		<Map name="sec_09" nickname="Tatanga Demo"/>
 	</Area>
 	<Area name="enc" nickname="Encounters">
 		<Map name="enc_00" nickname="Chuck Quizmo"/>
