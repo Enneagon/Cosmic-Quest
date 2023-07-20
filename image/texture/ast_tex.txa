@@ -22,6 +22,19 @@ tex: ast_planetsurface3
 	combine: 8
 }
 
+tex: ast_planetsurface5
+{
+	img: ast_planetsurface5.png
+	{
+		format: CI-4
+		hwrap: repeat
+		vwrap: repeat
+	}
+	mipmaps: yes
+	filter: yes
+	combine: 8
+}
+
 tex: ast_rainbow
 {
 	img: ast_rainbow.png

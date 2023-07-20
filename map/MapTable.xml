@@ -603,6 +603,8 @@
 		<Map name="enc_05" nickname="Engine Room 4"/>
 		<Map name="enc_06" nickname="Engine Room 5"/>
 		<Map name="enc_07" nickname="Bunny Asteroid"/>
+		<Map name="enc_08" nickname="End Hallway"/>
+		<Map name="enc_09" nickname="Mushroom Station"/>
 	</Area>
 	<Area name="ast" nickname="Asteroid Minigames">
 		<Map name="ast_00" nickname="Asteroids 1"/>
@@ -668,4 +670,5 @@
 	<Resource name="party_pokopi" compressed="true"/>
 	<Resource name="ast_tex" nickname="Asteroids" compressed="false"/>
 	<Resource name="sta_tex" nickname="Stations/Hangar" compressed="false"/>
+	<Resource name="und_tex" nickname="???" compressed="false"/>
 </MapTable>

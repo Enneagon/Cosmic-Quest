@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Map name="enc_01" author="unnamed" background="jan_bg" textures="ast_tex">
 	<Editor>
-		<Camera pos="-45.216633,171.888153,804.094971" pitch="9.999999" yaw="0.000000"/>
+		<Camera pos="-123.744011,178.121201,725.798828" pitch="9.999999" yaw="0.000000"/>
 		<Camera pos="-88.049980,65536.000000,63.427250"/>
 		<Camera pos="65536.000000,140.545334,-9.302024"/>
 		<Camera pos="-1023.877869,-26.582392,65536.000000"/>
@@ -302,7 +302,7 @@
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
 			<MapObject name="SphereModel" id="2"/>
-			<ShapeMesh ver="3" texture="ast_planetsurface3">
+			<ShapeMesh ver="3" texture="ast_planetsurface5">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
 					<F3DEX2 cmd="D9FDFFFF,0"/>
