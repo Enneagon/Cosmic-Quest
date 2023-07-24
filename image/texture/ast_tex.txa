@@ -144,6 +144,19 @@ tex: ast_iseki_floortif
 	combine: 8
 }
 
+
+tex: ast_lavaflow
+{
+	img: ast_lavaflow.png
+	{
+		format: CI-4
+		hwrap: repeat
+		vwrap: repeat
+	}
+	filter: yes
+	combine: 8
+}
+
 tex: ast_suna3tif
 {
 	img: ast_suna3tif.png

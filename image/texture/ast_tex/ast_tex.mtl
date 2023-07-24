@@ -95,6 +95,15 @@ Ns 0
 map_Ka ast_iseki_floortif.png
 map_Kd ast_iseki_floortif.png
 
+
+newmtl m_ast_lavaflow
+Ka 1 1 1
+Kd 1 1 1
+Ks 1 1 1
+Ns 0
+map_Ka ast_lavaflow.png
+map_Kd ast_lavaflow.png
+
 newmtl m_ast_suna3tif
 Ka 1 1 1
 Kd 1 1 1
