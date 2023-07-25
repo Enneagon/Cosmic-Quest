@@ -461,6 +461,8 @@
 }
 
 #new:Script $Script_Init_8021C82C_1B {
+  Set *Var0 = ( *MB_DifficultyLevel + *MB_SectorsCompleted + 3` ) % Add to Minimum HP
+  Call  $SetMaxHPByDifficulty ( *Var0 ) % Dynamically sets HP
     0:  Call  ForceHomePos  ( .Actor:Self  90`  45`  -10` )
    1C:  Call  HPBarToHome   ( .Actor:Self )
    2C:  Call  SetActorScale ( .Actor:Self *Fixed[1.25] *Fixed[1.25] *Fixed[1.0] )
@@ -813,7 +815,7 @@
   508:  Call  SetGoalPos        ( .Actor:Self *Var0 *Var1 *Var2 )
   524:  Call  JumpToGoal        ( .Actor:Self  16` .False .True .False )
   544:  Wait  2`
-  550:  Call  EnemyDamageTarget ( .Actor:Self *Var0 ~Flags:DamageType:0 00000000 00000000 00000004 00000020 )
+  550:  Call  EnemyDamageTarget ( .Actor:Self *Var0 ~Flags:DamageType:0 00000000 00000000 .DMG_MechaBlooper_Drill 00000020 )
   578:  Call  UseBattleCamPreset    ( 00000002 )
   588:  Call  MoveBattleCamOver (  20` )
   598:  Call  GetStatusFlags    ( .Actor:Player *Var0 )
@@ -910,7 +912,7 @@
   4F4:  Call  SetGoalPos    ( .Actor:Self *Var0 *Var1 *Var2 )
   510:  Call  JumpToGoal    ( .Actor:Self  16` .False .True .False )
   530:  Wait  2`
-  53C:  Call  EnemyDamageTarget     ( .Actor:Self *Var0 ~Flags:DamageType:Electric 00000008 00000000 00000006 00000020 )
+  53C:  Call  EnemyDamageTarget     ( .Actor:Self *Var0 ~Flags:DamageType:Electric 00000008 00000000 .DMG_MechaBlooper_Drill 00000020 )
   564:  If  *VarF  !=  00000007 
   574:  	ExecWait  $Script_8021EE44_1B 
   580:  EndIf
@@ -1025,7 +1027,7 @@
   6A0:  Wait  10`
   6AC:  Call  SetGoalToTarget   ( .Actor:Self )
   6BC:  Call  80269EAC  ( 0000001A )
-  6CC:  Call  EnemyDamageTarget ( .Actor:Self *VarF ~Flags:DamageType:NoContact 00000000 00000000 00000004 00000020 )
+  6CC:  Call  EnemyDamageTarget ( .Actor:Self *VarF ~Flags:DamageType:NoContact 00000000 00000000 .DMG_MechaBlooper_Drill 00000020 )
   6F4:  Wait  30`
   700:  Call  SetAnimation      ( .Actor:Self 00000001 00500000 )
   718:  Call  SetActorRotation  ( .Actor:Self 00000000 00000000 00000000 )

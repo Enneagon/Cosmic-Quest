@@ -1,5 +1,7 @@
 #import newenemy/AsteroidPokey.bpat
 #import newenemy/MantleMole.bpat
+#import newenemy/MechaBlooper.bpat
+#import enemy/1B_ElectroBlooper.bpat
 
 #new:FormationTable $FormationTable
 {
@@ -7,9 +9,20 @@
 	00000000 00000000 00000000 00000000 00000000
 }
 
+#new:Vector3D $Vector3D_MechaBlooper
+{
+	80` 50` -5`
+}
+
+#new:Vector3D $Vector3D_ElectroBlooper
+{
+	90` 45` -10`
+}
+
 #new:Formation $Formation_00
 {
-	$AsteroidPokey 00000001 0000000A 00000000 00000000 00000000 00000000
+	% $1B_ElectroBlooper $Vector3D_ElectroBlooper 0000000A 00000000 00000000 00000000 00000000
+	$MechaBlooper $Vector3D_MechaBlooper 0000000A 00000000 00000000 00000000 00000000
 	% $MantleMole 00000001 0000000A 00000000 00000000 00000000 00000000
 	% $MantleMole 00000002 00000009 00000000 00000000 00000000 00000000
 }

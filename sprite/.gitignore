@@ -8,6 +8,7 @@ player/src/shared
 # Altered/Custom Sprites
 !/sprite/npc/src/31
 !/sprite/npc/src/37
+!/sprite/npc/src/50
 !/sprite/npc/src/83
 !/sprite/npc/src/8F
 !/sprite/npc/src/96
