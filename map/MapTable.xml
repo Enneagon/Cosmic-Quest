@@ -613,6 +613,7 @@
 		<Map name="ast_02" nickname="Sinistar"/>
 		<Map name="ast_03" nickname="Space Bus"/>
 		<Map name="ast_04" nickname="Tiamat"/>
+		<Map name="ast_05" nickname="Halley"/>
 	</Area>
 	<Resource name="mac_tex" compressed="false"/>
 	<Resource name="tik_tex" compressed="false"/>
