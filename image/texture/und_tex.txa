@@ -1,0 +1,95 @@
+tex: und_door
+{
+	img: und_door.png
+	{
+		format: CI-4
+		hwrap: clamp
+		vwrap: clamp
+	}
+	filter: yes
+	combine: 0
+}
+
+tex: und_floor1
+{
+	img: und_floor1.png
+	{
+		format: CI-4
+		hwrap: repeat
+		vwrap: repeat
+	}
+	filter: yes
+	combine: 0
+}
+
+tex: und_floor2
+{
+	img: und_floor2.png
+	{
+		format: CI-4
+		hwrap: repeat
+		vwrap: repeat
+	}
+	filter: yes
+	combine: 0
+}
+
+tex: und_floor3
+{
+	img: und_floor3.png
+	{
+		format: CI-4
+		hwrap: repeat
+		vwrap: repeat
+	}
+	filter: yes
+	combine: 0
+}
+
+tex: und_pillar1
+{
+	img: und_pillar1.png
+	{
+		format: CI-4
+		hwrap: clamp
+		vwrap: clamp
+	}
+	filter: yes
+	combine: 0
+}
+
+tex: und_pillar2
+{
+	img: und_pillar2.png
+	{
+		format: CI-4
+		hwrap: clamp
+		vwrap: clamp
+	}
+	filter: yes
+	combine: 0
+}
+
+tex: und_walls
+{
+	img: und_walls.png
+	{
+		format: CI-4
+		hwrap: repeat
+		vwrap: clamp
+	}
+	filter: yes
+	combine: 0
+}
+
+tex: und_window
+{
+	img: und_window.png
+	{
+		format: CI-4
+		hwrap: clamp
+		vwrap: clamp
+	}
+	filter: yes
+	combine: 0
+}

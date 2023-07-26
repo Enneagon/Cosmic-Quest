@@ -66,3 +66,5 @@ mod.cfg
 !/image/texture/ast_tex/*.*
 !/image/texture/sta_tex.txa
 !/image/texture/sta_tex/*.*
+!/image/texture/und_tex.txa
+!/image/texture/und_tex/*.*

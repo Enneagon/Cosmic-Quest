@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Map name="enc_08" author="unnamed" textures="und_tex">
 	<Editor>
-		<Camera pos="-35.721893,144.299347,151.628265" pitch="10.420017" yaw="357.440491"/>
+		<Camera pos="31.357107,104.154854,5.100222" pitch="45.139984" yaw="304.000122"/>
 		<Camera pos="1130.006104,65536.000000,-102.718338"/>
-		<Camera pos="65536.000000,-85.754341,-151.313705"/>
+		<Camera pos="65536.000000,17.643820,-54.046883"/>
 		<Camera pos="727.635010,66.786469,65536.000000"/>
 	</Editor>
 	<ModelTree>

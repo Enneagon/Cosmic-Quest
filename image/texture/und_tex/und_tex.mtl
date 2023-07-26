@@ -1,0 +1,63 @@
+newmtl m_und_door
+Ka 1 1 1
+Kd 1 1 1
+Ks 1 1 1
+Ns 0
+map_Ka und_door.png
+map_Kd und_door.png
+
+newmtl m_und_floor1
+Ka 1 1 1
+Kd 1 1 1
+Ks 1 1 1
+Ns 0
+map_Ka und_floor1.png
+map_Kd und_floor1.png
+
+newmtl m_und_floor2
+Ka 1 1 1
+Kd 1 1 1
+Ks 1 1 1
+Ns 0
+map_Ka und_floor2.png
+map_Kd und_floor2.png
+
+newmtl m_und_floor3
+Ka 1 1 1
+Kd 1 1 1
+Ks 1 1 1
+Ns 0
+map_Ka und_floor3.png
+map_Kd und_floor3.png
+
+newmtl m_und_pillar1
+Ka 1 1 1
+Kd 1 1 1
+Ks 1 1 1
+Ns 0
+map_Ka und_pillar1.png
+map_Kd und_pillar1.png
+
+newmtl m_und_pillar2
+Ka 1 1 1
+Kd 1 1 1
+Ks 1 1 1
+Ns 0
+map_Ka und_pillar2.png
+map_Kd und_pillar2.png
+
+newmtl m_und_walls
+Ka 1 1 1
+Kd 1 1 1
+Ks 1 1 1
+Ns 0
+map_Ka und_walls.png
+map_Kd und_walls.png
+
+newmtl m_und_window
+Ka 1 1 1
+Kd 1 1 1
+Ks 1 1 1
+Ns 0
+map_Ka und_window.png
+map_Kd und_window.png
