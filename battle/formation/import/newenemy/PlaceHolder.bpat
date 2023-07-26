@@ -78,7 +78,8 @@
     .Status:End
 }
 
-#new:PartsTable $PartsTable_PlaceHolder { %ActorPartBlueprint struct in decomp
+#new:PartsTable $PartsTable_PlaceHolder % ActorPartBlueprint struct in decomp
+{ 
     /% s32 flags %/                 00800000
     /% s8 index %/                  ~Byte:.Part:PlaceHolder
     /% Vec3b posOffset %/           00b 00b 00b

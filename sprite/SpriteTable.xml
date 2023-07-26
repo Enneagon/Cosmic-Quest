@@ -80,7 +80,7 @@
 		<Sprite id="4D" src="4D" name="Spike Top"/>
 		<Sprite id="4E" src="4E" name="Duplighost"/>
 		<Sprite id="4F" src="4F" name="Albino Dino"/>
-		<Sprite id="50" src="50" name="Blooper"/>
+		<Sprite id="50" src="50 - Mecha Blooper" name="Mecha Blooper"/>
 		<Sprite id="51" src="51" name="Baby Blooper"/>
 		<Sprite id="52" src="52" name="Gulpit"/>
 		<Sprite id="53" src="53" name="Dry Bones"/>

@@ -1,0 +1,399 @@
+% Mecha Blooper Animations
+#define .Anim:MechaBlooper_Still                    00500000 
+#define .Anim:MechaBlooper_Idle_Overworld           00500001 
+#define .Anim:MechaBlooper_Idle                     00500002
+#define .Anim:MechaBlooper_Propel                   00500003
+#define .Anim:MechaBlooper_Propel_Fire_Shot         00500004
+#define .Anim:MechaBlooper_Propel_Laser_Shot        00500005
+#define .Anim:MechaBlooper_Float_Down               00500006
+#define .Anim:MechaBlooper_Float_Down_Fire_Shot     00500007
+#define .Anim:MechaBlooper_Float_Down_Laser_Shot    00500008
+#define .Anim:MechaBlooper_Drill                    00500009
+#define .Anim:MechaBlooper_Fire_Shot_Start          0050000A
+#define .Anim:MechaBlooper_Fire_Shot_End            0050000B
+#define .Anim:MechaBlooper_Laser_Shot_Start         0050000C
+#define .Anim:MechaBlooper_Laser_Shot_End           0050000D
+#define .Anim:MechaBlooper_Damaged                  0050000E
+
+
+% Mecha Blooper Parts
+#define .Part:MechaBlooper 1
+% #define .Part:Projectile 2
+
+% Mecha Blooper Stats
+
+#new:Actor $MechaBlooper 
+{
+    % stats
+    [Index]        C8b
+    [Level]        10`b
+    [MaxHP]        10`b
+    [Coins]         0`b
+    [Flags]       00000200
+    [StatusTable] $StatusTable_MechaBlooper
+    % ai
+    [PartsCount]    1`s
+    [PartsTable]  $PartsTable_MechaBlooper
+    [Script]      $Script_Init_MechaBlooper
+    % move effectiveness
+    [Escape]        0`b
+    [Item]          0`b
+    [AirLift]       0`b
+    [Hurricane]     0`b % Bow's "Spook" as well
+    [UpAndAway]     0`b
+    [PowerBounce]  85`b
+    [SpinSmash]     4`b % weight (0-4)
+    % ui positions
+    [Size]         95`b 105`b % width height
+    [HealthBar]     0`b   -5`b % dx dy
+    [StatusTurn]    0`b  40`b % dx dy
+    [StatusIcon]   25`b  85`b % dx dy
+}
+
+#new:IdleAnimations $IdleAnimations_MechaBlooper 
+{
+    .Status:Normal    .Anim:MechaBlooper_Idle
+    .Status:Stop      .Anim:MechaBlooper_Still
+    .Status:Sleep     .Anim:MechaBlooper_Idle
+    .Status:Paralyze  .Anim:MechaBlooper_Still
+    .Status:Paralyze  .Anim:MechaBlooper_Still
+    .Status:Dizzy     .Anim:MechaBlooper_Idle
+    .Status:Shrink    .Anim:MechaBlooper_Idle
+    .Status:End
+}
+
+#new:DefenseTable $DefenseTable_MechaBlooper 
+{
+    .Element:Normal 1`
+    .Element:End
+}
+
+#new:StatusTable $StatusTable_MechaBlooper 
+{
+    .Status:Normal      0`
+    .Status:Default     0`
+    .Status:Sleep      50`
+    .Status:Poison      0`
+    .Status:Frozen      0`
+    .Status:Dizzy      60`
+    .Status:Fear        0`
+    .Status:Static      0`
+    .Status:Paralyze   50`
+    .Status:Shrink     80`
+    .Status:Stop       80`
+    .Status:DefaultTurnMod    0`
+    .Status:SleepTurnMod     -1`
+    .Status:PoisonTurnMod     0`
+    .Status:FrozenTurnMod     0`
+    .Status:DizzyTurnMod      0`
+    .Status:FearTurnMod       0`
+    .Status:StaticTurnMod     0`
+    .Status:ParalyzeTurnMod  -1`
+    .Status:ShrinkTurnMod    -1`
+    .Status:StopTurnMod      -1`
+    .Status:End
+}
+
+#new:PartsTable $PartsTable_MechaBlooper % ActorPartBlueprint struct in decomp
+{ 
+    /% s32 flags %/                 00800000
+    /% s8 index %/                  ~Byte:.Part:MechaBlooper
+    /% Vec3b posOffset %/           00b 00b 00b
+    /% Vec2b targetOffset %/        00b 60`b %for cursor when selecting to attack in battle
+    /% s16 opacity %/               00FFs
+    /% s32* IdleAnimations %/       $IdleAnimations_MechaBlooper
+    /% s32* defenseTable %/         $DefenseTable_MechaBlooper
+    /% s32 eventFlags %/            00000000
+    /% s32 elementImmunityFlags %/  00000000
+    /% s8 unk_1C %/                 FFb
+    /% s8 unk_1D %/                 F6b
+    /% s8 unk_1E %/                 00b
+    /% s8 unk_1F %/                 00b
+    /% s8 unk_20 %/                 00000000
+    
+    /% Fireball %/
+    /% s32 flags %/                 % 00120001
+    /% s8 index %/                  % ~Byte:.Part:Projectile
+    /% Vec3b posOffset %/           % 00b 00b 00b
+    /% Vec2b targetOffset %/        % 00b 00b %for cursor when selecting to attack in battle
+    /% s16 opacity %/               % 00FFs
+    /% s32* IdleAnimations %/       % $IdleAnimations_Projectile
+    /% s32* defenseTable %/         % $DefenseTable_PlaceHolder
+    /% s32 eventFlags %/            % 00000000
+    /% s32 elementImmunityFlags %/  % 00000000
+    /% s8 unk_1C %/                 % 00b
+    /% s8 unk_1D %/                 % 00b
+    /% s8 unk_1E %/                 % 00b
+    /% s8 unk_1F %/                 % 00b
+    /% s8 unk_20 %/                 % 00000000
+    
+}
+
+
+/%
+#new:PartsTable $PartsTable_MechaBlooper 
+{
+    00020000 01000000 005000FF $IdleAnimations_MechaBlooper $DefenseTable_MechaBlooper 00000000 00000000 00000000 00000000
+    00800000 02001400 003C00FF 00000000 $DefenseTable_MechaBlooper 00000000 00000000 00DB0000 00000000
+}
+%/
+
+
+#new:Script $Script_Init_MechaBlooper 
+{
+    Set *Var0 = ( *MB_DifficultyLevel + *MB_SectorsCompleted + 10` ) % Add to Minimum HP
+    Call  $SetMaxHPByDifficulty ( *Var0 ) % Dynamically sets HP
+    Call  ForceHomePos  ( .Actor:Self  80` 50` -5` )
+    Call  HPBarToHome   ( .Actor:Self )
+    % Call  SetActorVar   ( .Actor:Self 00000000 00000000 )
+    % Call  SetActorVar   ( .Actor:Self 00000001 00000000 )
+    % Call  SetActorVar   ( .Actor:Self 00000002 00000000 )
+    Call  BindTakeTurn  ( .Actor:Self $Script_TakeTurn_MechaBlooper )
+    Call  BindIdle      ( .Actor:Self $Script_Idle_MechaBlooper )
+    Call  BindHandleEvent   ( .Actor:Self $Script_HandleEvent_MechaBlooper )
+    Return
+    End
+}
+
+#new:Script $Script_Idle_MechaBlooper 
+{
+    Return
+    End
+}
+
+#new:Script $Script_ReturnHome_MechaBlooper
+{
+    Call ResetAllActorSounds   ( .Actor:Self )
+    Call SetGoalToHome ( .Actor:Self )
+    Call GetGoalPos    ( .Actor:Self *Var0 *Var1 *Var2 )
+    Add *Var0 80`
+    Add *Var1 50`
+    Add *Var2 -5`
+    Call SetAnimation  ( .Actor:Self .Part:MechaBlooper .Anim:MechaBlooper_Propel )
+    Call FlyToGoal ( .Actor:Self 35` 0` .Easing:Linear )
+    Wait 10`
+    Call ForceHomePos  ( .Actor:Self  80` 50` -5` )
+    Call SetAnimation  ( .Actor:Self .Part:MechaBlooper .Anim:MechaBlooper_Idle )
+    Return
+    End
+}
+
+#new:Script $Script_HandleEvent_MechaBlooper 
+{
+    Call EnableIdleScript ( .Actor:Self .False )
+    Call UseIdleAnimation ( .Actor:Self .False )
+    Call  GetLastEvent      ( .Actor:Self *Var0 )
+    Switch  *Var0
+        CaseOR  ==  .Event:HitCombo % 9
+        CaseOR  ==  .Event:Hit % A
+            SetConst  *Var0  .Part:MechaBlooper
+            SetConst  *Var1  .Anim:MechaBlooper_Damaged
+            ExecWait  DoNormalHit
+        EndCaseGroup
+        Case  ==  .Event:BurnHit % E
+            SetConst  *Var0  .Part:MechaBlooper
+            SetConst  *Var1  .Anim:MechaBlooper_Damaged
+            SetConst  *Var2  .Anim:MechaBlooper_Damaged
+            ExecWait  DoBurnHit
+        Case  ==  .Event:BurnDeath % 24
+            SetConst  *Var0  .Part:MechaBlooper
+            SetConst  *Var1  .Anim:MechaBlooper_Damaged
+            SetConst  *Var2  .Anim:MechaBlooper_Damaged
+            ExecWait  DoBurnHit
+            SetConst  *Var0  .Part:MechaBlooper
+            SetConst  *Var1  .Anim:MechaBlooper_Damaged
+            ExecWait  DoDeath
+            Return
+        Case  ==  .Event:SpinSmashHit % B
+            SetConst  *Var0  .Part:MechaBlooper
+            SetConst  *Var1  .Anim:MechaBlooper_Damaged
+            ExecWait  DoSpinSmashHit
+        Case  ==  .Event:SpinSmashDeath % 21
+            SetConst  *Var0  .Part:MechaBlooper
+            SetConst  *Var1  .Anim:MechaBlooper_Damaged
+            ExecWait  DoSpinSmashHit
+            SetConst  *Var0  .Part:MechaBlooper
+            SetConst  *Var1  .Anim:MechaBlooper_Damaged % Death
+            ExecWait  DoDeath
+            Return
+        Case  ==  .Event:ShockHit % 2F
+            SetConst  *Var0  .Part:MechaBlooper
+            SetConst  *Var1  .Anim:MechaBlooper_Damaged
+            ExecWait  DoShockHit
+            SetConst  *Var0  .Part:MechaBlooper
+            SetConst  *Var1  .Anim:MechaBlooper_Damaged
+            ExecWait  DoJumpBack
+            Call  SetActorSpeed ( .Actor:Self *Fixed[2.0] )
+            ExecWait  $Script_ReturnHome_MechaBlooper
+        Case  ==  .Event:ShockDeath % 26
+            SetConst  *Var0  .Part:MechaBlooper
+            SetConst  *Var1  .Anim:MechaBlooper_Damaged
+            ExecWait  DoShockHit
+            SetConst  *Var0  .Part:MechaBlooper
+            SetConst  *Var1  .Anim:MechaBlooper_Damaged % Death
+            ExecWait  DoDeath
+            Return
+        CaseOR  ==  00000017 % 17
+        CaseOR  ==  .Event:Immune % 19
+        CaseOR  ==  .Event:AirLiftFailed % 1F
+            SetConst  *Var0  .Part:MechaBlooper
+            SetConst  *Var1  .Anim:MechaBlooper_Idle
+            ExecWait  DoImmune
+        EndCaseGroup
+        Case  ==  .Event:Death % 20
+            SetConst  *Var0  .Part:MechaBlooper
+            SetConst  *Var1  .Anim:MechaBlooper_Damaged
+            ExecWait  DoNormalHit
+            Wait  10`
+            SetConst  *Var0  .Part:MechaBlooper
+            SetConst  *Var1  .Anim:MechaBlooper_Damaged % Death
+            ExecWait  DoDeath
+            Return
+        Case  ==  .Event:RecoverStatus % 31
+            SetConst  *Var0  .Part:MechaBlooper
+            SetConst  *Var1  .Anim:MechaBlooper_Idle
+            ExecWait  DoRecover
+        Case  ==  .Event:ScareAway % 39
+            SetConst  *Var0  .Part:MechaBlooper
+            SetConst  *Var1  .Anim:MechaBlooper_Idle % Run 
+            SetConst  *Var2  .Anim:MechaBlooper_Idle % Scared
+            ExecWait  DoScareAway
+            Return
+        Case  ==  .Event:BeginAirLift % 3A
+            SetConst  *Var0  .Part:MechaBlooper
+            SetConst  *Var1  .Anim:MechaBlooper_Damaged
+            ExecWait  DoAirLift
+        Case  ==  .Event:BlowAway % 16
+            SetConst  *Var0  .Part:MechaBlooper
+            SetConst  *Var1  .Anim:MechaBlooper_Damaged
+            ExecWait  DoBlowAway
+            Return
+        Default
+    EndSwitch
+    Call EnableIdleScript ( .Actor:Self .True )
+    Call UseIdleAnimation ( .Actor:Self .True )
+    Return
+    End
+}
+
+#new:Script $Script_TakeTurn_MechaBlooper 
+{
+    Call UseIdleAnimation ( .Actor:Self .False )
+    Call EnableIdleScript ( .Actor:Self .False )
+    % Call RandInt (99` *Var0)
+    % Switch *Var0
+        % Case < 25`
+            % ExecWait $Script_FireShot_MechaBlooper
+        % Case < 50`
+            % ExecWait $Script_LaserShot_MechaBlooper
+        % Default
+            ExecWait $Script_DrillDrop_MechaBlooper
+    % EndSwitch
+    Call EnableIdleScript  ( .Actor:Self .True )
+    Call UseIdleAnimation  ( .Actor:Self .True )
+    Return
+    End
+}
+
+#new:Script $Script_DrillDrop_MechaBlooper 
+{
+    Call EnableIdleScript ( .Actor:Self .False )
+    Call UseIdleAnimation ( .Actor:Self .False )
+    Call SetTargetActor    ( .Actor:Self .Actor:Player )
+    Call SetGoalToTarget   ( .Actor:Self )
+    Call GetGoalPos ( .Actor:Self *Var0 *Var1 *Var2 )
+    Sub *Var0 10`
+    Add *Var1 50`
+    Call SetGoalPos ( .Actor:Self *Var0 *Var1 *Var2 )	% Fly to above the player.
+    % Call SetActorSpeed  ( .Actor:Self *Fixed[5.0] )
+    Call SetAnimation   ( .Actor:Self .Part:MechaBlooper .Anim:MechaBlooper_Propel )
+    Call FlyToGoal      ( .Actor:Self  30`  0` .Easing:Linear )
+    Wait 10`
+    Call SetTargetActor    ( .Actor:Self .Actor:Player )
+    Call SetGoalToTarget   ( .Actor:Self )
+    Call GetGoalPos ( .Actor:Self *Var0 *Var1 *Var2 )
+    Sub *Var0 10`
+    Add *Var1 40`
+    Call SetGoalPos ( .Actor:Self *Var0 *Var1 *Var2 )	% Fly a little down but still above the player.
+    % Call SetActorSpeed  ( .Actor:Self *Fixed[3.0] )
+    Call SetAnimation   ( .Actor:Self .Part:MechaBlooper .Anim:MechaBlooper_Float_Down )
+    Call FlyToGoal      ( .Actor:Self  25`  0` .Easing:CubicOut )
+    Wait 10`
+    /%
+    Call AddGoalPos        ( .Actor:Self  60`  -20`  0` )
+    Call SetAnimation   ( .Actor:Self .Part:MechaBlooper .Anim:MechaBlooper_Float_Down )
+    Call SetActorSpeed  ( .Actor:Self *Fixed[4.0] )
+    Call FlyToGoal      ( .Actor:Self  0`  0` .Easing:Linear )
+    Wait 10`
+    %/
+    Call EnemyTestTarget ( .Actor:Self *Var3 ~Flags:DamageType:0 00000000 1` 00000010 )
+    Switch  *Var3 
+        CaseOR  ==  .HitResult:Miss % 6
+        CaseOR  ==  .HitResult:Lucky % 5
+            Add *Var1 -16` % target mario's head?
+            Wait  2`
+        EndCaseGroup
+    EndSwitch    
+    % Call AddGoalPos ( .Actor:Self 50` 15` 0` )
+    /%
+    Thread
+        Set *Var0  0` 
+        Loop 16` 
+            Add *Var0  30` 
+            Call SetActorYaw   ( .Actor:Self *Var0 )
+            Wait 1`
+        EndLoop
+        Call SetActorYaw   ( .Actor:Self  0` )
+    EndThread
+    %/
+    Call SetTargetActor    ( .Actor:Self .Actor:Player )
+    Call SetGoalToTarget   ( .Actor:Self )
+    Call GetGoalPos ( .Actor:Self *Var0 *Var1 *Var2 )
+    Sub *Var0 10`
+    Add *Var1 10`
+    Call SetGoalPos ( .Actor:Self *Var0 *Var1 *Var2 )	% DRILL INTO MARIO!!!
+    Call SetAnimation   ( .Actor:Self .Part:MechaBlooper .Anim:MechaBlooper_Drill )
+    Call FlyToGoal      ( .Actor:Self  25`  0` .Easing:CubicOut )
+    Wait 5`
+    Call EnemyDamageTarget ( .Actor:Self *Var0 ~Flags:DamageType:NoContact 00000000 00000000 .DMG_MechaBlooper_Drill 00000020 )
+    Call SetAnimation   ( .Actor:Self .Part:MechaBlooper .Anim:MechaBlooper_Drill )
+    Wait 15`
+    Switch  *Var0 
+        CaseOR  ==  .HitResult:Hit % 0
+        CaseOR  ==  .HitResult:QuakeImmune % 2
+          	Call UseBattleCamPreset    ( 00000002 )
+          	Call YieldTurn ( )
+          	ExecWait  $Script_ReturnHome_MechaBlooper 
+        EndCaseGroup
+    EndSwitch
+    Call EnableIdleScript ( .Actor:Self .True )
+    Call UseIdleAnimation ( .Actor:Self .True )
+    Return
+    End
+}
+
+#new:Script $Script_FireShot_MechaBlooper 
+{
+    Call  UseIdleAnimation  ( .Actor:Self .False )
+    Call  EnableIdleScript  ( .Actor:Self .False )
+    Call  SetTargetActor    ( .Actor:Self .Actor:Player )
+    Call  SetGoalToTarget   ( .Actor:Self )
+
+    Call  EnableIdleScript  ( .Actor:Self .True )
+    Call  UseIdleAnimation  ( .Actor:Self .True )
+    Return
+    End
+}
+
+#new:Script $Script_LaserShot_MechaBlooper 
+{
+    Call  UseIdleAnimation  ( .Actor:Self .False )
+    Call  EnableIdleScript  ( .Actor:Self .False )
+    Call  SetTargetActor    ( .Actor:Self .Actor:Player )
+    Call  SetGoalToTarget   ( .Actor:Self )
+ 
+    Call  EnableIdleScript  ( .Actor:Self .True )
+    Call  UseIdleAnimation  ( .Actor:Self .True )
+    Return
+    End
+}
