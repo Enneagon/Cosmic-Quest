@@ -26,7 +26,9 @@
     EndSwitch
     Return
     End
-}@ $Script_EnterMap {
+}
+
+@ $Script_EnterMap {
     Call  GetEntryID    ( *Var[0] )
     Switch  *Var[0]
         Default
@@ -34,6 +36,9 @@
     EndSwitch
     Call DisablePlayerInput ( .True )
     Call  ShowMessageAtScreenPos    ( 002F0062  160`  40` ) % Next Sector!
+    Set *MF_NewSector .True
+    Set *MB_CurrentNode 0`
+    Call GotoMapSpecial ( "sec_00" ~Entry:sec_00:SectorStart 0000000D )    % Mushroom Space!
     Return
     End
 }

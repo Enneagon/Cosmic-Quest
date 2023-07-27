@@ -146,7 +146,7 @@
 
 #new:Script $Script_Init_Astro
 {
-    Call SetNpcYaw ( .Npc:Self 90` )
+    Call SetNpcYaw ( .Npc:Self 270` )
     Call  BindNpcInteract   ( .Npc:Self $Script_Interact_Astro )
     Return
     End
