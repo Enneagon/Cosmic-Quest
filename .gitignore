@@ -60,6 +60,7 @@ mod.cfg
 !/audio/bgm/02_191.bgm
 !/audio/bgm/03_120.bgm
 !/audio/bgm/04_119.bgm
+!/audio/bgm/49_139.bgm
 
 # Altered Textures
 !/image/texture/ast_tex.txa
