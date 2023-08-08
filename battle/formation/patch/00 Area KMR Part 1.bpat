@@ -1,0 +1,89 @@
+#import newenemy/BlizterBlasterSinge.bpat
+#import newenemy/BlizterBillSinge.bpat
+#import newenemy/BlizterBlasterShock.bpat
+#import newenemy/BlizterBillShock.bpat
+#import newenemy/BlizterBlasterShiver.bpat
+#import newenemy/BlizterBillShiver.bpat
+#import newenemy/MechaBlooperReskin.bpat
+#import newenemy/PirateGoomba.bpat
+#import newenemy/PirateSpikedGoomba.bpat
+#import newenemy/PirateGoombaBroA1.bpat
+#import newenemy/PirateGoombaBroB1.bpat
+#import newenemy/PirateGoombaKing.bpat
+
+
+#new:Vector3D $Vector3D_BlizterSinge
+{
+	50` 0` -20`
+}
+
+#new:Vector3D $Vector3D_BlizterShock
+{
+	80` 0` 0`
+}
+
+#new:Vector3D $Vector3D_BlizterShiver
+{
+	110` 0` 20`
+}
+
+#new:Vector3D $Vector3D_ElectroBlooper
+{
+	90` 45` -10`
+}
+
+#new:Vector3D $Vector3D_PirateGoombaKing
+{
+	125` 0` 20`
+}
+
+#new:Vector3D $Vector3D_PirateGoombaBroB1
+{
+	70` 0` 30`
+}
+
+#new:Vector3D $Vector3D_PirateGoombaBroA1
+{
+	125` 0` 20`
+}
+
+
+@ $Formation_00
+{
+	$PirateGoombaKing $Vector3D_PirateGoombaKing 0000000A 00000000 00000000 00000000 00000000
+	% $PirateGoombaBroB1 $Vector3D_PirateGoombaBroB1 0000000A 00000000 00000000 00000000 00000000
+	% $PirateGoombaBroA1 $Vector3D_PirateGoombaBroA1 0000000A 00000000 00000000 00000000 00000000
+}
+
+/%
+@ $Formation_00
+{
+	$MechaBlooperReskin $Vector3D_ElectroBlooper 0000000A 00000000 00000000 00000000 00000000
+}
+%/
+
+/%
+@ $Formation_00 
+{
+    $BlizterBlasterSinge $Vector3D_BlizterSinge 0000000A 00000000 00000000 00000000 00000000
+    $BlizterBlasterShock $Vector3D_BlizterShock 00000009 00000000 00000000 00000000 00000000
+    $BlizterBlasterShiver $Vector3D_BlizterShiver 00000009 00000000 00000000 00000000 00000000
+}
+%/
+
+@ $FormationTable 
+{
+	$SJIS_80220FD8 00000001 $Formation_00 $Stage_8022066C 00000000
+	$SJIS_80220FCC 00000002 $Formation_01 $Stage_8022066C 00000000
+	$SJIS_80220FC0 00000003 $Formation_02 $Stage_8022066C 00000000
+	$SJIS_80220FA8 00000002 $Formation_03 $Stage_8022066C 00000000
+	$SJIS_80220F9C 00000004 $Formation_04 $Stage_8022066C 00000000
+	$SJIS_80220F84 00000002 $Formation_05 $Stage_8022066C 00000000
+	$SJIS_80220F58 00000004 $Formation_06 $Stage_8022066C 00000000
+	$SJIS_80220F48 00000001 $Formation_07 $Stage_8022066C 00000000
+	$SJIS_80220F38 00000002 $Formation_08 $Stage_8022066C 00000000
+	$SJIS_80220F28 00000003 $Formation_09 $Stage_8022066C 00000000
+	$SJIS_80220F18 00000001 $Formation_0A $Stage_8022066C 00000000
+	$SJIS_80220F00 00000002 $Formation_0B $Stage_8022066C 00000000
+	00000000 00000000 00000000 00000000 00000000
+}

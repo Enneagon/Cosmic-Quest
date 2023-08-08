@@ -1,7 +1,9 @@
 #import newenemy/AsteroidPokey.bpat
 #import newenemy/MantleMole.bpat
-#import newenemy/MechaBlooper.bpat
+#import newenemy/MechaBlooperCustom.bpat
 #import enemy/1B_ElectroBlooper.bpat
+#import newenemy/BlizterBlasterShiver.bpat
+#import newenemy/BlizterBillShiver.bpat
 
 #new:FormationTable $FormationTable
 {
@@ -18,6 +20,30 @@
 {
 	90` 45` -10`
 }
+
+#new:Vector3D $Vector3D_BlizterSinge
+{
+	50` 0` -20`
+}
+
+#new:Vector3D $Vector3D_BlizterShock
+{
+	80` 0` 0`
+}
+
+#new:Vector3D $Vector3D_BlizterShiver
+{
+	110` 0` 20`
+}
+
+/%
+#new:Formation $Formation_17
+{
+	$BillBlaster $Vector3D_BlizterSinge 0000000A 00000000 00000000 00000000 00000000
+	$BillBlaster $Vector3D_BlizterShock 00000009 00000000 00000000 00000000 00000000
+	$BillBlaster $Vector3D_BlizterShiver 00000009 00000000 00000000 00000000 00000000
+}
+%/
 
 #new:Formation $Formation_00
 {

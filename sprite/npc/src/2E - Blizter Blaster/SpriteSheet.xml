@@ -1,0 +1,667 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SpriteSheet maxComponents="3" paletteGroups="2">
+	<PaletteList>
+		<Palette id="0" name="BlitzerBlasterSinge" src="BlitzerBlasterColorRed.png"/>
+		<Palette id="1" name="BlitzerBlasterShock" src="BlitzerBlasterColorYellow.png"/>
+		<Palette id="2" name="BlitzerBlasterShiver" src="BlitzerBlasterColorBlue.png"/>
+	</PaletteList>
+	<RasterList>
+		<Raster id="0" name="BlitzerBlasterBottom" palette="0" src="BlitzerBlasterBottom.png"/>
+		<Raster id="1" name="BlitzerBlasterLaser" palette="0" src="BlitzerBlasterLaser.png"/>
+		<Raster id="2" name="BlitzerBlasterTube" palette="0" src="BlitzerBlasterTube.png"/>
+		<Raster id="3" name="BlitzerBlasterLaserGlow1" palette="0" src="BlitzerBlasterLaserGlow1.png"/>
+		<Raster id="4" name="BlitzerBlasterLaserGlow2" palette="0" src="BlitzerBlasterLaserGlow2.png"/>
+		<Raster id="5" name="BlitzerBlasterLaserShot1" palette="0" src="BlitzerBlasterLaserShot1.png"/>
+		<Raster id="6" name="BlitzerBlasterLaserShot2" palette="0" src="BlitzerBlasterLaserShot2.png"/>
+		<Raster id="7" name="BlitzerBlasterLaserShot3" palette="0" src="BlitzerBlasterLaserShot3.png"/>
+		<Raster id="8" name="BlitzerBlasterLaserShot4" palette="0" src="BlitzerBlasterLaserShot4.png"/>
+	</RasterList>
+	<AnimationList>
+		<Animation name="Still">
+			<Component name="Laser" xyz="-5,24,1">
+				<Command val="1001"/>
+				<Command val="6"/>
+				<Command val="2000"/>
+			</Component>
+			<Component name="FrontTube" xyz="8,8,2">
+				<Command val="1002"/>
+				<Command val="2"/>
+				<Command val="2000"/>
+			</Component>
+			<Component name="BackTube" xyz="-3,4,-2">
+				<Command val="1002"/>
+				<Command val="2"/>
+				<Command val="2000"/>
+			</Component>
+			<Component name="Base" xyz="3,-2,-1">
+				<Command val="1000"/>
+				<Command val="2"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="Idle">
+			<Component name="Movement" xyz="0,0,0">
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="1"/>
+				<Command val="0"/>
+				<Command val="38"/>
+				<Command val="2"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="FFFD"/>
+				<Command val="0"/>
+				<Command val="2"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="FFFE"/>
+				<Command val="0"/>
+				<Command val="18"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="FFFF"/>
+				<Command val="0"/>
+				<Command val="8"/>
+				<Command val="8"/>
+				<Command val="2000"/>
+			</Component>
+			<Component name="Laser" xyz="-5,23,1">
+				<Command val="8100"/>
+				<Command val="1001"/>
+				<Command val="6"/>
+				<Command val="1003"/>
+				<Command val="6"/>
+				<Command val="1004"/>
+				<Command val="6"/>
+				<Command val="1003"/>
+				<Command val="2001"/>
+			</Component>
+			<Component name="FrontTube" xyz="8,7,2">
+				<Command val="8100"/>
+				<Command val="1002"/>
+				<Command val="2"/>
+				<Command val="2001"/>
+			</Component>
+			<Component name="BackTube" xyz="-3,4,-2">
+				<Command val="8100"/>
+				<Command val="1002"/>
+				<Command val="2"/>
+				<Command val="2001"/>
+			</Component>
+			<Component name="Base" xyz="3,-2,-1">
+				<Command val="1000"/>
+				<Command val="2"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="Shoot">
+			<Component name="DummyKeep" xyz="0,0,0">
+			</Component>
+			<Component name="Movement" xyz="0,0,0">
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="1"/>
+				<Command val="0"/>
+				<Command val="2"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="2"/>
+				<Command val="2000"/>
+			</Component>
+			<Component name="Laser" xyz="-5,31,1">
+				<Command val="8101"/>
+				<Command val="5000"/>
+				<Command val="5F"/>
+				<Command val="1004"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="FFF8"/>
+				<Command val="0"/>
+				<Command val="4"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="FFF8"/>
+				<Command val="0"/>
+				<Command val="1005"/>
+				<Command val="A"/>
+				<Command val="1004"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="FFF8"/>
+				<Command val="0"/>
+				<Command val="A"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="FFF8"/>
+				<Command val="0"/>
+				<Command val="1006"/>
+				<Command val="4"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="FFF8"/>
+				<Command val="0"/>
+				<Command val="1007"/>
+				<Command val="4"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="FFF8"/>
+				<Command val="0"/>
+				<Command val="1008"/>
+				<Command val="4"/>
+				<Command val="3000"/>
+				<Command val="8"/>
+				<Command val="FFF8"/>
+				<Command val="0"/>
+				<Command val="1004"/>
+				<Command val="2"/>
+				<Command val="3000"/>
+				<Command val="7"/>
+				<Command val="FFF8"/>
+				<Command val="0"/>
+				<Command val="1003"/>
+				<Command val="2"/>
+				<Command val="3000"/>
+				<Command val="5"/>
+				<Command val="FFF8"/>
+				<Command val="0"/>
+				<Command val="1001"/>
+				<Command val="2"/>
+				<Command val="3000"/>
+				<Command val="3"/>
+				<Command val="FFF8"/>
+				<Command val="0"/>
+				<Command val="1001"/>
+				<Command val="2"/>
+				<Command val="8100"/>
+				<Command val="1001"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="FFF8"/>
+				<Command val="0"/>
+				<Command val="30"/>
+				<Command val="203F"/>
+			</Component>
+			<Component name="FrontTube" xyz="8,8,2">
+				<Command val="1002"/>
+				<Command val="24"/>
+				<Command val="1002"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFEF"/>
+				<Command val="3000"/>
+				<Command val="FFFD"/>
+				<Command val="4"/>
+				<Command val="0"/>
+				<Command val="2"/>
+				<Command val="1002"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFF0"/>
+				<Command val="3000"/>
+				<Command val="FFFD"/>
+				<Command val="3"/>
+				<Command val="0"/>
+				<Command val="2"/>
+				<Command val="1002"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFF4"/>
+				<Command val="3000"/>
+				<Command val="FFFE"/>
+				<Command val="3"/>
+				<Command val="0"/>
+				<Command val="2"/>
+				<Command val="1002"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFF8"/>
+				<Command val="3000"/>
+				<Command val="FFFE"/>
+				<Command val="1"/>
+				<Command val="0"/>
+				<Command val="2"/>
+				<Command val="1002"/>
+				<Command val="2"/>
+				<Command val="2026"/>
+			</Component>
+			<Component name="BackTube" xyz="-3,4,-2">
+				<Command val="1002"/>
+				<Command val="24"/>
+				<Command val="1002"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFEF"/>
+				<Command val="3000"/>
+				<Command val="FFFD"/>
+				<Command val="4"/>
+				<Command val="0"/>
+				<Command val="2"/>
+				<Command val="1002"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFF0"/>
+				<Command val="3000"/>
+				<Command val="FFFD"/>
+				<Command val="3"/>
+				<Command val="0"/>
+				<Command val="2"/>
+				<Command val="1002"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFF4"/>
+				<Command val="3000"/>
+				<Command val="FFFE"/>
+				<Command val="3"/>
+				<Command val="0"/>
+				<Command val="2"/>
+				<Command val="1002"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFF8"/>
+				<Command val="3000"/>
+				<Command val="FFFE"/>
+				<Command val="1"/>
+				<Command val="0"/>
+				<Command val="2"/>
+				<Command val="1002"/>
+				<Command val="2"/>
+				<Command val="2026"/>
+			</Component>
+			<Component name="Base" xyz="3,-2,-1">
+				<Command val="1000"/>
+				<Command val="5C"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="Hurt">
+			<Component name="Laser" xyz="-5,24,1">
+				<Command val="3000"/>
+				<Command val="2"/>
+				<Command val="1"/>
+				<Command val="0"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="5"/>
+				<Command val="1001"/>
+				<Command val="4"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="FFFD"/>
+				<Command val="0"/>
+				<Command val="1004"/>
+				<Command val="4"/>
+				<Command val="3000"/>
+				<Command val="FFFE"/>
+				<Command val="1"/>
+				<Command val="0"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFF6"/>
+				<Command val="1001"/>
+				<Command val="4"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="FFFD"/>
+				<Command val="0"/>
+				<Command val="1001"/>
+				<Command val="4"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="1"/>
+				<Command val="0"/>
+				<Command val="1004"/>
+				<Command val="4"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="FFFD"/>
+				<Command val="0"/>
+				<Command val="1001"/>
+				<Command val="4"/>
+				<Command val="2000"/>
+			</Component>
+			<Component name="FrontTube" xyz="6,10,2">
+				<Command val="1002"/>
+				<Command val="3000"/>
+				<Command val="2"/>
+				<Command val="1"/>
+				<Command val="0"/>
+				<Command val="4"/>
+				<Command val="1002"/>
+				<Command val="3000"/>
+				<Command val="2"/>
+				<Command val="FFFC"/>
+				<Command val="0"/>
+				<Command val="4"/>
+				<Command val="1002"/>
+				<Command val="3000"/>
+				<Command val="2"/>
+				<Command val="FFFE"/>
+				<Command val="0"/>
+				<Command val="4"/>
+				<Command val="1002"/>
+				<Command val="3000"/>
+				<Command val="2"/>
+				<Command val="FFFC"/>
+				<Command val="0"/>
+				<Command val="4"/>
+				<Command val="2000"/>
+			</Component>
+			<Component name="BackTube" xyz="-3,4,-2">
+				<Command val="1002"/>
+				<Command val="3000"/>
+				<Command val="2"/>
+				<Command val="1"/>
+				<Command val="0"/>
+				<Command val="4"/>
+				<Command val="1002"/>
+				<Command val="3000"/>
+				<Command val="2"/>
+				<Command val="FFFC"/>
+				<Command val="0"/>
+				<Command val="4"/>
+				<Command val="1002"/>
+				<Command val="3000"/>
+				<Command val="2"/>
+				<Command val="FFFE"/>
+				<Command val="0"/>
+				<Command val="4"/>
+				<Command val="1002"/>
+				<Command val="3000"/>
+				<Command val="2"/>
+				<Command val="FFFC"/>
+				<Command val="0"/>
+				<Command val="4"/>
+				<Command val="2000"/>
+			</Component>
+			<Component name="Base" xyz="3,-2,-1">
+				<Command val="1000"/>
+				<Command val="18"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="Anim_04">
+			<Component name="Laser" xyz="-5,23,1">
+				<Command val="1003"/>
+				<Command val="2"/>
+				<Command val="3000"/>
+				<Command val="FFFD"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFFC"/>
+				<Command val="1001"/>
+				<Command val="4"/>
+				<Command val="3000"/>
+				<Command val="FFFC"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFFB"/>
+				<Command val="1003"/>
+				<Command val="10"/>
+				<Command val="3000"/>
+				<Command val="FFFD"/>
+				<Command val="FFFE"/>
+				<Command val="0"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="1004"/>
+				<Command val="2"/>
+				<Command val="3000"/>
+				<Command val="FFFD"/>
+				<Command val="FFFC"/>
+				<Command val="0"/>
+				<Command val="1003"/>
+				<Command val="2"/>
+				<Command val="3000"/>
+				<Command val="FFFD"/>
+				<Command val="FFFA"/>
+				<Command val="0"/>
+				<Command val="1001"/>
+				<Command val="2"/>
+				<Command val="3000"/>
+				<Command val="FFFD"/>
+				<Command val="FFFA"/>
+				<Command val="0"/>
+				<Command val="1001"/>
+				<Command val="2"/>
+				<Command val="2029"/>
+			</Component>
+			<Component name="FrontTube" xyz="8,8,2">
+				<Command val="1002"/>
+				<Command val="2"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="1002"/>
+				<Command val="4"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="1002"/>
+				<Command val="10"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="FFFE"/>
+				<Command val="0"/>
+				<Command val="1002"/>
+				<Command val="2"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="FFFC"/>
+				<Command val="0"/>
+				<Command val="1002"/>
+				<Command val="2"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="FFFA"/>
+				<Command val="0"/>
+				<Command val="1002"/>
+				<Command val="2"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="FFFA"/>
+				<Command val="0"/>
+				<Command val="1002"/>
+				<Command val="2"/>
+				<Command val="2020"/>
+			</Component>
+			<Component name="BackTube" xyz="-3,4,-2">
+				<Command val="1002"/>
+				<Command val="2"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="1002"/>
+				<Command val="4"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="1002"/>
+				<Command val="10"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="FFFE"/>
+				<Command val="0"/>
+				<Command val="1002"/>
+				<Command val="2"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="FFFC"/>
+				<Command val="0"/>
+				<Command val="1002"/>
+				<Command val="2"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="FFFA"/>
+				<Command val="0"/>
+				<Command val="1002"/>
+				<Command val="2"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="FFFA"/>
+				<Command val="0"/>
+				<Command val="1002"/>
+				<Command val="2"/>
+				<Command val="2020"/>
+			</Component>
+			<Component name="Base" xyz="3,-2,-1">
+				<Command val="1000"/>
+				<Command val="42"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="Anim_05">
+			<Component name="Laser" xyz="-5,24,1">
+				<Command val="1001"/>
+				<Command val="6"/>
+				<Command val="2000"/>
+			</Component>
+			<Component name="FrontTube" xyz="8,8,2">
+				<Command val="1002"/>
+				<Command val="2"/>
+				<Command val="2000"/>
+			</Component>
+			<Component name="BackTube" xyz="-3,4,-2">
+				<Command val="1002"/>
+				<Command val="2"/>
+				<Command val="2000"/>
+			</Component>
+			<Component name="Base" xyz="3,-2,-1">
+				<Command val="1000"/>
+				<Command val="2"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="Anim_06">
+			<Component name="Movement" xyz="0,0,0">
+				<Command val="3000"/>
+				<Command val="1"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="2"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="2"/>
+				<Command val="2000"/>
+			</Component>
+			<Component name="Laser" xyz="-5,24,1">
+				<Command val="8100"/>
+				<Command val="5000"/>
+				<Command val="5F"/>
+				<Command val="1003"/>
+				<Command val="4"/>
+				<Command val="1004"/>
+				<Command val="14"/>
+				<Command val="2005"/>
+			</Component>
+			<Component name="FrontTube" xyz="8,8,2">
+				<Command val="1002"/>
+				<Command val="5C"/>
+				<Command val="2000"/>
+			</Component>
+			<Component name="BackTube" xyz="-3,4,-2">
+				<Command val="1002"/>
+				<Command val="5C"/>
+				<Command val="2000"/>
+			</Component>
+			<Component name="Base" xyz="3,-2,-1">
+				<Command val="1000"/>
+				<Command val="5C"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="Anim_07">
+			<Component name="DummyKeep" xyz="0,0,0">
+			</Component>
+			<Component name="Movement" xyz="0,0,0">
+				<Command val="3000"/>
+				<Command val="1"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="2"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="2"/>
+				<Command val="2000"/>
+			</Component>
+			<Component name="Laser" xyz="-5,23,0">
+				<Command val="8101"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="1006"/>
+				<Command val="4"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="1007"/>
+				<Command val="4"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="1008"/>
+				<Command val="4"/>
+				<Command val="3000"/>
+				<Command val="8"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="1003"/>
+				<Command val="2"/>
+				<Command val="3000"/>
+				<Command val="7"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="1004"/>
+				<Command val="2"/>
+				<Command val="3000"/>
+				<Command val="5"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="1003"/>
+				<Command val="2"/>
+				<Command val="3000"/>
+				<Command val="3"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="1004"/>
+				<Command val="2"/>
+				<Command val="8100"/>
+				<Command val="1001"/>
+				<Command val="30"/>
+				<Command val="202B"/>
+			</Component>
+			<Component name="FrontTube" xyz="8,8,2">
+				<Command val="1002"/>
+				<Command val="5C"/>
+				<Command val="2000"/>
+			</Component>
+			<Component name="BackTube" xyz="-3,4,-2">
+				<Command val="1002"/>
+				<Command val="5C"/>
+				<Command val="2000"/>
+			</Component>
+			<Component name="Base" xyz="3,-2,-1">
+				<Command val="1000"/>
+				<Command val="5C"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+	</AnimationList>
+</SpriteSheet>

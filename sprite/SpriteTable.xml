@@ -45,8 +45,8 @@
 		<Sprite id="2A" src="2A" name="Para Troopa"/>
 		<Sprite id="2B" src="2B" name="Fuzzy"/>
 		<Sprite id="2C" src="2C" name="Bombomb"/>
-		<Sprite id="2D" src="2D" name="Bullet Bill"/>
-		<Sprite id="2E" src="2E" name="Bill Blaster"/>
+		<Sprite id="2D" src="2D - Blizter Bill" name="Biltzer Bill"/>
+		<Sprite id="2E" src="2E - Blizter Blaster" name="Biltzer Blaster"/>
 		<Sprite id="2F" src="2F - Mantle Mole" name="Mantle Mole"/>
 		<Sprite id="30" src="30" name="Cleft"/>
 		<Sprite id="31" src="31 - Asteroid Pokey" name="Asteroid Pokey"/>
@@ -99,7 +99,7 @@
 		<Sprite id="60" src="60" name="World Kammy"/>
 		<Sprite id="61" src="61" name="Battle Kammy"/>
 		<Sprite id="62" src="62" name="Goomba Bros"/>
-		<Sprite id="63" src="63" name="Goomba King"/>
+		<Sprite id="63" src="63 - Pirate Goomba King" name="Pirate Goomba King"/>
 		<Sprite id="64" src="64" name="Spiky Goomnut"/>
 		<Sprite id="65" src="65" name="Dark Toad"/>
 		<Sprite id="66" src="66" name="Koopa Bros"/>

@@ -16,8 +16,8 @@
 	<ActorType desc="Paratroopa" id="0C" name="00290008" tattle="001C0008" tattleCamOffset="0,3,0" sfxWalk="20DF,20DF" sfxFly="20DF,20DF" sfxJump="3E2" sfxHurt="10F" sfxIncrement="30,30"/>
 	<ActorType desc="Bobomb" id="0D" name="0029000A" tattle="001C000A" tattleCamOffset="0,5,0" sfxWalk="20BA,3B4" sfxFly="20BA,3B4" sfxJump="3E2" sfxHurt="10F" sfxIncrement="30,30"/>
 	<ActorType desc="Bobomb2" id="0E" name="0029000A" tattle="001C000A" tattleCamOffset="0,5,0" sfxWalk="20BA,3B4" sfxFly="20BA,3B4" sfxJump="3E2" sfxHurt="10F" sfxIncrement="30,30"/>
-	<ActorType desc="BulletBill" id="0F" name="0029000B" tattle="001C000B" sfxWalk="2C9,2C9" sfxFly="2C9,2C9" sfxJump="2C9" sfxHurt="10F" sfxIncrement="30,30"/>
-	<ActorType desc="BillBlaster" id="10" name="0029000C" tattle="001C000C" tattleCamOffset="0,6,0" sfxWalk="20BA,3B4" sfxFly="20BA,3B4" sfxJump="3E2" sfxHurt="10F" sfxIncrement="30,30"/>
+	<ActorType desc="BlizterBillSinge" id="0F" name="0029000B" tattle="001C000B" sfxWalk="2C9,2C9" sfxFly="2C9,2C9" sfxJump="2C9" sfxHurt="10F" sfxIncrement="30,30"/>
+	<ActorType desc="BlizterBlasterSinge" id="10" name="0029000C" tattle="001C000C" tattleCamOffset="0,6,0" sfxWalk="20BA,3B4" sfxFly="20BA,3B4" sfxJump="3E2" sfxHurt="10F" sfxIncrement="30,30"/>
 	<ActorType desc="Cleft" id="11" name="00290015" tattle="001C0015" tattleCamOffset="0,-2,-15" sfxWalk="20D0,20D0" sfxFly="20D0,20D0" sfxJump="3E2" sfxHurt="10F" sfxIncrement="30,30"/>
 	<ActorType desc="MontyMole" id="12" name="00290014" tattle="001C0014" tattleCamOffset="0,14,0" sfxWalk="20BA,3B4" sfxFly="20BA,3B4" sfxJump="3E2" sfxHurt="10F" sfxIncrement="30,30"/>
 	<ActorType desc="Bandit" id="13" name="00290017" tattle="001C0017" tattleCamOffset="0,5,0" sfxWalk="20C1,20C1" sfxFly="20C1,20C1" sfxJump="3E2" sfxHurt="10F" sfxIncrement="30,30"/>
@@ -213,4 +213,8 @@
 	<ActorType desc="SlotMachineStart" id="D1" name="00290076" tattle="001C0093" sfxIncrement="30,30"/>
 	<ActorType desc="SlotMachineStart" id="D2" name="00290076" tattle="001C0093" sfxIncrement="30,30"/>
 	<ActorType desc="SlotMachineStart" id="D3" name="00290076" tattle="001C0093" sfxIncrement="30,30"/>
+	<ActorType desc="BlizterBillShock" id="D4" name="00290083" tattle="001C000B" sfxWalk="2C9,2C9" sfxFly="2C9,2C9" sfxJump="2C9" sfxHurt="10F" sfxIncrement="30,30"/>
+	<ActorType desc="BlizterBlasterShock" id="D5" name="00290084" tattle="001C000C" tattleCamOffset="0,6,0" sfxWalk="20BA,3B4" sfxFly="20BA,3B4" sfxJump="3E2" sfxHurt="10F" sfxIncrement="30,30"/>
+	<ActorType desc="BlizterBillShiver" id="D6" name="00290085" tattle="001C000B" sfxWalk="2C9,2C9" sfxFly="2C9,2C9" sfxJump="2C9" sfxHurt="10F" sfxIncrement="30,30"/>
+	<ActorType desc="BlizterBlasterShiver" id="D7" name="00290086" tattle="001C000C" tattleCamOffset="0,6,0" sfxWalk="20BA,3B4" sfxFly="20BA,3B4" sfxJump="3E2" sfxHurt="10F" sfxIncrement="30,30"/>
 </ActorTypes>

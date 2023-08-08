@@ -2,6 +2,67 @@ Anim	% namespace
 anim	% library name
 false	% reversed
 
+% Bilzter Bill Singe Animations
+002D0000 = blizterBillSingeStill
+002D0001 = blizterBillSingeIdle
+002D0003 = blizterBillSingeBrace
+002D0004 = blizterBillSingeShoot
+002D0005 = blizterBillSingeHurt
+002D0007 = blizterBillSingeDeath
+
+% Bilzter Blaster Singe Animations
+002E0000 = blizterBlasterSingeStill
+002E0001 = blizterBlasterSingeIdle
+002E0002 = blizterBlasterSingeShoot
+002E0003 = blizterBlasterSingeHurt
+
+% Bilzter Bill Shock Animations
+002D0100 = blizterBillShockStill
+002D0101 = blizterBillShockIdle
+002D0103 = blizterBillShockBrace
+002D0104 = blizterBillShockShoot
+002D0105 = blizterBillShockHurt
+002D0107 = blizterBillShockDeath
+
+% Bilzter Blaster Shock Animations
+002E0100 = blizterBlasterShockStill
+002E0101 = blizterBlasterShockIdle
+002E0102 = blizterBlasterShockShoot
+002E0103 = blizterBlasterShockHurt
+
+% Bilzter Bill Shiver Animations
+002D0200 = blizterBillShiverStill
+002D0201 = blizterBillShiverIdle
+002D0203 = blizterBillShiverBrace
+002D0204 = blizterBillShiverShoot
+002D0205 = blizterBillShiverHurt
+002D0207 = blizterBillShiverDeath
+
+% Bilzter Blaster Shiver Animations
+002E0200 = blizterBlasterShiverStill
+002E0201 = blizterBlasterShiverIdle
+002E0202 = blizterBlasterShiverShoot
+002E0203 = blizterBlasterShiverHurt
+
+% Pirate Goomba King Animations
+00630000 = pirateGoombaKingStill
+00630001 = pirateGoombaKingIdle
+00630002 = pirateGoombaKingJump
+00630003 = pirateGoombaKingWalk
+00630004 = pirateGoombaKingRun
+00630005 = pirateGoombaKingKick
+00630006 = pirateGoombaKingDeath
+00630007 = pirateGoombaKingDizzy
+00630008 = pirateGoombaKingSleep
+00630009 = pirateGoombaKingAngry
+0063000A = pirateGoombaKingTalk
+0063000B = pirateGoombaKingPound
+0063000C = pirateGoombaKingLand
+0063000D = pirateGoombaKingBurntHurt
+0063000E = pirateGoombaKingBurntDeath
+0063000F = pirateGoombaKingChuckolaCola
+
+
 00950000 = WhiteBoo-Stop
 00950001 = WhiteBoo-Idle
 00950002 = WhiteBoo-Walk

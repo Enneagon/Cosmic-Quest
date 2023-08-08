@@ -1,0 +1,295 @@
+% Blizter Blaster (Singe) Parts
+#define .Part:blizterBlasterSinge 1
+#define .Part:invisibleTargetSinge 2
+
+% Blizter Blaster (Singe) Stats
+
+#new:Actor $BlizterBlasterSinge 
+{
+% stats
+[Index]        10b 
+[Level]        10`b 
+[MaxHP]         4`b 
+[Coins]         1`b 
+[Flags]       00000000 
+[StatusTable] $StatusTable_BlizterBlasterSinge 
+% ai
+[PartsCount]    2`s 
+[PartsTable]  $PartsTable_BlizterBlasterSinge 
+[Script]      $Script_Init_BlizterBlasterSinge 
+% move effectiveness
+[Escape]        0`b 
+[Item]          0`b 
+[AirLift]      20`b 
+[Hurricane]    15`b % Bow's "Spook" as well
+[UpAndAway]    95`b 
+[PowerBounce] 100`b 
+[SpinSmash]     4`b % weight (0-4)
+% ui positions
+[Size]         55`b  32`b % width height
+[HealthBar]     8`b   0`b % dx dy
+[StatusTurn]  -24`b  20`b % dx dy
+[StatusIcon]    5`b  25`b % dx dy
+}
+
+/%
+#new:Actor $BlizterBillSinge 
+{
+% stats
+[Index]         Fb 
+[Level]         5`b 
+[MaxHP]         2`b 
+[Coins]         0`b 
+[Flags]       00000200 
+[StatusTable] $StatusTable_BlizterBillSinge 
+% ai
+[PartsCount]    1`s 
+[PartsTable]  $PartsTable_BlizterBillSinge 
+[Script]      $Script_Init_BlizterBillSinge 
+% move effectiveness
+[Escape]       50`b 
+[Item]          0`b 
+[AirLift]     100`b 
+[Hurricane]   100`b % Bow's "Spook" as well
+[UpAndAway]    95`b 
+[PowerBounce]  85`b 
+[SpinSmash]     0`b % weight (0-4)
+% ui positions
+[Size]         28`b  22`b % width height
+[HealthBar]     0`b   0`b % dx dy
+[StatusTurn]  -10`b  20`b % dx dy
+[StatusIcon]   10`b  20`b % dx dy
+}
+%/
+
+#new:DefenseTable $DefenseTable_BlizterBlasterSinge 
+{
+.Element:Normal 1`
+.Element:Fire 100`
+.Element:Blast 100`
+.Element:End
+}
+
+#new:StatusTable $StatusTable_BlizterBlasterSinge 
+{
+.Status:Normal      0`
+.Status:Default     0`
+.Status:Sleep       0`
+.Status:Poison      0`
+.Status:Frozen    100`
+.Status:Dizzy       0`
+.Status:Fear        0`
+.Status:Static      0`
+.Status:Paralyze    0`
+.Status:Shrink     50`
+.Status:Stop        0`
+.Status:DefaultTurnMod    0`
+.Status:SleepTurnMod      0`
+.Status:PoisonTurnMod     0`
+.Status:FrozenTurnMod     0`
+.Status:DizzyTurnMod      0`
+.Status:FearTurnMod       0`
+.Status:StaticTurnMod     0`
+.Status:ParalyzeTurnMod   0`
+.Status:ShrinkTurnMod     0`
+.Status:StopTurnMod       0`
+.Status:End
+}
+
+#new:PartsTable $PartsTable_BlizterBlasterSinge % ActorPartBlueprint struct in decomp
+{ 
+    /% s32 flags %/                 00020000
+    /% s8 index %/                  ~Byte:.Part:blizterBlasterSinge
+    /% Vec3b posOffset %/           00b 00b 00b
+    /% Vec2b targetOffset %/        -6`b 50`b % For cursor when selecting to attack in battle
+    /% s16 opacity %/               00FFs
+    /% s32* IdleAnimations %/       $IdleAnimations_BlizterBlasterSinge
+    /% s32* defenseTable %/         $DefenseTable_BlizterBlasterSinge
+    /% s32 eventFlags %/            00000000
+    /% s32 elementImmunityFlags %/  00000000
+    /% s8 unk_1C %/                 00b
+    /% s8 unk_1D %/                 F7b
+    /% s8 unk_1E %/                 00b
+    /% s8 unk_1F %/                 00b
+    /% s8 unk_20 %/                 00000000
+    
+    /% Target %/
+    /% s32 flags %/                  80800001
+    /% s8 index %/                   ~Byte:.Part:invisibleTargetSinge
+    /% Vec3b posOffset %/            100`b 00b 00b
+    /% Vec2b targetOffset %/         -106`b 50`b % For cursor when selecting to attack in battle
+    /% s16 opacity %/                00FFs
+    /% s32* IdleAnimations %/        $IdleAnimations_BlizterBlasterSinge
+    /% s32* defenseTable %/          $DefenseTable_BlizterBlasterSinge
+    /% s32 eventFlags %/             00000000
+    /% s32 elementImmunityFlags %/   00000000
+    /% s8 unk_1C %/                  00b
+    /% s8 unk_1D %/                  F7b
+    /% s8 unk_1E %/                  00b
+    /% s8 unk_1F %/                  00b
+    /% s8 unk_20 %/                  00000000
+    
+}
+
+#new:IdleAnimations $IdleAnimations_BlizterBlasterSinge 
+{
+.Status:Normal    .Anim:blizterBlasterSingeIdle
+.Status:Stone     .Anim:blizterBlasterSingeStill
+.Status:Stop      .Anim:blizterBlasterSingeStill
+.Status:Paralyze  .Anim:blizterBlasterSingeStill
+.Status:End
+}
+
+#new:Script $Script_Init_BlizterBlasterSinge 
+{
+  Set *Var0 = ( *MB_DifficultyLevel + *MB_SectorsCompleted + 4` ) % Add to Minimum HP
+  Call  $SetMaxHPByDifficulty ( *Var0 ) % Dynamically sets HP
+  Call  BindTakeTurn  ( .Actor:Self $Script_TakeTurn_BlizterBlasterSinge )
+  Call  BindIdle      ( .Actor:Self $Script_Idle_BlizterBlasterSinge )
+  Call  BindHandleEvent   ( .Actor:Self $Script_HandleEvent_BlizterBlasterSinge )
+  Call  SetActorVar   ( .Actor:Self 00000008 00000000 )
+  Return
+  End
+}
+
+#new:Script $Script_Idle_BlizterBlasterSinge 
+{
+  Return
+  End
+}
+
+#new:Script $Script_HandleEvent_BlizterBlasterSinge 
+{
+    Call  UseIdleAnimation  ( .Actor:Self .False )
+    Call  EnableIdleScript  ( .Actor:Self .False )
+    Call  GetLastEvent      ( .Actor:Self *Var0 )
+    Switch  *Var0
+        CaseOR  ==  .Event:HitCombo % 9
+        CaseOR  ==  .Event:Hit % A
+            SetConst  *Var0  .Part:blizterBlasterSinge
+            SetConst  *Var1  .Anim:blizterBlasterSingeHurt
+            ExecWait  DoNormalHit
+        EndCaseGroup
+        Case  ==  .Event:BurnHit % E
+            SetConst  *Var0  .Part:blizterBlasterSinge
+            SetConst  *Var1  .Anim:blizterBlasterSingeHurt
+            SetConst  *Var2  FFFFFFFF
+            ExecWait  DoBurnHit
+        Case  ==  .Event:BurnDeath % 24
+            SetConst  *Var0  .Part:blizterBlasterSinge
+            SetConst  *Var1  .Anim:blizterBlasterSingeHurt
+            SetConst  *Var2  FFFFFFFF
+            ExecWait  DoBurnHit
+            SetConst  *Var0  .Part:blizterBlasterSinge
+            SetConst  *Var1  .Anim:blizterBlasterSingeHurt
+            ExecWait  DoDeath
+            Return
+        CaseOR  ==  00000017 % 17
+        CaseOR  ==  .Event:Immune % 19
+        CaseOR  ==  .Event:AirLiftFailed % 1F
+            SetConst  *Var0  .Part:blizterBlasterSinge
+            SetConst  *Var1  .Anim:blizterBlasterSingeIdle
+            ExecWait  DoImmune
+        EndCaseGroup
+        Case  ==  .Event:Death % 20
+            SetConst  *Var0  .Part:blizterBlasterSinge
+            SetConst  *Var1  .Anim:blizterBlasterSingeHurt
+            ExecWait  DoNormalHit
+            Wait  10`
+            SetConst  *Var0  .Part:blizterBlasterSinge
+            SetConst  *Var1  .Anim:blizterBlasterSingeHurt
+            ExecWait  DoDeath
+            Return
+        Case  ==  .Event:RecoverStatus % 31
+            SetConst  *Var0  .Part:blizterBlasterSinge
+            SetConst  *Var1  .Anim:blizterBlasterSingeIdle
+            ExecWait  DoRecover
+        Case  ==  .Event:BeginAirLift % 3A
+            SetConst  *Var0  .Part:blizterBlasterSinge
+            SetConst  *Var1  .Anim:blizterBlasterSingeHurt
+            ExecWait  DoAirLift
+        Case  ==  .Event:BlowAway % 16
+            SetConst  *Var0  .Part:blizterBlasterSinge
+            SetConst  *Var1  .Anim:blizterBlasterSingeHurt
+            ExecWait  DoBlowAway
+            Return
+        Default
+    EndSwitch
+    Call  EnableIdleScript  ( .Actor:Self .True )
+    Call  UseIdleAnimation  ( .Actor:Self .True )
+    Return
+    End
+}
+
+#new:Script $Script_TakeTurn_BlizterBlasterSinge 
+{
+  Call  UseIdleAnimation  ( .Actor:Self .False )
+  Call  EnableIdleScript  ( .Actor:Self .False )
+  Call  GetActorVar       ( .Actor:Self 00000008 *Var0 )
+  Switch  *Var0 
+  	Case  ==  00000000 
+  		ExecWait  $SingeShoot 
+  	Case  ==  00000001 
+  		ExecWait  $CheckSingeBill 
+  EndSwitch
+  Call  EnableIdleScript  ( .Actor:Self .True )
+  Call  UseIdleAnimation  ( .Actor:Self .True )
+  Return
+  End
+}
+
+#new:Script $SingeShoot 
+{
+  Call  SetAnimation  ( .Actor:Self .Part:blizterBlasterSinge .Anim:blizterBlasterSingeShoot )
+  Wait  13`
+  Thread
+  	Call  ShakeCam  ( .Cam:Battle 00000000  10` *Fixed[1.0] )
+  EndThread
+  Call  StartRumble   ( 00000009 )
+  Call  PlaySoundAtActor  ( .Actor:Self 000000D9 )
+  Call  GetActorPos   ( .Actor:Self *Var0 *Var1 *Var2 )
+  Sub   *Var0  33` 
+  Add   *Var1  32` 
+  Add   *Var2  3` 
+  Call  PlayEffect    ( ~FX:BigSteamPuff *Var0 *Var1 *Var2 00000002 00000005 00000000 00000002 00000000 00000000 00000000 00000000 00000000 00000000 )
+  Call  PlayEffect    ( ~FX:BigSteamPuff *Var0 *Var1 *Var2 00000002 00000005 00000002 00000002 00000000 00000000 00000000 00000000 00000000 00000000 )
+  Wait  2`
+  Call  $Function_80218000_F ( )
+  Call  SummonEnemy   ( $SpecialFormation_BlizterBillSinge 0` )
+  Call  SetActorVar   ( .Actor:Self 00000000 *Var0 )
+  Call  SetActorVar   ( .Actor:Self 00000008 00000001 )
+  Return
+  End
+}
+
+#new:Script $CheckSingeBill 
+{
+  Call  GetActorVar   ( .Actor:Self 00000000 *Var0 )
+  Call  ActorExists   ( *Var0 *Var1 )
+  If  *Var1  ==  .False 
+  	Call  SetActorVar   ( .Actor:Self 00000008 00000000 )
+  EndIf
+  Return
+  End
+}
+
+#new:Vector3D $Vector3D_BlizterBillSinge 
+{
+0` -1000` 0`
+}
+
+#new:SpecialFormation $SpecialFormation_BlizterBillSinge 
+{
+$BlizterBillSinge $Vector3D_BlizterBillSinge 100` 00000000 00000000 00000000 00000000 
+}
+
+#new:Function $Function_80218000_F 
+{
+  LA        V0, $SpecialFormation_BlizterBillSinge
+  LI        V1, 1
+  SW        V1, C (V0)
+  LW        V1, 148 (A0)
+  SW        V1, 10 (V0)
+  JR        RA
+  LI        V0, 2
+}

@@ -611,40 +611,7 @@
 			</Component>
 		</Animation>
 		<Animation name="Idle">
-			<Component name="Movement" xyz="1,0,0">
-				<Command val="3000"/>
-				<Command val="0"/>
-				<Command val="0"/>
-				<Command val="0"/>
-				<Command val="A"/>
-				<Command val="3000"/>
-				<Command val="0"/>
-				<Command val="1"/>
-				<Command val="0"/>
-				<Command val="8"/>
-				<Command val="3000"/>
-				<Command val="0"/>
-				<Command val="2"/>
-				<Command val="0"/>
-				<Command val="6"/>
-				<Command val="3000"/>
-				<Command val="0"/>
-				<Command val="3"/>
-				<Command val="0"/>
-				<Command val="2"/>
-				<Command val="3000"/>
-				<Command val="0"/>
-				<Command val="2"/>
-				<Command val="0"/>
-				<Command val="6"/>
-				<Command val="3000"/>
-				<Command val="0"/>
-				<Command val="1"/>
-				<Command val="0"/>
-				<Command val="8"/>
-				<Command val="2000"/>
-			</Component>
-			<Component name="Body" xyz="-1,0,3">
+			<Component name="Body" xyz="0,0,3">
 				<Command val="8100"/>
 				<Command val="1000"/>
 				<Command val="14"/>

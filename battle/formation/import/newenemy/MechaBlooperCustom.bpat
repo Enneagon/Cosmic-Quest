@@ -17,7 +17,7 @@
 
 
 % Mecha Blooper Parts
-#define .Part:MechaBlooper 1
+#define .Part:mechaBlooper 1
 % #define .Part:Projectile 2
 
 % Mecha Blooper Stats
@@ -97,7 +97,7 @@
 #new:PartsTable $PartsTable_MechaBlooper % ActorPartBlueprint struct in decomp
 { 
     /% s32 flags %/                 00800000
-    /% s8 index %/                  ~Byte:.Part:MechaBlooper
+    /% s8 index %/                  ~Byte:.Part:mechaBlooper
     /% Vec3b posOffset %/           00b 00b 00b
     /% Vec2b targetOffset %/        00b 60`b %for cursor when selecting to attack in battle
     /% s16 opacity %/               00FFs
@@ -169,11 +169,11 @@
     Add *Var0 80`
     Add *Var1 50`
     Add *Var2 -5`
-    Call SetAnimation  ( .Actor:Self .Part:MechaBlooper .Anim:MechaBlooper_Propel )
+    Call SetAnimation  ( .Actor:Self .Part:mechaBlooper .Anim:MechaBlooper_Propel )
     Call FlyToGoal ( .Actor:Self 35` 0` .Easing:Linear )
     Wait 10`
     Call ForceHomePos  ( .Actor:Self  80` 50` -5` )
-    Call SetAnimation  ( .Actor:Self .Part:MechaBlooper .Anim:MechaBlooper_Idle )
+    Call SetAnimation  ( .Actor:Self .Part:mechaBlooper .Anim:MechaBlooper_Idle )
     Return
     End
 }
@@ -186,85 +186,85 @@
     Switch  *Var0
         CaseOR  ==  .Event:HitCombo % 9
         CaseOR  ==  .Event:Hit % A
-            SetConst  *Var0  .Part:MechaBlooper
+            SetConst  *Var0  .Part:mechaBlooper
             SetConst  *Var1  .Anim:MechaBlooper_Damaged
             ExecWait  DoNormalHit
         EndCaseGroup
         Case  ==  .Event:BurnHit % E
-            SetConst  *Var0  .Part:MechaBlooper
+            SetConst  *Var0  .Part:mechaBlooper
             SetConst  *Var1  .Anim:MechaBlooper_Damaged
             SetConst  *Var2  .Anim:MechaBlooper_Damaged
             ExecWait  DoBurnHit
         Case  ==  .Event:BurnDeath % 24
-            SetConst  *Var0  .Part:MechaBlooper
+            SetConst  *Var0  .Part:mechaBlooper
             SetConst  *Var1  .Anim:MechaBlooper_Damaged
             SetConst  *Var2  .Anim:MechaBlooper_Damaged
             ExecWait  DoBurnHit
-            SetConst  *Var0  .Part:MechaBlooper
+            SetConst  *Var0  .Part:mechaBlooper
             SetConst  *Var1  .Anim:MechaBlooper_Damaged
             ExecWait  DoDeath
             Return
         Case  ==  .Event:SpinSmashHit % B
-            SetConst  *Var0  .Part:MechaBlooper
+            SetConst  *Var0  .Part:mechaBlooper
             SetConst  *Var1  .Anim:MechaBlooper_Damaged
             ExecWait  DoSpinSmashHit
         Case  ==  .Event:SpinSmashDeath % 21
-            SetConst  *Var0  .Part:MechaBlooper
+            SetConst  *Var0  .Part:mechaBlooper
             SetConst  *Var1  .Anim:MechaBlooper_Damaged
             ExecWait  DoSpinSmashHit
-            SetConst  *Var0  .Part:MechaBlooper
+            SetConst  *Var0  .Part:mechaBlooper
             SetConst  *Var1  .Anim:MechaBlooper_Damaged % Death
             ExecWait  DoDeath
             Return
         Case  ==  .Event:ShockHit % 2F
-            SetConst  *Var0  .Part:MechaBlooper
+            SetConst  *Var0  .Part:mechaBlooper
             SetConst  *Var1  .Anim:MechaBlooper_Damaged
             ExecWait  DoShockHit
-            SetConst  *Var0  .Part:MechaBlooper
+            SetConst  *Var0  .Part:mechaBlooper
             SetConst  *Var1  .Anim:MechaBlooper_Damaged
             ExecWait  DoJumpBack
             Call  SetActorSpeed ( .Actor:Self *Fixed[2.0] )
             ExecWait  $Script_ReturnHome_MechaBlooper
         Case  ==  .Event:ShockDeath % 26
-            SetConst  *Var0  .Part:MechaBlooper
+            SetConst  *Var0  .Part:mechaBlooper
             SetConst  *Var1  .Anim:MechaBlooper_Damaged
             ExecWait  DoShockHit
-            SetConst  *Var0  .Part:MechaBlooper
+            SetConst  *Var0  .Part:mechaBlooper
             SetConst  *Var1  .Anim:MechaBlooper_Damaged % Death
             ExecWait  DoDeath
             Return
         CaseOR  ==  00000017 % 17
         CaseOR  ==  .Event:Immune % 19
         CaseOR  ==  .Event:AirLiftFailed % 1F
-            SetConst  *Var0  .Part:MechaBlooper
+            SetConst  *Var0  .Part:mechaBlooper
             SetConst  *Var1  .Anim:MechaBlooper_Idle
             ExecWait  DoImmune
         EndCaseGroup
         Case  ==  .Event:Death % 20
-            SetConst  *Var0  .Part:MechaBlooper
+            SetConst  *Var0  .Part:mechaBlooper
             SetConst  *Var1  .Anim:MechaBlooper_Damaged
             ExecWait  DoNormalHit
             Wait  10`
-            SetConst  *Var0  .Part:MechaBlooper
+            SetConst  *Var0  .Part:mechaBlooper
             SetConst  *Var1  .Anim:MechaBlooper_Damaged % Death
             ExecWait  DoDeath
             Return
         Case  ==  .Event:RecoverStatus % 31
-            SetConst  *Var0  .Part:MechaBlooper
+            SetConst  *Var0  .Part:mechaBlooper
             SetConst  *Var1  .Anim:MechaBlooper_Idle
             ExecWait  DoRecover
         Case  ==  .Event:ScareAway % 39
-            SetConst  *Var0  .Part:MechaBlooper
+            SetConst  *Var0  .Part:mechaBlooper
             SetConst  *Var1  .Anim:MechaBlooper_Idle % Run 
             SetConst  *Var2  .Anim:MechaBlooper_Idle % Scared
             ExecWait  DoScareAway
             Return
         Case  ==  .Event:BeginAirLift % 3A
-            SetConst  *Var0  .Part:MechaBlooper
+            SetConst  *Var0  .Part:mechaBlooper
             SetConst  *Var1  .Anim:MechaBlooper_Damaged
             ExecWait  DoAirLift
         Case  ==  .Event:BlowAway % 16
-            SetConst  *Var0  .Part:MechaBlooper
+            SetConst  *Var0  .Part:mechaBlooper
             SetConst  *Var1  .Anim:MechaBlooper_Damaged
             ExecWait  DoBlowAway
             Return
@@ -305,8 +305,7 @@
     Sub *Var0 10`
     Add *Var1 50`
     Call SetGoalPos ( .Actor:Self *Var0 *Var1 *Var2 )	% Fly to above the player.
-    % Call SetActorSpeed  ( .Actor:Self *Fixed[5.0] )
-    Call SetAnimation   ( .Actor:Self .Part:MechaBlooper .Anim:MechaBlooper_Propel )
+    Call SetAnimation   ( .Actor:Self .Part:mechaBlooper .Anim:MechaBlooper_Propel )
     Call FlyToGoal      ( .Actor:Self  30`  0` .Easing:Linear )
     Wait 10`
     Call SetTargetActor    ( .Actor:Self .Actor:Player )
@@ -315,17 +314,9 @@
     Sub *Var0 10`
     Add *Var1 40`
     Call SetGoalPos ( .Actor:Self *Var0 *Var1 *Var2 )	% Fly a little down but still above the player.
-    % Call SetActorSpeed  ( .Actor:Self *Fixed[3.0] )
-    Call SetAnimation   ( .Actor:Self .Part:MechaBlooper .Anim:MechaBlooper_Float_Down )
+    Call SetAnimation   ( .Actor:Self .Part:mechaBlooper .Anim:MechaBlooper_Float_Down )
     Call FlyToGoal      ( .Actor:Self  25`  0` .Easing:CubicOut )
     Wait 10`
-    /%
-    Call AddGoalPos        ( .Actor:Self  60`  -20`  0` )
-    Call SetAnimation   ( .Actor:Self .Part:MechaBlooper .Anim:MechaBlooper_Float_Down )
-    Call SetActorSpeed  ( .Actor:Self *Fixed[4.0] )
-    Call FlyToGoal      ( .Actor:Self  0`  0` .Easing:Linear )
-    Wait 10`
-    %/
     Call EnemyTestTarget ( .Actor:Self *Var3 ~Flags:DamageType:0 00000000 1` 00000010 )
     Switch  *Var3 
         CaseOR  ==  .HitResult:Miss % 6
@@ -352,11 +343,11 @@
     Sub *Var0 10`
     Add *Var1 10`
     Call SetGoalPos ( .Actor:Self *Var0 *Var1 *Var2 )	% DRILL INTO MARIO!!!
-    Call SetAnimation   ( .Actor:Self .Part:MechaBlooper .Anim:MechaBlooper_Drill )
+    Call SetAnimation   ( .Actor:Self .Part:mechaBlooper .Anim:MechaBlooper_Drill )
     Call FlyToGoal      ( .Actor:Self  25`  0` .Easing:CubicOut )
     Wait 5`
     Call EnemyDamageTarget ( .Actor:Self *Var0 ~Flags:DamageType:NoContact 00000000 00000000 .DMG_MechaBlooper_Drill 00000020 )
-    Call SetAnimation   ( .Actor:Self .Part:MechaBlooper .Anim:MechaBlooper_Drill )
+    Call SetAnimation   ( .Actor:Self .Part:mechaBlooper .Anim:MechaBlooper_Drill )
     Wait 15`
     Switch  *Var0 
         CaseOR  ==  .HitResult:Hit % 0

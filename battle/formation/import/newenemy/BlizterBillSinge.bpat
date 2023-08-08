@@ -1,0 +1,312 @@
+% Blizter Bill (Singe) Parts
+#define .Part:blizterBillSinge 1
+
+% Blizter Bill (Singe) Stats
+
+#new:Actor $BlizterBillSinge 
+{
+% stats
+[Index]         Fb 
+[Level]         5`b 
+[MaxHP]         2`b 
+[Coins]         0`b 
+[Flags]       00000200 
+[StatusTable] $StatusTable_BlizterBillSinge 
+% ai
+[PartsCount]    1`s 
+[PartsTable]  $PartsTable_BlizterBillSinge 
+[Script]      $Script_Init_BlizterBillSinge 
+% move effectiveness
+[Escape]       50`b 
+[Item]          0`b 
+[AirLift]     100`b 
+[Hurricane]   100`b % Bow's "Spook" as well
+[UpAndAway]    95`b 
+[PowerBounce]  85`b 
+[SpinSmash]     0`b % weight (0-4)
+% ui positions
+[Size]         28`b  22`b % width height
+[HealthBar]     0`b   0`b % dx dy
+[StatusTurn]  -10`b  20`b % dx dy
+[StatusIcon]   10`b  20`b % dx dy
+}
+
+#new:DefenseTable $DefenseTable_BlizterBillSinge 
+{
+.Element:Normal 0`
+.Element:Fire 100`
+.Element:Blast 100`
+.Element:End
+}
+
+#new:StatusTable $StatusTable_BlizterBillSinge 
+{
+.Status:Normal      0`
+.Status:Default     0`
+.Status:Sleep       0`
+.Status:Poison      0`
+.Status:Frozen    100`
+.Status:Dizzy     100`
+.Status:Fear        0`
+.Status:Static      0`
+.Status:Paralyze    0`
+.Status:Shrink    100`
+.Status:Stop        0`
+.Status:DefaultTurnMod    0`
+.Status:SleepTurnMod      0`
+.Status:PoisonTurnMod     0`
+.Status:FrozenTurnMod     0`
+.Status:DizzyTurnMod      1`
+.Status:FearTurnMod       0`
+.Status:StaticTurnMod     0`
+.Status:ParalyzeTurnMod   0`
+.Status:ShrinkTurnMod     0`
+.Status:StopTurnMod       0`
+.Status:End
+}
+
+#new:PartsTable $PartsTable_BlizterBillSinge % ActorPartBlueprint struct in decomp
+{ 
+    /% s32 flags %/                 00800000
+    /% s8 index %/                  ~Byte:.Part:blizterBillSinge
+    /% Vec3b posOffset %/           00b 00b 00b
+    /% Vec2b targetOffset %/        0`b 16`b % For cursor when selecting to attack in battle
+    /% s16 opacity %/               00FFs
+    /% s32* IdleAnimations %/       $IdleAnimations_BlizterBillSinge
+    /% s32* defenseTable %/         $DefenseTable_BlizterBillSinge
+    /% s32 eventFlags %/            00000400
+    /% s32 elementImmunityFlags %/  00000000
+    /% s8 unk_1C %/                 00b
+    /% s8 unk_1D %/                 FAb
+    /% s8 unk_1E %/                 00b
+    /% s8 unk_1F %/                 00b
+    /% s8 unk_20 %/                 00000000
+}
+
+#new:IdleAnimations $IdleAnimations_BlizterBillSinge 
+{
+.Status:Normal    .Anim:blizterBillSingeIdle
+.Status:Stone     .Anim:blizterBillSingeStill
+.Status:Stop      .Anim:blizterBillSingeStill
+.Status:Paralyze  .Anim:blizterBillSingeStill
+.Status:End
+}
+
+#new:Script $Script_Init_BlizterBillSinge 
+{
+  Set *Var0 = ( *MB_DifficultyLevel + *MB_SectorsCompleted + 2` ) % Add to Minimum HP
+  Call  $SetMaxHPByDifficulty ( *Var0 ) % Dynamically sets HP
+  Call  BindTakeTurn  ( .Actor:Self $Script_TakeTurn_BlizterBillSinge )
+  Call  BindIdle      ( .Actor:Self $Script_Idle_BlizterBillSinge )
+  Call  BindHandleEvent   ( .Actor:Self $Script_HandleEvent_BlizterBillSinge )
+  Call  GetActorVar   ( .Actor:Self 00000000 *Var0 )
+  If  *Var0  ==  00000000 
+    Call  GetActorPos   ( .Actor:Self *Var0 *Var1 *Var2 )
+    Add   *Var1  28` 
+    Call  SetActorPos   ( .Actor:Self *Var0 *Var1 *Var2 )
+    Call  ForceHomePos  ( .Actor:Self *Var0 *Var1 *Var2 )
+    Call  HPBarToHome   ( .Actor:Self )
+  Else
+    Call  GetActorVar       ( .Actor:Self 00000001 *Var0 )
+    Call  GetActorPos       ( *Var0 *Var1 *Var2 *Var3 )
+    Call  GetStatusFlags    ( *Var0 *Var4 )
+    If  *Var4  &  ~Flags:StatusFlags:Shrink % 80000
+    	Set   *Var5  FFFFFFF3 
+    	Set   *Var6  00000004 
+    Else
+    	Set   *Var5  FFFFFFDF 
+    	Set   *Var6  0000001C 
+    EndIf
+    Add   *Var1  *Var5 
+    Add   *Var2  *Var6 
+    Call  SetActorPos   ( .Actor:Self *Var1 *Var2 *Var3 )
+    Call  CopyStatusEffects     ( *Var0 .Actor:Self )
+    Call  CopyBuffs     ( *Var0 .Actor:Self )
+    Call  SetActorSounds        ( .Actor:Self .ActorSound:Jump 00000000 00000000 )
+    Call  GetActorPos   ( *Var0 *Var1 *VarB *VarC )
+    Sub   *Var1  0000005A 
+    Call  SetAnimation  ( .Actor:Self .Part:blizterBillSinge .Anim:blizterBillSingeBrace )
+    Call  SetGoalPos    ( .Actor:Self *Var1 *Var2 *Var3 )
+    Call  FlyToGoal ( .Actor:Self 10` 0 .Easing:Linear )
+    Call  SetAnimation  ( .Actor:Self .Part:blizterBillSinge .Anim:blizterBillSingeIdle )
+    Call  ForceHomePos  ( .Actor:Self *Var1 28` *Var3 )
+    Call  HPBarToHome   ( .Actor:Self )
+  EndIf
+  Return
+  End
+}
+
+#new:Script $Script_Idle_BlizterBillSinge 
+{
+  Return
+  End
+}
+
+#new:Script $Script_Death_Singe 
+{
+  ExecWait  $Script_Death_Explode_Singe 
+  SetConst  *Var0  .Part:blizterBillSinge 
+  SetConst  *Var1  .Anim:blizterBillSingeDeath 
+  Set   *Var2  FFFFCFC7 
+  ExecWait  DoDeath 
+  Return
+  End
+}
+
+#new:Script $Script_HandleEvent_BlizterBillSinge 
+{
+  Call  UseIdleAnimation  ( .Actor:Self .False )
+  Call  EnableIdleScript  ( .Actor:Self .False )
+  Call  GetLastEvent      ( .Actor:Self *Var0 )
+  Switch  *Var0 
+    Case  ==  .Event:HitCombo % 9
+      SetConst  *Var0  .Part:blizterBillSinge 
+     	SetConst  *Var1  .Anim:blizterBillSingeHurt
+     	ExecWait  DoNormalHit 
+    Case  ==  .Event:Hit % A
+     	SetConst  *Var0  .Part:blizterBillSinge 
+     	SetConst  *Var1  .Anim:blizterBillSingeHurt 
+     	ExecWait  DoNormalHit 
+    Case  ==  .Event:BurnHit % E
+     	ExecWait  $Script_Death_Singe 
+     	Return
+    Case  ==  .Event:BurnDeath % 24
+     	ExecWait  $Script_Death_Singe 
+     	Return
+    Case  ==  .Event:SpinSmashHit % B
+    	ExecWait  $Script_Death_Singe 
+    	Return
+    Case  ==  .Event:SpinSmashDeath % 21
+    	ExecWait  $Script_Death_Singe 
+    	Return
+    Case  ==  .Event:ShockHit % 2F
+    	SetConst  *Var0  .Part:blizterBillSinge 
+    	SetConst  *Var1  .Anim:blizterBillSingeHurt 
+    	ExecWait  DoShockHit 
+    	ExecWait  $Script_Death_Singe 
+    	Return
+    Case  ==  .Event:ShockDeath % 26
+   		SetConst  *Var0  .Part:blizterBillSinge 
+  		SetConst  *Var1  .Anim:blizterBillSingeHurt 
+  		ExecWait  DoShockHit 
+    	ExecWait  $Script_Death_Singe 
+  		Return
+  	CaseOR  ==  00000017 % 17
+   	CaseOR  ==  .Event:Immune % 19
+  	CaseOR  ==  .Event:AirLiftFailed % 1F
+  		SetConst  *Var0  .Part:blizterBillSinge 
+  		SetConst  *Var1  .Anim:blizterBillSingeIdle 
+  		ExecWait  DoImmune 
+    	EndCaseGroup
+    Case  ==  .Event:Death % 20
+  		SetConst  *Var0  .Part:blizterBillSinge 
+   		SetConst  *Var1  .Anim:blizterBillSingeHurt 
+  		ExecWait  DoNormalHit 
+  		ExecWait  $Script_Death_Singe 
+  		Return
+   	Case  ==  .Event:ExplodeTrigger % 22
+   		ExecWait  $Script_Death_Singe 
+  		Return
+   	Case  ==  .Event:RecoverStatus % 31
+   		SetConst  *Var0  .Part:blizterBillSinge 
+   		SetConst  *Var1  .Anim:blizterBillSingeIdle 
+  		ExecWait  DoRecover 
+  	Case  ==  .Event:ScareAway % 39
+  		SetConst  *Var0  .Part:blizterBillSinge 
+  		SetConst  *Var1  .Anim:blizterBillSingeHurt 
+  		ExecWait  DoNormalHit 
+  		ExecWait  $Script_Death_Singe 
+  		Return
+  	Case  ==  .Event:BeginAirLift % 3A
+  		SetConst  *Var0  .Part:blizterBillSinge 
+  		SetConst  *Var1  .Anim:blizterBillSingeBrace 
+  		ExecWait  DoAirLift 
+  	Case  ==  .Event:BlowAway % 16
+  		SetConst  *Var0  .Part:blizterBillSinge 
+  		SetConst  *Var1  .Anim:blizterBillSingeBrace 
+  		ExecWait  DoBlowAway 
+  		Return
+  	Default
+  EndSwitch
+  Call  EnableIdleScript  ( .Actor:Self .True)
+  Call  UseIdleAnimation  ( .Actor:Self .True )
+  Return
+  End
+}
+
+#new:Script $Script_TakeTurn_BlizterBillSinge 
+{
+  Call  UseIdleAnimation  ( .Actor:Self .False )
+  Call  EnableIdleScript  ( .Actor:Self .False )
+  Call  SetTargetActor    ( .Actor:Self .Actor:Player )
+  Call  SetGoalToTarget   ( .Actor:Self )
+  Call  UseBattleCamPreset    ( 0000003F )
+  Call  BattleCamTargetActor  ( .Actor:Self )
+  Call  8024ECF8  ( FFFFFFFF 00000001 00000000 )
+  Call  SetAnimation      ( .Actor:Self .Part:blizterBillSinge .Anim:blizterBillSingeShoot )
+  Call  SetActorDispOffset    ( .Actor:Self 00000000 FFFFFFFF 00000000 )
+  Wait  1`
+  Call  SetActorDispOffset    ( .Actor:Self 00000000 FFFFFFFE 00000000 )
+  Wait  15`
+  Call  8024E664  ( 00000013 )
+  Call  EnemyTestTarget   ( .Actor:Self *Var0 ~Flags:DamageType:0 00000000 00000002 00000010 )
+  Switch  *Var0 
+    CaseOR  ==  .HitResult:Miss % 6
+    CaseOR  ==  .HitResult:Lucky % 5
+    	Set   *VarA  *Var0 
+    	Call  GetActorPos   ( .Actor:Self *Var0 *Var1 *Var2 )
+    	Set   *Var3  *Var1 
+    	Call  GetActorPos   ( .Actor:Player *Var0 *Var1 *Var2 )
+    	Set   *Var1  *Var3 
+    	Sub   *Var0  0000005A 
+    	Call  SetGoalPos    ( .Actor:Self *Var0 *Var1 *Var2 )
+    	Call  FlyToGoal ( .Actor:Self 10` 0 .Easing:Linear )
+    	If  *VarA  ==  .HitResult:Lucky % 5
+    		Call  EnemyTestTarget   ( .Actor:Self *Var0 ~Flags:DamageType:TriggerLucky 00000000 00000000 00000000 )
+    	EndIf
+    	Call  UseBattleCamPreset    ( 00000002 )
+    	Call  YieldTurn ( )
+    	Call  8027D32C  ( FFFFFF81 )
+    	Call  UseIdleAnimation  ( .Actor:Self .False )
+    	Call  RemoveActor       ( .Actor:Self )
+    	Return
+    EndCaseGroup
+  EndSwitch
+  Call  GetActorPos       ( .Actor:Self *Var0 *Var1 *Var2 )
+  Set   *Var3  *Var1 
+  Call  GetActorPos       ( .Actor:Player *Var0 *Var1 *Var2 )
+  Set   *Var1  *Var3 
+  Add   *Var0  10` 
+  Call  SetGoalPos        ( .Actor:Self *Var0 *Var1 *Var2 )
+  Call  FlyToGoal ( .Actor:Self 10` 0 .Easing:Linear )
+  ExecWait  $Script_Death_Explode_Singe 
+  Call  SetGoalToTarget   ( .Actor:Self )
+  Wait  2`
+  Call  EnemyDamageTarget ( .Actor:Self *Var0 ~Flags:DamageType:Fire|IgnoreDefense 00000000 00000000 .DMG_Blizter_Shoot 00000020 )
+  Call  UseBattleCamPreset    ( 00000002 )
+  Call  YieldTurn ( )
+  SetConst  *Var0  .Part:blizterBillSinge 
+  SetConst  *Var1  .Anim:blizterBillSingeDeath 
+  Set   *Var2  FFFFCFC7 
+  ExecWait  DoDeath 
+  Return
+  End
+}
+
+#new:Script $Script_Death_Explode_Singe 
+{
+  Call  GetActorPos   ( .Actor:Self *Var0 *Var1 *Var2 )
+  Add   *Var2  2` 
+  Call  PlayEffect    ( ~FX:SmokeRing:Blast1 *Var0 *Var1 *Var2 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 )
+  Add   *Var1  32` 
+  Add   *Var2  2` 
+  Call  PlayEffect    ( ~FX:FaintDustCloud *Var0 *Var1 *Var2 *Fixed[3.0] 0000001E 00000000 00000000 00000000 00000000 00000000 00000000 00000000 )
+  Call  PlaySoundAtActor  ( .Actor:Self 00002078 )
+  Call  StartRumble   ( 0000000B )
+  Thread
+    Call  ShakeCam  ( .Cam:Battle 00000000  5` *Fixed[1.0] )
+  EndThread
+  Return
+  End
+}
+

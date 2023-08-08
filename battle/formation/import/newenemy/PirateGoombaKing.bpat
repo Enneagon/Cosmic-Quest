@@ -1,0 +1,1090 @@
+% Pirate Goomba King Parts
+#define .Part:pirateGoombaKing 1
+#define .Part:invisibleTargetPirateGoombaKing 2
+#define .Part:chuckolaCola 3
+
+
+% Pirate Goomba King Actor Variables
+#define .AVar:HasSummoned 0 
+#define .AVar:SpeakedOnce 1 
+#define .AVar:RumbleEffect 2
+
+#new:Actor $PirateGoombaKing 
+{
+% Stats
+[Index]        92b
+[Level]        49`b
+[MaxHP]        30`b
+[Coins]         0`b
+[Flags]       00000000
+[StatusTable] $StatusTable_PirateGoombaKing
+% AI
+[PartsCount]    3`s
+[PartsTable]  $PartsTable_PirateGoombaKing
+[Script]      $Script_Init_PirateGoombaKing
+% Move effectiveness
+[Escape]        0`b
+[Item]          0`b
+[AirLift]       0`b
+[Hurricane]     0`b % Bow's "Spook" as well
+[UpAndAway]     0`b
+[PowerBounce]  80`b
+[SpinSmash]     4`b % Weight (0-4)
+% UI positions
+[Size]         56`b  80`b % Width Height
+[HealthBar]     0`b   0`b % dx dy
+[StatusTurn]   -6`b  38`b % dx dy
+[StatusIcon]   12`b  75`b % dx dy
+}
+
+#new:DefenseTable $DefenseTable_PirateGoombaKing 
+{
+    .Element:Normal 0`
+    .Element:End
+}
+
+#new:DefenseTable $DefenseTable_PirateGoombaKingFury 
+{
+    .Element:Normal 1`
+    .Element:End
+}
+
+#new:StatusTable $StatusTable_PirateGoombaKing 
+{
+    .Status:Normal      0`
+    .Status:Default     0`
+    .Status:Sleep     100`
+    .Status:Poison      0`
+    .Status:Frozen      0`
+    .Status:Dizzy     100`
+    .Status:Fear        0`
+    .Status:Static      0`
+    .Status:Paralyze  100`
+    .Status:Shrink    100`
+    .Status:Stop      100`
+    .Status:DefaultTurnMod    0`
+    .Status:SleepTurnMod     -1`
+    .Status:PoisonTurnMod     0`
+    .Status:FrozenTurnMod     0`
+    .Status:DizzyTurnMod     -1`
+    .Status:FearTurnMod       0`
+    .Status:StaticTurnMod    -1`
+    .Status:ParalyzeTurnMod  -1`
+    .Status:ShrinkTurnMod    -1`
+    .Status:StopTurnMod      -1`
+    .Status:End
+}
+
+#new:StatusTable $StatusTable_PirateGoombaKing_Fury
+{
+    .Status:Normal      0`
+    .Status:Default     0`
+    .Status:Sleep     0`
+    .Status:Poison      0`
+    .Status:Frozen      0`
+    .Status:Dizzy     100`
+    .Status:Fear        0`
+    .Status:Static      0`
+    .Status:Paralyze  0`
+    .Status:Shrink    0`
+    .Status:Stop      0`
+    .Status:DefaultTurnMod    0`
+    .Status:SleepTurnMod     0`
+    .Status:PoisonTurnMod     0`
+    .Status:FrozenTurnMod     0`
+    .Status:DizzyTurnMod     -2`
+    .Status:FearTurnMod       0`
+    .Status:StaticTurnMod    0`
+    .Status:ParalyzeTurnMod  0`
+    .Status:ShrinkTurnMod    0`
+    .Status:StopTurnMod      0`
+    .Status:End
+}
+
+#new:IdleAnimations $IdleAnimations_PirateGoombaKing
+{
+	.Status:Normal    00630001
+	.Status:Stone     00630000
+	.Status:Sleep     00630008
+	.Status:Poison    00630000
+	.Status:Stop      00630000
+	.Status:Static    00630000
+	.Status:Paralyze  00630000
+	.Status:Dizzy     00630007
+	.Status:End
+}
+
+#new:IdleAnimations $IdleAnimations_PirateGoombaKingShuffling
+{
+	.Status:Normal    00630004
+	.Status:Stone     00630000
+	.Status:Sleep     00630008
+	.Status:Poison    00630000
+	.Status:Stop      00630000
+	.Status:Static    00630000
+	.Status:Paralyze  00630000
+	.Status:Dizzy     00630007
+	.Status:End
+}
+
+#new:IdleAnimations $IdleAnimations_PirateGoombaKing_Fury
+{
+	.Status:Normal    00630009
+	.Status:Stone     00630000
+	.Status:Sleep     00630008
+	.Status:Poison    00630000
+	.Status:Stop      00630000
+	.Status:Static    00630000
+	.Status:Paralyze  00630000
+	.Status:Dizzy     00630007
+	.Status:End
+}
+
+#new:IdleAnimations $IdleAnimations_PirateGoombaKing_Danger
+{
+	.Status:Normal    00630007
+	.Status:Stone     00630000
+	.Status:Sleep     00630008
+	.Status:Poison    00630000
+	.Status:Stop      00630000
+	.Status:Static    00630000
+	.Status:Paralyze  00630000
+	.Status:Dizzy     00630007
+	.Status:End
+}
+
+#new:IdleAnimations $IdleAnimations_ChuckolaCola 
+{
+    .Status:Normal    .Anim:pirateGoombaKingChuckolaCola
+    .Status:End
+}
+
+#new:PartsTable $PartsTable_PirateGoombaKing % ActorPartBlueprint struct in decomp
+{ 
+    /% s32 flags %/                 00020020
+    /% s8 index %/                  ~Byte:.Part:pirateGoombaKing
+    /% Vec3b posOffset %/           0`b 0`b 0`b
+    /% Vec2b targetOffset %/        -25`b 15`b % For cursor when selecting to attack in battle
+    /% s16 opacity %/               00FFs
+    /% s32* IdleAnimations %/       $IdleAnimations_PirateGoombaKing
+    /% s32* defenseTable %/         $DefenseTable_PirateGoombaKing
+    /% s32 eventFlags %/            00000000
+    /% s32 elementImmunityFlags %/  00000000
+    /% s8 unk_1C %/                 00b
+    /% s8 unk_1D %/                 00b
+    /% s8 unk_1E %/                 00b
+    /% s8 unk_1F %/                 00b
+    /% s8 unk_20 %/                 00000000
+    
+    /% Target %/
+    /% s32 flags %/                  00800020
+    /% s8 index %/                   ~Byte:.Part:invisibleTargetPirateGoombaKing
+    /% Vec3b posOffset %/            0`b 0`b 0`b
+    /% Vec2b targetOffset %/         0`b 80`b % For cursor when selecting to attack in battle
+    /% s16 opacity %/                00FFs
+    /% s32* IdleAnimations %/        00000000
+    /% s32* defenseTable %/          $DefenseTable_PirateGoombaKing
+    /% s32 eventFlags %/             00000000
+    /% s32 elementImmunityFlags %/   00000000
+    /% s8 unk_1C %/                  00b
+    /% s8 unk_1D %/                  00b
+    /% s8 unk_1E %/                  00b
+    /% s8 unk_1F %/                  00b
+    /% s8 unk_20 %/                  00000000
+    
+    /% Chuckola Cola %/
+    /% s32 flags %/                 00120001
+    /% s8 index %/                  ~Byte:.Part:chuckolaCola
+    /% Vec3b posOffset %/           00b 00b 00b
+    /% Vec2b targetOffset %/        00b 00b %for cursor when selecting to attack in battle
+    /% s16 opacity %/               00FFs
+    /% s32* IdleAnimations %/       $IdleAnimations_ChuckolaCola
+    /% s32* defenseTable %/         $DefenseTable_PirateGoombaKing
+    /% s32 eventFlags %/            00000000
+    /% s32 elementImmunityFlags %/  00000000
+    /% s8 unk_1C %/                 00b
+    /% s8 unk_1D %/                 00b
+    /% s8 unk_1E %/                 00b
+    /% s8 unk_1F %/                 00b
+    /% s8 unk_20 %/                 00000000
+}
+
+#new:Script $Script_Init_PirateGoombaKing 
+{
+    Set *Var0 = ( *MB_DifficultyLevel + *MB_SectorsCompleted + 30` ) % Add to Minimum HP
+    Call  $SetMaxHPByDifficulty ( *Var0 ) % Dynamically sets HP
+    Call  BindTakeTurn  ( .Actor:Self $Script_TakeTurn_PirateGoombaKing )
+    Call  BindIdle      ( .Actor:Self $Script_Idle_PirateGoombaKing )
+    Call  BindHandleEvent   ( .Actor:Self $Script_HandleEvent_PirateGoombaKing )
+    Call  BindNextTurn  ( .Actor:Self $Script_NextTurn_PirateGoombaKing )
+    % Exec  $RumbleEffectOnAnimation *Var0
+    Call  SetActorVar   ( .Actor:Self .AVar:HasSummoned 0` ) 
+    Call  SetActorVar   ( .Actor:Self .AVar:SpeakedOnce 0` )
+    % Call  SetActorVar   ( .Actor:Self .AVar:RumbleEffect 0` )
+    Return
+    End
+}
+
+#new:Script $Script_Idle_PirateGoombaKing 
+{
+    Label  0
+    Call  GetActorVar ( .Actor:Self .AVar:HasSummoned *Var5 )
+    Switch *Var5
+        Case <=  6`
+            Call  RandInt   ( 80` *Var0 )
+            Add   *Var0  80`
+            Wait  *Var0
+            Label  1
+            Call  GetStatusFlags    ( .Actor:Self *Var0 )
+            If  *Var0  &  ~Flags:StatusFlags:Sleep|Frozen|Fear|Paralyze|Dizzy|Stone|Stop % 35D000
+                Wait  1`
+                Goto  1
+            EndIf
+            Call  SetGoalToHome     ( .Actor:Self )
+            Call  GetGoalPos        ( .Actor:Self *Var0 *Var1 *Var2 )
+            Add   *Var0  5`
+            Call  SetActorIdleSpeed ( .Actor:Self *Fixed[1.0] )
+            Call  SetIdleAnimations ( .Actor:Self .Part:pirateGoombaKing $IdleAnimations_PirateGoombaKingShuffling )
+            Call  SetIdleGoal       ( .Actor:Self *Var0 *Var1 *Var2 )
+            Call  IdleRunToGoal     ( .Actor:Self  0` )
+            Call  SetIdleAnimations ( .Actor:Self .Part:pirateGoombaKing $IdleAnimations_PirateGoombaKing )
+            Loop
+                Wait 1`
+            EndLoop
+            Wait  20`
+            Label  2
+            Call  GetStatusFlags    ( .Actor:Self *Var0 )
+            If  *Var0  &  ~Flags:StatusFlags:Sleep|Frozen|Fear|Paralyze|Dizzy|Stone|Stop % 35D000
+                Wait  1`
+                Goto  2
+            EndIf
+            Call  SetGoalToHome     ( .Actor:Self )
+            Call  GetGoalPos        ( .Actor:Self *Var0 *Var1 *Var2 )
+            Call  SetActorIdleSpeed ( .Actor:Self *Fixed[1.0] )
+            Call  SetIdleAnimations ( .Actor:Self .Part:pirateGoombaKing $IdleAnimations_PirateGoombaKingShuffling )
+            Call  SetIdleGoal       ( .Actor:Self *Var0 *Var1 *Var2 )
+            Call  IdleRunToGoal     ( .Actor:Self  0` )
+            Call  SetIdleAnimations ( .Actor:Self .Part:pirateGoombaKing $IdleAnimations_PirateGoombaKing )
+            Loop
+                Wait 1`
+            EndLoop
+            Wait  80`
+        Case == 7`
+            Call  RandInt   ( 80` *Var0 )
+            Add   *Var0  80`
+            Wait  *Var0
+            Label  4
+            Call  GetStatusFlags    ( .Actor:Self *Var0 )
+            If  *Var0  &  ~Flags:StatusFlags:Sleep|Frozen|Fear|Paralyze|Dizzy|Stone|Stop % 35D000
+                Wait  1`
+                Goto  4
+            EndIf
+            Call  SetGoalToHome     ( .Actor:Self )
+            Call  GetGoalPos        ( .Actor:Self *Var0 *Var1 *Var2 )
+            Add   *Var0  5`
+            Call  SetActorIdleSpeed ( .Actor:Self *Fixed[2.0] )
+            Call  SetIdleAnimations ( .Actor:Self .Part:pirateGoombaKing $IdleAnimations_PirateGoombaKingShuffling )
+            Call  SetIdleGoal       ( .Actor:Self *Var0 *Var1 *Var2 )
+            Call  IdleRunToGoal     ( .Actor:Self  0` )
+            Call  SetIdleAnimations ( .Actor:Self .Part:pirateGoombaKing $IdleAnimations_PirateGoombaKing_Fury )
+            Loop
+                Wait 1`
+            EndLoop
+            Wait  20`
+            Label  5
+            Call  GetStatusFlags    ( .Actor:Self *Var0 )
+            If  *Var0  &  ~Flags:StatusFlags:Sleep|Frozen|Fear|Paralyze|Dizzy|Stone|Stop % 35D000
+                Wait  1`
+                Goto  5
+            EndIf
+            Call  SetGoalToHome     ( .Actor:Self )
+            Call  GetGoalPos        ( .Actor:Self *Var0 *Var1 *Var2 )
+            Call  SetActorIdleSpeed ( .Actor:Self *Fixed[1.0] )
+            Call  SetIdleAnimations ( .Actor:Self .Part:pirateGoombaKing $IdleAnimations_PirateGoombaKingShuffling )
+            Call  SetIdleGoal       ( .Actor:Self *Var0 *Var1 *Var2 )
+            Call  IdleRunToGoal     ( .Actor:Self  0` )
+            Call  SetIdleAnimations ( .Actor:Self .Part:pirateGoombaKing $IdleAnimations_PirateGoombaKing_Fury )
+            Loop
+                Wait 1`
+            EndLoop
+            Wait  80`
+        Case == 8`
+            Call  GetActorHP ( .Actor:Self *Var0 )
+            If *Var0 < 9`
+                Call  SetIdleAnimations ( .Actor:Self .Part:pirateGoombaKing $IdleAnimations_PirateGoombaKing_Danger )
+                Loop
+                    Wait 1`
+                EndLoop
+            EndIf
+    EndSwitch
+    Goto  0
+    Return
+    End
+}
+
+#new:Script $JumpBack 
+{
+    Call  UseBattleCamPreset    ( 00000002 )
+    Call  SetAnimation  ( .Actor:Self *Var0 *Var1 )
+    Call  GetActorPos   ( .Actor:Self *Var0 *Var1 *Var2 )
+    Set   *Var1  0`
+    Call  SetGoalPos    ( .Actor:Self *Var0 *Var1 *Var2 )
+    Call  SetActorJumpGravity   ( .Actor:Self *Fixed[1.4] )
+    Call  AddGoalPos    ( .Actor:Self  30`  0`  0` )
+    Call  JumpToGoal    ( .Actor:Self  15` .False .True .False )
+    Call  PlaySoundAtActor      ( .Actor:Self 000020B4 )
+    Call  AddGoalPos    ( .Actor:Self  15`  0`  0` )
+    Call  JumpToGoal    ( .Actor:Self  8` .False .True .False )
+    Call  PlaySoundAtActor      ( .Actor:Self 000020B4 )
+    Call  AddGoalPos    ( .Actor:Self  5`  0`  0` )
+    Call  JumpToGoal    ( .Actor:Self  5` .False .True .False )
+    Call  PlaySoundAtActor      ( .Actor:Self 000020B4 )
+    Return
+    End
+}
+
+#new:Script $Script_HandleEvent_PirateGoombaKing 
+{
+    Call  UseIdleAnimation  ( .Actor:Self .False )
+    Call  EnableIdleScript  ( .Actor:Self .False )
+    Call  SetActorDispOffset    ( .Actor:Self 0` 0` 0` )
+    Call  GetLastEvent      ( .Actor:Self *Var0 )
+    Switch  *Var0
+        Case  ==  .Event:HitCombo % 9
+            SetConst  *Var0  .Part:pirateGoombaKing
+            SetConst  *Var1  00630006
+            ExecWait  DoNormalHit
+        Case  ==  .Event:Hit % A
+            SetConst  *Var0  .Part:pirateGoombaKing
+            SetConst  *Var1  00630006
+            ExecWait  DoNormalHit
+        Case  ==  .Event:BurnHit % E
+            SetConst  *Var0  .Part:pirateGoombaKing
+            SetConst  *Var1  0063000D
+            SetConst  *Var2  0063000E
+            ExecWait  DoBurnHit
+        Case  ==  .Event:SpinSmashHit % B
+            SetConst  *Var0  .Part:pirateGoombaKing
+            SetConst  *Var1  00630006
+            ExecWait  DoSpinSmashHit
+        Case  ==  .Event:ShockHit % 2F
+            SetConst  *Var0  .Part:pirateGoombaKing
+            SetConst  *Var1  00630006
+            ExecWait  DoShockHit
+            SetConst  *Var0  .Part:pirateGoombaKing
+            SetConst  *Var1  00630006
+            ExecWait  $JumpBack
+            SetConst  *Var0  .Part:pirateGoombaKing
+            SetConst  *Var1  00630004
+            ExecWait  DoReturnHome
+        Case  ==  .Event:ShockDeath % 26
+            SetConst  *Var0  .Part:pirateGoombaKing
+            SetConst  *Var1  00630006
+            ExecWait  DoShockHit
+            SetConst  *Var0  .Part:pirateGoombaKing
+            SetConst  *Var1  00630006
+            ExecWait $Script_GoombaKingDeath
+            Return
+        CaseOR  ==  00000017 % 17
+        CaseOR  ==  .Event:Immune % 19
+            SetConst  *Var0  .Part:pirateGoombaKing
+            SetConst  *Var1  00630001
+            ExecWait  DoImmune
+        EndCaseGroup
+        Case  ==  .Event:Death % 20
+            SetConst  *Var0  .Part:pirateGoombaKing
+            SetConst  *Var1  00630006
+            ExecWait  DoNormalHit
+            Wait  10`
+            SetConst  *Var0  .Part:pirateGoombaKing
+            SetConst  *Var1  00630006
+            ExecWait $Script_GoombaKingDeath
+            Return
+        Case  ==  .Event:BurnDeath % 24
+            SetConst  *Var0  .Part:pirateGoombaKing
+            SetConst  *Var1  0063000D
+            SetConst  *Var2  0063000E
+            ExecWait  DoBurnHit
+            Wait  10`
+            SetConst  *Var0  .Part:pirateGoombaKing
+            SetConst  *Var1  0063000E
+            ExecWait $Script_GoombaKingDeath
+            Return
+        Case  ==  .Event:SpinSmashDeath % 21
+            SetConst  *Var0  .Part:pirateGoombaKing
+            SetConst  *Var1  00630006
+            ExecWait  DoSpinSmashHit
+            SetConst  *Var0  .Part:pirateGoombaKing
+            SetConst  *Var1  00630006
+            ExecWait $Script_GoombaKingDeath
+            Return
+        Case  ==  .Event:SpikeContact % 2A
+            Call  SetAnimation  ( .Actor:Self .Part:pirateGoombaKing 00630006 )
+            Wait  20`
+            Call  SetAnimation  ( .Actor:Self .Part:pirateGoombaKing 00630004 )
+            Call  SetGoalToHome ( .Actor:Self )
+            Call  SetActorSpeed ( .Actor:Self *Fixed[6.0] )
+            Call  RunToGoal     ( .Actor:Self  0` .False )
+            Call  SetAnimation  ( .Actor:Self .Part:pirateGoombaKing 00630001 )
+        Case  ==  .Event:EndFirstStrike % 35
+            SetConst  *Var0  .Part:pirateGoombaKing
+            SetConst  *Var1  00630001
+            ExecWait  DoReturnHome
+            Call  HPBarToHome   ( .Actor:Self )
+        Case  ==  .Event:RecoverStatus % 31
+            SetConst  *Var0  .Part:pirateGoombaKing
+            SetConst  *Var1  00630001
+            ExecWait  DoRecover
+        Default
+    EndSwitch
+    Call  EnableIdleScript  ( .Actor:Self .True )
+    Call  UseIdleAnimation  ( .Actor:Self .True )
+    Return
+    End
+}
+
+#new:Script $Script_TakeTurn_PirateGoombaKing 
+{
+    Call  UseIdleAnimation  ( .Actor:Self .False )
+    Call  EnableIdleScript  ( .Actor:Self .False )
+    Call  SetActorDispOffset    ( .Actor:Self 0` 0` 0` )
+    Call  GetActorVar ( .Actor:Self .AVar:HasSummoned *Var0 )
+    Switch *Var0 
+        Case == 0` % Before 1st Summon.
+            ExecWait  $SummonSmallPirates
+            Call  ActorSpeak ( $PulveriseMario .Actor:Self .Part:pirateGoombaKing 0063000A 00630001 )
+        Case == 1` % After 1st Summon No KOs.
+            Call  GetActorVar ( .Actor:Self .AVar:SpeakedOnce *Var5 )
+            If *Var5 < 1`
+                Call  ActorSpeak ( $MakeMeProud .Actor:Self .Part:pirateGoombaKing 0063000A 00630001 )
+                Call  SetActorVar ( .Actor:Self .AVar:SpeakedOnce 1` )
+            EndIf
+            ExecWait  $Kick
+        Case == 2` % After 1st Summon One Ally KOd. 
+            Call  GetActorVar ( .Actor:Self .AVar:SpeakedOnce *Var5 )
+            If *Var5 < 2`
+                Call  ActorSpeak ( $HaventSeenBestMen .Actor:Self .Part:pirateGoombaKing 0063000A 00630001 )
+                Call  SetActorVar ( .Actor:Self .AVar:SpeakedOnce 2` )
+            EndIf
+            ExecWait  $Kick
+        Case == 3` % After 1st Summon Both Allies KOd. (Before 2nd Summon.)
+            Call  GetActorVar ( .Actor:Self .AVar:SpeakedOnce *Var5 )
+            If *Var5 < 3`
+                Call  ActorSpeak ( $ImpressivedNowMeetBestMen .Actor:Self .Part:pirateGoombaKing 0063000A 00630001 )
+                Call  SetActorVar ( .Actor:Self .AVar:SpeakedOnce 3` )
+            EndIf
+            ExecWait  $SummonBiggerPirates
+            Wait 5`
+        Case == 4` % After 2nd Summon No KOs.
+            Call  GetActorVar ( .Actor:Self .AVar:SpeakedOnce *Var5 )
+            If *Var5 < 4`
+                Call  ActorSpeak ( $DontStandAChance .Actor:Self .Part:pirateGoombaKing 0063000A 00630001 )
+                Call  SetActorVar ( .Actor:Self .AVar:SpeakedOnce 4` )
+            EndIf
+            ExecWait  $Kick
+        Case == 5` % After 2nd Summon One Ally KOd.
+            Call  GetActorVar ( .Actor:Self .AVar:SpeakedOnce *Var5 )
+            If *Var5 < 5`
+                Call  ActorSpeak ( $StartingToGetAnnoyed .Actor:Self .Part:pirateGoombaKing 0063000A 00630001 )
+                Call  SetActorVar ( .Actor:Self .AVar:SpeakedOnce 5` )
+            EndIf
+            ExecWait  $Kick
+        Case == 6` % After 2nd Summon Both Allies KOd.
+            Call  GetActorVar ( .Actor:Self .AVar:SpeakedOnce *Var5 )
+            If *Var5 < 6`
+                Call  ActorSpeak ( $NoOneToRelyOn .Actor:Self .Part:pirateGoombaKing 0063000A 00630001 )
+                Call  SetActorVar ( .Actor:Self .AVar:SpeakedOnce 6` )
+            EndIf
+            Call  GetActorHP ( .Actor:Self *Var0 )
+            If *Var0 < 16`
+                Call  SetActorVar ( .Actor:Self .AVar:HasSummoned 7` )
+            EndIf
+            ExecWait  $Kick
+        Case == 7` % Drink Chuckola.
+            Call  GetActorVar ( .Actor:Self .AVar:SpeakedOnce *Var5 )
+            If *Var5 < 7`
+                Call  ActorSpeak ( $NoChoice .Actor:Self .Part:pirateGoombaKing 0063000A 00630001 )
+                Call  SetActorVar ( .Actor:Self .AVar:SpeakedOnce 7` )
+            EndIf
+            ExecWait  $DrinkChuckola
+            Call SetActorVar ( .Actor:Self .AVar:HasSummoned 8` )
+        Case == 8` % Change IdleAnimations to Half HP IdleAnimations.
+            Call  GetActorVar ( .Actor:Self .AVar:SpeakedOnce *Var5 )
+            If *Var5 < 8`
+                Call  GetActorHP ( .Actor:Self *Var0 )
+                If *Var0 < 9`
+                    Call  ActorSpeak ( $CantStandAChance .Actor:Self .Part:pirateGoombaKing 0063000A 00630001 )
+                    Call  SetIdleAnimations ( .Actor:Self .Part:pirateGoombaKing $IdleAnimations_PirateGoombaKing_Danger )
+                    Call  SetActorVar ( .Actor:Self .AVar:SpeakedOnce 8` )
+                EndIf
+            EndIf
+            ExecWait  $Kick
+    EndSwitch
+    Call  UseIdleAnimation  ( .Actor:Self .True )
+    Call  EnableIdleScript  ( .Actor:Self .True )
+    Return
+    End
+}
+
+#new:Vector3D $Vector3D_SummonedPiratePos
+{
+	0` 1000` 0`
+}
+
+#new:SpecialFormation $SpecialFormation_SummonedPirate
+{
+	$PirateGoomba $Vector3D_SummonedPiratePos 00000064 00000000 00000000 00000000 00000000
+}
+
+#new:Vector3D $Vector3D_SummonedPirateSpikedPos
+{
+	0` 1000` 0`
+}
+
+#new:SpecialFormation $SpecialFormation_SummonedPirateSpiked
+{
+	$PirateSpikedGoomba $Vector3D_SummonedPirateSpikedPos 00000064 00000000 00000000 00000000 00000000
+}
+
+#new:Vector3D $Vector3D_SummonedPirateBroAPos
+{
+	0` 1000` 0`
+}
+
+#new:SpecialFormation $SpecialFormation_SummonedPirateBroA
+{
+	$PirateGoombaBroA1 $Vector3D_SummonedPiratePos 00000064 00000000 00000000 00000000 00000000
+}
+
+#new:Vector3D $Vector3D_SummonedPirateBroBPos
+{
+	0` 1000` 0`
+}
+
+#new:SpecialFormation $SpecialFormation_SummonedPirateBroB
+{
+	$PirateGoombaBroB1 $Vector3D_SummonedPirateSpikedPos 00000064 00000000 00000000 00000000 00000000
+}
+
+#new:Script $SummonSmallPirates 
+{
+    Call  UseIdleAnimation  ( .Actor:Self .False )
+    Call  EnableIdleScript  ( .Actor:Self .False )
+    Call  UseBattleCamPreset    ( 0000000F )
+    Call  BattleCamTargetActor  ( .Actor:Self )
+    Call  MoveBattleCamOver (  40` )
+    Wait  15`
+    Call  8024ECF8  ( 00000000 00000001 00000000 )
+    Call  SetAnimation      ( .Actor:Self .Part:pirateGoombaKing 00630009 )
+    Call  SetActorJumpGravity   ( .Actor:Self *Fixed[1.6] )
+    Call  GetActorPos       ( .Actor:Self *Var0 *Var1 *Var2 )
+    Call  SetGoalPos        ( .Actor:Self *Var0 *Var1 *Var2 )
+    Call  JumpToGoal        ( .Actor:Self  20` .False .True .False )
+    Call  PlaySoundAtActor  ( .Actor:Self 000020B4 )
+    Call  UseBattleCamPreset    ( 00000002 )
+    Call  MoveBattleCamOver (  30` )
+    Call  SetAnimation      ( .Actor:Self .Part:pirateGoombaKing 00630000 )
+    Thread
+        Call  StartRumble       ( 0000000B )
+        Call  GetStatusFlags    ( .Actor:Self *Var0 )
+        If  *Var0  !&  ~Flags:StatusFlags:Shrink % 80000
+        Call  ShakeCam  ( .Cam:Battle 00000000  10` *Fixed[4.0] )
+        EndIf
+        Call  SetAnimation  ( .Actor:Self .Part:pirateGoombaKing 00630001 )
+    EndThread
+    Call  SummonEnemy   ( $SpecialFormation_SummonedPirate 00000000 )
+    Call  UseIdleAnimation      ( .Actor:Enemy1  .False )
+    Call  EnableIdleScript      ( .Actor:Enemy1  .False )
+    Call  SetActorPos   ( .Actor:Enemy1 10` 250` 10` )
+    Call SetGoalPos ( .Actor:Enemy1  10` 0` 10` )
+    Call  SetActorJumpGravity   ( .Actor:Enemy1  *Fixed[1.5] )
+    Call  SetActorSounds ( .Actor:Enemy1  .ActorSound:Jump 0` 0` )
+    Call  FallToGoal ( .Actor:Enemy1  30` )
+    Call  PlaySoundAtActor  ( .Actor:Enemy1 000003E9)
+    Call  ResetActorSounds ( .Actor:Enemy1 .ActorSound:Jump )
+    Call  SetAnimation  ( .Actor:Enemy1  .Part:pirateGoombaKing 00260004 )
+    Wait  5`
+    Call  SetActorDispOffset    ( .Actor:Enemy1  0` 0` 0` )
+    Call  GetActorPos       ( .Actor:Enemy1  *Var0 *Var1 *Var2 )
+    Call  ForceHomePos      ( .Actor:Enemy1  *Var0 *Var1 *Var2 )
+    Call  HPBarToHome       ( .Actor:Enemy1  )
+    Call  SetActorSpeed     ( .Actor:Enemy1  *Fixed[6.0] )
+    Call  EnableIdleScript  ( .Actor:Enemy1 .True )
+    Call  UseIdleAnimation  ( .Actor:Enemy1  .True )
+
+    % Summon Pirate Spiked Goomba
+
+    Call  UseBattleCamPreset    ( 0000000F )
+    Call  BattleCamTargetActor  ( .Actor:Self )
+    Call  MoveBattleCamOver (  40` )
+    Wait  15`
+    Call  8024ECF8  ( 00000000 00000001 00000000 )
+    Call  SetAnimation      ( .Actor:Self .Part:pirateGoombaKing 00630009 )
+    Call  SetActorJumpGravity   ( .Actor:Self *Fixed[1.6] )
+    Call  GetActorPos       ( .Actor:Self *Var0 *Var1 *Var2 )
+    Call  SetGoalPos        ( .Actor:Self *Var0 *Var1 *Var2 )
+    Call  JumpToGoal        ( .Actor:Self  20` .False .True .False )
+    Call  PlaySoundAtActor  ( .Actor:Self 000020B4 )
+    Call  UseBattleCamPreset    ( 00000002 )
+    Call  MoveBattleCamOver (  30` )
+    Call  SetAnimation      ( .Actor:Self .Part:pirateGoombaKing 00630000 )
+    Thread
+        Call  StartRumble       ( 0000000B )
+        Call  GetStatusFlags    ( .Actor:Self *Var0 )
+        If  *Var0  !&  ~Flags:StatusFlags:Shrink % 80000
+            Call  ShakeCam  ( .Cam:Battle 00000000  10` *Fixed[4.0] )
+        EndIf
+        Call  SetAnimation  ( .Actor:Self .Part:pirateGoombaKing 00630001 )
+    EndThread
+    Call  SummonEnemy   ( $SpecialFormation_SummonedPirateSpiked 00000000 )
+    Call  UseIdleAnimation      ( .Actor:Enemy2  .False )
+    Call  EnableIdleScript      ( .Actor:Enemy2  .False )
+    Call  SetActorPos   ( .Actor:Enemy2 60` 250` 30` )
+    Call SetGoalPos ( .Actor:Enemy2  60` 0` 30` )
+    Call  SetActorJumpGravity   ( .Actor:Enemy2  *Fixed[1.5] )
+    Call  SetActorSounds ( .Actor:Enemy2  .ActorSound:Jump 0` 0` )
+    Call  FallToGoal ( .Actor:Enemy2  30` )
+    Call  PlaySoundAtActor  ( .Actor:Enemy2 000003E9)
+    Call  ResetActorSounds ( .Actor:Enemy2 .ActorSound:Jump )
+    Call  SetAnimation  ( .Actor:Enemy2  .Part:pirateGoombaKing 00270004 )
+    Wait  5`
+    Call  SetActorDispOffset    ( .Actor:Enemy2  0` 0` 0` )
+    Call  GetActorPos       ( .Actor:Enemy2  *Var0 *Var1 *Var2 )
+    Call  ForceHomePos      ( .Actor:Enemy2  *Var0 *Var1 *Var2 )
+    Call  HPBarToHome       ( .Actor:Enemy2  )
+    Call  SetActorSpeed     ( .Actor:Enemy2  *Fixed[6.0] )
+    Call SetActorVar ( .Actor:Self .AVar:HasSummoned 1` )
+    Call  EnableIdleScript  ( .Actor:Enemy2 .True )
+    Call  UseIdleAnimation  ( .Actor:Enemy2  .True )
+    Call  EnableIdleScript  ( .Actor:Self .True )
+    Call  UseIdleAnimation  ( .Actor:Self .True )
+    Return
+    End
+}
+
+#new:Script $SummonBiggerPirates 
+{
+    Call  UseIdleAnimation  ( .Actor:Self .False )
+    Call  EnableIdleScript  ( .Actor:Self .False )
+    Call  UseBattleCamPreset    ( 0000000F )
+    Call  BattleCamTargetActor  ( .Actor:Self )
+    Call  MoveBattleCamOver (  40` )
+    Wait  15`
+    Call  8024ECF8  ( 00000000 00000001 00000000 )
+    Call  SetAnimation      ( .Actor:Self .Part:pirateGoombaKing 00630009 )
+    Call  SetActorJumpGravity   ( .Actor:Self *Fixed[1.6] )
+    Call  GetActorPos       ( .Actor:Self *Var0 *Var1 *Var2 )
+    Call  SetGoalPos        ( .Actor:Self *Var0 *Var1 *Var2 )
+    Call  JumpToGoal        ( .Actor:Self  20` .False .True .False )
+    Call  PlaySoundAtActor  ( .Actor:Self 000020B4 )
+    Call  UseBattleCamPreset    ( 00000002 )
+    Call  MoveBattleCamOver (  30` )
+    Call  SetAnimation      ( .Actor:Self .Part:pirateGoombaKing 00630000 )
+    Thread
+        Call  StartRumble       ( 0000000B )
+        Call  GetStatusFlags    ( .Actor:Self *Var0 )
+        If  *Var0  !&  ~Flags:StatusFlags:Shrink % 80000
+            Call  ShakeCam  ( .Cam:Battle 00000000  10` *Fixed[4.0] )
+        EndIf
+        Call  SetAnimation  ( .Actor:Self .Part:pirateGoombaKing 00630001 )
+    EndThread
+    Call  SummonEnemy   ( $SpecialFormation_SummonedPirateBroA 00000000 )
+    Call  UseIdleAnimation      ( .Actor:Enemy1  .False )
+    Call  EnableIdleScript      ( .Actor:Enemy1  .False )
+    Call  SetActorPos   ( .Actor:Enemy1 10` 250` 10` )
+    Call SetGoalPos ( .Actor:Enemy1  10` 0` 10` )
+    Call  SetActorJumpGravity   ( .Actor:Enemy1  *Fixed[1.5] )
+    Call  SetActorSounds ( .Actor:Enemy1  .ActorSound:Jump 0` 0` )
+    Call  FallToGoal ( .Actor:Enemy1  30` )
+    Call  PlaySoundAtActor  ( .Actor:Enemy1 000003E9)
+    Call  ResetActorSounds ( .Actor:Enemy1 .ActorSound:Jump )
+    Call  SetAnimation  ( .Actor:Enemy1  .Part:pirateGoombaKing 00620108 )
+    Wait  5`
+    Call  SetActorDispOffset    ( .Actor:Enemy1  0` 0` 0` )
+    Call  GetActorPos       ( .Actor:Enemy1  *Var0 *Var1 *Var2 )
+    Call  ForceHomePos      ( .Actor:Enemy1  *Var0 *Var1 *Var2 )
+    Call  HPBarToHome       ( .Actor:Enemy1  )
+    Call  SetActorSpeed     ( .Actor:Enemy1  *Fixed[6.0] )
+    Call  EnableIdleScript  ( .Actor:Enemy1 .True )
+    Call  UseIdleAnimation  ( .Actor:Enemy1  .True )
+
+    % Summon Pirate Goomba Bro B
+
+    Call  UseBattleCamPreset    ( 0000000F )
+    Call  BattleCamTargetActor  ( .Actor:Self )
+    Call  MoveBattleCamOver (  40` )
+    Wait  15`
+    Call  8024ECF8  ( 00000000 00000001 00000000 )
+    Call  SetAnimation      ( .Actor:Self .Part:pirateGoombaKing 00630009 )
+    Call  SetActorJumpGravity   ( .Actor:Self *Fixed[1.6] )
+    Call  GetActorPos       ( .Actor:Self *Var0 *Var1 *Var2 )
+    Call  SetGoalPos        ( .Actor:Self *Var0 *Var1 *Var2 )
+    Call  JumpToGoal        ( .Actor:Self  20` .False .True .False )
+    Call  PlaySoundAtActor  ( .Actor:Self 000020B4 )
+    Call  UseBattleCamPreset    ( 00000002 )
+    Call  MoveBattleCamOver (  30` )
+    Call  SetAnimation      ( .Actor:Self .Part:pirateGoombaKing 00630000 )
+    Thread
+        Call  StartRumble       ( 0000000B )
+        Call  GetStatusFlags    ( .Actor:Self *Var0 )
+        If  *Var0  !&  ~Flags:StatusFlags:Shrink % 80000
+            Call  ShakeCam  ( .Cam:Battle 00000000  10` *Fixed[4.0] )
+        EndIf
+        Call  SetAnimation  ( .Actor:Self .Part:pirateGoombaKing 00630001 )
+    EndThread
+    Call  SummonEnemy   ( $SpecialFormation_SummonedPirateBroB 00000000 )
+    Call  UseIdleAnimation      ( .Actor:Enemy2  .False )
+    Call  EnableIdleScript      ( .Actor:Enemy2  .False )
+    Call  SetActorPos   ( .Actor:Enemy2 60` 250` 30` )
+    Call SetGoalPos ( .Actor:Enemy2  60` 0` 30` )
+    Call  SetActorJumpGravity   ( .Actor:Enemy2  *Fixed[1.5] )
+    Call  SetActorSounds ( .Actor:Enemy2  .ActorSound:Jump 0` 0` )
+    Call  FallToGoal ( .Actor:Enemy2  30` )
+    Call  PlaySoundAtActor  ( .Actor:Enemy2 000003E9)
+    Call  ResetActorSounds ( .Actor:Enemy2 .ActorSound:Jump )
+    Call  SetAnimation  ( .Actor:Enemy2  .Part:pirateGoombaKing 00620008 )
+    Wait  5`
+    Call  SetActorDispOffset    ( .Actor:Enemy2  0` 0` 0` )
+    Call  GetActorPos       ( .Actor:Enemy2  *Var0 *Var1 *Var2 )
+    Call  ForceHomePos      ( .Actor:Enemy2  *Var0 *Var1 *Var2 )
+    Call  HPBarToHome       ( .Actor:Enemy2  )
+    Call  SetActorSpeed     ( .Actor:Enemy2  *Fixed[6.0] )
+    Call SetActorVar ( .Actor:Self .AVar:HasSummoned 4` )
+    Call  EnableIdleScript  ( .Actor:Enemy2 .True )
+    Call  UseIdleAnimation  ( .Actor:Enemy2  .True )
+    Call  EnableIdleScript  ( .Actor:Self .True )
+    Call  UseIdleAnimation  ( .Actor:Self .True )
+    Return
+    End
+}
+
+#new:String $PulveriseMario % Case 0 String.
+{
+[Style Right]We will pulverise you Mario![BR]
+[Wait][End]
+}
+
+#new:String $MakeMeProud % Case 1 String.
+{
+[Style Right]C'mon men make me proud![BR]
+[Wait][End]
+}
+
+#new:String $HaventSeenBestMen % Case 2 String.
+{
+[Style Right]You haven't even seen my best[BR]
+men yet Mario![BR]
+[Wait][End]
+}
+
+#new:String $ImpressivedNowMeetBestMen % Case 3 String.
+{
+[Style Right]Hmph! I am quite impressed[BR]
+Mario! Everything I have faced[BR]
+in Space has not survived at this[BR]
+point. But you have.[BR]
+[Wait][Next]
+You will now meet my best men!
+[Wait][End]
+}
+
+#new:String $DontStandAChance % Case 4 String
+{
+[Style Right][Wave]Hahaha![/fx] Mario you don't stand a[BR]
+chance against my best men![BR]
+[Wait][End]
+}
+
+#new:String $StartingToGetAnnoyed % Case 5 String.
+{
+[Style Right]Ok! That's it! You are starting[BR]
+to annoy me now! We will make you[BR]
+pay for getting in our way![BR]
+[Wait][End]
+}
+
+#new:String $NoOneToRelyOn % Case 6 String.
+{
+[Style Right][PrintRising]Nooooo! I have no one else to rely[BR]
+on now![/fx][BR]
+[Wait][End]
+}
+
+#new:String $NoChoice % Case 7 String.
+{
+[Style Right]I can't lose to you! I have no[BR]
+choice but to drink my Chuckola![BR]
+[Wait][End]
+}
+
+#new:String $CantStandAChance % Case 8 String.
+{
+[Style Right]How? How are you still standing[BR]
+a chance against me? Even with[BR]
+drinking my Chuckola Cola I still[BR]
+can't stand a chance.[BR]
+[Wait][End]
+}
+
+#new:Script $Kick 
+{
+    Call  EnableIdleScript  ( .Actor:Self .False )
+    Call  UseIdleAnimation  ( .Actor:Self .False )
+    Call  GetStatusFlags    ( .Actor:Self *Var0 )
+    If  *Var0  !&  ~Flags:StatusFlags:Shrink % 80000
+        Call  UseBattleCamPreset    ( 0000003F )
+        Call  AddBattleCamZoom      (  -100` )
+        Call  SetBattleCamOffsetZ   (  20` )
+        Call  BattleCamTargetActor  ( .Actor:Self )
+        Call  MoveBattleCamOver     (  30` )
+        Call  8024ECF8  ( FFFFFFFF 00000001 00000000 )
+    Else
+        Call  UseBattleCamPreset    ( 0000003F )
+        Call  AddBattleCamZoom      (  -100` )
+        Call  BattleCamTargetActor  ( .Actor:Self )
+        Call  MoveBattleCamOver     (  20` )
+        Call  8024ECF8  ( FFFFFFFF 00000001 00000000 )
+    EndIf
+    Call  SetTargetActor    ( .Actor:Self .Actor:Player )
+    Call  GetStatusFlags    ( .Actor:Self *Var0 )
+    If  *Var0  !&  ~Flags:StatusFlags:Shrink % 80000
+        Call  SetGoalToTarget   ( .Actor:Self )
+        Call  AddGoalPos        ( .Actor:Self  32`  0`  0` )
+    Else
+        Call  SetGoalToTarget   ( .Actor:Self )
+        Call  AddGoalPos        ( .Actor:Self  12`  0`  0` )
+    EndIf
+    Call  SetActorSpeed ( .Actor:Self *Fixed[3.0] )
+    Call  SetAnimation  ( .Actor:Self .Part:pirateGoombaKing 00630004 )
+    Call  RunToGoal     ( .Actor:Self  0` .False )
+    Call  SetAnimation  ( .Actor:Self .Part:pirateGoombaKing 00630001 )
+    Wait  8`
+    Thread
+        Call  PlaySoundAtActor  ( .Actor:Self 000020ED )
+        Wait  10`
+        Call  PlaySoundAtActor  ( .Actor:Self 000020ED )
+    EndThread
+    Call  SetAnimation  ( .Actor:Self .Part:pirateGoombaKing 00630005 )
+    Set   *Var0  00000000
+    Loop  00000014
+        Add   *Var0  00000012
+        Call  SetActorYaw   ( .Actor:Self *Var0 )
+        Wait  1`
+    EndLoop
+    Call  SetActorYaw       ( .Actor:Self  0` )
+    Call  EnemyTestTarget   ( .Actor:Self *VarA ~Flags:DamageType:0 00000000 00000002 00000010 )
+    Switch  *VarA
+        CaseOR  ==  .HitResult:Miss % 6
+        CaseOR  ==  .HitResult:Lucky % 5
+            If  *VarA  ==  .HitResult:Lucky % 5
+                Call  EnemyTestTarget   ( .Actor:Self *Var0 ~Flags:DamageType:TriggerLucky 00000000 00000000 00000000 )
+            EndIf
+            Call  SetAnimation  ( .Actor:Self .Part:pirateGoombaKing 00630007 )
+            Set   *Var0  00000000
+            Loop  00000014
+                Add   *Var0  00000012
+                Call  SetActorYaw   ( .Actor:Self *Var0 )
+                Wait  1`
+            EndLoop
+            Call  SetActorYaw   ( .Actor:Self  0` )
+            Call  UseBattleCamPreset    ( 00000002 )
+            Call  MoveBattleCamOver (  20` )
+            Call  SetAnimation  ( .Actor:Self .Part:pirateGoombaKing 00630001 )
+            Call  SetGoalToHome ( .Actor:Self )
+            Call  SetActorSpeed ( .Actor:Self *Fixed[5.0] )
+            Call  SetAnimation  ( .Actor:Self .Part:pirateGoombaKing 00630004 )
+            Call  RunToGoal     ( .Actor:Self  0` .False )
+            Call  SetAnimation  ( .Actor:Self .Part:pirateGoombaKing 00630001 )
+            Call  EnableIdleScript  ( .Actor:Self .True )
+            Call  UseIdleAnimation  ( .Actor:Self .True )
+            Return
+        EndCaseGroup
+    EndSwitch
+    Call  UseBattleCamPreset    ( 00000002 )
+    Call  MoveBattleCamOver (  20` )
+    Wait  2`
+    Call  SetGoalToTarget   ( .Actor:Self )
+    Call  GetPartEventFlags ( .Actor:Self .Part:pirateGoombaKing *Var0 )
+    If  *Var0  &  00040000 
+      	Set   *Var0  .DMG_PirateGoombaKing_FuryKick 
+      	Call  EnemyDamageTarget ( .Actor:Self *VarA ~Flags:DamageType:0 00000000 00000000 *Var0 00000020 )
+    Else
+      	Set   *Var0  .DMG_PirateGoombaKing_Kick 
+        Call  EnemyDamageTarget ( .Actor:Self *VarA ~Flags:DamageType:0 00000000 00000000 *Var0 00000020 )
+    EndIf
+    Call  SetActorRotation  ( .Actor:Self 00000000 00000000 00000000 )
+    Call  SetActorYaw       ( .Actor:Self  0` )
+    Call  SetActorDispOffset    ( .Actor:Self 00000000 00000000 00000000 )
+    Call  SetAnimation      ( .Actor:Self .Part:pirateGoombaKing 00630001 )
+    Switch  *VarA
+        Default
+            Wait  20`
+            Call  SetAnimation  ( .Actor:Self .Part:pirateGoombaKing 00630001 )
+            Call  SetGoalToHome ( .Actor:Self )
+            Call  SetActorSpeed ( .Actor:Self *Fixed[4.0] )
+            Call  SetAnimation  ( .Actor:Self .Part:pirateGoombaKing 00630004 )
+            Call  RunToGoal     ( .Actor:Self  0` .False )
+            Call  SetAnimation  ( .Actor:Self .Part:pirateGoombaKing 00630001 )
+    EndSwitch
+    Call  EnableIdleScript  ( .Actor:Self .True )
+    Call  UseIdleAnimation  ( .Actor:Self .True )
+    Return
+    End
+}
+
+
+#new:Script $Script_NextTurn_PirateGoombaKing 
+{
+    Call  UseIdleAnimation  ( .Actor:Self .False )
+    Call  EnableIdleScript  ( .Actor:Self .False )
+    /%
+    Call  GetBattlePhase    ( *Var0 )
+    Switch  *Var0
+        Case  ==  0000000A
+            Call  GetActorVar   ( .Actor:Self 00000003 *Var0 )
+            If  *Var0  ==  00000000
+                Call  802535B4  ( 00000000 )
+                Call  UseBattleCamPreset    ( 0000000D )
+                Call  BattleCamTargetActor  ( .Actor:Enemy1 )
+                Call  MoveBattleCamOver (  20` )
+                Wait  20`
+                Call  UseIdleAnimation  ( .Actor:Enemy1 .False )
+                Call  EnableIdleScript  ( .Actor:Enemy1 00000000 )
+                Call  ActorSpeak        ( 000B00CB .Actor:Enemy1 00000001 0062000A 0062000A ) % Beat him up, King Goomba!!
+                Call  EnableIdleScript  ( .Actor:Enemy1 00000001 )
+                Call  UseIdleAnimation  ( .Actor:Enemy1 .True )
+                Call  UseBattleCamPreset    ( 0000000D )
+                Call  BattleCamTargetActor  ( .Actor:Enemy2 )
+                Call  MoveBattleCamOver (  10` )
+                Wait  10`
+                Call  UseIdleAnimation  ( .Actor:Enemy2 .False )
+                Call  EnableIdleScript  ( .Actor:Enemy2 00000000 )
+                Call  ActorSpeak        ( 000B00CC .Actor:Enemy2 00000001 0062010A 0062010A ) % We've got your back!
+                Call  EnableIdleScript  ( .Actor:Enemy2 00000001 )
+                Call  UseIdleAnimation  ( .Actor:Enemy2 .True )
+                Call  UseBattleCamPreset    ( 0000000E )
+                Call  BattleCamTargetActor  ( .Actor:Enemy0 )
+                Call  MoveBattleCamOver (  20` )
+                Wait  20`
+                Call  ActorSpeak        ( 000B00CD .Actor:Enemy0 00000001 00630009 00630009 ) % Leave him to me!
+                Call  SetActorVar       ( .Actor:Self 00000003 00000001 )
+                Call  UseBattleCamPreset    ( 0000000E )
+                Call  BattleCamTargetActor  ( .Actor:Player )
+                Call  MoveBattleCamOver (  10` )
+                Wait  10`
+                Call  UseIdleAnimation  ( .Actor:Partner .False )
+                Call  UseIdleAnimation  ( .Actor:Player .False )
+                Call  SetActorYaw       ( .Actor:Player  180` )
+                Call  SetAnimation      ( .Actor:Player 00000000 00010028 )
+                Call  ActorSpeak        ( 000B00CE .Actor:Partner 00000000 FFFFFFFF FFFFFFFF ) % Hey Mario! I think maybe we ought to take out the  ...
+                Call  SetAnimation      ( .Actor:Player 00000000 00010029 )
+                Wait  15`
+                Call  SetActorYaw       ( .Actor:Player  0` )
+                Call  UseIdleAnimation  ( .Actor:Partner .True )
+                Call  UseIdleAnimation  ( .Actor:Player .True )
+                Call  UseBattleCamPreset    ( 00000002 )
+                Wait  20`
+                Call  802535B4  ( 00000001 )
+            EndIf
+    EndSwitch
+    %/
+    Call  EnableIdleScript  ( .Actor:Self .True )
+    Call  UseIdleAnimation  ( .Actor:Self .True )
+    Return
+    End
+}
+
+/%
+#new:Script $RumbleEffectOnAnimation 
+{
+    Label  0
+    Wait  1`
+    Call  GetAnimation  ( .Actor:Self .Part:pirateGoombaKing *Var0 )
+    If  *Var0  !=  00630004
+        Goto  0
+    EndIf
+    Call  GetAnimation  ( .Actor:Self .Part:pirateGoombaKing *Var0 )
+    If  *Var0  !=  00630004
+        Goto  0
+    EndIf
+    Call  StartRumble   ( 00000001 )
+    Call  8026DF88      ( FFFFFF81 00000001 *Var0 )
+    If  *Var0  ==  00000001
+        Call  GetActorVar   ( .Actor:Self .AVar:RumbleEffect *Var0 )
+        If  *Var0  ==  00000000
+            Call  GetStatusFlags    ( .Actor:Self *Var0 )
+            If  *Var0  !&  ~Flags:StatusFlags:Shrink % 80000
+                Call  ShakeCam  ( .Cam:Battle 00000000  2` *Fixed[0.2] )
+            EndIf
+        Else
+            Call  GetStatusFlags    ( .Actor:Self *Var0 )
+            If  *Var0  !&  ~Flags:StatusFlags:Shrink % 80000
+                Call  ShakeCam  ( .Cam:Battle 00000000  2` *Fixed[0.7] )
+            EndIf
+        EndIf
+    EndIf
+    Goto  0
+    Return
+    End
+}
+%/
+
+#new:Script $Script_GoombaKingDeath
+{
+    Call  8027D32C ( FFFFFF81 )
+    Call  UseIdleAnimation 	( .Actor:Self .False )
+    Call  EnableIdleScript  ( .Actor:Self .False )
+    Set  *Var2  0` 
+    Call  SetAnimation 	( .Actor:Self .Part:pirateGoombaKing 00630006 )
+    Wait  10` 
+    Loop  24` 
+        Call  SetActorYaw 	( .Actor:Self *Var2 )
+     	Add  *Var2  30` 
+     	Wait  1` 
+    EndLoop
+    Call  SetActorYaw 	( .Actor:Self 0` )
+    Call  GetActorPos 	( .Actor:Self *Var2 *Var3 *Var4 )
+    Call  PlayEffect  	( ~FX:BigSmokePuff *Var2 *Var3 *Var4 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 )
+    Call  PlaySoundAtActor 	( .Actor:Self .Sound:Death )
+    Call  DropStarPoints ( .Actor:Self )
+    Set  *Var3  0` 
+    Loop 12` 
+    	Call SetActorRotation 	( .Actor:Self *Var3 0` 0` )
+    	Add  *Var3  8` 
+    	Wait 1` 
+    EndLoop
+    Call  SetPartFlagBits 	( .Actor:Self .Part:pirateGoombaKing 00000001 .True )
+    Call  SetActorFlagBits 	( .Actor:Self 00000004 .True )
+    Wait  30` 
+    Call  RemoveActor 	( .Actor:Self )
+    Return
+    End
+}
+
+#new:Script $DrinkChuckola 
+{
+    Call  UseIdleAnimation  ( .Actor:Self .False )
+    Call  EnableIdleScript  ( .Actor:Self .False )
+    Call  SetAnimation ( .Actor:Self .Part:chuckolaCola .Anim:pirateGoombaKingChuckolaCola )
+    Call  GetActorPos ( .Actor:Self *Var0 *Var1 *Var2 )
+    Add  *Var0 -10`
+    Add  *Var1 30`
+    Add  *Var2 11`
+    Call  SetPartPos        ( .Actor:Self .Part:chuckolaCola  *Var0  *Var1  *Var2 )
+    Call  SetPartScale  ( .Actor:Self .Part:chuckolaCola *Fixed[1.0] *Fixed[1.0] *Fixed[1.0] )
+    Call  SetPartJumpGravity    ( .Actor:Self .Part:chuckolaCola *Fixed[3.0] )
+    Call  SetPartFlagBits   ( .Actor:Self .Part:chuckolaCola 00000001 .False )
+    % Call  SetPartYaw ( .Actor:Self .Part:chuckolaCola 90` )
+    Call  SetIdleAnimations ( .Actor:Self .Part:pirateGoombaKing $IdleAnimations_PirateGoombaKing_Fury )
+    Call  SetPartEventBits  ( .Actor:Self .Part:pirateGoombaKing 00040000 .True )
+    Call  EnableActorGlow ( .Actor:Self .False )
+    Call  SetDefenseTable ( .Actor:Self .Part:invisibleTargetPirateGoombaKing $DefenseTable_PirateGoombaKingFury )
+    Wait  30`
+    Call  SetStatusTable ( .Actor:Self $StatusTable_PirateGoombaKing_Fury )
+    Call  JumpPartTo ( .Actor:Self .Part:chuckolaCola 150` 0` 0` 15` .True )
+    Call  SetPartFlagBits   ( .Actor:Self .Part:chuckolaCola 00000001 .True )
+    Call  UseIdleAnimation  ( .Actor:Self .True )
+    Call  EnableIdleScript  ( .Actor:Self .True )
+    Return
+    End
+}

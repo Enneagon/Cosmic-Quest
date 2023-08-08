@@ -61,6 +61,13 @@
 2`b 3`b 3`b 4`b 4`b 4`b 5`b 5`b 5`b 6`b % .DMG_Mole_Spikes
 2`b 2`b 2`b 2`b 2`b 2`b 2`b 2`b 2`b 2`b % .DMG_Pokey_Segment
 2`b 2`b 2`b 2`b 2`b 2`b 2`b 2`b 2`b 2`b % .DMG_MechaBlooper_Drill
+2`b 2`b 2`b 2`b 2`b 2`b 2`b 2`b 2`b 2`b % .DMG_Blizter_Shoot
+4`b 4`b 4`b 4`b 4`b 4`b 4`b 4`b 4`b 4`b % .DMG_PirateGoombaKing_Kick
+2`b 2`b 2`b 2`b 2`b 2`b 2`b 2`b 2`b 2`b % .DMG_PirateGoomba_Headbonk
+4`b 4`b 4`b 4`b 4`b 4`b 4`b 4`b 4`b 4`b % .DMG_PirateSpikedGoomba_Headbonk
+4`b 4`b 4`b 4`b 4`b 4`b 4`b 4`b 4`b 4`b % .DMG_PirateGoombaBroA_Bigbonk
+4`b 4`b 4`b 4`b 4`b 4`b 4`b 4`b 4`b 4`b % .DMG_PirateGoombaBroB_Bigbonk
+6`b 6`b 6`b 6`b 6`b 6`b 6`b 6`b 6`b 6`b % .DMG_PirateGoombaKing_FuryKick
 }
 
 #export $AttackValues
@@ -68,3 +75,10 @@
 #export .DMG_Mole_Spikes 80000001
 #export .DMG_Pokey_Segment 80000002
 #export .DMG_MechaBlooper_Drill 80000003
+#export .DMG_Blizter_Shoot 80000004
+#export .DMG_PirateGoombaKing_Kick 80000005
+#export .DMG_PirateGoomba_Headbonk 80000006
+#export .DMG_PirateSpikedGoomba_Headbonk 80000007
+#export .DMG_PirateGoombaBroA_Bigbonk 80000008
+#export .DMG_PirateGoombaBroB_Bigbonk 80000009
+#export .DMG_PirateGoombaKing_FuryKick 8000000A

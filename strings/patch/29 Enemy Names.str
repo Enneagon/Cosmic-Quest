@@ -1,4 +1,49 @@
+#message:29:014
+{
+	Mantle Mole[End]
+}
+
+#message:29:016
+{
+	Asteroid Pokey[End]
+}
+
+#message:29:00B
+{
+Blizter Bill(Singe)[End]
+}
+
+#message:29:00C
+{
+Blizter Blaster(Singe)[End]
+}
+
 #message:29:065
 {
 	Mehca Blooper[End]
+}
+
+#message:29:083
+{
+Blizter Bill(Shock)[End]
+}
+
+#message:29:084
+{
+Blizter Blaster(Shock)[End]
+}
+
+#message:29:085
+{
+Blizter Bill(Shiver)[End]
+}
+
+#message:29:086
+{
+Blizter Blaster(Shiver)[End]
+}
+
+#message:29:005
+{
+	Pirate Goomba King[End]
 }
