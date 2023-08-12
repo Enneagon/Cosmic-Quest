@@ -2,6 +2,40 @@ Anim	% namespace
 anim	% library name
 false	% reversed
 
+% World E. Gadd Animations
+00010000 = eGaddStill
+00010001 = eGaddIdle
+00010002 = eGaddTalk
+00010003 = eGaddTalkExplain
+00010004 = eGaddTalkExplainFoward
+00010005 = eGaddWalk
+00010006 = eGaddWalkFast
+00010007 = eGaddRoboControl
+00010008 = eGaddRoboTattle
+
+% Battle Robomario Animations
+00090000 = robomarioStill
+00090001 = robomarioIdle
+00090002 = robomarioWalk
+00090003 = robomarioRun
+00090004 = robomarioJump
+00090005 = robomarioFall
+00090006 = robomarioHeadbonk
+00090007 = robomarioPreHeadbonk
+00090008 = robomarioOffsetHeadbonk
+00090009 = robomarioBlockAlt
+0009000A = robomarioHurtStill
+0009000B = robomarioBurnHurt1
+0009000C = robomarioBurnHurt2
+0009000D = robomarioBurnStand
+0009000E = robomarioBlock
+0009000F = robomarioTalk
+00090010 = robomarioCelebrateLoop
+00090011 = robomarioCelebrate
+00090012 = robomarioThink
+00090013 = robomarioCloseEyes
+00090014 = robomarioInjured
+
 % Bilzter Bill Singe Animations
 002D0000 = blizterBillSingeStill
 002D0001 = blizterBillSingeIdle

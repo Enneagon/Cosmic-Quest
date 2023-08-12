@@ -49,74 +49,74 @@
 		<Raster id="25" name="chuckola" palette="5" src="chuckola.png"/>
 	</RasterList>
 	<AnimationList>
-		<Animation name="Anim_00">
-			<Component name="Comp_00" xyz="-2,2,-2">
+		<Animation name="Still">
+			<Component name="Torso" xyz="-2,2,-2">
 				<Command val="810B"/>
 				<Command val="1001"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_01" xyz="1,27,0">
+			<Component name="Head" xyz="1,27,0">
 				<Command val="810B"/>
 				<Command val="1000"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_02" xyz="-34,-9,0">
+			<Component name="LFoot" xyz="-34,-9,0">
 				<Command val="810B"/>
 				<Command val="1010"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_03" xyz="30,-9,0">
+			<Component name="RFoot" xyz="30,-9,0">
 				<Command val="810B"/>
 				<Command val="1011"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_04" xyz="-1,60,2">
+			<Component name="Eyes" xyz="-1,60,2">
 				<Command val="810B"/>
 				<Command val="1008"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_05" xyz="-1,36,2">
+			<Component name="Mouth" xyz="-1,36,2">
 				<Command val="810B"/>
 				<Command val="100D"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_06" xyz="-15,46,4">
+			<Component name="LStache" xyz="-15,46,4">
 				<Command val="810B"/>
 				<Command val="1004"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_07" xyz="11,45,4">
+			<Component name="RStache" xyz="11,45,4">
 				<Command val="810B"/>
 				<Command val="1005"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_08" xyz="2,72,4">
+			<Component name="Hat" xyz="2,72,4">
 				<Command val="810B"/>
 				<Command val="1006"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_09" xyz="14,79,6">
+			<Component name="RBrow" xyz="14,79,6">
 				<Command val="810B"/>
 				<Command val="1003"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_0A" xyz="-16,79,6">
+			<Component name="LBrow" xyz="-16,79,6">
 				<Command val="810B"/>
 				<Command val="1002"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_0B" xyz="0,0,0">
+			<Component name="Offset" xyz="0,0,0">
 				<Command val="3001"/>
 				<Command val="0"/>
 				<Command val="0"/>
@@ -130,20 +130,20 @@
 				<Command val="2000"/>
 			</Component>
 		</Animation>
-		<Animation name="Anim_01">
-			<Component name="Comp_00" xyz="-2,2,-2">
+		<Animation name="Idle">
+			<Component name="Torso" xyz="-2,2,-2">
 				<Command val="810B"/>
 				<Command val="1001"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_01" xyz="1,27,0">
+			<Component name="Head" xyz="1,27,0">
 				<Command val="810C"/>
 				<Command val="1000"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_02" xyz="-34,-9,0">
+			<Component name="LFoot" xyz="-34,-9,0">
 				<Command val="3000"/>
 				<Command val="0"/>
 				<Command val="0"/>
@@ -176,7 +176,7 @@
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_03" xyz="30,-9,0">
+			<Component name="RFoot" xyz="30,-9,0">
 				<Command val="1011"/>
 				<Command val="8"/>
 				<Command val="3000"/>
@@ -211,7 +211,7 @@
 				<Command val="2"/>
 				<Command val="2002"/>
 			</Component>
-			<Component name="Comp_04" xyz="-1,60,2">
+			<Component name="Eyes" xyz="-1,60,2">
 				<Command val="810C"/>
 				<Command val="1009"/>
 				<Command val="1C"/>
@@ -223,7 +223,7 @@
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_05" xyz="-1,36,2">
+			<Component name="Mouth" xyz="-1,36,2">
 				<Command val="810C"/>
 				<Command val="100D"/>
 				<Command val="5A"/>
@@ -235,7 +235,7 @@
 				<Command val="1E"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_06" xyz="-15,46,4">
+			<Component name="LStache" xyz="-15,46,4">
 				<Command val="810C"/>
 				<Command val="1004"/>
 				<Command val="C0"/>
@@ -261,7 +261,7 @@
 				<Command val="6"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_07" xyz="11,45,4">
+			<Component name="RStache" xyz="11,45,4">
 				<Command val="810C"/>
 				<Command val="1005"/>
 				<Command val="C0"/>
@@ -287,7 +287,7 @@
 				<Command val="6"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_08" xyz="2,72,4">
+			<Component name="Hat" xyz="2,72,4">
 				<Command val="810C"/>
 				<Command val="1006"/>
 				<Command val="2"/>
@@ -301,7 +301,7 @@
 				<Command val="E"/>
 				<Command val="2003"/>
 			</Component>
-			<Component name="Comp_09" xyz="14,79,6">
+			<Component name="RBrow" xyz="14,79,6">
 				<Command val="810C"/>
 				<Command val="1003"/>
 				<Command val="1E"/>
@@ -312,7 +312,7 @@
 				<Command val="1E"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_0A" xyz="-16,79,6">
+			<Component name="LBrow" xyz="-16,79,6">
 				<Command val="810C"/>
 				<Command val="1002"/>
 				<Command val="1E"/>
@@ -323,7 +323,7 @@
 				<Command val="1E"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_0B" xyz="0,0,0">
+			<Component name="Motion1" xyz="0,0,0">
 				<Command val="3001"/>
 				<Command val="0"/>
 				<Command val="0"/>
@@ -366,7 +366,7 @@
 				<Command val="6"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_0C" xyz="0,0,0">
+			<Component name="Motion2" xyz="0,0,0">
 				<Command val="810B"/>
 				<Command val="3001"/>
 				<Command val="0"/>
@@ -431,20 +431,20 @@
 				<Command val="2000"/>
 			</Component>
 		</Animation>
-		<Animation name="Anim_02">
-			<Component name="Comp_00" xyz="-2,2,-2">
+		<Animation name="Jump">
+			<Component name="Torso" xyz="-2,2,-2">
 				<Command val="810C"/>
 				<Command val="1001"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_01" xyz="1,27,0">
+			<Component name="Head" xyz="1,27,0">
 				<Command val="810B"/>
 				<Command val="1000"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_02" xyz="-34,-9,0">
+			<Component name="LFoot" xyz="-34,-9,0">
 				<Command val="1010"/>
 				<Command val="24"/>
 				<Command val="3001"/>
@@ -473,7 +473,7 @@
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_03" xyz="30,-9,0">
+			<Component name="RFoot" xyz="30,-9,0">
 				<Command val="1011"/>
 				<Command val="8"/>
 				<Command val="3001"/>
@@ -504,7 +504,7 @@
 				<Command val="2"/>
 				<Command val="2002"/>
 			</Component>
-			<Component name="Comp_04" xyz="-1,60,2">
+			<Component name="Eyes" xyz="-1,60,2">
 				<Command val="810B"/>
 				<Command val="1009"/>
 				<Command val="1C"/>
@@ -516,7 +516,7 @@
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_05" xyz="-1,36,2">
+			<Component name="Mouth" xyz="-1,36,2">
 				<Command val="810B"/>
 				<Command val="100D"/>
 				<Command val="5A"/>
@@ -528,7 +528,7 @@
 				<Command val="1E"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_06" xyz="-15,46,4">
+			<Component name="LStache" xyz="-15,46,4">
 				<Command val="810B"/>
 				<Command val="1004"/>
 				<Command val="C0"/>
@@ -554,7 +554,7 @@
 				<Command val="6"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_07" xyz="11,45,4">
+			<Component name="RStache" xyz="11,45,4">
 				<Command val="810B"/>
 				<Command val="1005"/>
 				<Command val="C0"/>
@@ -580,13 +580,13 @@
 				<Command val="6"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_08" xyz="2,72,4">
+			<Component name="Hat" xyz="2,72,4">
 				<Command val="810D"/>
 				<Command val="1006"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_09" xyz="14,79,6">
+			<Component name="RBrow" xyz="14,79,6">
 				<Command val="810B"/>
 				<Command val="1003"/>
 				<Command val="1E"/>
@@ -597,7 +597,7 @@
 				<Command val="1E"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_0A" xyz="-16,79,6">
+			<Component name="LBrow" xyz="-16,79,6">
 				<Command val="810B"/>
 				<Command val="1002"/>
 				<Command val="1E"/>
@@ -608,7 +608,7 @@
 				<Command val="1E"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_0B" xyz="0,0,0">
+			<Component name="Motion1" xyz="0,0,0">
 				<Command val="4"/>
 				<Command val="3001"/>
 				<Command val="0"/>
@@ -631,7 +631,7 @@
 				<Command val="10"/>
 				<Command val="2001"/>
 			</Component>
-			<Component name="Comp_0C" xyz="0,0,0">
+			<Component name="Motion2" xyz="0,0,0">
 				<Command val="4"/>
 				<Command val="3001"/>
 				<Command val="0"/>
@@ -655,7 +655,7 @@
 				<Command val="10"/>
 				<Command val="2001"/>
 			</Component>
-			<Component name="Comp_0D" xyz="0,0,0">
+			<Component name="Motion3" xyz="0,0,0">
 				<Command val="4"/>
 				<Command val="3001"/>
 				<Command val="0"/>
@@ -679,20 +679,20 @@
 				<Command val="2001"/>
 			</Component>
 		</Animation>
-		<Animation name="Anim_03">
-			<Component name="Comp_00" xyz="-2,2,-2">
+		<Animation name="Walk">
+			<Component name="Torso" xyz="-2,2,-2">
 				<Command val="810B"/>
 				<Command val="1001"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_01" xyz="1,27,0">
+			<Component name="Head" xyz="1,27,0">
 				<Command val="810C"/>
 				<Command val="1000"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_02" xyz="-34,-9,0">
+			<Component name="LFoot" xyz="-34,-9,0">
 				<Command val="3000"/>
 				<Command val="0"/>
 				<Command val="0"/>
@@ -726,7 +726,7 @@
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_03" xyz="30,-9,0">
+			<Component name="RFoot" xyz="30,-9,0">
 				<Command val="1011"/>
 				<Command val="8"/>
 				<Command val="3000"/>
@@ -762,7 +762,7 @@
 				<Command val="2"/>
 				<Command val="2002"/>
 			</Component>
-			<Component name="Comp_04" xyz="-1,60,2">
+			<Component name="Eyes" xyz="-1,60,2">
 				<Command val="810C"/>
 				<Command val="1009"/>
 				<Command val="1C"/>
@@ -774,7 +774,7 @@
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_05" xyz="-1,36,2">
+			<Component name="Mouth" xyz="-1,36,2">
 				<Command val="810C"/>
 				<Command val="100D"/>
 				<Command val="5A"/>
@@ -786,7 +786,7 @@
 				<Command val="1E"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_06" xyz="-15,46,4">
+			<Component name="LStache" xyz="-15,46,4">
 				<Command val="810C"/>
 				<Command val="1004"/>
 				<Command val="C0"/>
@@ -812,7 +812,7 @@
 				<Command val="6"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_07" xyz="11,45,4">
+			<Component name="RStache" xyz="11,45,4">
 				<Command val="810C"/>
 				<Command val="1005"/>
 				<Command val="C0"/>
@@ -838,7 +838,7 @@
 				<Command val="6"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_08" xyz="2,72,4">
+			<Component name="Hat" xyz="2,72,4">
 				<Command val="810C"/>
 				<Command val="1006"/>
 				<Command val="2"/>
@@ -852,7 +852,7 @@
 				<Command val="E"/>
 				<Command val="2003"/>
 			</Component>
-			<Component name="Comp_09" xyz="14,79,6">
+			<Component name="RBrow" xyz="14,79,6">
 				<Command val="810C"/>
 				<Command val="1003"/>
 				<Command val="1E"/>
@@ -863,7 +863,7 @@
 				<Command val="1E"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_0A" xyz="-16,79,6">
+			<Component name="LBrow" xyz="-16,79,6">
 				<Command val="810C"/>
 				<Command val="1002"/>
 				<Command val="1E"/>
@@ -874,7 +874,7 @@
 				<Command val="1E"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_0B" xyz="0,0,0">
+			<Component name="Motion1" xyz="0,0,0">
 				<Command val="3001"/>
 				<Command val="0"/>
 				<Command val="0"/>
@@ -917,7 +917,7 @@
 				<Command val="6"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_0C" xyz="0,0,0">
+			<Component name="Motion2" xyz="0,0,0">
 				<Command val="810B"/>
 				<Command val="3001"/>
 				<Command val="0"/>
@@ -982,20 +982,20 @@
 				<Command val="2000"/>
 			</Component>
 		</Animation>
-		<Animation name="Anim_04">
-			<Component name="Comp_00" xyz="-2,2,-2">
+		<Animation name="Run">
+			<Component name="Torso" xyz="-2,2,-2">
 				<Command val="810B"/>
 				<Command val="1001"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_01" xyz="1,27,0">
+			<Component name="Head" xyz="1,27,0">
 				<Command val="810C"/>
 				<Command val="1000"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_02" xyz="-34,-9,0">
+			<Component name="LFoot" xyz="-34,-9,0">
 				<Command val="3000"/>
 				<Command val="0"/>
 				<Command val="0"/>
@@ -1029,7 +1029,7 @@
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_03" xyz="30,-9,0">
+			<Component name="RFoot" xyz="30,-9,0">
 				<Command val="3000"/>
 				<Command val="0"/>
 				<Command val="9"/>
@@ -1063,13 +1063,13 @@
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_04" xyz="-1,60,2">
+			<Component name="Eyes" xyz="-1,60,2">
 				<Command val="810C"/>
 				<Command val="100C"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_05" xyz="-1,36,2">
+			<Component name="Mouth" xyz="-1,36,2">
 				<Command val="810C"/>
 				<Command val="100D"/>
 				<Command val="5A"/>
@@ -1081,7 +1081,7 @@
 				<Command val="1E"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_06" xyz="-15,46,4">
+			<Component name="LStache" xyz="-15,46,4">
 				<Command val="810C"/>
 				<Command val="1004"/>
 				<Command val="A"/>
@@ -1107,7 +1107,7 @@
 				<Command val="8"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_07" xyz="11,45,4">
+			<Component name="RStache" xyz="11,45,4">
 				<Command val="810C"/>
 				<Command val="1005"/>
 				<Command val="A"/>
@@ -1133,7 +1133,7 @@
 				<Command val="8"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_08" xyz="2,72,4">
+			<Component name="Hat" xyz="2,72,4">
 				<Command val="810C"/>
 				<Command val="1006"/>
 				<Command val="2"/>
@@ -1147,7 +1147,7 @@
 				<Command val="8"/>
 				<Command val="2003"/>
 			</Component>
-			<Component name="Comp_09" xyz="14,79,6">
+			<Component name="RBrow" xyz="14,79,6">
 				<Command val="810C"/>
 				<Command val="3001"/>
 				<Command val="0"/>
@@ -1163,7 +1163,7 @@
 				<Command val="A"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_0A" xyz="-16,79,6">
+			<Component name="LBrow" xyz="-16,79,6">
 				<Command val="810C"/>
 				<Command val="3001"/>
 				<Command val="0"/>
@@ -1179,7 +1179,7 @@
 				<Command val="A"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_0B" xyz="0,0,0">
+			<Component name="Motion1" xyz="0,0,0">
 				<Command val="3001"/>
 				<Command val="0"/>
 				<Command val="0"/>
@@ -1222,7 +1222,7 @@
 				<Command val="4"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_0C" xyz="0,0,0">
+			<Component name="Motion2" xyz="0,0,0">
 				<Command val="810B"/>
 				<Command val="3001"/>
 				<Command val="0"/>
@@ -1287,8 +1287,8 @@
 				<Command val="2000"/>
 			</Component>
 		</Animation>
-		<Animation name="Anim_05">
-			<Component name="Comp_00" xyz="-2,2,-2">
+		<Animation name="Kick">
+			<Component name="Torso" xyz="-2,2,-2">
 				<Command val="1001"/>
 				<Command val="20"/>
 				<Command val="3001"/>
@@ -1301,13 +1301,13 @@
 				<Command val="28"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_01" xyz="1,27,0">
+			<Component name="Head" xyz="1,27,0">
 				<Command val="810B"/>
 				<Command val="1000"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_02" xyz="-34,-9,0">
+			<Component name="LFoot" xyz="-34,-9,0">
 				<Command val="1010"/>
 				<Command val="20"/>
 				<Command val="3000"/>
@@ -1342,7 +1342,7 @@
 				<Command val="28"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_03" xyz="30,-9,0">
+			<Component name="RFoot" xyz="30,-9,0">
 				<Command val="1011"/>
 				<Command val="20"/>
 				<Command val="3000"/>
@@ -1355,13 +1355,13 @@
 				<Command val="28"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_04" xyz="-1,60,2">
+			<Component name="Eyes" xyz="-1,60,2">
 				<Command val="810B"/>
 				<Command val="100C"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_05" xyz="-1,36,2">
+			<Component name="Mouth" xyz="-1,36,2">
 				<Command val="810B"/>
 				<Command val="3001"/>
 				<Command val="0"/>
@@ -1383,7 +1383,7 @@
 				<Command val="28"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_06" xyz="-15,46,4">
+			<Component name="LStache" xyz="-15,46,4">
 				<Command val="810B"/>
 				<Command val="3001"/>
 				<Command val="FFF8"/>
@@ -1398,7 +1398,7 @@
 				<Command val="24"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_07" xyz="11,45,4">
+			<Component name="RStache" xyz="11,45,4">
 				<Command val="810B"/>
 				<Command val="3001"/>
 				<Command val="8"/>
@@ -1413,7 +1413,7 @@
 				<Command val="24"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_08" xyz="2,72,4">
+			<Component name="Hat" xyz="2,72,4">
 				<Command val="810B"/>
 				<Command val="1006"/>
 				<Command val="26"/>
@@ -1426,7 +1426,7 @@
 				<Command val="20"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_09" xyz="-16,79,6">
+			<Component name="RBrow" xyz="-16,79,6">
 				<Command val="810B"/>
 				<Command val="3001"/>
 				<Command val="0"/>
@@ -1438,7 +1438,7 @@
 				<Command val="28"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_0A" xyz="15,79,6">
+			<Component name="LBrow" xyz="15,79,6">
 				<Command val="810B"/>
 				<Command val="3001"/>
 				<Command val="0"/>
@@ -1450,7 +1450,7 @@
 				<Command val="28"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_0B" xyz="0,0,0">
+			<Component name="Motion1" xyz="0,0,0">
 				<Command val="20"/>
 				<Command val="3001"/>
 				<Command val="5"/>
@@ -1476,20 +1476,20 @@
 				<Command val="2000"/>
 			</Component>
 		</Animation>
-		<Animation name="Anim_06">
-			<Component name="Comp_00" xyz="-2,2,-2">
+		<Animation name="Death">
+			<Component name="Torso" xyz="-2,2,-2">
 				<Command val="810C"/>
 				<Command val="1001"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_01" xyz="1,27,0">
+			<Component name="Head" xyz="1,27,0">
 				<Command val="810B"/>
 				<Command val="1000"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_02" xyz="3,75,4">
+			<Component name="LFoot" xyz="3,75,4">
 				<Command val="810B"/>
 				<Command val="5002"/>
 				<Command val="64"/>
@@ -1504,7 +1504,7 @@
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_03" xyz="-34,-9,2">
+			<Component name="RFoot" xyz="-34,-9,2">
 				<Command val="3000"/>
 				<Command val="FFFA"/>
 				<Command val="6"/>
@@ -1513,7 +1513,7 @@
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_04" xyz="30,-9,2">
+			<Component name="Eyes" xyz="30,-9,2">
 				<Command val="3000"/>
 				<Command val="FFFA"/>
 				<Command val="6"/>
@@ -1522,19 +1522,19 @@
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_05" xyz="-1,60,2">
+			<Component name="Mouth" xyz="-1,60,2">
 				<Command val="810B"/>
 				<Command val="100B"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_06" xyz="-1,36,2">
+			<Component name="LStache" xyz="-1,36,2">
 				<Command val="810B"/>
 				<Command val="100D"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_07" xyz="-22,46,4">
+			<Component name="RStache" xyz="-22,46,4">
 				<Command val="810B"/>
 				<Command val="4000"/>
 				<Command val="0"/>
@@ -1547,7 +1547,7 @@
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_08" xyz="19,45,4">
+			<Component name="Hat" xyz="19,45,4">
 				<Command val="810B"/>
 				<Command val="4000"/>
 				<Command val="0"/>
@@ -1560,7 +1560,7 @@
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_09" xyz="15,80,6">
+			<Component name="RBrow" xyz="15,80,6">
 				<Command val="810B"/>
 				<Command val="3001"/>
 				<Command val="0"/>
@@ -1570,7 +1570,7 @@
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_0A" xyz="-16,79,6">
+			<Component name="LBrow" xyz="-16,79,6">
 				<Command val="810B"/>
 				<Command val="3001"/>
 				<Command val="0"/>
@@ -1580,7 +1580,7 @@
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_0B" xyz="0,0,0">
+			<Component name="Motion1" xyz="0,0,0">
 				<Command val="810C"/>
 				<Command val="3001"/>
 				<Command val="A"/>
@@ -1589,7 +1589,7 @@
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_0C" xyz="0,0,0">
+			<Component name="Motion2" xyz="0,0,0">
 				<Command val="3001"/>
 				<Command val="0"/>
 				<Command val="FFFA"/>
@@ -1598,14 +1598,14 @@
 				<Command val="2000"/>
 			</Component>
 		</Animation>
-		<Animation name="Anim_07">
-			<Component name="Comp_00" xyz="-2,2,-2">
+		<Animation name="Dizzy">
+			<Component name="Torso" xyz="-2,2,-2">
 				<Command val="810B"/>
 				<Command val="1001"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_01" xyz="1,27,0">
+			<Component name="Head" xyz="1,27,0">
 				<Command val="810C"/>
 				<Command val="1000"/>
 				<Command val="2"/>
@@ -1645,7 +1645,7 @@
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_02" xyz="0,74,4">
+			<Component name="LFoot" xyz="0,74,4">
 				<Command val="810C"/>
 				<Command val="5000"/>
 				<Command val="5A"/>
@@ -1726,7 +1726,7 @@
 				<Command val="2"/>
 				<Command val="200C"/>
 			</Component>
-			<Component name="Comp_03" xyz="-34,-9,0">
+			<Component name="RFoot" xyz="-34,-9,0">
 				<Command val="3000"/>
 				<Command val="0"/>
 				<Command val="0"/>
@@ -1759,7 +1759,7 @@
 				<Command val="4"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_04" xyz="30,-9,0">
+			<Component name="Eyes" xyz="30,-9,0">
 				<Command val="1011"/>
 				<Command val="8"/>
 				<Command val="3000"/>
@@ -1794,7 +1794,7 @@
 				<Command val="4"/>
 				<Command val="2002"/>
 			</Component>
-			<Component name="Comp_05" xyz="-1,60,2">
+			<Component name="Mouth" xyz="-1,60,2">
 				<Command val="810C"/>
 				<Command val="1008"/>
 				<Command val="6"/>
@@ -1804,7 +1804,7 @@
 				<Command val="6"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_06" xyz="-1,36,2">
+			<Component name="LStache" xyz="-1,36,2">
 				<Command val="810C"/>
 				<Command val="100D"/>
 				<Command val="12"/>
@@ -1818,7 +1818,7 @@
 				<Command val="C"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_07" xyz="-15,46,4">
+			<Component name="RStache" xyz="-15,46,4">
 				<Command val="810C"/>
 				<Command val="1004"/>
 				<Command val="16"/>
@@ -1844,7 +1844,7 @@
 				<Command val="6"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_08" xyz="11,45,4">
+			<Component name="Hat" xyz="11,45,4">
 				<Command val="810C"/>
 				<Command val="1005"/>
 				<Command val="16"/>
@@ -1870,7 +1870,7 @@
 				<Command val="6"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_09" xyz="14,79,6">
+			<Component name="RBrow" xyz="14,79,6">
 				<Command val="810C"/>
 				<Command val="1003"/>
 				<Command val="1E"/>
@@ -1881,7 +1881,7 @@
 				<Command val="1E"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_0A" xyz="-16,79,6">
+			<Component name="LBrow" xyz="-16,79,6">
 				<Command val="810C"/>
 				<Command val="1002"/>
 				<Command val="1E"/>
@@ -1892,7 +1892,7 @@
 				<Command val="1E"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_0B" xyz="0,0,0">
+			<Component name="Motion1" xyz="0,0,0">
 				<Command val="3001"/>
 				<Command val="0"/>
 				<Command val="0"/>
@@ -1975,7 +1975,7 @@
 				<Command val="4"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_0C" xyz="0,0,0">
+			<Component name="Motion2" xyz="0,0,0">
 				<Command val="810B"/>
 				<Command val="3001"/>
 				<Command val="0"/>
@@ -2100,53 +2100,53 @@
 				<Command val="2000"/>
 			</Component>
 		</Animation>
-		<Animation name="Anim_08">
-			<Component name="Comp_00" xyz="-2,2,-2">
+		<Animation name="Sleep">
+			<Component name="Torso" xyz="-2,2,-2">
 				<Command val="1001"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_01" xyz="1,27,0">
+			<Component name="Head" xyz="1,27,0">
 				<Command val="1000"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_02" xyz="-34,-9,0">
+			<Component name="LFoot" xyz="-34,-9,0">
 				<Command val="1010"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_03" xyz="30,-9,0">
+			<Component name="RFoot" xyz="30,-9,0">
 				<Command val="1011"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_04" xyz="-1,60,2">
+			<Component name="Eyes" xyz="-1,60,2">
 				<Command val="1024"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_05" xyz="-1,36,2">
+			<Component name="Mouth" xyz="-1,36,2">
 				<Command val="1014"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_06" xyz="-15,46,4">
+			<Component name="LStache" xyz="-15,46,4">
 				<Command val="1004"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_07" xyz="11,45,4">
+			<Component name="RStache" xyz="11,45,4">
 				<Command val="1005"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_08" xyz="2,72,4">
+			<Component name="Hat" xyz="2,72,4">
 				<Command val="1006"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_09" xyz="14,79,6">
+			<Component name="RBrow" xyz="14,79,6">
 				<Command val="4000"/>
 				<Command val="0"/>
 				<Command val="FFF6"/>
@@ -2158,7 +2158,7 @@
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_0A" xyz="-16,79,6">
+			<Component name="LBrow" xyz="-16,79,6">
 				<Command val="4000"/>
 				<Command val="0"/>
 				<Command val="A"/>
@@ -2171,20 +2171,20 @@
 				<Command val="2000"/>
 			</Component>
 		</Animation>
-		<Animation name="Anim_09">
-			<Component name="Comp_00" xyz="-2,2,-2">
+		<Animation name="Angry">
+			<Component name="Torso" xyz="-2,2,-2">
 				<Command val="810B"/>
 				<Command val="1001"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_01" xyz="1,27,0">
+			<Component name="Head" xyz="1,27,0">
 				<Command val="810C"/>
 				<Command val="1000"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_02" xyz="-34,-9,0">
+			<Component name="LFoot" xyz="-34,-9,0">
 				<Command val="3000"/>
 				<Command val="0"/>
 				<Command val="0"/>
@@ -2217,7 +2217,7 @@
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_03" xyz="30,-9,0">
+			<Component name="RFoot" xyz="30,-9,0">
 				<Command val="1011"/>
 				<Command val="8"/>
 				<Command val="3000"/>
@@ -2252,13 +2252,13 @@
 				<Command val="2"/>
 				<Command val="2002"/>
 			</Component>
-			<Component name="Comp_04" xyz="-1,60,2">
+			<Component name="Eyes" xyz="-1,60,2">
 				<Command val="810C"/>
 				<Command val="100C"/>
 				<Command val="14"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_05" xyz="-1,36,2">
+			<Component name="Mouth" xyz="-1,36,2">
 				<Command val="810C"/>
 				<Command val="100D"/>
 				<Command val="1"/>
@@ -2276,7 +2276,7 @@
 				<Command val="1E"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_06" xyz="-20,46,4">
+			<Component name="LStache" xyz="-20,46,4">
 				<Command val="810C"/>
 				<Command val="3001"/>
 				<Command val="FFF5"/>
@@ -2298,7 +2298,7 @@
 				<Command val="C"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_07" xyz="16,45,4">
+			<Component name="RStache" xyz="16,45,4">
 				<Command val="810C"/>
 				<Command val="3001"/>
 				<Command val="B"/>
@@ -2320,7 +2320,7 @@
 				<Command val="C"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_08" xyz="2,72,4">
+			<Component name="Hat" xyz="2,72,4">
 				<Command val="810C"/>
 				<Command val="1006"/>
 				<Command val="2"/>
@@ -2334,7 +2334,7 @@
 				<Command val="E"/>
 				<Command val="2003"/>
 			</Component>
-			<Component name="Comp_09" xyz="14,79,6">
+			<Component name="RBrow" xyz="14,79,6">
 				<Command val="810C"/>
 				<Command val="3001"/>
 				<Command val="0"/>
@@ -2353,7 +2353,7 @@
 				<Command val="1E"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_0A" xyz="-16,79,6">
+			<Component name="LBrow" xyz="-16,79,6">
 				<Command val="810C"/>
 				<Command val="3001"/>
 				<Command val="0"/>
@@ -2372,7 +2372,7 @@
 				<Command val="1E"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_0B" xyz="0,0,0">
+			<Component name="Motion1" xyz="0,0,0">
 				<Command val="3001"/>
 				<Command val="0"/>
 				<Command val="0"/>
@@ -2415,7 +2415,7 @@
 				<Command val="6"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_0C" xyz="0,0,0">
+			<Component name="Motion2" xyz="0,0,0">
 				<Command val="810B"/>
 				<Command val="3001"/>
 				<Command val="0"/>
@@ -2480,38 +2480,38 @@
 				<Command val="2000"/>
 			</Component>
 		</Animation>
-		<Animation name="Anim_0A">
-			<Component name="Comp_00" xyz="-2,2,-2">
+		<Animation name="Talk">
+			<Component name="Torso" xyz="-2,2,-2">
 				<Command val="810B"/>
 				<Command val="1001"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_01" xyz="1,27,0">
+			<Component name="Head" xyz="1,27,0">
 				<Command val="810B"/>
 				<Command val="1000"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_02" xyz="-34,-9,0">
+			<Component name="LFoot" xyz="-34,-9,0">
 				<Command val="810B"/>
 				<Command val="1010"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_03" xyz="30,-9,0">
+			<Component name="RFoot" xyz="30,-9,0">
 				<Command val="810B"/>
 				<Command val="1011"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_04" xyz="-1,60,2">
+			<Component name="Eyes" xyz="-1,60,2">
 				<Command val="810B"/>
 				<Command val="1008"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_05" xyz="-1,36,2">
+			<Component name="Mouth" xyz="-1,36,2">
 				<Command val="810B"/>
 				<Command val="100D"/>
 				<Command val="4"/>
@@ -2535,37 +2535,37 @@
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_06" xyz="-15,46,4">
+			<Component name="LStache" xyz="-15,46,4">
 				<Command val="810B"/>
 				<Command val="1004"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_07" xyz="11,45,4">
+			<Component name="RStache" xyz="11,45,4">
 				<Command val="810B"/>
 				<Command val="1005"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_08" xyz="2,72,4">
+			<Component name="Hat" xyz="2,72,4">
 				<Command val="810B"/>
 				<Command val="1006"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_09" xyz="14,79,6">
+			<Component name="RBrow" xyz="14,79,6">
 				<Command val="810B"/>
 				<Command val="1003"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_0A" xyz="-16,79,6">
+			<Component name="LBrow" xyz="-16,79,6">
 				<Command val="810B"/>
 				<Command val="1002"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_0B" xyz="0,0,0">
+			<Component name="Motion1" xyz="0,0,0">
 				<Command val="3001"/>
 				<Command val="0"/>
 				<Command val="0"/>
@@ -2579,20 +2579,20 @@
 				<Command val="2000"/>
 			</Component>
 		</Animation>
-		<Animation name="Anim_0B">
-			<Component name="Comp_00" xyz="-2,2,-2">
+		<Animation name="Pound">
+			<Component name="Torso" xyz="-2,2,-2">
 				<Command val="810C"/>
 				<Command val="1001"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_01" xyz="1,27,0">
+			<Component name="Head" xyz="1,27,0">
 				<Command val="810B"/>
 				<Command val="1000"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_02" xyz="-34,-9,2">
+			<Component name="LFoot" xyz="-34,-9,2">
 				<Command val="3000"/>
 				<Command val="3"/>
 				<Command val="FFFD"/>
@@ -2619,7 +2619,7 @@
 				<Command val="12"/>
 				<Command val="2012"/>
 			</Component>
-			<Component name="Comp_03" xyz="30,-9,2">
+			<Component name="RFoot" xyz="30,-9,2">
 				<Command val="3000"/>
 				<Command val="3"/>
 				<Command val="FFFD"/>
@@ -2646,13 +2646,13 @@
 				<Command val="12"/>
 				<Command val="2012"/>
 			</Component>
-			<Component name="Comp_04" xyz="-1,60,2">
+			<Component name="Eyes" xyz="-1,60,2">
 				<Command val="810B"/>
 				<Command val="1008"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_05" xyz="-1,36,2">
+			<Component name="Mouth" xyz="-1,36,2">
 				<Command val="810B"/>
 				<Command val="3001"/>
 				<Command val="0"/>
@@ -2662,25 +2662,25 @@
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_06" xyz="-15,46,4">
+			<Component name="LStache" xyz="-15,46,4">
 				<Command val="810B"/>
 				<Command val="1004"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_07" xyz="11,45,4">
+			<Component name="RStache" xyz="11,45,4">
 				<Command val="810B"/>
 				<Command val="1005"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_08" xyz="2,72,4">
+			<Component name="Hat" xyz="2,72,4">
 				<Command val="810B"/>
 				<Command val="1006"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_09" xyz="-16,79,6">
+			<Component name="RBrow" xyz="-16,79,6">
 				<Command val="810B"/>
 				<Command val="3001"/>
 				<Command val="0"/>
@@ -2693,7 +2693,7 @@
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_0A" xyz="14,79,6">
+			<Component name="LBrow" xyz="14,79,6">
 				<Command val="810B"/>
 				<Command val="3001"/>
 				<Command val="0"/>
@@ -2706,7 +2706,7 @@
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_0B" xyz="0,0,0">
+			<Component name="Motion1" xyz="0,0,0">
 				<Command val="810C"/>
 				<Command val="3001"/>
 				<Command val="0"/>
@@ -2730,7 +2730,7 @@
 				<Command val="14"/>
 				<Command val="2010"/>
 			</Component>
-			<Component name="Comp_0C" xyz="0,0,0">
+			<Component name="Motion2" xyz="0,0,0">
 				<Command val="12"/>
 				<Command val="3001"/>
 				<Command val="0"/>
@@ -2750,20 +2750,20 @@
 				<Command val="200B"/>
 			</Component>
 		</Animation>
-		<Animation name="Anim_0C">
-			<Component name="Comp_00" xyz="-2,2,-2">
+		<Animation name="Land">
+			<Component name="Torso" xyz="-2,2,-2">
 				<Command val="810C"/>
 				<Command val="1001"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_01" xyz="1,27,0">
+			<Component name="Head" xyz="1,27,0">
 				<Command val="810B"/>
 				<Command val="1000"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_02" xyz="-34,-9,2">
+			<Component name="LFoot" xyz="-34,-9,2">
 				<Command val="3000"/>
 				<Command val="FFFC"/>
 				<Command val="4"/>
@@ -2772,7 +2772,7 @@
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_03" xyz="30,-9,2">
+			<Component name="RFoot" xyz="30,-9,2">
 				<Command val="3000"/>
 				<Command val="FFFC"/>
 				<Command val="4"/>
@@ -2781,19 +2781,19 @@
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_04" xyz="-1,60,2">
+			<Component name="Eyes" xyz="-1,60,2">
 				<Command val="810B"/>
 				<Command val="1008"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_05" xyz="-1,36,2">
+			<Component name="Mouth" xyz="-1,36,2">
 				<Command val="810B"/>
 				<Command val="100D"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_06" xyz="-15,46,4">
+			<Component name="LStache" xyz="-15,46,4">
 				<Command val="810B"/>
 				<Command val="4000"/>
 				<Command val="0"/>
@@ -2806,7 +2806,7 @@
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_07" xyz="11,45,4">
+			<Component name="RStache" xyz="11,45,4">
 				<Command val="810B"/>
 				<Command val="4000"/>
 				<Command val="0"/>
@@ -2819,25 +2819,25 @@
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_08" xyz="2,72,4">
+			<Component name="Hat" xyz="2,72,4">
 				<Command val="810B"/>
 				<Command val="1006"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_09" xyz="15,79,6">
+			<Component name="RBrow" xyz="15,79,6">
 				<Command val="810B"/>
 				<Command val="1003"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_0A" xyz="-16,79,6">
+			<Component name="LBrow" xyz="-16,79,6">
 				<Command val="810B"/>
 				<Command val="1002"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_0B" xyz="0,0,0">
+			<Component name="Motion1" xyz="0,0,0">
 				<Command val="810C"/>
 				<Command val="3001"/>
 				<Command val="6"/>
@@ -2846,7 +2846,7 @@
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_0C" xyz="0,0,0">
+			<Component name="Motion2" xyz="0,0,0">
 				<Command val="3001"/>
 				<Command val="0"/>
 				<Command val="FFFA"/>
@@ -2855,20 +2855,20 @@
 				<Command val="2000"/>
 			</Component>
 		</Animation>
-		<Animation name="Anim_0D">
-			<Component name="Comp_00" xyz="-2,2,-2">
+		<Animation name="BurntHurt">
+			<Component name="Torso" xyz="-2,2,-2">
 				<Command val="810B"/>
 				<Command val="1016"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_01" xyz="1,27,0">
+			<Component name="Head" xyz="1,27,0">
 				<Command val="810C"/>
 				<Command val="1015"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_02" xyz="-34,-9,0">
+			<Component name="LFoot" xyz="-34,-9,0">
 				<Command val="3001"/>
 				<Command val="0"/>
 				<Command val="0"/>
@@ -2901,7 +2901,7 @@
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_03" xyz="30,-9,0">
+			<Component name="RFoot" xyz="30,-9,0">
 				<Command val="3001"/>
 				<Command val="2"/>
 				<Command val="C"/>
@@ -2930,13 +2930,13 @@
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_04" xyz="-1,60,2">
+			<Component name="Eyes" xyz="-1,60,2">
 				<Command val="810C"/>
 				<Command val="101A"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_05" xyz="-1,38,2">
+			<Component name="Mouth" xyz="-1,38,2">
 				<Command val="810C"/>
 				<Command val="3001"/>
 				<Command val="0"/>
@@ -2952,7 +2952,7 @@
 				<Command val="6"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_06" xyz="-31,46,4">
+			<Component name="LStache" xyz="-31,46,4">
 				<Command val="810C"/>
 				<Command val="3001"/>
 				<Command val="FFF5"/>
@@ -2974,7 +2974,7 @@
 				<Command val="6"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_07" xyz="28,45,4">
+			<Component name="RStache" xyz="28,45,4">
 				<Command val="810C"/>
 				<Command val="3001"/>
 				<Command val="B"/>
@@ -2996,13 +2996,13 @@
 				<Command val="6"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_08" xyz="0,93,4">
+			<Component name="Hat" xyz="0,93,4">
 				<Command val="810C"/>
 				<Command val="1023"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_09" xyz="14,79,6">
+			<Component name="RBrow" xyz="14,79,6">
 				<Command val="810C"/>
 				<Command val="3001"/>
 				<Command val="0"/>
@@ -3021,7 +3021,7 @@
 				<Command val="10"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_0A" xyz="-16,79,6">
+			<Component name="LBrow" xyz="-16,79,6">
 				<Command val="810C"/>
 				<Command val="3001"/>
 				<Command val="0"/>
@@ -3040,7 +3040,7 @@
 				<Command val="10"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_0B" xyz="0,0,0">
+			<Component name="Motion1" xyz="0,0,0">
 				<Command val="3001"/>
 				<Command val="0"/>
 				<Command val="0"/>
@@ -3083,7 +3083,7 @@
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_0C" xyz="0,0,0">
+			<Component name="Motion2" xyz="0,0,0">
 				<Command val="810C"/>
 				<Command val="3001"/>
 				<Command val="0"/>
@@ -3138,18 +3138,18 @@
 				<Command val="2000"/>
 			</Component>
 		</Animation>
-		<Animation name="Anim_0E">
-			<Component name="Comp_00" xyz="-2,-4,-2">
+		<Animation name="BurntDeath">
+			<Component name="Torso" xyz="-2,-4,-2">
 				<Command val="1016"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_01" xyz="6,21,0">
+			<Component name="Head" xyz="6,21,0">
 				<Command val="1015"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_02" xyz="5,88,2">
+			<Component name="LFoot" xyz="5,88,2">
 				<Command val="3001"/>
 				<Command val="0"/>
 				<Command val="4"/>
@@ -3161,7 +3161,7 @@
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_03" xyz="-34,-9,2">
+			<Component name="RFoot" xyz="-34,-9,2">
 				<Command val="3001"/>
 				<Command val="FFFA"/>
 				<Command val="6"/>
@@ -3170,7 +3170,7 @@
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_04" xyz="30,-9,2">
+			<Component name="Eyes" xyz="30,-9,2">
 				<Command val="3001"/>
 				<Command val="FFFA"/>
 				<Command val="6"/>
@@ -3179,17 +3179,17 @@
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_05" xyz="4,54,2">
+			<Component name="Mouth" xyz="4,54,2">
 				<Command val="101A"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_06" xyz="4,32,2">
+			<Component name="LStache" xyz="4,32,2">
 				<Command val="101B"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_07" xyz="-26,41,4">
+			<Component name="RStache" xyz="-26,41,4">
 				<Command val="4000"/>
 				<Command val="0"/>
 				<Command val="FFD3"/>
@@ -3201,7 +3201,7 @@
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_08" xyz="33,40,4">
+			<Component name="Hat" xyz="33,40,4">
 				<Command val="4000"/>
 				<Command val="0"/>
 				<Command val="2D"/>
@@ -3213,7 +3213,7 @@
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_09" xyz="20,75,6">
+			<Component name="RBrow" xyz="20,75,6">
 				<Command val="3001"/>
 				<Command val="0"/>
 				<Command val="4"/>
@@ -3222,7 +3222,7 @@
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
-			<Component name="Comp_0A" xyz="-11,73,6">
+			<Component name="LBrow" xyz="-11,73,6">
 				<Command val="3001"/>
 				<Command val="0"/>
 				<Command val="4"/>
@@ -3232,8 +3232,8 @@
 				<Command val="2000"/>
 			</Component>
 		</Animation>
-		<Animation name="Anim_0F">
-			<Component xyz="1,-8,0">
+		<Animation name="ChuckaCola">
+			<Component name="ChuckaCola" xyz="1,-8,0">
 				<Command val="1025"/>
 				<Command val="2"/>
 				<Command val="2000"/>

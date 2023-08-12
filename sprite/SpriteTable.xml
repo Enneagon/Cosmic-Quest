@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SpriteTable>
 	<NpcSprites>
-		<Sprite id="1" src="01" name="World Goombario"/>
+		<Sprite id="1" src="01 - World E Gadd" name="World E Gadd"/>
 		<Sprite id="2" src="02" name="World Kooper"/>
 		<Sprite id="3" src="03" name="World Bombette"/>
 		<Sprite id="4" src="04" name="World Parakarry"/>
@@ -9,7 +9,7 @@
 		<Sprite id="6" src="06" name="World Watt"/>
 		<Sprite id="7" src="07" name="World Sushie"/>
 		<Sprite id="8" src="08" name="World Lakilester"/>
-		<Sprite id="9" src="09" name="Battle Goombario"/>
+		<Sprite id="9" src="09 - Battle Robomario" name="Battle Robomario"/>
 		<Sprite id="A" src="0A" name="Battle Kooper"/>
 		<Sprite id="B" src="0B" name="Battle Bombette"/>
 		<Sprite id="C" src="0C" name="Battle Parakarry"/>
@@ -209,7 +209,7 @@
 		<Sprite id="CE" src="CE" name="Mayor Penguin"/>
 		<Sprite id="CF" src="CF" name="Mayor Penguin Wife"/>
 		<Sprite id="D0" src="D0" name="Penguin Patrol"/>
-		<Sprite id="D1" src="D1" name="Herringway"/>
+		<Sprite id="D1" src="D1 - Orbulon" name="Orbulon"/>
 		<Sprite id="D2" src="D2" name="Merle"/>
 		<Sprite id="D3" src="D3" name="Star Rod"/>
 		<Sprite id="D4" src="D4" name="Fire"/>
