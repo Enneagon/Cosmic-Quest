@@ -43,6 +43,18 @@
     [StatusIcon]   10`b  30`b % dx dy
 }
 
+@ $IdleAnimations_802391B0 
+{
+    .Status:Normal    .Anim:robomarioIdle
+    .Status:Stone     .Anim:robomarioStill
+    .Status:Sleep     .Anim:robomarioCloseEyes
+    .Status:Poison    .Anim:robomarioStill
+    .Status:Stop      .Anim:robomarioStill
+    .Status:Daze      .Anim:robomarioInjured
+    .Status:TurnDone  .Anim:robomarioIdle
+    .Status:End
+}
+
 @ $PartsTable_802392A4  % ActorPartBlueprint struct in decomp
 { 
     /% s32 flags %/                 00000000
