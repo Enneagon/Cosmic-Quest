@@ -1,0 +1,44 @@
+#define .NpcID:Capn     00
+
+@ $Script_Main {
+    Set   *GB_WorldLocation  .Location:GoombaRoad
+    Call  SetCamPerspective  ( .Cam:Default 00000003 00000019 00000010 00001000 )
+    Call  SetCamBGColor      ( .Cam:Default 00000000 00000000 00000000 )
+    Call  SetCamEnabled      ( .Cam:Default .True )
+    Call  SetCamLeadPlayer   ( .Cam:Default .False )
+    Call  MakeItemEntity ( .Item:Boots2Icon ~Vec3d:Boots .ItemSpawnMode:Fixed_SpawnAlways_NeverVanish 00000000 )
+    Exec  $Script_MakeNPCs
+    Exec  $Script_SetupMusic
+    Exec  $Script_EnterMap
+    Return
+    End
+}
+
+#new:Script $Script_MakeNPCs
+{
+    Call  MakeNpcs  ( .False $NpcGroupList_Always )
+    Return
+    End
+}
+
+#new:NpcGroupList $NpcGroupList_Always
+{
+	00000001 $NpcGroup_Always 00000000
+    00000000 00000000 00000000
+}
+
+#new:NpcGroup $NpcGroup_Always
+{
+	.NpcID:Capn $NpcSettings_Standard ~Vec3f:Boss
+	00000001 00000000 00000000 00000000 00000000
+	~NoDrops
+	~Movement:Boss
+	~AnimationTable:Boss
+	00000000 00000000 00000000 00000000 % Tattle ID
+}
+
+#new:NpcSettings $NpcSettings_Standard
+{
+	00000000 001E0018 00000000 00000000 00000000 00000000 00000000 00000000
+	00000000 00000000 00630000
+}

@@ -609,6 +609,9 @@
 		<Map name="enc_07" nickname="Bunny Asteroid"/>
 		<Map name="enc_08" nickname="End Hallway"/>
 		<Map name="enc_09" nickname="Mushroom Station"/>
+		<Map name="enc_0A" nickname="Tatanga Station"/>
+		<Stage name="enc_bt00" nickname="Station"/>
+		<Stage name="enc_bt01" nickname="Engine1"/>
 	</Area>
 	<Area name="ast" nickname="Asteroid Minigames">
 		<Map name="ast_00" nickname="Asteroids 1"/>
