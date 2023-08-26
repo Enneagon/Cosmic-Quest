@@ -1,0 +1,155 @@
+#define .NpcID:Astro          01
+#define .NpcID:Partner        02
+
+@ $Script_Main {
+    Set   *GB_WorldLocation  .Location:GoombaRoad
+    Call  SetCamPerspective  ( .Cam:Default 00000003 00000019 00000010 00001000 )
+    Call  SetCamBGColor      ( .Cam:Default 00000000 00000000 00000000 )
+    Call  SetCamEnabled      ( .Cam:Default .True )
+    Call  SetCamLeadPlayer   ( .Cam:Default .False )
+    Exec  $Script_SetupMusic
+    Exec  $Script_MakeNPCs
+    Exec  $Script_BindStuff
+    Set *MapVar[0] 0`
+    Exec  $Script_EnterMap
+    Return
+    End
+}
+
+#new:Script $Script_MakeNPCs
+{
+    Call  MakeNpcs  ( .False $NpcGroupList_Always )
+    Return
+    End
+}
+
+#new:NpcGroupList $NpcGroupList_Always
+{
+	00000002 $NpcGroup_Always 00000000
+    00000000 00000000 00000000
+}
+
+#new:NpcGroup $NpcGroup_Always
+{
+	.NpcID:Astro $NpcSettings_Standard ~Vec3f:Astro
+	00000001 $Script_Init_Astro 00000000 00000000 00000000
+	~NoDrops
+	~Movement:Astro
+	~AnimationTable:Astro
+	00000000 00000000 00000000 001A0066 % Tattle ID
+    %
+    .NpcID:Partner $NpcSettings_Standard ~Vec3f:Partner
+	00000001 $Script_Init_Partner 00000000 00000000 00000000
+	~NoDrops
+	~Movement:Partner
+	~AnimationTable:Partner
+	00000000 00000000 00000000 001A0066 % Tattle ID
+}
+
+#new:NpcSettings $NpcSettings_Standard
+{
+	00000000 001E0018 00000000 00000000 00000000 00000000 00000000 00000000
+	00000000 00000000 00630000
+}
+
+#new:Script $Script_Init_Astro
+{
+    Call  SetNpcYaw ( .Npc:Self 270` )
+    Call  BindNpcInteract   ( .Npc:Self $Script_Interact_Astro )
+    Return
+    End
+}
+
+#new:Script $Script_Init_Partner
+{
+    Call  SetNpcYaw ( .Npc:Self 270` )
+    Call  BindNpcInteract   ( .Npc:Self $Script_Interact_Partner )
+    Return
+    End
+}
+
+#new:Script $Script_Interact_Astro
+{
+    Switch *MapVar[0]
+    Case == 0`
+        Call  SpeakToPlayer ( .Npc:Self 00830404 00830401 00000000 002F0068 ) % String
+    Case == 1`
+        Call  SpeakToPlayer ( .Npc:Self 00830404 00830401 00000000 002F006A ) % String
+    Case == 2`
+        Call  SpeakToPlayer ( .Npc:Self 00830404 00830401 00000000 002F006C ) % String
+    EndSwitch
+    Return
+    End
+}
+
+#new:Script $Script_Interact_Partner
+{
+    If *MapVar[0] == 2`
+        Call  SpeakToPlayer ( .Npc:Self 00830304 00830301 00000000 002F006D ) % String
+        Wait 20`
+        Call  SpeakToPlayer ( .NpcID:Astro 00830404 00830401 00000000 002F006E ) % String
+        Call GotoMapSpecial ( "sar_03" ~Entry:sar_03:Entry 0000000D )
+    EndIf
+    Return
+    End
+}
+
+#new:Script $Script_BindStuff
+{
+    Bind $Script_TutorialShip .Trigger:WallPressA ~Collider:BoxCollider1 00000001 00000000
+    Return
+    End
+}
+
+#new:Script $Script_TutorialShip
+{
+    Call  DisablePlayerInput ( .True )
+    Call  ShowMessageAtScreenPos    ( 002F0078  160`  40` ) % Choose Cruiser?
+    Call  ShowChoice ( 002F0001 )
+    If *Var0 == 00000000
+        Call CloseMessage ()
+        Call  MakeItemEntity    ( .Item:PowerSmash1 ~Vec3d:Badge .ItemSpawnMode:Decoration 00000000 )
+        Set *MapVar[1] *Var0
+        Bind $Script_TutorialBadge .Trigger:WallPressA ~Collider:BoxCollider2 00000001 00000000
+        Call  SpeakToPlayer ( .NpcID:Astro 00830404 00830401 00000000 002F0069 ) % String
+        Set *MapVar[0] 1`
+        Unbind
+    EndIf
+    Call CloseMessage ()
+    Call  DisablePlayerInput ( .False )
+    Return
+    End
+}
+
+#new:Script $Script_TutorialBadge
+{
+    Call  DisablePlayerInput ( .True )
+    Call  ShowMessageAtScreenPos    ( 002F003C  160`  40` ) % Choose Cruiser?
+    Call  ShowChoice ( 002F0001 )
+    If *Var0 == 00000000
+        Call CloseMessage ()
+        Call RemoveItemEntity ( *MapVar[1] )
+        Call ShowGotItem ( .Item:PowerSmash1 .True 00000000 )
+        Call  SpeakToPlayer ( .NpcID:Astro 00830404 00830401 00000000 002F006B ) % String
+        Set *MapVar[0] 2`
+        Unbind
+    EndIf
+    Call CloseMessage ()
+    Call  DisablePlayerInput ( .False )
+    Return
+    End
+}
+
+@ $Script_EnterMap {
+    Call  GetEntryID    ( *Var[0] )
+    Switch  *Var[0]
+        Default
+            Exec  $Script_CreateExitTriggers
+    EndSwitch
+    Call  DisablePlayerInput ( .True )
+    Wait 30`
+    Call SpeakToPlayer ( .NpcID:Astro 00830404 00830401 00000000 002F0067 )
+    Call  DisablePlayerInput ( .False )
+    Return
+    End
+}

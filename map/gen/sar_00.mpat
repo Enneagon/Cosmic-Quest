@@ -5,12 +5,13 @@
 	[MainScript] $Script_Main
 	[Background] 00000000
 	[EntryList] $EntryList
-	[EntryCount] 2
+	[EntryCount] 3
 }
 
 #new:EntryList $EntryList
 {
 	~Vec4f:GameStart
+	~Vec4f:TutorialEnd
 	~Vec4f:Exit
 }
 
@@ -50,6 +51,10 @@
 {
 	Call  GetEntryID    ( *Var[0] )
 	Switch  *Var[0]
+		Case  ==  ~Entry:TutorialEnd
+			Exec  $Script_Callback_AfterTutorial
+		Case  ==  ~Entry:GameStart
+			Exec  $Script_Callback_Start
 		Default
 			Exec  $Script_CreateExitTriggers
 	EndSwitch
@@ -71,6 +76,18 @@
 #new:Script $Script_CreateExitTriggers
 {
 	Bind  $Script_ToLaunchpad .Trigger:FloorAbove ~Collider:ExitCollider 00000001 00000000
+	Return
+	End
+}
+
+#new:Script $Script_Callback_AfterTutorial
+{
+	Return
+	End
+}
+
+#new:Script $Script_Callback_Start
+{
 	Return
 	End
 }

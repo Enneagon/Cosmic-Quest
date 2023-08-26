@@ -1,0 +1,55 @@
+@ $Script_Main {
+    Set   *GB_WorldLocation  .Location:GoombaRoad
+    Call  SetCamPerspective  ( .Cam:Default 00000003 00000019 00000010 00001000 )
+    Call  SetCamBGColor      ( .Cam:Default 00000000 00000000 00000000 )
+    Call  SetCamEnabled      ( .Cam:Default .True
+    Call  SetCamLeadPlayer   ( .Cam:Default .False )
+    Exec  $Script_SetupMusic
+    Exec  $Script_ShipBindsToMario
+    Exec  $Script_EnterMap
+	Exec  $Script_Main_Callback_AfterEnterMap
+    Return
+    End
+}
+
+#new:Script $Script_ShipBindsToMario
+{
+        Thread
+            Loop
+                Call  GetPlayerPos ( *Var0 *Var1 *Var2 )
+                Call  TranslateGroup ( ~Model:Rocket1 *Var0 00000000 *Var2 )
+                Wait  1`
+            EndLoop
+        EndThread
+    Return
+    End
+}
+
+@ $Script_Main_Callback_AfterEnterMap {
+    Call DisablePlayerInput ( .True )
+    Wait 30`
+    Call  ShowMessageAtScreenPos    ( 002F006F  160`  40` )
+    Call  GetModelCenter ( ~Model:Node1g )
+    Call  PlayerMoveTo ( *Var0 *Var2 60` )
+    Wait  20`
+    Call  ShowMessageAtScreenPos    ( 002F0070  160`  40` )
+    Call  GetModelCenter ( ~Model:Node2y )
+    Call  PlayerMoveTo ( *Var0 *Var2 60` )
+    Wait  20`
+    Call  ShowMessageAtScreenPos    ( 002F0071  160`  40` )
+    Call  GetModelCenter ( ~Model:Node3r )
+    Call  PlayerMoveTo ( *Var0 *Var2 60` )
+    Wait  20`
+    Call  ShowMessageAtScreenPos    ( 002F0072  160`  40` )
+    Call  GetModelCenter ( ~Model:Node4b )
+    Call  PlayerMoveTo ( *Var0 *Var2 60` )
+    Wait  20`
+    Call  ShowMessageAtScreenPos    ( 002F0073  160`  40` )
+    Call  GetModelCenter ( ~Model:Node99 )
+    Call  PlayerMoveTo ( *Var0 *Var2 60` )
+    Wait  20`
+    Call  ShowMessageAtScreenPos    ( 002F0074  160`  40` )
+    Call GotoMapSpecial ( "sar_04" ~Entry:sar_04:entry_w 0000000D )    % Mushroom Space!
+    Return
+    End
+}

@@ -200,7 +200,14 @@
 
 #new:Script $Script_Interact_Astro
 {
-  Call  SpeakToPlayer ( .Npc:Self 00830404 00830401 00000000 002F0052 ) % String
+  Call  SpeakToPlayer ( .Npc:Self 00830404 00830401 00000000 002F0077 ) % String
+  Call  ShowChoice ( 002F0001 )
+  If *Var0 == 00000000
+        Call CloseMessage ()
+        Call SpeakToPlayer ( .NpcID:Astro 00830404 00830401 00000000 002F0065 )
+        Call GotoMapSpecial ( "sar_02" ~Entry:sar_02:Entry0 0000000D )
+  EndIf
+  Call CloseMessage ()
   Return
   End
 }
@@ -1652,6 +1659,44 @@
     Exec     ExitWalk
     Call GotoMapSpecial ( "sar_01" ~Entry:sar_01:Entry 0000000D )
     Wait  100`
+    Return
+    End
+}
+
+@ $Script_Callback_Start {
+    If *MF_CompletedTutorial == .True
+        Return
+    EndIf
+    Call DisablePlayerInput ( .True )
+    Wait 30`
+    Call SpeakToPlayer ( .NpcID:Astro 00830404 00830401 00000000 002F0063 )
+    Call SetNpcAnimation ( .NpcID:Astro 00830402 )
+    Call NpcMoveTo ( .NpcID:Astro -300` 200` 20` )
+    Call SetNpcAnimation ( .NpcID:Astro 00830401 )
+    Call SpeakToPlayer ( .NpcID:Astro 00830404 00830401 00000000 002F0064 )
+    Call ShowChoice ( 002F0001 )
+    If *Var0 == 00000000
+        Call CloseMessage ()
+        Call SpeakToPlayer ( .NpcID:Astro 00830404 00830401 00000000 002F0065 )
+        Call GotoMapSpecial ( "sar_02" ~Entry:sar_02:Entry0 0000000D )
+    Else
+        Call CloseMessage ()
+        Call SpeakToPlayer ( .NpcID:Astro 00830404 00830401 00000000 002F0066 )
+        Call SetNpcAnimation ( .NpcID:Astro 00830402 )
+        Call NpcMoveTo ( .NpcID:Astro -250` 250` 20` )
+        Call SetNpcAnimation ( .NpcID:Astro 00830401 )
+        Set *MF_CompletedTutorial .True
+        Call DisablePlayerInput ( .False )
+    EndIf
+    Return
+    End
+}
+
+@ $Script_Callback_AfterTutorial {
+    Call DisablePlayerInput ( .True )
+    Wait 30`
+    Call SpeakToPlayer ( .NpcID:Astro 00830404 00830401 00000000 002F0076 )
+    Call DisablePlayerInput ( .False )
     Return
     End
 }

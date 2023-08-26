@@ -1,16 +1,16 @@
-% Auto-generated script for sar_02
+% Auto-generated script for sar_03
 
 #new:Header $Header
 {
 	[MainScript] $Script_Main
-	[Background] 00000000
+	[Background] 80200000
 	[EntryList] $EntryList
 	[EntryCount] 1
 }
 
 #new:EntryList $EntryList
 {
-	~Vec4f:Entry0
+	~Vec4f:Entry
 }
 
 #new:Script_Main $Script_Main
@@ -30,7 +30,7 @@
 {
 	PUSH    RA
 	LIA     A0, 800B0CF0
-	LIA     A1, "sta_tex"
+	LIA     A1, "ast_tex"
 	JAL     800654F0 % sprintf
 	RESERVED
 	CLEAR  V0
@@ -39,7 +39,7 @@
 
 #new:Script $Script_SetupMusic
 {
-	Call  SetMusicTrack ( 00000000 .Song:RuinsBasement 00000000 00000008 )
+	Call  FadeOutMusic  ( 00000000 500` ) % usually between 500-1000
 	Call  ClearAmbientSounds ( 250` )
 	Return
 	End

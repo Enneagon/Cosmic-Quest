@@ -1,16 +1,16 @@
-% Auto-generated script for sar_02
+% Auto-generated script for sar_04
 
 #new:Header $Header
 {
 	[MainScript] $Script_Main
-	[Background] 00000000
+	[Background] 80200000
 	[EntryList] $EntryList
 	[EntryCount] 1
 }
 
 #new:EntryList $EntryList
 {
-	~Vec4f:Entry0
+	~Vec4f:entry_w
 }
 
 #new:Script_Main $Script_Main
@@ -22,6 +22,7 @@
 	Call  SetCamLeadPlayer   ( .Cam:Default .False )
 	Exec  $Script_SetupMusic
 	Exec  $Script_EnterMap
+	Exec  $Script_Main_Callback_AfterEnterMap
 	Return
 	End
 }
@@ -30,7 +31,7 @@
 {
 	PUSH    RA
 	LIA     A0, 800B0CF0
-	LIA     A1, "sta_tex"
+	LIA     A1, "ast_tex"
 	JAL     800654F0 % sprintf
 	RESERVED
 	CLEAR  V0
@@ -39,7 +40,7 @@
 
 #new:Script $Script_SetupMusic
 {
-	Call  SetMusicTrack ( 00000000 .Song:RuinsBasement 00000000 00000008 )
+	Call  SetMusicTrack ( 00000000 .Song:PleasantPath 00000000 00000008 )
 	Call  ClearAmbientSounds ( 250` )
 	Return
 	End
@@ -62,3 +63,8 @@
 	End
 }
 
+#new:Script $Script_Main_Callback_AfterEnterMap
+{
+	Return
+	End
+}

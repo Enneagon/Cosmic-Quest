@@ -1,0 +1,8 @@
+@ $Script_Main_Callback_AfterEnterMap {
+    Call DisablePlayerInput ( .True )
+    Wait 30`
+    Call  ShowMessageAtScreenPos    ( 002F0075  160`  40` )
+    Call GotoMapSpecial ( "sar_00" ~Entry:sar_00:TutorialEnd 0000000D )    % Mushroom Space!
+    Return
+    End
+}
