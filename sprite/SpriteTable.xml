@@ -48,7 +48,7 @@
 		<Sprite id="2D" src="2D - Blizter Bill" name="Biltzer Bill"/>
 		<Sprite id="2E" src="2E - Blizter Blaster" name="Biltzer Blaster"/>
 		<Sprite id="2F" src="2F - Mantle Mole" name="Mantle Mole"/>
-		<Sprite id="30" src="30" name="Cleft"/>
+		<Sprite id="30" src="30 - Crystal Cleft" name="Crystal Cleft"/>
 		<Sprite id="31" src="31 - Asteroid Pokey" name="Asteroid Pokey"/>
 		<Sprite id="32" src="32" name="Bandit"/>
 		<Sprite id="33" src="33" name="Buzzy Beetle"/>
@@ -127,7 +127,7 @@
 		<Sprite id="7C" src="7C" name="Huff N Puff"/>
 		<Sprite id="7D" src="7D" name="Tuff Puff"/>
 		<Sprite id="7E" src="7E" name="Monstar"/>
-		<Sprite id="7F" src="7F" name="Crystal King"/>
+		<Sprite id="7F" src="7F - Debris Bits" name="Debris Bits"/>
 		<Sprite id="80" src="80" name="World Bowser"/>
 		<Sprite id="81" src="81" name="Battle Bowser"/>
 		<Sprite id="82" src="82" name="Luigi"/>

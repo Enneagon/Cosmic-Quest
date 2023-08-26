@@ -97,6 +97,24 @@ false	% reversed
 0063000F = pirateGoombaKingChuckolaCola
 
 
+% Debris Bit Cube Animations
+007F0000 = debrisBitCubeStill
+007F0003 = debrisBitCubeIdle
+007F0006 = debrisBitCubeHurt
+007F0009 = debrisBitCubeDead
+
+% Debris Bit Sphere Animations
+007F0001 = debrisBitSphereStill
+007F0004 = debrisBitSphereIdle
+007F0007 = debrisBitSphereHurt
+007F000A = debrisBitSphereDead
+
+% Debris Bit Diamond Animations
+007F0002 = debrisBitDiamondStill
+007F0005 = debrisBitDiamondIdle
+007F0008 = debrisBitDiamondHurt
+007F000B = debrisBitDiamondDead
+
 00950000 = WhiteBoo-Stop
 00950001 = WhiteBoo-Idle
 00950002 = WhiteBoo-Walk

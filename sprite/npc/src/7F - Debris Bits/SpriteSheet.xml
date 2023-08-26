@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SpriteSheet maxComponents="5" paletteGroups="5">
+	<PaletteList>
+		<Palette id="0" name="Normal" src="Palette_00.png"/>
+		<Palette id="1" name="Heated" src="Palette_01.png"/>
+		<Palette id="2" name="Eyes" src="Palette_02.png"/>
+	</PaletteList>
+	<RasterList>
+		<Raster id="0" palette="0" src="Raster_11.png"/>
+		<Raster id="1" palette="0" src="Raster_12.png"/>
+		<Raster id="2" palette="0" src="Raster_13.png"/>
+		<Raster id="3" palette="1" src="Raster_16.png"/>
+		<Raster id="4" palette="1" src="Raster_17.png"/>
+		<Raster id="5" palette="1" src="Raster_18.png"/>
+		<Raster id="6" palette="2" src="Raster_1F.png"/>
+		<Raster id="7" palette="2" src="Raster_20.png"/>
+		<Raster id="8" palette="2" src="Raster_35.png"/>
+	</RasterList>
+	<AnimationList>
+		<Animation name="StillCube">
+			<Component name="Comp_00" xyz="4,-1,0">
+				<Command val="1000"/>
+				<Command val="2"/>
+				<Command val="2000"/>
+			</Component>
+			<Component name="Comp_01" xyz="-4,6,2">
+				<Command val="1006"/>
+				<Command val="2"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="StillSphere">
+			<Component name="Comp_00" xyz="4,-1,0">
+				<Command val="1001"/>
+				<Command val="2"/>
+				<Command val="2000"/>
+			</Component>
+			<Component name="Comp_01" xyz="-4,6,2">
+				<Command val="1006"/>
+				<Command val="2"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="StillDiamond">
+			<Component name="Comp_00" xyz="6,-1,0">
+				<Command val="1002"/>
+				<Command val="2"/>
+				<Command val="2000"/>
+			</Component>
+			<Component name="Comp_01" xyz="-3,10,2">
+				<Command val="1006"/>
+				<Command val="2"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="IdleCube">
+			<Component name="Comp_00" xyz="4,-1,0">
+				<Command val="1000"/>
+				<Command val="A"/>
+				<Command val="5002"/>
+				<Command val="5A"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="1"/>
+				<Command val="0"/>
+				<Command val="1000"/>
+				<Command val="A"/>
+				<Command val="1000"/>
+				<Command val="A"/>
+				<Command val="5001"/>
+				<Command val="6A"/>
+				<Command val="1000"/>
+				<Command val="A"/>
+				<Command val="2000"/>
+			</Component>
+			<Component name="Comp_01" xyz="-4,6,2">
+				<Command val="1006"/>
+				<Command val="96"/>
+				<Command val="1007"/>
+				<Command val="6"/>
+				<Command val="1006"/>
+				<Command val="4"/>
+				<Command val="7002"/>
+				<Command val="1"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="IdleSphere">
+			<Component name="Comp_00" xyz="4,-1,0">
+				<Command val="1001"/>
+				<Command val="A"/>
+				<Command val="5002"/>
+				<Command val="5A"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="1"/>
+				<Command val="0"/>
+				<Command val="1001"/>
+				<Command val="A"/>
+				<Command val="1001"/>
+				<Command val="A"/>
+				<Command val="5001"/>
+				<Command val="6A"/>
+				<Command val="1001"/>
+				<Command val="A"/>
+				<Command val="2000"/>
+			</Component>
+			<Component name="Comp_01" xyz="-4,6,2">
+				<Command val="1006"/>
+				<Command val="96"/>
+				<Command val="1007"/>
+				<Command val="6"/>
+				<Command val="1006"/>
+				<Command val="4"/>
+				<Command val="7002"/>
+				<Command val="1"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="IdleDiamond">
+			<Component name="Comp_00" xyz="4,-1,0">
+				<Command val="1002"/>
+				<Command val="A"/>
+				<Command val="5002"/>
+				<Command val="5A"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="1"/>
+				<Command val="0"/>
+				<Command val="1002"/>
+				<Command val="A"/>
+				<Command val="1002"/>
+				<Command val="A"/>
+				<Command val="5001"/>
+				<Command val="69"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="1002"/>
+				<Command val="A"/>
+				<Command val="2000"/>
+			</Component>
+			<Component name="Comp_01" xyz="-4,6,2">
+				<Command val="1006"/>
+				<Command val="96"/>
+				<Command val="1007"/>
+				<Command val="6"/>
+				<Command val="1006"/>
+				<Command val="4"/>
+				<Command val="7002"/>
+				<Command val="1"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="HurtCube">
+			<Component name="Comp_00" xyz="4,-1,0">
+				<Command val="1000"/>
+				<Command val="2"/>
+				<Command val="2000"/>
+			</Component>
+			<Component name="Comp_01" xyz="-4,6,2">
+				<Command val="1008"/>
+				<Command val="2"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="HurtSphere">
+			<Component name="Comp_00" xyz="4,-1,0">
+				<Command val="1001"/>
+				<Command val="2"/>
+				<Command val="2000"/>
+			</Component>
+			<Component name="Comp_01" xyz="-4,6,2">
+				<Command val="1008"/>
+				<Command val="2"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="HurtDiamond">
+			<Component name="Comp_00" xyz="6,-1,0">
+				<Command val="1002"/>
+				<Command val="2"/>
+				<Command val="2000"/>
+			</Component>
+			<Component name="Comp_01" xyz="-3,10,2">
+				<Command val="1008"/>
+				<Command val="2"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="DeadCube">
+			<Component name="Comp_00" xyz="4,-1,0">
+				<Command val="1000"/>
+				<Command val="2"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="DeadSphere">
+			<Component name="Comp_00" xyz="4,-1,0">
+				<Command val="1001"/>
+				<Command val="2"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="DeadDiamond">
+			<Component name="Comp_00" xyz="6,-1,0">
+				<Command val="1002"/>
+				<Command val="2"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+	</AnimationList>
+</SpriteSheet>

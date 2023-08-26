@@ -15,12 +15,78 @@
     [210]  LTB  A0, V0 ($Global_ActorOffsetsTable[2])
 }
 
+@ $Goombario 
+{
+    % stats
+    [Index]        6Fb
+    [Level]         0`b
+    [MaxHP]        99`b
+    [Coins]         0`b
+    [Flags]       00000000
+    [StatusTable] $StatusTable_802391F8
+    % ai
+    [PartsCount]    1`s
+    [PartsTable]  $PartsTable_802392A4
+    [Script]      $Script_Init_802392F0
+    % move effectiveness
+    [Escape]        0`b
+    [Item]          0`b
+    [AirLift]       0`b
+    [Hurricane]     0`b % Bow's "Spook" as well
+    [UpAndAway]     0`b
+    [PowerBounce]  80`b
+    [SpinSmash]     4`b % weight (0-4)
+    % ui positions
+    [Size]         33`b  43`b % width height
+    [HealthBar]     0`b   0`b % dx dy
+    [StatusTurn]  -10`b  30`b % dx dy
+    [StatusIcon]   10`b  30`b % dx dy
+}
+
+@ $PartsTable_802392A4  % ActorPartBlueprint struct in decomp
+{ 
+    /% s32 flags %/                 00000000
+    /% s8 index %/                  ~Byte:.Part:robomario
+    /% Vec3b posOffset %/           00b 00b 00b
+    /% Vec2b targetOffset %/        8`b 32`b %for cursor when selecting to attack in battle
+    /% s16 opacity %/               00FFs
+    /% s32* IdleAnimations %/       $IdleAnimations_802391B0
+    /% s32* defenseTable %/         $DefenseTable_802391EC
+    /% s32 eventFlags %/            00000000
+    /% s32 elementImmunityFlags %/  00000000
+    /% s8 unk_1C %/                 00b
+    /% s8 unk_1D %/                 00b
+    /% s8 unk_1E %/                 00b
+    /% s8 unk_1F %/                 00b
+    /% s8 unk_20 %/                 00000000
+    
+    /% Fireball %/
+    /% s32 flags %/ %                00120001
+    /% s8 index %/   %               ~Byte:.Part:eGadd
+    /% Vec3b posOffset %/ %          00b 00b 00b
+    /% Vec2b targetOffset %/ %       00b 00b %for cursor when selecting to attack in battle
+    /% s16 opacity %/            %   00FFs
+    /% s32* IdleAnimations %/ %      $IdleAnimations_Projectile
+    /% s32* defenseTable %/    %     $DefenseTable_PlaceHolder
+    /% s32 eventFlags %/           % 00000000
+    /% s32 elementImmunityFlags %/ % 00000000
+    /% s8 unk_1C %/                % 00b
+    /% s8 unk_1D %/                % 00b
+    /% s8 unk_1E %/                % 00b
+    /% s8 unk_1F %/                % 00b
+    /% s8 unk_20 %/                % 00000000
+    
+}
+
+@ $Script_NextTurn_80239A3C 
+{
+    Return
+    End
+}
+
 @ $Script_8023A754 
 {
-    Wait 5`
-    Call  PlaySoundAtActor  ( .Actor:Self 00000234 )
     Call  SetAnimation      ( .Actor:Self 00000001 .Anim:robomarioPreHeadbonk )
-    Wait 15`
     ExecWait  $Script_8023A52C
     Call  LoadActionCommand ( .ActionCommand:Jump )
     Call  802A9000 ( )
@@ -38,8 +104,8 @@
     Call  SetJumpAnimations ( .Actor:Partner 00000000 .Anim:robomarioPreHeadbonk .Anim:robomarioHeadbonk .Anim:robomarioFall )
     Call  PlaySoundAtActor  ( .Actor:Partner 0000200D )
     % Call  $Function_8023817C    ( *VarA 00000000 )
-    Call SetActorJumpGravity ( .Actor:Partner *Fixed[1.3] )
-    Call JumpToGoal ( .Actor:Partner 18` .True .True .True )
+    Call SetActorJumpGravity ( .Actor:Partner *Fixed[1.0] )
+    Call JumpToGoal ( .Actor:Partner 21` .True .True .False )
     Call  PartnerTestEnemy  ( *Var0 ~Flags:DamageType:NoContact 00000014 00000000  2` 00000010 )
     If  *Var0  ==  .HitResult:Miss % 6
         Call  SetJumpAnimations ( .Actor:Partner 00000000 .Anim:robomarioPreHeadbonk .Anim:robomarioHeadbonk .Anim:robomarioFall )
@@ -52,6 +118,7 @@
         ExecWait  $Script_80239CA8
         Return
     EndIf
+    /%
     ChildThread
         Call  SetActorScale ( .Actor:Partner *Fixed[1.1] *Fixed[0.8] *Fixed[1.0] )
         Wait  1`
@@ -59,7 +126,8 @@
         Wait  1`
         Call  SetActorScale ( .Actor:Partner *Fixed[1.0] *Fixed[1.0] *Fixed[1.0] )
     EndChildThread
-    Wait  1`
+    %/
+    Wait  4`
     Call  GetActionCommandResult    ( *Var0 )
     Switch  *Var0
         Case  >  00000000 %Action Command Success
@@ -114,6 +182,36 @@
     % Call  PlaySoundAtActor      ( .Actor:Partner 00000000 )
     % Call  80269550  ( *VarF )
     ExecWait  $Script_8023A06C
+    Return
+    End
+}
+
+@ $Script_80239CA8 
+{
+    Call  80280818 ( )
+    Call  UseBattleCamPreset    ( 00000033 )
+    Call  SetAnimation  ( .Actor:Partner FFFFFFFF .Anim:robomarioPreHeadbonk )
+    Wait 5`
+    Call  GetActorPos   ( .Actor:Partner *Var0 *Var1 *Var2 )
+    Sub   *Var0  0000001E
+    Set   *Var1  00000000
+    Call  SetGoalPos    ( .Actor:Partner *Var0 *Var1 *Var2 )
+    Call  SetActorJumpGravity   ( .Actor:Partner *Fixed[1.0] )
+    Call  $Function_80238000 ( )
+    Call  JumpToGoal    ( .Actor:Partner *Var0 .False .True .False )
+    Call  SetAnimation  ( .Actor:Self 00000001 .Anim:robomarioHeadbonk )
+    Wait 5`
+    Call  SetAnimation  ( .Actor:Partner FFFFFFFF 00090001 )
+    Call  AddGoalPos    ( .Actor:Partner  -10`  0`  0` )
+    Call  JumpToGoal    ( .Actor:Partner  6` .False .False .True )
+    Call  SetAnimation  ( .Actor:Self 00000001 00090007 )
+    Wait 10`
+    Call  SetAnimation  ( .Actor:Self 00000001 00090001 )
+    Call  SetGoalToHome ( .Actor:Partner )
+    Call  SetActorSpeed ( .Actor:Partner *Fixed[8.0] )
+    Call  SetAnimation  ( .Actor:Partner FFFFFFFF 00090003 )
+    Call  RunToGoal     ( .Actor:Partner  0` )
+    Call  SetAnimation  ( .Actor:Partner FFFFFFFF 00090001 )
     Return
     End
 }
