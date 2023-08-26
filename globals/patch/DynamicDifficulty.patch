@@ -62,12 +62,12 @@
 2`b 2`b 2`b 2`b 2`b 2`b 2`b 2`b 2`b 2`b % .DMG_Pokey_Segment
 2`b 2`b 2`b 2`b 2`b 2`b 2`b 2`b 2`b 2`b % .DMG_MechaBlooper_Drill
 2`b 2`b 2`b 2`b 2`b 2`b 2`b 2`b 2`b 2`b % .DMG_Blizter_Shoot
-4`b 4`b 4`b 4`b 4`b 4`b 4`b 4`b 4`b 4`b % .DMG_PirateGoombaKing_Kick
-2`b 2`b 2`b 2`b 2`b 2`b 2`b 2`b 2`b 2`b % .DMG_PirateGoomba_Headbonk
-4`b 4`b 4`b 4`b 4`b 4`b 4`b 4`b 4`b 4`b % .DMG_PirateSpikedGoomba_Headbonk
-4`b 4`b 4`b 4`b 4`b 4`b 4`b 4`b 4`b 4`b % .DMG_PirateGoombaBroA_Bigbonk
-4`b 4`b 4`b 4`b 4`b 4`b 4`b 4`b 4`b 4`b % .DMG_PirateGoombaBroB_Bigbonk
-6`b 6`b 6`b 6`b 6`b 6`b 6`b 6`b 6`b 6`b % .DMG_PirateGoombaKing_FuryKick
+1`b 1`b 1`b 1`b 1`b 1`b 1`b 1`b 2`b 2`b % .DMG_PirateGoombaKing_Kick
+1`b 1`b 1`b 1`b 1`b 1`b 1`b 1`b 1`b 1`b % .DMG_PirateGoomba_Headbonk
+2`b 2`b 2`b 2`b 2`b 2`b 2`b 2`b 2`b 2`b % .DMG_PirateSpikedGoomba_Headbonk
+2`b 2`b 2`b 2`b 2`b 2`b 2`b 2`b 2`b 2`b % .DMG_PirateGoombaBroA_Bigbonk
+2`b 2`b 2`b 2`b 2`b 2`b 2`b 2`b 2`b 2`b % .DMG_PirateGoombaBroB_Bigbonk
+3`b 3`b 3`b 3`b 3`b 3`b 3`b 3`b 3`b 3`b % .DMG_PirateGoombaKing_FuryKick
 }
 
 #export $AttackValues

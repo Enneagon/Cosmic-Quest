@@ -67,6 +67,7 @@
 .Element:Normal 1`
 .Element:Fire 100`
 .Element:Blast 100`
+.Element:Ice -1`
 .Element:End
 }
 

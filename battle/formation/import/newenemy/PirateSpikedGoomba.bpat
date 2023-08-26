@@ -4,8 +4,8 @@
 {
 % stats
 [Index]         9b 
-[Level]         6`b 
-[MaxHP]         2`b 
+[Level]         8`b 
+[MaxHP]         5`b 
 [Coins]         1`b 
 [Flags]       00000000 
 [StatusTable] $StatusTable_PirateSpikedGoomba 
@@ -268,7 +268,7 @@
 
 #new:Script $Script_Init_PirateSpikedGoomba 
 {
-     Set *Var0 = ( *MB_DifficultyLevel + *MB_SectorsCompleted + 4` ) % Add to Minimum HP
+     Set *Var0 = ( *MB_DifficultyLevel + *MB_SectorsCompleted + 5` ) % Add to Minimum HP
      Call  $SetMaxHPByDifficulty ( *Var0 ) % Dynamically sets HP
      Call  BindTakeTurn      ( .Actor:Self $Script_TakeTurn_PirateSpikedGoomba )
      Call  BindIdle  ( .Actor:Self $Script_Idle_PirateSpikedGoomba )

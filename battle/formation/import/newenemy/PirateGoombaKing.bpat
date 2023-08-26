@@ -13,8 +13,8 @@
 {
 % Stats
 [Index]        92b
-[Level]        49`b
-[MaxHP]        30`b
+[Level]        50`b
+[MaxHP]        25`b
 [Coins]         0`b
 [Flags]       00000000
 [StatusTable] $StatusTable_PirateGoombaKing
@@ -46,6 +46,12 @@
 #new:DefenseTable $DefenseTable_PirateGoombaKingFury 
 {
     .Element:Normal 1`
+    .Element:End
+}
+
+#new:DefenseTable $DefenseTable_PirateGoombaKingDanger
+{
+    .Element:Normal -1`
     .Element:End
 }
 
@@ -211,7 +217,7 @@
 
 #new:Script $Script_Init_PirateGoombaKing 
 {
-    Set *Var0 = ( *MB_DifficultyLevel + *MB_SectorsCompleted + 30` ) % Add to Minimum HP
+    Set *Var0 = ( *MB_DifficultyLevel + *MB_SectorsCompleted + 25` ) % Add to Minimum HP
     Call  $SetMaxHPByDifficulty ( *Var0 ) % Dynamically sets HP
     Call  BindTakeTurn  ( .Actor:Self $Script_TakeTurn_PirateGoombaKing )
     Call  BindIdle      ( .Actor:Self $Script_Idle_PirateGoombaKing )
@@ -496,29 +502,32 @@
                 Call  SetActorVar ( .Actor:Self .AVar:SpeakedOnce 6` )
             EndIf
             Call  GetActorHP ( .Actor:Self *Var0 )
-            If *Var0 < 16`
+            If *Var0 < 12`
                 Call  SetActorVar ( .Actor:Self .AVar:HasSummoned 7` )
-            EndIf
-            ExecWait  $Kick
-        Case == 7` % Drink Chuckola.
-            Call  GetActorVar ( .Actor:Self .AVar:SpeakedOnce *Var5 )
-            If *Var5 < 7`
-                Call  ActorSpeak ( $NoChoice .Actor:Self .Part:pirateGoombaKing 0063000A 00630001 )
-                Call  SetActorVar ( .Actor:Self .AVar:SpeakedOnce 7` )
-            EndIf
-            ExecWait  $DrinkChuckola
-            Call SetActorVar ( .Actor:Self .AVar:HasSummoned 8` )
-        Case == 8` % Change IdleAnimations to Half HP IdleAnimations.
-            Call  GetActorVar ( .Actor:Self .AVar:SpeakedOnce *Var5 )
-            If *Var5 < 8`
-                Call  GetActorHP ( .Actor:Self *Var0 )
-                If *Var0 < 9`
-                    Call  ActorSpeak ( $CantStandAChance .Actor:Self .Part:pirateGoombaKing 0063000A 00630001 )
-                    Call  SetIdleAnimations ( .Actor:Self .Part:pirateGoombaKing $IdleAnimations_PirateGoombaKing_Danger )
-                    Call  SetActorVar ( .Actor:Self .AVar:SpeakedOnce 8` )
+                Call  GetActorVar ( .Actor:Self .AVar:SpeakedOnce *Var5 )
+                If *Var5 < 7`
+                    Call  ActorSpeak ( $NoChoice .Actor:Self .Part:pirateGoombaKing 0063000A 00630001 )
+                    ExecWait  $DrinkChuckola
+                    Call  SetActorVar ( .Actor:Self .AVar:SpeakedOnce 7` )
                 EndIf
+            Else 
+                ExecWait  $Kick
             EndIf
+        Case == 7` % Adds one in has ActorVar and just attacks.
+            Call  AddActorVar ( .Actor:Self .AVar:HasSummoned 1` )
             ExecWait  $Kick
+        Case == 8` % Adds one in has ActorVar and just attacks.
+            Call  AddActorVar ( .Actor:Self .AVar:HasSummoned 1` )
+            ExecWait  $Kick
+        Case == 9` % Get Danger
+            Call  ActorSpeak ( $CantStandAChance .Actor:Self .Part:pirateGoombaKing 0063000A 00630001 )
+            Call  SetIdleAnimations ( .Actor:Self .Part:pirateGoombaKing $IdleAnimations_PirateGoombaKing_Danger )
+            Call  SetDefenseTable ( .Actor:Self .Part:invisibleTargetPirateGoombaKing $DefenseTable_PirateGoombaKingDanger )
+            Call  SetPartEventBits  ( .Actor:Self .Part:pirateGoombaKing 00040000 .False )
+            Call  SetActorVar ( .Actor:Self .AVar:HasSummoned 10` )
+            ExecWait  $Kick
+        Case >= 10`
+            ExecWait $Kick
     EndSwitch
     Call  UseIdleAnimation  ( .Actor:Self .True )
     Call  EnableIdleScript  ( .Actor:Self .True )
@@ -906,10 +915,10 @@ can't stand a chance.[BR]
     Call  SetGoalToTarget   ( .Actor:Self )
     Call  GetPartEventFlags ( .Actor:Self .Part:pirateGoombaKing *Var0 )
     If  *Var0  &  00040000 
-      	Set   *Var0  .DMG_PirateGoombaKing_FuryKick 
+      	Set   *Var0 .DMG_PirateGoombaKing_FuryKick % 3` %  
       	Call  EnemyDamageTarget ( .Actor:Self *VarA ~Flags:DamageType:0 00000000 00000000 *Var0 00000020 )
     Else
-      	Set   *Var0  .DMG_PirateGoombaKing_Kick 
+      	Set   *Var0 .DMG_PirateGoombaKing_Kick % 1` %  
         Call  EnemyDamageTarget ( .Actor:Self *VarA ~Flags:DamageType:0 00000000 00000000 *Var0 00000020 )
     EndIf
     Call  SetActorRotation  ( .Actor:Self 00000000 00000000 00000000 )

@@ -67,6 +67,7 @@
 .Element:Normal 1`
 .Element:Shock 100`
 .Element:Blast 100`
+.Element:Water -1`
 .Element:End
 }
 

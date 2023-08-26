@@ -7,8 +7,8 @@
 {
 % stats
 [Index]         D6b 
-[Level]         5`b 
-[MaxHP]         2`b 
+[Level]         6`b 
+[MaxHP]         3`b 
 [Coins]         0`b 
 [Flags]       00000200 
 [StatusTable] $StatusTable_BlizterBillShiver 
@@ -33,9 +33,10 @@
 
 #new:DefenseTable $DefenseTable_BlizterBillShiver 
 {
-.Element:Normal 0`
+.Element:Normal 1`
 .Element:Ice 100`
 .Element:Blast 100`
+.Element:Fire -1`
 .Element:End
 }
 
@@ -74,7 +75,7 @@
     /% s16 opacity %/               00FFs
     /% s32* IdleAnimations %/       $IdleAnimations_BlizterBillShiver
     /% s32* defenseTable %/         $DefenseTable_BlizterBillShiver
-    /% s32 eventFlags %/            00000400
+    /% s32 eventFlags %/            00000008
     /% s32 elementImmunityFlags %/  00000000
     /% s8 unk_1C %/                 00b
     /% s8 unk_1D %/                 FAb

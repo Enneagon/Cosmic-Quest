@@ -7,8 +7,8 @@
 {
 % stats
 [Index]         D4b 
-[Level]         5`b 
-[MaxHP]         2`b 
+[Level]         6`b 
+[MaxHP]         3`b 
 [Coins]         0`b 
 [Flags]       00000200 
 [StatusTable] $StatusTable_BlizterBillShock 
@@ -36,6 +36,7 @@
 .Element:Normal 0`
 .Element:Shock 100`
 .Element:Blast 100`
+.Element:Water -1`
 .Element:End
 }
 
@@ -74,7 +75,7 @@
     /% s16 opacity %/               00FFs
     /% s32* IdleAnimations %/       $IdleAnimations_BlizterBillShock
     /% s32* defenseTable %/         $DefenseTable_BlizterBillShock
-    /% s32 eventFlags %/            00000400
+    /% s32 eventFlags %/            00000080
     /% s32 elementImmunityFlags %/  00000000
     /% s8 unk_1C %/                 00b
     /% s8 unk_1D %/                 FAb
