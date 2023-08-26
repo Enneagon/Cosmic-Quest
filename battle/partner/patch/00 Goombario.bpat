@@ -1,11 +1,119 @@
+% Robomario Parts
+#define .Part:robomario 1
+#define .Part:eGadd 2
 
-@ $Function_80238B60 {
+@ $Function_80238B60 
+{
     [2C]  LTW   V0, V0 ($Global_ActorTattleTable)
     [38]  LIA   V1, $Global_ActorTattleTable
 }
 
-@ $Function_80238BCC {
+@ $Function_80238BCC 
+{
     [1CC]  LTB  V1, V0 ($Global_ActorOffsetsTable)
     [1EC]  LTB  V1, V0 ($Global_ActorOffsetsTable[1])
     [210]  LTB  A0, V0 ($Global_ActorOffsetsTable[2])
+}
+
+@ $Script_8023A754 
+{
+    Wait 5`
+    Call  PlaySoundAtActor  ( .Actor:Self 00000234 )
+    Call  SetAnimation      ( .Actor:Self 00000001 .Anim:robomarioPreHeadbonk )
+    Wait 15`
+    ExecWait  $Script_8023A52C
+    Call  LoadActionCommand ( .ActionCommand:Jump )
+    Call  802A9000 ( )
+    ExecWait  $Script_8023A66C
+    %Call  SetActorDispOffset    ( .Actor:Partner 00000000 00000012 00000000 )
+    %Wait  5`
+    %Call  SetActorDispOffset    ( .Actor:Partner 00000000 00000013 00000000 )
+    %Wait  1`
+    Call  UseBattleCamPreset    ( 00000034 )
+    Call  802A9120  ( *VarA 00000003 )
+    Call  UseBattleCamPreset    ( 00000034 )
+    Call  SetAnimation      ( .Actor:Self .Part:robomario .Anim:robomarioJump )
+    % Call  SetActorDispOffset    ( .Actor:Partner 00000000 00000009 00000000 )
+    Call  SetGoalToTarget   ( .Actor:Partner )
+    Call  SetJumpAnimations ( .Actor:Partner 00000000 .Anim:robomarioPreHeadbonk .Anim:robomarioHeadbonk .Anim:robomarioFall )
+    Call  PlaySoundAtActor  ( .Actor:Partner 0000200D )
+    % Call  $Function_8023817C    ( *VarA 00000000 )
+    Call SetActorJumpGravity ( .Actor:Partner *Fixed[1.3] )
+    Call JumpToGoal ( .Actor:Partner 18` .True .True .True )
+    Call  PartnerTestEnemy  ( *Var0 ~Flags:DamageType:NoContact 00000014 00000000  2` 00000010 )
+    If  *Var0  ==  .HitResult:Miss % 6
+        Call  SetJumpAnimations ( .Actor:Partner 00000000 .Anim:robomarioPreHeadbonk .Anim:robomarioHeadbonk .Anim:robomarioFall )
+        Call  $Function_80238A20 ( )
+        Thread
+            Call  ShakeCam  ( .Cam:Battle 00000000  5` *Fixed[1.0] )
+        EndThread
+        Call  PlaySoundAtActor  ( .Actor:Partner 00000162 )
+        Wait  20`
+        ExecWait  $Script_80239CA8
+        Return
+    EndIf
+    ChildThread
+        Call  SetActorScale ( .Actor:Partner *Fixed[1.1] *Fixed[0.8] *Fixed[1.0] )
+        Wait  1`
+        Call  SetActorScale ( .Actor:Partner *Fixed[1.3] *Fixed[0.5] *Fixed[1.0] )
+        Wait  1`
+        Call  SetActorScale ( .Actor:Partner *Fixed[1.0] *Fixed[1.0] *Fixed[1.0] )
+    EndChildThread
+    Wait  1`
+    Call  GetActionCommandResult    ( *Var0 )
+    Switch  *Var0
+        Case  >  00000000 %Action Command Success
+            %Call  $Function_802390B0 ( )
+            %Add   *Var0  00000001
+            Call  PartnerDamageEnemy    ( *Var0 ~Flags:DamageType:NoContact 00000000 00000000 2` 00000070 )
+        Default %Action Command Fail
+            %Call  $Function_80239068 ( )
+            %Add   *Var0  00000001
+            Call  PartnerDamageEnemy    ( *Var0 ~Flags:DamageType:NoContact 00000000 00000000 1` 00000030 )
+        EndSwitch
+    Call  PlaySoundAtActor  ( .Actor:Partner 00000000 )
+    ExecWait  $Script_80239CA8
+    Return
+    Thread
+        Call  UseBattleCamPreset    ( 00000032 )
+        Wait  5`
+        Call  SetGoalToTarget       ( .Actor:Partner )
+        Call  UseBattleCamPreset    ( 00000035 )
+    EndThread
+    Call  80269524  ( *VarF )
+    Call  CloseActionCommandInfo ( )
+    % Call  LoadActionCommand ( .ActionCommand:Jump )
+    % Call  802A9000 ( )
+    % Call  802694A4  ( 00000000 )
+    % Call  802A9120  ( 00000018 00000003 )
+    % Set   *VarA  00000018
+    % Thread
+    %     Wait  4`
+    %     Set   *Var0  00000000
+    %     Loop  00000006
+    %         Add   *Var0  FFFFFFE2
+    %         Call  SetActorRotation  ( .Actor:Self 00000000 00000000 *Var0 )
+    %         Wait  1`
+    %     EndLoop
+    % EndThread
+    % Call  SetGoalToTarget   ( .Actor:Partner )
+    % Call  SetJumpAnimations ( .Actor:Partner 00000000 00090006 00090006 00090006 )
+    % Call  PlaySoundAtActor  ( .Actor:Partner 00000281 )
+    % Call  $Function_8023817C    ( *VarA 00000003 )
+    % ChildThread
+    %     Call  SetActorScale ( .Actor:Partner *Fixed[1.1] *Fixed[0.8] *Fixed[1.0] )
+    %     Wait  1`
+    %     Call  SetActorScale ( .Actor:Partner *Fixed[1.3] *Fixed[0.5] *Fixed[1.0] )
+    %     Wait  1`
+    %     Call  SetActorScale ( .Actor:Partner *Fixed[1.0] *Fixed[1.0] *Fixed[1.0] )
+    % EndChildThread
+    % Wait  1`
+    % Call  $Function_80239068 ( )
+    % Add   *Var0  00000001
+    % Call  PartnerDamageEnemy    ( *Var0 ~Flags:DamageType:Jump 00000000 00000000 *Var0 00000020 )
+    % Call  PlaySoundAtActor      ( .Actor:Partner 00000000 )
+    % Call  80269550  ( *VarF )
+    ExecWait  $Script_8023A06C
+    Return
+    End
 }

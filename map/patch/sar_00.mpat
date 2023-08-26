@@ -13,6 +13,7 @@
     Exec  $Script_SetupMusic
     Call  $Function_LuckyStar (  )
     Call  $Function_GetHammer (  )
+    Call $GivePartners ()
 %    Call  AddCoin ( 50` )
     Set  *GB_StoryProgress  .Story:Ch0_FoundHammer
     Exec  $Script_BindStuff
@@ -20,6 +21,23 @@
     Exec  $Script_EnterMap
     Return
     End
+}
+
+#new:Function $GivePartners 
+{
+	ORI v0, r0, 1 %loop count
+	SAB v0, 8010F2A2 %set current partner to goombario
+	ORI v1, r0, 0100 %parnter and max level
+	LIO t0, 8010F2A4
+	.loop
+	SLL t1, v0, 3 %multiply loop count by sizeof partner struct
+	ADDU t2, t1, t0 %get offset into struct
+	SH v1, 0000 (t2) %set partner and upgrade
+	SLTI t3, v0, 9 %8 partners
+	BNE t3, r0, .loop
+	ADDIU v0, v0, 1 %increment loop count
+	JR RA
+	ORI v0, r0, 2
 }
 
 #new:Function $Function_LuckyStar
