@@ -35,3 +35,4 @@
 022 = MF_Badge18Seen
 023 = MF_Badge19Seen
 024 = MF_Badge20Seen
+025 = MF_CompletedTutorial

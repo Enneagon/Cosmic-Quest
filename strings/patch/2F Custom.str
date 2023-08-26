@@ -635,5 +635,300 @@
 
 #message:2F:062
 {
-	[Style Right][NoSkip][Size 36][Down 8][Shake]     Three![Pause 60][Size 16][BR][BR][BR][Next][Size 36]      Two![Pause 60][Size 16][BR][BR][BR][Next][Size 36]      One![Pause 60][Size 16][BR][BR][BR][Next][Size 36]BLAST OFF!!![Pause 60][End]
+	[Style Right][NoSkip][Size 36][Down 5][Shake]     Three![Pause 60][Size 16][BR][BR][BR][Next][Size 36]      Two![Pause 60][Size 16][BR][BR][BR][Next][Size 36]      One![Pause 60][Size 16][BR][BR][BR][Next][Size 36]BLAST OFF!!![Pause 60][End]
+}
+
+#message:2F:063
+{
+	[Style Right]Howdy, Mario!
+	[Wait][End]
+}
+
+#message:2F:064
+{
+	[Style Right]I'm Astro T., spaceflight[BR]
+	instructor here at the[BR]
+	Sarasaland Space Agency.[BR]
+	[Wait][Next]
+	You're looking a little lost.[BR]
+	I take it that means you're in[BR]
+	need of a tutorial?
+	[Yield][End]
+}
+
+#message:2F:065
+{
+	[Style Right]Then come right this way![BR]
+	I'll show you the ropes.
+	[Wait][End]
+}
+
+#message:2F:066
+{
+	[Style Right]Ah, you're good? My mistake![BR]
+	[Wait][Next]
+	If you ever need a refresher,[BR]
+	I'll be right here!
+	[Wait][End]
+}
+
+#message:2F:067
+{
+	[Style Right]All righty! Let's hop to it![BR]
+	[Wait][Next]
+	As you know, Tatanga has[BR]
+	kidnapped Princess Peach and[BR]
+	flown her to his nebula at the far[BR]
+	side of the galaxy.[BR]
+	[Wait][Next]
+	In order to chase after him,[BR]
+	you'll need a spaceship of your[BR]
+	own.[BR]
+	[Wait][Next]
+	Each spaceship will increase your[BR]
+	max HP, FP, and BP by a specified[BR]
+	amount. It will also let you choose[BR]
+	from a unique pool of Badges.[BR]
+	[Wait][Next]
+	For this tutorial, only the[BR]
+	Sarasaland Cruiser is available.[BR]
+	Get started by choosing it from[BR]
+	the wall behind me.[BR]
+	[Wait][End]
+}
+
+#message:2F:068
+{
+	[Style Right]Choose the Sarasaland Cruiser[BR]
+	to continue.
+	[Wait][End]
+}
+
+#message:2F:069
+{
+	[Style Right]Great job! As you journey across[BR]
+	the galaxy, you may gain access[BR]
+	to additional ships.[BR]
+	[Wait][Next]
+	Each ship comes with their own[BR]
+	stat boosts and Badge pools![BR]
+	[Wait][Next]
+	Speaking of Badges, you'll notice[BR]
+	that one has appeared on the[BR]
+	next pillar.[BR]
+	[Wait][Next]
+	Normally, you would have a choice[BR]
+	of four badges, from which you[BR]
+	would be able to choose two to[BR]
+	take with you.[BR]
+	[Wait][Next]
+	Of course, if you want a[BR]
+	challenge, there's nothing stopping[BR]
+	you from choosing only one, or[BR]
+	none at all![BR]
+	[Wait][Next]
+	For now, pick up Power Smash to[BR]
+	continue this tutorial.
+	[Wait][End]
+}
+
+#message:2F:06A
+{
+	[Style Right]Pick up Power Smash to continue.
+	[Wait][End]
+}
+
+#message:2F:06B
+{
+	[Style Right]The last thing to do is choose[BR]
+	a co-pilot.[BR]
+	[Wait][Next]
+	I'm sure you've worked with[BR]
+	partners before, Mario. They'll[BR]
+	follow you around and help you[BR]
+	in battles.[BR]
+	[Wait][Next]
+	None of them have special[BR]
+	out-of-battle abilities, but don't[BR]
+	let that worry you.[BR]
+	[Wait][Next]
+	Sometimes, just having a certain[BR]
+	person with you can make a[BR]
+	situation significantly easier![BR]
+	...Or harder.[BR]
+	[Wait][Next]
+	While everyone else gets ready,[BR]
+	I've asked my friend Buzz T. to[BR]
+	fill in. Talk to him to complete this[BR]
+	stage of the tutorial.
+	[Wait][End]
+}
+
+#message:2F:06C
+{
+	[Style Right]Talk to Buzz T. to continue.
+	[Wait][End]
+}
+
+#message:2F:06D
+{
+	[Style Right]Hi! I'll be your partner for the[BR]
+	rest of this tutorial.
+	[Wait][End]
+}
+
+#message:2F:06E
+{
+	[Style Right]All right! You now have[BR]
+	everything you need to get going![BR]
+	[Wait][Next]
+	There's no time to lose! Let's[BR]
+	head to the launchpad!
+	[Wait][End]
+}
+
+#message:2F:06F
+{
+	[Style Right]Welcome to space![BR]
+	[Wait][Next]
+	In order to reach Tatanga's[BR]
+	nebula, you'll need to cross[BR]
+	three sectors of unpredictable[BR]
+	nodes.[BR]
+	[Wait][Next]
+	Each time you see this map, you'll[BR]
+	be able to move your ship to one[BR]
+	of the nearest nodes.[BR]
+	[Wait][Next]
+	You'll be able to tell what kinds[BR]
+	of nodes are ahead of you, but[BR]
+	not what specifically you'll find[BR]
+	there.
+	[Wait][End]
+}
+
+#message:2F:070
+{
+	[Style Right]A [SaveColor][Color:03]GREEN[RestoreColor] node is a friendly node.[BR]
+	If you go here, you might find a[BR]
+	merchant, or someplace that's[BR]
+	known to be safe.
+	[Wait][End]
+}
+
+#message:2F:071
+{
+	[Style Right]A [SaveColor][Color:05]YELLOW[RestoreColor] node is a neutral node.[BR]
+	These are usually empty or[BR]
+	abandoned, but you might just[BR]run into danger regardless.
+	[Wait][End]
+}
+
+#message:2F:072
+{
+	[Style Right]A [SaveColor][Color:07]RED[RestoreColor] node is a hostile node. If[BR]
+	you go here, you're almost[BR]
+	guaranteed to get into a fight!
+	[Wait][End]
+}
+
+#message:2F:073
+{
+	[Style Right]A [SaveColor][Color:02]BLUE[RestoreColor] node is an anomaly. You[BR]
+	never know what you might find[BR]
+	here!
+	[Wait][End]
+}
+
+#message:2F:074
+{
+	[Style Right]Finally, at the end of each sector[BR]
+	you'll find a [SaveColor][Color:08]PURPLE[RestoreColor] Tatanga[BR]Station.[BR]
+	[Wait][Next]
+	These will block the path[BR]
+	to the next sector until they're[BR]
+	taken out.[BR]
+	[Wait][Next]
+	You're guaranteed to find a[BR]
+	strong enemy here, but they also[BR]
+	guard powerful treasures![BR]
+	[Wait][Next]
+	Once you've taken out the[BR]
+	station, you'll be given a choice of[BR]
+	which sector to go to next.[BR]
+	[Wait][Next]
+	A Friendly sector will generally[BR]
+	have more Friendly nodes, and...[BR]
+	well, you get the idea.[BR]
+	[Wait][Next]
+	That concludes the space travel[BR]
+	portion of the tutorial. But[BR]
+	there's one last thing to go over...
+	[Wait][End]
+}
+
+#message:2F:075
+{
+	[Style Right]If you ever find yourself on a[BR]
+	screen like this, it means you're[BR]
+	about to experience space[BR]
+	combat![BR]
+	[Wait][Next]
+	Sometimes, this will just be a[BR]
+	matter of dodging asteroids,[BR]
+	with weapons disabled.[BR]
+	[Wait][Next]
+	Other times, your weapons will be[BR]
+	online, and you'll need to shoot[BR]
+	down enemy ships![BR]
+	[Wait][Next]
+	You can move around to dodge[BR]
+	oncoming obstacles, and press the[BR]
+	[A] button to fire your weapon.[BR]
+	[Wait][Next]
+	Different ships have access to[BR]
+	different weapons, some of which[BR]
+	are stronger or weaker than[BR]
+	others.[BR]
+	[Wait][Next]
+	Getting hit will cause you to take[BR]
+	damage. Usually you'll be able to[BR]
+	escape if your hull becomes too[BR]
+	damaged...[BR]
+	[Wait][Next]
+	However, especially powerful[BR]
+	foes may destroy you outright![BR]
+	[Wait][Next]
+	At the end of a space combat[BR]
+	mission, you'll gain some coins for[BR]
+	each treasure you picked up and[BR]
+	each foe you shot down.[BR]
+	[Wait][Next]
+	You'll also get a huge bonus if[BR]
+	you managed to avoid taking any[BR]
+	damage!
+	[Wait][End]
+}
+
+#message:2F:076
+{
+	[Style Right]That concludes our tutorial![BR]
+	[Wait][Next]
+	If you ever need a refresher,[BR]
+	just talk to me!
+	[Wait][End]
+}
+
+#message:2F:077
+{
+	[Style Right]Howdy, Mario! Want to go through[BR]
+	the Tutorial?
+	[Yield][End]
+}
+
+#message:2F:078
+{
+	[Style Right]Choose the Sarasaland Cruiser[BR]
+	as your ship?
+	[Yield][End]
 }

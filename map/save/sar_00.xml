@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Map name="sar_00" author="unnamed" textures="sta_tex">
 	<Editor>
-		<Camera pos="-346.427429,93.560265,-868.896973" pitch="6.000000" yaw="180.000000"/>
-		<Camera pos="-50.472488,65536.000000,69.421288"/>
+		<Camera pos="-260.759949,138.792984,352.796204" pitch="40.399998" yaw="357.600159"/>
+		<Camera pos="-276.950531,65536.000000,229.829178"/>
 		<Camera pos="65536.000000,213.152817,-97.891968"/>
 		<Camera pos="38.788158,41.862507,65536.000000"/>
 	</Editor>
@@ -103,21 +103,22 @@
 		</Node>
 	</ZoneTree>
 	<MarkerTree>
-		<Node name="Root" id="C">
-			<Node name="Entrances" id="0">
+		<Node name="Root" id="D">
+			<Node name="Entrances" id="1">
 				<Node name="GameStart" id="FFFFFFFF"/>
+				<Node name="TutorialEnd" id="0"/>
 			</Node>
-			<Node name="Badge1" id="1"/>
-			<Node name="Badge2" id="2"/>
-			<Node name="Badge3" id="3"/>
-			<Node name="Badge4" id="4"/>
-			<Node name="Astro" id="5"/>
-			<Node name="Merlon" id="6"/>
-			<Node name="Daisy" id="7"/>
-			<Node name="ChetRippo" id="8"/>
-			<Node name="Test" id="9"/>
-			<Node name="Exit" id="A"/>
-			<Node name="TestT" id="B"/>
+			<Node name="Badge1" id="2"/>
+			<Node name="Badge2" id="3"/>
+			<Node name="Badge3" id="4"/>
+			<Node name="Badge4" id="5"/>
+			<Node name="Astro" id="6"/>
+			<Node name="Merlon" id="7"/>
+			<Node name="Daisy" id="8"/>
+			<Node name="ChetRippo" id="9"/>
+			<Node name="Test" id="A"/>
+			<Node name="Exit" id="B"/>
+			<Node name="TestT" id="C"/>
 		</Node>
 	</MarkerTree>
 	<LightSets>
@@ -8925,53 +8926,56 @@
 	</Zones>
 	<Markers>
 		<Marker ver="4" type="Root">
-			<MapObject name="Root" id="C"/>
+			<MapObject name="Root" id="D"/>
 		</Marker>
 		<Marker ver="4" type="NPC" pos="-100,0,250" yaw="0.000000">
-			<MapObject name="TestT" id="B"/>
+			<MapObject name="TestT" id="C"/>
 			<Movement type="Stationary" data="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
 			<Sprite sprite="83" palette="2" animations="1,2,3,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
 		</Marker>
 		<Marker ver="4" type="Entry" pos="-359,0,-315" yaw="0.000000">
-			<MapObject name="Exit" id="A"/>
+			<MapObject name="Exit" id="B"/>
 		</Marker>
 		<Marker ver="4" type="Position" pos="0,-101,0" yaw="0.000000">
-			<MapObject name="Test" id="9"/>
+			<MapObject name="Test" id="A"/>
 		</Marker>
 		<Marker ver="4" type="NPC" pos="-168,0,-67" yaw="0.000000">
-			<MapObject name="ChetRippo" id="8"/>
+			<MapObject name="ChetRippo" id="9"/>
 			<Movement type="Stationary" data="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
 			<Sprite sprite="A6" palette="0" animations="1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
 		</Marker>
 		<Marker ver="4" type="NPC" pos="40,5,-320" yaw="0.000000">
-			<MapObject name="Daisy" id="7"/>
+			<MapObject name="Daisy" id="8"/>
 			<Movement type="Stationary" data="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
 			<Sprite sprite="1" palette="0" animations="1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
 		</Marker>
 		<Marker ver="4" type="NPC" pos="182,0,183" yaw="0.000000">
-			<MapObject name="Merlon" id="6"/>
+			<MapObject name="Merlon" id="7"/>
 			<Movement type="Wander" data="B6,0,B7,5A,5A,FFFF8001,1,B6,0,B7,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
 			<Sprite sprite="A5" palette="0" animations="1,2,3,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
 		</Marker>
 		<Marker ver="4" type="NPC" pos="-250,0,250" yaw="0.000000">
-			<MapObject name="Astro" id="5"/>
+			<MapObject name="Astro" id="6"/>
 			<Movement type="Stationary" data="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
 			<Sprite sprite="83" palette="4" animations="1,2,3,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
 		</Marker>
 		<Marker ver="4" type="Position" pos="80,40,-238" yaw="270.000000">
-			<MapObject name="Badge4" id="4"/>
+			<MapObject name="Badge4" id="5"/>
 		</Marker>
 		<Marker ver="4" type="Position" pos="80,40,-164" yaw="270.000000">
-			<MapObject name="Badge3" id="3"/>
+			<MapObject name="Badge3" id="4"/>
 		</Marker>
 		<Marker ver="4" type="Position" pos="80,40,-89" yaw="270.000000">
-			<MapObject name="Badge2" id="2"/>
+			<MapObject name="Badge2" id="3"/>
 		</Marker>
 		<Marker ver="4" type="Position" pos="80,40,-15" yaw="270.000000">
-			<MapObject name="Badge1" id="1"/>
+			<MapObject name="Badge1" id="2"/>
 		</Marker>
 		<Marker ver="4" type="Group">
-			<MapObject name="Entrances" id="0"/>
+			<MapObject name="Entrances" id="1"/>
+		</Marker>
+		<Marker ver="4" type="Entry" pos="-300,0,250" yaw="90.000000">
+			<MapObject name="TutorialEnd" id="0"/>
 		</Marker>
 		<Marker ver="4" type="Entry" pos="-380,0,180" yaw="90.000000">
 			<MapObject name="GameStart" id="FFFFFFFF"/>
@@ -8997,7 +9001,8 @@
 			<TexPanner id="F" generate="false"/>
 		</TexPanners>
 		<Generators>
-			<Entrance name="Start" type="Teleport" hasCallback="false" entry="GameStart"/>
+			<Entrance name="AfterTutorial" type="Teleport" hasCallback="true" entry="TutorialEnd"/>
+			<Entrance name="Start" type="Teleport" hasCallback="true" entry="GameStart"/>
 			<Exit name="ToLaunchpad" type="Walk" hasCallback="false" entry="Exit" destMap="sec_00" destEntry="SectorStart" trigger="ExitCollider"/>
 		</Generators>
 		<Camera vfov="25" near="16" far="4096" bgcolor="0,0,0" leadsPlayer="false"/>
