@@ -370,7 +370,10 @@
             ExecWait  DoBurnHit
             SetConst  *Var0  00000001
             SetConst  *Var1  0062010F
-            Call AddActorVar ( .Actor:Enemy0 .AVar:HasSummoned 1` )
+            Call ActorExists ( .Actor:Enemy0 *Var2 )
+            If *Var2 == .True
+                Call AddActorVar ( .Actor:Enemy0 .AVar:HasSummoned 1` )
+            EndIf
             ExecWait  DoDeath
             Return
         Case  ==  .Event:SpinSmashHit % B
@@ -383,7 +386,10 @@
             ExecWait  DoSpinSmashHit
             SetConst  *Var0  00000001
             SetConst  *Var1  00620109
-            Call AddActorVar ( .Actor:Enemy0 .AVar:HasSummoned 1` )
+            Call ActorExists ( .Actor:Enemy0 *Var2 )
+            If *Var2 == .True
+                Call AddActorVar ( .Actor:Enemy0 .AVar:HasSummoned 1` )
+            EndIf
             ExecWait  DoDeath
             Return
         Case  ==  .Event:ShockHit % 2F
@@ -410,7 +416,10 @@
             ExecWait  DoShockHit
             SetConst  *Var0  00000001
             SetConst  *Var1  00620109
-            Call AddActorVar ( .Actor:Enemy0 .AVar:HasSummoned 1` )
+            Call ActorExists ( .Actor:Enemy0 *Var2 )
+            If *Var2 == .True
+                Call AddActorVar ( .Actor:Enemy0 .AVar:HasSummoned 1` )
+            EndIf
             ExecWait  DoDeath
             Return
         Case  ==  .Event:StarBeam % 13
@@ -428,7 +437,10 @@
             Wait  10`
             SetConst  *Var0  00000001
             SetConst  *Var1  00620109
-            Call AddActorVar ( .Actor:Enemy0 .AVar:HasSummoned 1` )
+            Call ActorExists ( .Actor:Enemy0 *Var2 )
+            If *Var2 == .True
+                Call AddActorVar ( .Actor:Enemy0 .AVar:HasSummoned 1` )
+            EndIf
             ExecWait  DoDeath
             Return
         Case  ==  .Event:EndFirstStrike % 35

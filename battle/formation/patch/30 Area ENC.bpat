@@ -4,10 +4,16 @@
 #import enemy/1B_ElectroBlooper.bpat
 #import newenemy/BlizterBlasterShiver.bpat
 #import newenemy/BlizterBillShiver.bpat
+#import newenemy/PirateGoomba.bpat
+#import newenemy/PirateSpikedGoomba.bpat
+#import newenemy/PirateGoombaBroA1.bpat
+#import newenemy/PirateGoombaBroB1.bpat
+#import newenemy/PirateGoombaKing.bpat
 
 #new:FormationTable $FormationTable
 {
-	00000000 00000001 $Formation_00 $Stage_8021F90C 00000000
+	00000000 00000001 $Formation_00 $Stage_encbt00 00000000
+	00000000 00000001 $Formation_01 $Stage_encbt00 00000000
 	00000000 00000000 00000000 00000000 00000000
 }
 
@@ -36,6 +42,11 @@
 	110` 0` 20`
 }
 
+#new:Vector3D $Vector3D_PirateGoombaKing
+{
+	125` 0` 20`
+}
+
 /%
 #new:Formation $Formation_17
 {
@@ -53,56 +64,82 @@
 	% $MantleMole 00000002 00000009 00000000 00000000 00000000 00000000
 }
 
+#new:Formation $Formation_01
+{
+	$PirateGoombaKing $Vector3D_PirateGoombaKing 0000000A 00000000 00000000 00000000 00000000
+}
+
 #new:StageTable $StageTable
 {
-	$ASCII_80220150 $Stage_8021F90C
+	$ASCII_encbt00StageName $Stage_encbt00
+	$ASCII_encbt01StageName $Stage_encbt01
 	00000000 00000000
 }
 
-#new:ASCII $ASCII_80220150
+#new:ASCII $ASCII_encbt00StageName
 {
-	"sbk_01"
+	"enc_bt00"
 }
 
-#new:Stage $Stage_8021F90C
+#new:Stage $Stage_encbt00
 {
-	$ASCII_80220028  % sbk_tex
-	$ASCII_80220018  % sbk_bt02_shape
-	$ASCII_80220008  % sbk_bt02_hit
+	$ASCII_sta_tex  % sta_tex
+	$ASCII_enc_bt00_shape  % enc_bt00_shape
+	$ASCII_enc_bt00_hit  % enc_bt00_hit
 	00000000
 	00000000
-	$ASCII_80220000  % sbk_bg
-	$ForegroundModelList_8021F8F8
+	00000000  % sbk_bg
+	00000000
 	00000000
 	00000000
 	00000000
 }
 
-#new:ASCII $ASCII_80220000
+#new:ASCII $ASCII_enc_bt00_hit
 {
-	"sbk_bg"
+	"enc_bt00_hit"
 }
 
-#new:ASCII $ASCII_80220008
+#new:ASCII $ASCII_enc_bt00_shape
 {
-	"sbk_bt02_hit"
+	"enc_bt00_shape"
 }
 
-#new:ASCII $ASCII_80220018
+#new:ASCII $ASCII_sta_tex
 {
-	"sbk_bt02_shape"
+	"sta_tex"
 }
 
-#new:ASCII $ASCII_80220028
+#new:ASCII $ASCII_encbt01StageName
 {
-	"sbk_tex"
+	"enc_bt01"
 }
 
-#new:ForegroundModelList $ForegroundModelList_8021F8F8
+#new:Stage $Stage_encbt01
 {
-	~Model:sbk_bt02:o322
-	~Model:sbk_bt02:o321
-	~Model:sbk_bt02:o320
-	~Model:sbk_bt02:o319
+	$ASCII_ast_tex  % ast_tex
+	$ASCII_enc_bt01_shape  % enc_bt01_shape
+	$ASCII_enc_bt01_hit  % enc_bt01_hit
 	00000000
+	00000000
+	00000000  % sbk_bg
+	00000000
+	00000000
+	00000000
+	00000000
+}
+
+#new:ASCII $ASCII_enc_bt01_hit
+{
+	"enc_bt01_hit"
+}
+
+#new:ASCII $ASCII_enc_bt01_shape
+{
+	"enc_bt01_shape"
+}
+
+#new:ASCII $ASCII_ast_tex
+{
+	"ast_tex"
 }

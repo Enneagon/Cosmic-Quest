@@ -23,7 +23,7 @@
 
 #new:NpcGroupList $NpcGroupList_Always
 {
-	00000001 $NpcGroup_Always 00000000
+	00000001 $NpcGroup_Always 30010000
     00000000 00000000 00000000
 }
 
