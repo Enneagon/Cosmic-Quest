@@ -932,3 +932,25 @@
 	as your ship?
 	[Yield][End]
 }
+
+#message:2F:079
+{
+	[Style Right]Thank you for playing this[BR]
+	proof-of-concept demo![BR]
+	[Wait][Next]
+	While life circumstances hindered[BR]
+	our team within the deadline, we[BR]
+	fully intend to keep working on[BR]
+	this hack to completion.[BR]
+	[Wait][Next]
+	We hope you enjoyed this little[BR]
+	taste of what's to come. Until[BR]
+	next time... Adieu!
+	[Wait][End]
+}
+
+#message:2F:07A
+{
+	[Style Right]I will eventually teach you about[BR]
+	Anomaly Modifiers.[Wait][End]
+}

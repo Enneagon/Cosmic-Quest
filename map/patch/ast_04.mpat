@@ -35,7 +35,7 @@
             Call EnableGroup ( ~Model:Rocket1 .True )
             Loop
                 Call  GetPlayerPos ( *Var0 *Var1 *Var2 )
-                Call  TranslateGroup ( ~Model:Rocket1 *Var0 00000000 *Var2 )
+                Call  TranslateGroup ( ~Model:Body1 *Var0 00000000 *Var2 )
                 Wait  1`
             EndLoop
         EndSwitch
@@ -691,7 +691,7 @@ EndLoop
         Call  ShowMessageAtScreenPos    ( 002F005D  160`  40` ) % We gotta get outta here!
         Set *MB_SpaceCoins 0`
         Set *MB_EnemiesDestroyed 0`
-        Call GotoMap ( "sar_00" ~Entry:sar_00:GameStart )
+        Call  GotoMapByID ( *MB_LastArea *MB_LastMap *MB_LastNode )
     EndIf
     Return
     End
@@ -1528,7 +1528,7 @@ EndLoop
     Wait 60`
     Set *MB_SpaceCoins 0`
     Set *MB_EnemiesDestroyed 0`
-    Call GotoMap ( "sar_00" ~Entry:sar_00:GameStart )
+    Call  GotoMapByID ( *MB_LastArea *MB_LastMap *MB_LastNode )
     Return
     End
 }

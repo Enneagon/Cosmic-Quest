@@ -50,3 +50,4 @@
 033 = MB_DifficultyLevel
 034 = MB_TotalDifficulty
 035 = MB_RandBadgesSeen
+036 = MB_CurrentScenario

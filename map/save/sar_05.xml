@@ -4435,7 +4435,7 @@
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
 			<MapObject name="TorusModel" id="4"/>
-			<ShapeMesh ver="3" texture="kmr_berosaidetif">
+			<ShapeMesh ver="3" texture="">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
 					<F3DEX2 cmd="D9FDFFFF,0"/>
@@ -4763,7 +4763,7 @@
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
 			<MapObject name="DrawnModel" id="2"/>
-			<ShapeMesh ver="3" texture="kmr_berosaidetif">
+			<ShapeMesh ver="3" texture="">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
 					<F3DEX2 cmd="D9FDFFFF,0"/>
@@ -4883,7 +4883,7 @@
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
 			<MapObject name="DrawnModel" id="1"/>
-			<ShapeMesh ver="3" texture="kmr_berosaidetif">
+			<ShapeMesh ver="3" texture="">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
 					<F3DEX2 cmd="D9FDFFFF,0"/>
@@ -5003,7 +5003,7 @@
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
 			<MapObject name="Body1" id="0"/>
-			<ShapeMesh ver="3" texture="kmr_kkg_yukatif">
+			<ShapeMesh ver="3" texture="">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
 					<F3DEX2 cmd="D9FDFFFF,0"/>

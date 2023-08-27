@@ -1,0 +1,200 @@
+@ $Script_Main {
+    Set   *GB_WorldLocation  .Location:GoombaRoad
+    Call  SetCamPerspective  ( .Cam:Default 00000003 00000019 00000010 00001000 )
+    Call  SetCamBGColor      ( .Cam:Default 00000000 00000000 00000000 )
+    Call  SetCamEnabled      ( .Cam:Default .True
+    Call  SetCamLeadPlayer   ( .Cam:Default .False )
+    Exec  $Script_SetupMusic
+    Exec  $Script_ShipBindsToMario
+    Exec  $Script_EnterMap
+    Exec  $Script_Main_Callback_AfterEnterMap
+    Return
+    End
+}
+
+#new:Script $Script_ShipBindsToMario
+{
+    Call EnableGroup ( ~Model:Ships .False )
+    Switch *MB_CurrentShip
+    Case == 1`    
+        Call EnableGroup ( ~Model:Rocket1 .True )
+        Thread
+            Loop
+                Call  GetPlayerPos ( *Var0 *Var1 *Var2 )
+                Call  TranslateGroup ( ~Model:Rocket1 *Var0 00000000 *Var2 )
+                Wait  1`
+            EndLoop
+        EndThread
+    Case == 2`    
+        Call EnableGroup ( ~Model:Rocket2 .True )
+        Thread
+            Loop
+                Call  GetPlayerPos ( *Var0 *Var1 *Var2 )
+                Call  TranslateGroup ( ~Model:Rocket2 *Var0 00000000 *Var2 )
+                Call  RotateGroup ( ~Model:Rocket2 *MapVar[0] 00000000 00000001 00000000 )
+                Add  *MapVar[0] -1`
+                Wait  1`
+            EndLoop
+        EndThread
+    EndSwitch
+    Return
+    End
+}
+
+@ $Script_Main_Callback_AfterEnterMap {
+    Call  DisablePlayerInput ( .True )
+    Set *MF_DisableFootstepSFX .True
+    Switch *MB_CurrentNode
+    CaseOR == 4`
+    CaseOR == 3`
+        Call  ShowMessageAtScreenPos    ( 002F0002  160`  40` )
+        Call  ShowChoice ( 002F0014 ) % One node choice - Tatanga Station!
+        Call CloseMessage()
+        Call  GetModelCenter ( ~Model:Node99 )
+        Call  PlayerMoveTo ( *Var0 *Var2 60` )
+            Wait  20`
+            Set *MB_CurrentNode 99`
+            Call $Function_GetArbitraryByte ( *MB_LastArea 800740AB )
+            Call GetMapID ( *MB_LastMap )
+            SetConst *MB_LastNode ~Entry:sec_00:Node99
+            Exec $Script_TatangaStation
+    EndCaseGroup
+    Case == 2`
+        Wait 1`
+            Set *Var3 002F000D
+        Call  SetMessageString ( *Var3 00000000 )
+        Wait 1`
+            Set *Var3 002F000E
+        Call  SetMessageString ( *Var3 00000001 )
+        Call  ShowMessageAtScreenPos    ( 002F0002  160`  40` )
+        Call  ShowChoice ( 002F0006 )
+        If  *Var0  ==  00000000
+            Call CloseMessage()
+            Call  GetModelCenter ( ~Model:Node3y )
+            Call  PlayerMoveTo ( *Var0 *Var2 60` )
+            Wait  20`
+            Call $Function_GetArbitraryByte ( *MB_LastArea 800740AB )
+            Call GetMapID ( *MB_LastMap )
+            SetConst *MB_LastNode ~Entry:sec_00:Node3
+            Set *MB_CurrentNode 3`
+                Exec $Script_NeutralPool
+        Else
+            Call CloseMessage()
+            Call  GetModelCenter ( ~Model:Node4r )
+            Call  PlayerMoveTo ( *Var0 *Var2 60` )
+            Wait  20`
+            Call $Function_GetArbitraryByte ( *MB_LastArea 800740AB )
+            Call GetMapID ( *MB_LastMap )
+            SetConst *MB_LastNode ~Entry:sec_00:Node4
+            Set *MB_CurrentNode 4`
+                Exec $Script_HostilePool
+        EndIf
+    Case == 1`
+        Wait 1`
+            Set *Var3 002F000D
+        Call  SetMessageString ( *Var3 00000000 )
+        Wait 1`
+            Set *Var3 002F000E
+        Call  SetMessageString ( *Var3 00000001 )
+        Call  ShowMessageAtScreenPos    ( 002F0002  160`  40` )
+        Call  ShowChoice ( 002F0006 )
+        If  *Var0  ==  00000000
+            Call CloseMessage()
+            Call  GetModelCenter ( ~Model:Node3y )
+            Call  PlayerMoveTo ( *Var0 *Var2 60` )
+            Wait  20`
+            Call $Function_GetArbitraryByte ( *MB_LastArea 800740AB )
+            Call GetMapID ( *MB_LastMap )
+            SetConst *MB_LastNode ~Entry:sec_00:Node3
+            Set *MB_CurrentNode 3`
+                Exec $Script_NeutralPool
+        Else
+            Call CloseMessage()
+            Call  GetModelCenter ( ~Model:Node4r )
+            Call  PlayerMoveTo ( *Var0 *Var2 60` )
+            Wait  20`
+            Call $Function_GetArbitraryByte ( *MB_LastArea 800740AB )
+            Call GetMapID ( *MB_LastMap )
+            SetConst *MB_LastNode ~Entry:sec_00:Node4
+            Set *MB_CurrentNode 4`
+                Exec $Script_HostilePool
+        EndIf
+    Default
+        Wait 1`
+            Set *Var3 002F000C
+        Call  SetMessageString ( *Var3 00000000 )
+        Wait 1`
+            Set *Var3 002F000D
+        Set *Debug[0] *MB_Node1
+        Call  SetMessageString ( *Var3 00000001 )
+        Call  ShowMessageAtScreenPos    ( 002F0002  160`  40` )
+        Call  ShowChoice ( 002F0006 )
+        If  *Var0  ==  00000000
+            Call CloseMessage()
+            Call  GetModelCenter ( ~Model:Node1g )
+            Call  PlayerMoveTo ( *Var0 *Var2 60` )
+            Wait  20`
+            Call $Function_GetArbitraryByte ( *MB_LastArea 800740AB )
+            Call GetMapID ( *MB_LastMap )
+            SetConst *MB_LastNode ~Entry:sec_00:Node1
+            Set *MB_CurrentNode 1`
+                Exec $Script_FriendlyPool
+        Else
+            Call CloseMessage()
+            Call  GetModelCenter ( ~Model:Node2y )
+            Call  PlayerMoveTo ( *Var0 *Var2 60` )
+            Wait  20`
+            Call $Function_GetArbitraryByte ( *MB_LastArea 800740AB )
+            Call GetMapID ( *MB_LastMap )
+            SetConst *MB_LastNode ~Entry:sec_00:Node2
+            Set *MB_CurrentNode 2`
+                Exec $Script_NeutralPool
+        EndIf
+    EndSwitch
+    Return
+    End
+}
+
+#new:Script $Script_FriendlyPool
+{
+    Call RandInt ( 100` *MB_CurrentScenario )
+    Switch *MB_CurrentScenario
+    Case 0` to 100`
+        Call GotoMap ( "enc_07" ~Entry:enc_07:Entrance )
+    EndSwitch
+    Return
+    End
+}
+
+#new:Script $Script_NeutralPool
+{
+    Call RandInt ( 100` *MB_CurrentScenario )
+    Switch *MB_CurrentScenario
+    Case 0` to 100`
+        Call GotoMap ( "ast_00" ~Entry:ast_00:entry_w )
+    EndSwitch
+    Return
+    End
+}
+
+#new:Script $Script_HostilePool
+{
+    Call RandInt ( 100` *MB_CurrentScenario )
+    Switch *MB_CurrentScenario
+    Case 0` to 100`
+        Call GotoMap ( "ast_04" ~Entry:ast_04:entry_w )
+    EndSwitch
+    Return
+    End
+}
+
+#new:Script $Script_TatangaStation
+{
+    Call RandInt ( 100` *MB_CurrentScenario )
+    Switch *MB_CurrentScenario
+    Case 0` to 100`
+        Call GotoMap ( "enc_0A" ~Entry:enc_0A:StationEntry )
+    EndSwitch
+    Return
+    End
+}
