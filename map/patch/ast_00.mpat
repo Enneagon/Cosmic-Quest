@@ -17,6 +17,8 @@
 
 #new:Script $Script_ShipBindsToMario
 {
+    Call DisablePartnerAI ( 00000000 )
+    Call SetNpcPos ( .Npc:Partner 1000` 0` 0` )
     Thread
         If *MapFlag[0] == .True
             Return
