@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Map name="enc_0A" author="unnamed" textures="sta_tex">
 	<Editor>
-		<Camera pos="-360.113373,90.873871,167.871368" pitch="14.639998" yaw="16.714043"/>
+		<Camera pos="307.787354,80.466385,153.092041" pitch="35.759991" yaw="1.194047"/>
 		<Camera pos="-265.619781,65536.000000,63.437370"/>
 		<Camera pos="65536.000000,0.480568,26.736731"/>
 		<Camera pos="-347.845154,102.746307,65536.000000"/>
@@ -18,13 +18,14 @@
 		</Node>
 	</ModelTree>
 	<ColliderTree>
-		<Node name="Root" id="6">
+		<Node name="Root" id="7">
 			<Node name="Stage" id="0"/>
 			<Node name="HullCollider" id="1"/>
 			<Node name="MeshCollider" id="2"/>
 			<Node name="FloorCollider" id="3"/>
 			<Node name="WallCollider" id="4"/>
 			<Node name="FloorCollider" id="5"/>
+			<Node name="TopCollider" id="6"/>
 		</Node>
 	</ColliderTree>
 	<ZoneTree>
@@ -54,7 +55,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="Planar GridModel" id="6"/>
+			<MapObject name="Planar GridModel" id="6" hidden="true"/>
 			<ShapeMesh ver="3" texture="sta_checktif">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -80,7 +81,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="ProjectionModel" id="5"/>
+			<MapObject name="ProjectionModel" id="5" hidden="true"/>
 			<ShapeMesh ver="3" texture="sta_shiptech1">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -148,7 +149,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="Planar GridModel" id="4"/>
+			<MapObject name="Planar GridModel" id="4" hidden="true"/>
 			<ShapeMesh ver="3" texture="sta_shiptech1">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -168,7 +169,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="CubeModel" id="3"/>
+			<MapObject name="CubeModel" id="3" hidden="true"/>
 			<ShapeMesh ver="3" texture="sta_checktif">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -218,7 +219,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="CubeModel" id="2"/>
+			<MapObject name="CubeModel" id="2" hidden="true"/>
 			<ShapeMesh ver="3" texture="sta_checktif">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -268,7 +269,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="Radial GridModel" id="1"/>
+			<MapObject name="Radial GridModel" id="1" hidden="true"/>
 			<ShapeMesh ver="3" texture="sta_checktif">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -316,8 +317,26 @@
 	</Models>
 	<Colliders>
 		<Collider ver="0" flags="0">
-			<MapObject name="Root" id="6"/>
+			<MapObject name="Root" id="7"/>
 			<HitObject type="ROOT"/>
+		</Collider>
+		<Collider ver="0" flags="0">
+			<MapObject name="TopCollider" id="6"/>
+			<HitObject type="HIT"/>
+			<HitMesh ver="0">
+				<TriangleBatch ver="0">
+					<VertexTable>
+						<Vertex xyz="290,40,86" uv="0,-2048"/>
+						<Vertex xyz="290,40,136" uv="0,-1024"/>
+						<Vertex xyz="340,40,86" uv="1024,-2048"/>
+						<Vertex xyz="340,40,136" uv="1024,-1024"/>
+					</VertexTable>
+					<TriangleList>
+						<Triangle ijk="0,1,2"/>
+						<Triangle ijk="2,1,3"/>
+					</TriangleList>
+				</TriangleBatch>
+			</HitMesh>
 		</Collider>
 		<Collider ver="0" flags="0">
 			<MapObject name="FloorCollider" id="5"/>
@@ -421,12 +440,6 @@
 			<HitMesh ver="0">
 				<TriangleBatch ver="0">
 					<VertexTable>
-						<Vertex xyz="290,40,86" uv="0,-2048"/>
-						<Vertex xyz="290,40,136" uv="0,-1024"/>
-						<Vertex xyz="340,40,86" uv="1024,-2048"/>
-						<Vertex xyz="340,40,86" uv="1024,-2048"/>
-						<Vertex xyz="290,40,136" uv="0,-1024"/>
-						<Vertex xyz="340,40,136" uv="1024,-1024"/>
 						<Vertex xyz="265,20,61" uv="0,-2048"/>
 						<Vertex xyz="265,20,161" uv="0,-1024"/>
 						<Vertex xyz="365,20,61" uv="1024,-2048"/>
@@ -437,8 +450,6 @@
 					<TriangleList>
 						<Triangle ijk="0,1,2"/>
 						<Triangle ijk="3,4,5"/>
-						<Triangle ijk="6,7,8"/>
-						<Triangle ijk="9,10,11"/>
 					</TriangleList>
 				</TriangleBatch>
 			</HitMesh>

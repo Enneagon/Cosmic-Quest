@@ -17,6 +17,8 @@
 
 #new:Script $Script_ShipBindsToMario
 {
+    Call DisablePartnerAI ( 00000000 )
+    Call SetNpcPos ( .Npc:Partner 1000` 0` 0` )
     Thread
         If *MapFlag[0] == .True
             Return
@@ -24,7 +26,7 @@
         Set *MapFlag[0] .True
         Loop
             Call  GetPlayerPos ( *Var0 *Var1 *Var2 )
-            Call  TranslateModel ( ~Model:Rocket1 *Var0 00000000 *Var2 )
+            Call  TranslateModel ( ~Model:Body1 *Var0 00000000 *Var2 )
             Wait  1`
         EndLoop
     EndThread
@@ -227,7 +229,7 @@
         Call  ShowMessageAtScreenPos    ( 002F005D  160`  40` ) % We gotta get outta here!
         Set *MB_SpaceCoins 0`
         Set *MB_EnemiesDestroyed 0`
-        Call GotoMap ( "sar_00" ~Entry:sar_00:GameStart )
+        Call  GotoMapByID ( *MB_LastArea *MB_LastMap *MB_LastNode )
     EndIf
     Return
     End
@@ -269,7 +271,7 @@
     Wait 60`
     Set *MB_SpaceCoins 0`
     Set *MB_EnemiesDestroyed 0`
-    Call GotoMap ( "sar_00" ~Entry:sar_00:GameStart )
+    Call  GotoMapByID ( *MB_LastArea *MB_LastMap *MB_LastNode )
     Return
     End
 }

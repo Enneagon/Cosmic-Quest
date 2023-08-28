@@ -4,3 +4,8 @@
 	deals![BR][Wait][Next]
 	How can I help you today?[Yield][End]
 }
+
+#message:32:001
+{
+	[Style Right]Return to your ship?[Yield][End]
+}

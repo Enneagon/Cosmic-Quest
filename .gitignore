@@ -31,6 +31,9 @@ mod.cfg
 !/image/bg/obk_bg.png
 !/image/bg/omo_bg.png
 !/image/bg/star_bg.png
+!/image/bg/title_bg.png
+!/image/compressed/title_1.png
+!/image/compressed/title_3.png
 
 # Altered Music
 !/audio/bgm/01_118.bgm

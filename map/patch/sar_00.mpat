@@ -13,7 +13,7 @@
     Exec  $Script_SetupMusic
     Call  $Function_LuckyStar (  )
     Call  $Function_GetHammer (  )
-    Call $GivePartners ()
+%    Call $GivePartners ()
 %    Call  AddCoin ( 50` )
     Set  *GB_StoryProgress  .Story:Ch0_FoundHammer
     Exec  $Script_BindStuff
@@ -111,7 +111,7 @@
 #new:NpcGroupList $NpcGroupList_Always
 {
 	00000004 $NpcGroup_Always 00000000
-    00000001 $NpcGroup_Debug 00000000
+  %  00000001 $NpcGroup_Debug 00000000
     00000000 00000000 00000000
 }
 
@@ -264,6 +264,7 @@
         Call GetPlayerPos ( *Var0 *Var1 *Var2 )
         Call ResetCam ( .Cam:Default 5` )
         Wait 30`
+        Call  $Function_80241E90    ( 00000001 00000001 ) % Get Goombario
         Call  SetNpcPos ( .Npc:Self 0` -100` 0` )
         Call  ModifyColliderFlags   ( 00000000 ~Collider:DoorCollider 7FFFFE00 )
         Call DisablePlayerInput ( .False )
@@ -275,8 +276,117 @@
   End
 }
 
+#new:Function $Function_80241E90
+{
+    0:  ADDIU     SP, SP, FFD8
+    4:  SW        S2, 18 (SP)
+    8:  COPY      S2, A0
+    C:  SW        S1, 14 (SP)
+   10:  COPY      S1, A1
+   14:  SW        RA, 24 (SP)
+   18:  SW        S4, 20 (SP)
+   1C:  SW        S3, 1C (SP)
+   20:  SW        S0, 10 (SP)
+   24:  LW        S0, C (S2)
+   28:  LW        A1, 0 (S0)
+   2C:  JAL       ~Func:get_variable
+   30:  ADDIU     S0, S0, 4
+   34:  COPY      A0, S2
+   38:  LW        A1, 0 (S0)
+   3C:  JAL       ~Func:get_variable
+   40:  COPY      S0, V0
+   44:  COPY      A0, S0
+   48:  JAL       ~Func:get_npc_safe
+   4C:  COPY      S4, V0
+   50:  LA        S3, 8010F290
+   58:  BEQ       S1, R0, .o74
+   5C:  COPY      S0, V0
+   60:  LB        V0, 12 (S3)
+   64:  BNEL      V0, R0, .o74
+   68:  SW        R0, 70 (S2)
+   6C:  LI        V0, 2
+   70:  SW        V0, 70 (S2)
+        .o74
+   74:  LW        V1, 70 (S2)
+   78:  LI        S1, 1
+   7C:  BEQ       V1, S1, .oCC
+   80:  SLTI      V0, V1, 2
+   84:  BEQ       V0, R0, .o9C
+   88:  LI        V0, 2
+   8C:  BEQ       V1, R0, .oB4
+   90:  CLEAR     V0
+   94:  BEQ       R0, R0, .o164
+   98:  NOP
+        .o9C
+   9C:  BEQ       V1, V0, .oEC
+   A0:  LI        V0, 3
+   A4:  BEQ       V1, V0, .o120
+   A8:  CLEAR     V0
+   AC:  BEQ       R0, R0, .o164
+   B0:  NOP
+        .oB4
+   B4:  JAL       ~Func:switch_to_partner
+   B8:  CLEAR     A0
+   BC:  LI        V0, 1E
+   C0:  SW        V0, 74 (S2)
+   C4:  BEQ       R0, R0, .o160
+   C8:  SW        S1, 70 (S2)
+        .oCC
+   CC:  LW        V0, 74 (S2)
+   D0:  LI        V1, FFFF
+   D4:  ADDIU     V0, V0, FFFF
+   D8:  BNE       V0, V1, .o160
+   DC:  SW        V0, 74 (S2)
+   E0:  LI        V0, 2
+   E4:  BEQ       R0, R0, .o160
+   E8:  SW        V0, 70 (S2)
+        .oEC
+   EC:  COPY      A0, S0
+   F0:  SLL       V0, S4, 18
+   F4:  SRA       V0, V0, 15
+   F8:  ADDU      V0, S3, V0
+   FC:  SB        S4, 12 (S3)
+  100:  JAL       ~Func:partner_clear_player_tracking
+  104:  SB        S1, 14 (V0)
+  108:  LB        A0, 12 (S3)
+  10C:  JAL       800EB2A4
+  110:  NOP
+  114:  LI        V0, 3
+  118:  BEQ       R0, R0, .o160
+  11C:  SW        V0, 70 (S2)
+        .o120
+  120:  JAL       ~Func:get_npc_safe
+  124:  LI        A0, FFFC
+  128:  LW        A1, C (S0)
+  12C:  JAL       ~Func:set_npc_yaw
+  130:  COPY      A0, V0
+  134:  COPY      A0, S0
+  138:  LW        V0, 0 (S0)
+  13C:  LI        V1, FFFB
+  140:  AND       V0, V0, V1
+  144:  JAL       ~Func:disable_npc_shadow
+  148:  SW        V0, 0 (S0)
+  14C:  LIF       F0, -1000.0
+  154:  LI        V0, 2
+  158:  BEQ       R0, R0, .o164
+  15C:  SWC1      F0, 3C (S0)
+        .o160
+  160:  CLEAR     V0
+        .o164
+  164:  LW        RA, 24 (SP)
+  168:  LW        S4, 20 (SP)
+  16C:  LW        S3, 1C (SP)
+  170:  LW        S2, 18 (SP)
+  174:  LW        S1, 14 (SP)
+  178:  LW        S0, 10 (SP)
+  17C:  JR        RA
+  180:  ADDIU     SP, SP, 28
+}
+
 #new:Script $Script_Interact_ChetRippo
 {
+    Call  SpeakToPlayer ( .Npc:Self 00A60004 00A60001 00000000 002F007A ) % String
+    /%
   Call  SpeakToPlayer ( .Npc:Self 00A60004 00A60001 00000000 002F0056 ) % String
   Call  ShowCoinCounter ( .True )
   Call  SpeakToPlayer ( .Npc:Self 00A60004 00A60001 00000000 002F0057 ) % String
@@ -316,6 +426,7 @@
     Call CloseMessage ()
     Call  ShowCoinCounter ( .False )
   EndSwitch
+  %/
   Return
   End
 }
@@ -1715,6 +1826,21 @@
     Wait 30`
     Call SpeakToPlayer ( .NpcID:Astro 00830404 00830401 00000000 002F0076 )
     Call DisablePlayerInput ( .False )
+    Return
+    End
+}
+@ $Script_EnterMap {
+    Call  GetEntryID    ( *Var[0] )
+    Switch  *Var[0]
+        Case  ==  ~Entry:TutorialEnd
+            Exec  $Script_Callback_AfterTutorial
+            Exec  $Script_CreateExitTriggers
+        Case  ==  ~Entry:GameStart
+            Exec  $Script_Callback_Start
+            Exec  $Script_CreateExitTriggers
+        Default
+            Exec  $Script_CreateExitTriggers
+    EndSwitch
     Return
     End
 }

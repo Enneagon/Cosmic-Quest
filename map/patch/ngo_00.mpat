@@ -200,6 +200,7 @@ SH  r0, FFEE (t0)
      Set *MB_LastArea 0`
      Set *MB_LastMap 0`
      Set *MB_LastNode 0`
+     Set *MB_CurrentShip 0`
      Set *MF_SectorSeenRosalina .False
      Set *MF_SectorSeenKoopa .False
      Set *MF_SectorSeenGearmos .False

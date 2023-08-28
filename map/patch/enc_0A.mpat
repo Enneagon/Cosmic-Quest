@@ -6,7 +6,7 @@
     Call  SetCamBGColor      ( .Cam:Default 00000000 00000000 00000000 )
     Call  SetCamEnabled      ( .Cam:Default .True )
     Call  SetCamLeadPlayer   ( .Cam:Default .False )
-    Call  MakeItemEntity ( .Item:Boots2Icon ~Vec3d:Boots .ItemSpawnMode:Fixed_SpawnAlways_NeverVanish 00000000 )
+    Exec  $Script_FinalBoots
     Exec  $Script_MakeNPCs
     Exec  $Script_SetupMusic
     Exec  $Script_EnterMap
@@ -41,4 +41,22 @@
 {
 	00000000 001E0018 00000000 00000000 00000000 00000000 00000000 00000000
 	00000000 00000000 00630000
+}
+
+#new:Script $Script_FinalBoots
+{
+    Call  MakeItemEntity ( .Item:Boots2Icon ~Vec3d:Boots .ItemSpawnMode:Fixed_SpawnAlways_NeverVanish 00000000 )
+    Bind $Script_ThankYou .Trigger:FloorTouch ~Collider:TopCollider 00000001 00000000
+    Return
+    End
+}
+
+#new:Script $Script_ThankYou
+{
+    Call DisablePlayerInput ( .True )
+    Call ShowMessageAtScreenPos    ( 002F0079  160`  40` ) % Exit?
+    Call GotoMap ( "ngo_00" ~Entry:ngo_00:Entry0 )
+    Unbind
+    Return
+    End
 }

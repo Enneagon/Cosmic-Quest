@@ -36,9 +36,19 @@
     EndSwitch
     Call DisablePlayerInput ( .True )
     Call  ShowMessageAtScreenPos    ( 002F0062  160`  40` ) % Next Sector!
+    Call MakeLerp ( 0` 500` 120` .Easing:CubicIn )
+            Loop
+                Call  UpdateLerp ( )
+                Call  TranslateGroup ( ~Model:Rocket1 00000000 *Var0 00000000 )
+                Wait  1`
+                If  *Var1  ==  00000000
+                    BreakLoop
+                EndIf
+            EndLoop
+        Wait 30`
     Set *MF_NewSector .True
     Set *MB_CurrentNode 0`
-    Call GotoMapSpecial ( "sec_00" ~Entry:sec_00:SectorStart 0000000D )    % Mushroom Space!
+    Call GotoMapSpecial ( "sec_0A" ~Entry:sec_0A:SectorStart 0000000D )    % Mushroom Space!
     Return
     End
 }

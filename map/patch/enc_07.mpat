@@ -5,6 +5,8 @@
     Call  SetCamEnabled      ( .Cam:Default .True )
     Call  SetCamLeadPlayer   ( .Cam:Default .False )
     ExecWait $Script_RandomizeTerrain
+    Exec  $Script_RandomPrize
+    Bind  $Script_ExitAsteroid .Trigger:WallPressA ~Collider:ExitCollider 00000001 00000000
     Exec  $Script_SetupMusic
     Exec  $Script_EnterMap
     Return
@@ -52,12 +54,12 @@
         Call  EnableGroup ( ~Model:LoadGroupE .True )
         Call  ModifyColliderFlags   ( 00000001 ~Collider:ColliderGroupE 7FFFFE00 )
     EndIf
-    Call  RandInt ( 1` *Var0 )
-    Wait 1`
-    If *Var0 == 0`
+%    Call  RandInt ( 1` *Var0 ) % For the demo only, the picnic table (Group G) is always present.
+%    Wait 1`
+%    If *Var0 == 0`
         Call  EnableGroup ( ~Model:LoadGroupG .True )
         Call  ModifyColliderFlags   ( 00000001 ~Collider:ColliderGroupG 7FFFFE00 )
-    EndIf
+%    EndIf
     %If Orbulon is here, we can load his platform. Unfortunately, scenarios haven't been set up yet, so currently it's random too.
     Call  RandInt ( 1` *Var0 )
     Wait 1`
@@ -67,4 +69,28 @@
     EndIf
     Return
     End
+}
+
+#new:Script $Script_ExitAsteroid
+{
+    Call DisablePlayerInput ( .True )
+    Call ShowMessageAtScreenPos    ( 00320001  160`  40` ) % Exit?
+    Call ShowChoice ( 002F0001 )
+    If *Var0 == 00000000
+        Call CloseMessage ()
+        Call  GotoMapByID ( *MB_LastArea *MB_LastMap *MB_LastNode )
+    Else
+        Call CloseMessage ()
+        Call DisablePlayerInput ( .True )
+    EndIf
+    Return
+    End
+}
+
+#new:Script $Script_RandomPrize
+{
+     ExecWait $Script_GenerateRandomItem
+     Call MakeItemEntity ( *Var2 540` 40` 200` .ItemSpawnMode:Fixed_NeverVanish 00000000 )
+     Return
+     End
 }
