@@ -38,8 +38,8 @@
 		<Sprite id="23" src="23" name="Spiked Para Jr Troopa"/>
 		<Sprite id="24" src="24" name="Mage Jr Troopa"/>
 		<Sprite id="25" src="25" name="Para Jr Troopa"/>
-		<Sprite id="26" src="26" name="Goomba"/>
-		<Sprite id="27" src="27" name="Spiked Goomba"/>
+		<Sprite id="26" src="26 - Goombandit" name="Goombandit"/>
+		<Sprite id="27" src="27 - Spiked Goombandit" name="Spiked Goombandit"/>
 		<Sprite id="28" src="28" name="Paragoomba"/>
 		<Sprite id="29" src="29" name="Koopa Troopa"/>
 		<Sprite id="2A" src="2A" name="Para Troopa"/>
@@ -98,8 +98,8 @@
 		<Sprite id="5F" src="5F" name="Bush Matted"/>
 		<Sprite id="60" src="60" name="World Kammy"/>
 		<Sprite id="61" src="61" name="Battle Kammy"/>
-		<Sprite id="62" src="62" name="Goomba Bros"/>
-		<Sprite id="63" src="63 - Pirate Goomba King" name="Pirate Goomba King"/>
+		<Sprite id="62" src="62 - Goom Mate" name="Goomba Mate"/>
+		<Sprite id="63" src="63 - Capn Kuribo" name="Capn Kuribo"/>
 		<Sprite id="64" src="64" name="Spiky Goomnut"/>
 		<Sprite id="65" src="65" name="Dark Toad"/>
 		<Sprite id="66" src="66" name="Koopa Bros"/>

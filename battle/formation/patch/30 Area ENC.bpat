@@ -4,11 +4,10 @@
 #import enemy/1B_ElectroBlooper.bpat
 #import newenemy/BlizterBlasterShiver.bpat
 #import newenemy/BlizterBillShiver.bpat
-#import newenemy/PirateGoomba.bpat
-#import newenemy/PirateSpikedGoomba.bpat
-#import newenemy/PirateGoombaBroA1.bpat
-#import newenemy/PirateGoombaBroB1.bpat
-#import newenemy/PirateGoombaKing.bpat
+#import newenemy/Goombandit.bpat
+#import newenemy/SpikedGoombandit.bpat
+#import newenemy/GoomMate.bpat
+#import newenemy/CapnKuribo.bpat
 
 #new:FormationTable $FormationTable
 {
@@ -42,7 +41,7 @@
 	110` 0` 20`
 }
 
-#new:Vector3D $Vector3D_PirateGoombaKing
+#new:Vector3D $Vector3D_CapnKurbio
 {
 	125` 0` 20`
 }
@@ -66,7 +65,7 @@
 
 #new:Formation $Formation_01
 {
-	$PirateGoombaKing $Vector3D_PirateGoombaKing 0000000A 00000000 00000000 00000000 00000000
+	$CapnKurbio $Vector3D_CapnKurbio 0000000A 00000000 00000000 00000000 00000000
 }
 
 #new:StageTable $StageTable

@@ -78,24 +78,23 @@ false	% reversed
 002E0202 = blizterBlasterShiverShoot
 002E0203 = blizterBlasterShiverHurt
 
-% Pirate Goomba King Animations
-00630000 = pirateGoombaKingStill
-00630001 = pirateGoombaKingIdle
-00630002 = pirateGoombaKingJump
-00630003 = pirateGoombaKingWalk
-00630004 = pirateGoombaKingRun
-00630005 = pirateGoombaKingKick
-00630006 = pirateGoombaKingDeath
-00630007 = pirateGoombaKingDizzy
-00630008 = pirateGoombaKingSleep
-00630009 = pirateGoombaKingAngry
-0063000A = pirateGoombaKingTalk
-0063000B = pirateGoombaKingPound
-0063000C = pirateGoombaKingLand
-0063000D = pirateGoombaKingBurntHurt
-0063000E = pirateGoombaKingBurntDeath
-0063000F = pirateGoombaKingChuckolaCola
-
+% Capn Kuribo Animations
+00630000 = CapnKurbioStill
+00630001 = CapnKurbioIdle
+00630002 = CapnKurbioJump
+00630003 = CapnKurbioWalk
+00630004 = CapnKurbioRun
+00630005 = CapnKurbioKick
+00630006 = CapnKurbioDeath
+00630007 = CapnKurbioDizzy
+00630008 = CapnKurbioSleep
+00630009 = CapnKurbioAngry
+0063000A = CapnKurbioTalk
+0063000B = CapnKurbioPound
+0063000C = CapnKurbioLand
+0063000D = CapnKurbioBurntHurt
+0063000E = CapnKurbioBurntDeath
+0063000F = CapnKurbioChuckolaCola
 
 % Debris Bit Cube Animations
 007F0000 = debrisBitCubeStill
