@@ -5,13 +5,19 @@ false	% reversed
 % World E. Gadd Animations
 00010000 = eGaddStill
 00010001 = eGaddIdle
-00010002 = eGaddTalk
-00010003 = eGaddTalkExplain
-00010004 = eGaddTalkExplainFoward
-00010005 = eGaddWalk
-00010006 = eGaddWalkFast
-00010007 = eGaddRoboControl
-00010008 = eGaddRoboTattle
+00010002 = eGaddWalk
+00010003 = eGaddRun
+00010004 = eGaddJump
+00010005 = eGaddFall
+00010006 = eGaddHeadbonk
+00010007 = eGaddHurt
+00010008 = eGaddTalk
+00010009 = eGaddCelebrate
+0001000A = eGaddRead
+0001000B = eGaddTalkExplain
+0001000C = eGaddTalkExplainFoward
+0001000D = eGaddRoboControl
+0001000E = eGaddRoboTattle
 
 % Battle Robomario Animations
 00090000 = robomarioStill

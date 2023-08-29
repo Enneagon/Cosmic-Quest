@@ -55,6 +55,14 @@
     .Status:End
 }
 
+/%
+#new:IdleAnimations $IdleAnimations_EGadd
+{
+    .Status:Normal    .Anim:eGaddRoboControl
+    .Status:End
+}
+%/
+
 @ $PartsTable_802392A4  % ActorPartBlueprint struct in decomp
 { 
     /% s32 flags %/                 00000000
@@ -72,16 +80,16 @@
     /% s8 unk_1F %/                 00b
     /% s8 unk_20 %/                 00000000
     
-    /% Fireball %/
-    /% s32 flags %/ %                00120001
+    /% E. Gadd %/
+    /% s32 flags %/ %                00120000
     /% s8 index %/   %               ~Byte:.Part:eGadd
-    /% Vec3b posOffset %/ %          00b 00b 00b
-    /% Vec2b targetOffset %/ %       00b 00b %for cursor when selecting to attack in battle
-    /% s16 opacity %/            %   00FFs
-    /% s32* IdleAnimations %/ %      $IdleAnimations_Projectile
-    /% s32* defenseTable %/    %     $DefenseTable_PlaceHolder
-    /% s32 eventFlags %/           % 00000000
-    /% s32 elementImmunityFlags %/ % 00000000
+    /% Vec3b posOffset %/ %          0`b 0`b -50`b
+    /% Vec2b targetOffset %/ %       0`b 0`b %for cursor when selecting to attack in battle
+    /% s16 opacity %/         %      00FFs
+    /% s32* IdleAnimations %/  %     $IdleAnimations_EGadd
+    /% s32* defenseTable %/     %    00000000
+    /% s32 eventFlags %/         %   00000000
+    /% s32 elementImmunityFlags %/%  00000000
     /% s8 unk_1C %/                % 00b
     /% s8 unk_1D %/                % 00b
     /% s8 unk_1E %/                % 00b
@@ -222,6 +230,55 @@
     Call  SetAnimation  ( .Actor:Partner FFFFFFFF 00090003 )
     Call  RunToGoal     ( .Actor:Partner  0` )
     Call  SetAnimation  ( .Actor:Partner FFFFFFFF 00090001 )
+    Return
+    End
+}
+
+@ $Script_8023C5B8 % Lecture
+{
+    Call  GetActorPos   ( .Actor:Partner *Var0 *Var1 *Var2 )
+    Add   *Var0  0000001E
+    Call  SetActorSpeed ( .Actor:Partner *Fixed[6.0] )
+    Call  SetAnimation  ( .Actor:Partner FFFFFFFF 00090003 )
+    Call  SetGoalPos    ( .Actor:Partner *Var0 *Var1 *Var2 )
+    Call  RunToGoal     ( .Actor:Partner  0` .False )
+    Call  SetAnimation  ( .Actor:Partner FFFFFFFF 00090001 )
+    Call  InitTargetIterator ( )
+    Call  SetGoalToTarget   ( .Actor:Partner )
+    Call  SetBattleFlagBits ( 00000004 .True )
+    Call  $Function_80238E04 ( )
+    Wait  12`
+    Call  SetCamEnabled ( .Cam:Tattle .True )
+    Call  SetCamFlag80  ( .Cam:Tattle .False )
+    Call  SetCamPerspective ( .Cam:Tattle 00000006  25`  16`  1024` )
+    Call  SetCamViewport    ( .Cam:Tattle  137`  95`  138`  99` )
+    Call  GetOwnerTarget    ( *VarA *VarB )
+    Call  GetActorPos   ( *VarA *Var0 *Var1 *Var2 )
+    Call  SetGoalPos    ( .Actor:Partner *Var0 *Var1 *Var2 )
+    Call  $Function_80238BCC ( )
+    Wait  1`
+    Call  802CAE50      ( 00000002 *Var0 *Var1 *Var2 )
+    Call  802CABE8      ( 00000002 00000000 *Var3 00000064 00000004 )
+    Wait  2`
+    Call  PlaySoundAtActor  ( .Actor:Partner 00000282 )
+    Call  SetCamFlag80  ( .Cam:Tattle .True )
+    Wait  10`
+    Call  $Function_80238B60 ( )
+    Call  ActorSpeak    ( *Var0 .Actor:Self .Part:robomario .Anim:robomarioTalk .Anim:robomarioIdle ) % variable string ID
+    Call  $Function_80238E48 ( )
+    Wait  12`
+    Call  SetCamEnabled ( .Cam:Tattle .False )
+    Wait  32`
+    Call  UseBattleCamPreset    ( 00000002 )
+    Call  SetBattleFlagBits ( 00000004 .False )
+    Call  80280818 ( )
+    Call  SetGoalToHome ( .Actor:Partner )
+    Call  SetActorSpeed ( .Actor:Partner *Fixed[4.0] )
+    Call  SetActorJumpGravity   ( .Actor:Partner *Fixed[1.8] )
+    Call  SetAnimation  ( .Actor:Partner FFFFFFFF 00090003 )
+    Call  RunToGoal     ( .Actor:Partner  0` )
+    Call  SetAnimation  ( .Actor:Partner FFFFFFFF 00090001 )
+    Call $FreeTurn
     Return
     End
 }
