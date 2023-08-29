@@ -769,29 +769,29 @@
 
 #new:String $PulveriseMario % Case 0 String.
 {
-[Style Right]We will pulverise you Mario![BR]
+[Style Right]We will pulverize you, Mario![BR]
 [Wait][End]
 }
 
 #new:String $MakeMeProud % Case 1 String.
 {
-[Style Right]C'mon men make me proud![BR]
+[Style Right]C'mon men, make me proud![BR]
 [Wait][End]
 }
 
 #new:String $HaventSeenBestMen % Case 2 String.
 {
 [Style Right]You haven't even seen my best[BR]
-men yet Mario![BR]
+men yet, Mario![BR]
 [Wait][End]
 }
 
 #new:String $ImpressivedNowMeetBestMen % Case 3 String.
 {
-[Style Right]Hmph! I am quite impressed[BR]
-Mario! Everything I have faced[BR]
-in Space has not survived at this[BR]
-point. But you have.[BR]
+[Style Right]Hmph! I am quite impressed,[BR]
+Mario! Nothing I have faced[BR]
+in space has survived for this[BR]
+long. But you have.[BR]
 [Wait][Next]
 You will now meet my best men!
 [Wait][End]
@@ -799,14 +799,14 @@ You will now meet my best men!
 
 #new:String $DontStandAChance % Case 4 String
 {
-[Style Right][Wave]Hahaha![/fx] Mario you don't stand a[BR]
+[Style Right][Wave]Hahaha![/fx] Mario! You don't stand a[BR]
 chance against my best men![BR]
 [Wait][End]
 }
 
 #new:String $StartingToGetAnnoyed % Case 5 String.
 {
-[Style Right]Ok! That's it! You are starting[BR]
+[Style Right]That's it! You are starting[BR]
 to annoy me now! We will make you[BR]
 pay for getting in our way![BR]
 [Wait][End]
@@ -829,9 +829,9 @@ choice but to drink my Chuckola![BR]
 #new:String $CantStandAChance % Case 8 String.
 {
 [Style Right]How? How are you still standing[BR]
-a chance against me? Even with[BR]
+up to me? Even after[BR]
 drinking my Chuckola Cola I still[BR]
-can't stand a chance.[BR]
+can't defeat you![BR]
 [Wait][End]
 }
 

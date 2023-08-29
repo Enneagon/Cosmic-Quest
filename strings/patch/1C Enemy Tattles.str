@@ -1,0 +1,102 @@
+#message:1C:000
+{
+	[Style Right]
+	This is a Goombandit.[BR]
+	[Wait][Next]
+	They're trained as elite troops[BR]
+	in space. That makes them[BR]
+	stronger than the average[BR]
+	terrestrial Goomba.[BR]
+	[Wait][Next]
+	Even so, you shouldn't have any[BR]
+	difficulty. After all, you've been[BR]
+	fighting these things for years,[BR]
+	haven't you?[Wait][End]
+}
+
+#message:1C:001
+{
+	[Style Right]
+	This is a Spiked Goombandit.[BR]
+	Regular Goombandits, but with[BR]
+	spikes![BR]
+	[Wait][Next]
+	Not only does that nasty needle[BR]
+	give it an "edge" in combat - oho[BR]
+	- but it'll injure you if you stomp[BR]
+	on it, as well![BR]
+	[Wait][Next]
+	Luckily, the iron soles of my[BR]
+	Robomario suffer no such[BR]
+	limtations. Take that, spikes![Wait][End]
+}
+
+#message:1C:003
+{
+	[Style Right]
+	This is Goom Mate.[BR]
+	[Pause 10]They're Kap'n Kuribo's elite crew.[BR]
+	[Wait][Next]
+	Did you know that in space, you[BR]
+	have to exercise constantly to[BR]
+	maintain your muscles?[BR]
+	[Wait][Next]
+	Someone should tell these fellows[BR]
+	to take a break. I suspect they'll[BR]
+	have more strength and stamina[BR]
+	than the previous wave.[Wait][End]
+}
+
+#message:1C:005
+{
+	[Style Right]
+	This is Cap'n Kuribo.[BR]
+	[Pause 10]He's the leader of the space[BR]
+	pirates who've been plaguing the[BR]
+	area.[BR]
+	[Wait][Next]
+	For all his size, he's a cowardly[BR]
+	sort who never fights alone. We'll[BR]
+	have to deal with waves of[BR]
+	reinforcements.[BR]
+	[Wait][Next]
+	That said, he has a nasty kick,[BR]
+	and I hear he has a secret[BR]
+	weapon of some sort... Be careful,[BR]
+	Mario![BR][Wait][End]
+}
+
+#message:1C:016
+{
+	[Style Right]
+	This is an Asteroid Pokey.[BR]
+	[Pause 10]It's a rock-solid variant of a[BR]
+	terrestrial Pokey.[BR]
+	[Wait][Next]
+	You should find their behaviour[BR]
+	familiar. However, they have a bit[BR]
+	more defensive power than the[BR]
+	average cactus.[BR]
+	[Wait][Next]
+	At least there are no spikes to[BR]
+	worry about, eh?[Wait][End]
+}
+
+
+#message:1C:05F
+{
+	[Style Right]
+	This is a Debris Bit.[BR]
+	[Pause 10]It's a chunk of space rock that's[BR]
+	attracted to larger objects by[BR]
+	gravity.[BR]
+	[Wait][Next]
+	Debris Bits won't attack, but[BR]
+	they can form defensive shields[BR]
+	around other foes, making them[BR]
+	annoyances in battle.[Wait][End]
+}
+
+
+
+
