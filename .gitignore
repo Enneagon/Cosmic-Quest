@@ -18,6 +18,10 @@ mod.cfg
 # modified game data (for multimedia which doesn't use src/patch directories)
 # (put overrides here, e.g. `!/sprite/npc/src/80` if you've changed bowser)
 
+# Altered Images
+!/image/assets/ui/partner_01.png
+!/image/assets/ui/partner_01_alt.png
+
 # Altered Backgrounds
 !/image/bg/arn_bg.png
 !/image/bg/fla_bg.png
