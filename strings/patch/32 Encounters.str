@@ -9,3 +9,8 @@
 {
 	[Style Right]Return to your ship?[Yield][End]
 }
+
+#message:32:002
+{
+	[Style Right]Not so fast, Mario![Wait][End]
+}

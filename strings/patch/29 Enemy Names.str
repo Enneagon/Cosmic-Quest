@@ -1,3 +1,23 @@
+#message:29:000
+{
+Goombandit[End]
+}
+
+#message:29:001
+{
+Spiked Goombandit[End]
+}
+
+#message:29:003
+{
+Goom Mate[End]
+}
+
+#message:29:005
+{
+Cap'n Kuribo[End]
+}
+
 #message:29:014
 {
 Mantle Mole[End]
@@ -41,11 +61,6 @@ Blizter Bill(Shiver)[End]
 #message:29:086
 {
 Blizter Blaster(Shiver)[End]
-}
-
-#message:29:005
-{
-Cap'n Kuribo[End]
 }
 
 #message:29:058
