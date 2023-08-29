@@ -72,3 +72,5 @@ mod.cfg
 !/image/texture/sta_tex/*.*
 !/image/texture/und_tex.txa
 !/image/texture/und_tex/*.*
+!/image/hudscripts/EGadd.hs
+!/image/hudscripts/EGadd_disabled.hs

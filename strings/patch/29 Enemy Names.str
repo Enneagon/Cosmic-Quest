@@ -45,5 +45,20 @@ Blizter Blaster(Shiver)[End]
 
 #message:29:005
 {
-	Pirate Goomba King[End]
+	Cap'n Kuribo[End]
+}
+
+#message:29:000
+{
+	Goombandit[End]
+}
+
+#message:29:001
+{
+	Spiked Goombandit[End]
+}
+
+#message:29:003
+{
+	Goom Mate[End]
 }

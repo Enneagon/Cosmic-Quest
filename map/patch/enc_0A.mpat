@@ -30,7 +30,7 @@
 #new:NpcGroup $NpcGroup_Always
 {
 	.NpcID:Capn $NpcSettings_Standard ~Vec3f:Boss
-	00000001 00000000 00000000 00000000 00000000
+	00000001 $Script_Init_Boss 00000000 00000000 00000000
 	~NoDrops
 	~Movement:Boss
 	~AnimationTable:Boss
@@ -41,6 +41,43 @@
 {
 	00000000 001E0018 00000000 00000000 00000000 00000000 00000000 00000000
 	00000000 00000000 00630000
+}
+
+#new:Script $Script_Init_Boss { 
+    Call SetNpcYaw ( .Npc:Self 270` )
+   10:  Call  BindNpcIdle   ( .Npc:Self $Script_Idle_Boss )
+   50:  Call  BindNpcDefeat ( .Npc:Self $Script_Defeat_Boss )
+   80:  Return
+   88:  End
+}
+
+#new:Script $Script_Idle_Boss
+{
+    Call AwaitPlayerApproach ( 50` 320` 150` )
+    Call DisablePlayerInput ( .True )
+    Call ShowMessageAtScreenPos    ( 00320002  160`  40` ) % Not so fast!
+    Call NpcFlyTo ( 0` 50` 0` 320` 20` 0` .Easing:CosBounce )
+    Wait 20`
+    Call StartBossBattle ( .Song:GoombaKingBattle )
+    6C:  Call  GetBattleOutcome  ( *Var0 )
+   7C:  Switch  *Var0
+   88:  	Case  ==  .Outcome:PlayerWon % 0
+    Call DisablePlayerInput ( .False )
+   AC:  	Case  ==  .Outcome:PlayerLost % 1
+   B8:  	Case  ==  .Outcome:PlayerFled % 2
+   C4:  EndSwitch
+    Return
+    End
+}
+
+#new:Script $Script_Defeat_Boss
+{
+   
+   Call  SetEncounterStatusFlags   ( 00000002 .True )
+   Call DisablePlayerInput ( .False )
+   Call  DoNpcDefeat ( )
+   CC:  Return
+   D4:  End
 }
 
 #new:Script $Script_FinalBoots

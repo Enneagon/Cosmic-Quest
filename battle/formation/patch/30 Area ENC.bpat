@@ -82,9 +82,9 @@
 
 #new:Stage $Stage_encbt00
 {
-	$ASCII_sta_tex  % sta_tex
-	$ASCII_enc_bt00_shape  % enc_bt00_shape
-	$ASCII_enc_bt00_hit  % enc_bt00_hit
+	"sta_tex"  % sta_tex
+	"enc_bt00_shape"  % enc_bt00_shape
+	"enc_bt00_hit"  % enc_bt00_hit
 	00000000
 	00000000
 	00000000  % sbk_bg
@@ -116,9 +116,9 @@
 
 #new:Stage $Stage_encbt01
 {
-	$ASCII_ast_tex  % ast_tex
-	$ASCII_enc_bt01_shape  % enc_bt01_shape
-	$ASCII_enc_bt01_hit  % enc_bt01_hit
+	"ast_tex"  % ast_tex
+	"enc_bt01_shape"  % enc_bt01_shape
+	"enc_bt01_hit"  % enc_bt01_hit
 	00000000
 	00000000
 	00000000  % sbk_bg
