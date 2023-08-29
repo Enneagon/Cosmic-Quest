@@ -1,4 +1,7 @@
 #import newenemy/AsteroidPokey.bpat
+#import newenemy/DebrisBitCube.bpat
+#import newenemy/DebrisBitSphere.bpat
+#import newenemy/DebrisBitDiamond.bpat
 #import newenemy/MantleMole.bpat
 #import newenemy/MechaBlooperCustom.bpat
 #import enemy/1B_ElectroBlooper.bpat
@@ -13,6 +16,8 @@
 {
 	00000000 00000001 $Formation_00 $Stage_encbt00 00000000
 	00000000 00000001 $Formation_01 $Stage_encbt00 00000000
+	00000000 00000002 $Formation_02 $Stage_encbt01 00000000
+	00000000 00000004 $Formation_03 $Stage_encbt01 00000000
 	00000000 00000000 00000000 00000000 00000000
 }
 
@@ -46,6 +51,11 @@
 	125` 0` 20`
 }
 
+#new:Vector3D $Vector3D_DebrisBitDiamond
+{
+	85` 65` 10`
+}
+
 /%
 #new:Formation $Formation_17
 {
@@ -66,6 +76,20 @@
 #new:Formation $Formation_01
 {
 	$CapnKurbio $Vector3D_CapnKurbio 0000000A 00000000 00000000 00000000 00000000
+}
+
+#new:Formation $Formation_02
+{
+	$AsteroidPokey 00000001 0000000A 00000000 00000000 00000000 00000000
+	$AsteroidPokey 00000002 00000009 00000000 00000000 00000000 00000000
+}
+
+#new:Formation $Formation_03
+{
+	$DebrisBitCube 00000001 00000009 00000000 00000000 00000000 00000000
+	$AsteroidPokey 00000002 0000000A 00000000 00000000 00000000 00000000
+	$DebrisBitDiamond $Vector3D_DebrisBitDiamond 00000008 00000000 00000000 00000000 00000000
+	$DebrisBitSphere 00000003 00000007 00000000 00000000 00000000 00000000
 }
 
 #new:StageTable $StageTable

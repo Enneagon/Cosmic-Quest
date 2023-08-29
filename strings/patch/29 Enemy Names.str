@@ -1,11 +1,11 @@
 #message:29:014
 {
-	Mantle Mole[End]
+Mantle Mole[End]
 }
 
 #message:29:016
 {
-	Asteroid Pokey[End]
+Asteroid Pokey[End]
 }
 
 #message:29:00B
@@ -20,7 +20,7 @@ Blizter Blaster(Singe)[End]
 
 #message:29:065
 {
-	Mehca Blooper[End]
+Mehca Blooper[End]
 }
 
 #message:29:083
@@ -45,5 +45,10 @@ Blizter Blaster(Shiver)[End]
 
 #message:29:005
 {
-	Pirate Goomba King[End]
+Cap'n Kuribo[End]
+}
+
+#message:29:058
+{
+Debris Bit[End]
 }

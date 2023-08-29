@@ -9,7 +9,7 @@
 [Level]         0`b 
 [MaxHP]         1`b 
 [Coins]         0`b 
-[Flags]       00200200 
+[Flags]       00000000 
 [StatusTable] $StatusTable_DebrisBitCube
 % ai
 [PartsCount]    2`s 
@@ -72,8 +72,8 @@
 { 
     /% s32 flags %/                 00020000
     /% s8 index %/                  ~Byte:.Part:debrisBitCube
-    /% Vec3b posOffset %/           0`b 0`b 0`b
-    /% Vec2b targetOffset %/        0`b 16`b % For cursor when selecting to attack in battle
+    /% Vec3b posOffset %/           0`b 10`b 0`b
+    /% Vec2b targetOffset %/        0`b 26`b % For cursor when selecting to attack in battle
     /% s16 opacity %/               00FFs
     /% s32* IdleAnimations %/       $IdleAnimations_DebrisBitCube
     /% s32* defenseTable %/         $DefenseTable_DebrisBitCube
@@ -88,8 +88,8 @@
     /% Target %/
     /% s32 flags %/                  80800021
     /% s8 index %/                   ~Byte:.Part:invisibleTargetDebrisBitCube
-    /% Vec3b posOffset %/            0`b 50`b 0`b
-    /% Vec2b targetOffset %/         0`b -34`b % For cursor when selecting to attack in battle
+    /% Vec3b posOffset %/            0`b 0`b 0`b
+    /% Vec2b targetOffset %/         0`b 26`b % For cursor when selecting to attack in battle
     /% s16 opacity %/                00FFs
     /% s32* IdleAnimations %/        00000000
     /% s32* defenseTable %/          $DefenseTable_DebrisBitCube
