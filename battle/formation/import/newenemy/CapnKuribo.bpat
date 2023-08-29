@@ -707,7 +707,7 @@
     Call  FallToGoal ( .Actor:Enemy1  30` )
     Call  PlaySoundAtActor  ( .Actor:Enemy1 000003E9)
     Call  ResetActorSounds ( .Actor:Enemy1 .ActorSound:Jump )
-    Call  SetAnimation  ( .Actor:Enemy1  .Part:CapnKurbio 00620108 )
+    Call  SetAnimation  ( .Actor:Enemy1  .Part:CapnKurbio 00620008 )
     Wait  5`
     Call  SetActorDispOffset    ( .Actor:Enemy1  0` 0` 0` )
     Call  GetActorPos       ( .Actor:Enemy1  *Var0 *Var1 *Var2 )

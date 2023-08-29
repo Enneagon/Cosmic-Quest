@@ -139,18 +139,16 @@
         Call  SetActorScale ( .Actor:Partner *Fixed[1.0] *Fixed[1.0] *Fixed[1.0] )
     EndChildThread
     %/
-    Wait  4`
-    Call  GetActionCommandResult    ( *Var0 )
-    Switch  *Var0
-        Case  >  00000000 %Action Command Success
-            %Call  $Function_802390B0 ( )
-            %Add   *Var0  00000001
-            Call  PartnerDamageEnemy    ( *Var0 ~Flags:DamageType:NoContact 00000000 00000000 2` 00000070 )
-        Default %Action Command Fail
-            %Call  $Function_80239068 ( )
-            %Add   *Var0  00000001
-            Call  PartnerDamageEnemy    ( *Var0 ~Flags:DamageType:NoContact 00000000 00000000 1` 00000030 )
-        EndSwitch
+    Call $ScrAPI_checkInputPressedVariableFrames (.AButton 6` *Var0)
+    If *Var0 == .True  % Action Command Success
+        %Call  $Function_802390B0 ( )
+        %Add   *Var0  00000001
+        Call  PartnerDamageEnemy    ( *Var0 ~Flags:DamageType:NoContact 00000000 00000000 2` 00000070 )
+    Else % Action Command Fail
+        %Call  $Function_80239068 ( )
+        %Add   *Var0  00000001
+        Call  PartnerDamageEnemy    ( *Var0 ~Flags:DamageType:NoContact 00000000 00000000 1` 00000030 )
+    EndIf
     Call  PlaySoundAtActor  ( .Actor:Partner 00000000 )
     ExecWait  $Script_80239CA8
     Return

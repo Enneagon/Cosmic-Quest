@@ -1,0 +1,210 @@
+#export .AButton 00008000
+#export .BButton 00004000
+#export .CUp 00000008
+#export .CDown 00000004
+#export .CLeft 00000002
+#export .CRight 00000001
+#export .ScrAPI_DONE2 00000002
+
+#export:Function:Battle $ScrAPI_checkInputPressedVariableFrames {
+%Call $ScrAPI_checkInputPressedVariableFrames (.AButton 5` *Var0) %button, frame window, Var to return bool result to
+	PUSH s0, s1, s2, s3, ra
+    LW s1, 000C (a0)
+	ADDU s0, a0, r0
+    JAL ~Func:get_variable
+    LW a1, 0000 (s1) %load button flags
+
+    ADDU s2, v0, r0
+
+    ADDU a0, s0, r0
+    JAL ~Func:get_variable
+    LW a1, 0004 (s1) %load frame window
+
+    ADDU a0, s2, r0
+	JAL $check_block_input_with_variable_timing
+    ADDU a1, v0, r0
+
+	ADDU a0, s0, r0
+	LW a1, 0008 (s1)
+	JAL ~Func:set_variable
+	ADDU a2, v0, r0
+
+	POP s0, s1, s2, s3, ra
+	JR RA
+	ORI v0, r0, .ScrAPI_DONE2
+}
+
+#export:Function $check_block_input_with_variable_timing { %a0 holds button mask, a1 holds frame window
+    ADDIU          SP, SP, -38
+    SW              s8, 0034 (sp)
+    ADDU s8, a1, r0
+    SW             S4, 0020 (SP)
+    DADDU          S4, A0, R0
+    SW             S7, 002C (SP)
+    DADDU          S7, R0, R0
+    SW             S1, 0014 (SP)
+    LUI            S1, 800E
+    ADDIU          S1, S1, C070
+    SW             S5, 0024 (SP)
+    LUI            S5, 8011
+    ADDIU          S5, S5, F290
+    SW             S6, 0028 (SP)
+    LUI            S6, 802A
+    ADDIU          S6, S6, FBE0
+    SW             RA, 0030 (SP)
+    SW             S3, 001C (SP)
+    SW             S2, 0018 (SP)
+    SW             S0, 0010 (SP)
+    LB             V1, 0083 (S1)
+    ADDIU          V0, R0, FFFF
+    BNE            V1, V0, .label1
+    SB             R0, 0087 (S1)
+    LW             V0, 0000 (S1)
+    LUI            V1, 0200
+    AND            V0, V0, V1
+    BEQ            V0, r0, .label1
+    ADDIU          V0, R0, 0001
+    SB             V0, 0087 (S1)
+    BEQ             r0, r0, .end
+    ADDIU          V0, R0, 0001
+   .label1
+    LB             V0, 0083 (S1)
+    BEQ            V0, r0, .end
+    DADDU          V0, R0, R0
+    LUI            V0, 8007
+    LW             V0, 419C (V0)
+    LBU            V0, 00AA (V0)
+    ANDI           V0, V0, 0001
+    BNE            V0, r0, .end
+    DADDU          V0, R0, R0
+    LHU            V1, 0298 (S5)
+    SLTIU          V0, V1, 270F
+    BEQ            V0, r0, .label2
+    ADDIU          V0, V1, 0001
+    SH             V0, 0298 (S5)
+    BEQ             r0, r0, .label3
+    SH             R0, 006E (S6)
+   .label9
+    BEQ             r0, r0, .label4
+    ADDIU          S7, R0, 0001
+   .label13
+    ADDIU          V0, R0, 0001
+    SB             V0, 0087 (S1)
+    BEQ r0, r0,    .label5
+    ADDIU          S2, R0, 0001
+   .label2
+    ADDIU          V0, R0, 0001
+    SH             V0, 006E (S6)
+   .label3
+    DADDU          S2, R0, R0
+    %ADDIU          S0, R0, 0003 %A Button frame window
+    ADDU s0, s8, r0 %move frame window to block from a1
+    LUI            V0, 800E
+    LW             V0, C070 (V0)
+    LUI            V1, 0008
+    AND            V0, V0, V1
+    BNE            V0, r0, .label6
+    ADDIU          S3, R0, 000A %10 frame cooldown between block inputs
+    JAL            800E9D48
+    DADDU          A0, S2, R0
+    BNEL           V0, r0, .label6
+    %ADDIU          S0, R0, 0005 %A button frame window with dodge master frames
+    ADDU s0, s8, r0 %move frame window to block from a1 (dodge master)
+   .label6
+    LB             V1, 0431 (S1)
+    ADDU           V0, S3, S0
+    SUBU           V1, V1, V0
+    BLTL           V1, r0, .label7
+    ADDIU          V1, V1, 0040
+   .label7
+    BEQ            S3, r0, .label4
+    DADDU          A0, R0, R0
+   .label10
+    SLTI           V0, V1, 0040
+    BEQL           V0, r0, .label8
+    ADDIU          V1, V1, FFC0
+   .label8
+    SLL            V0, V1, 2
+    ADDU           V0, S1, V0
+    LW             V0, 0330 (V0) %load beginning of pressed input buffer
+    AND            V0, V0, S4 %AND pressed input with input passed as arg to function
+    BNE            V0, r0, .label9
+    ADDIU          A0, A0, 0001
+    SLT            V0, A0, S3
+    BNE            V0, r0, .label10
+    ADDIU          V1, V1, 0001
+   .label4
+    LB             V1, 0431 (S1)
+    SUBU           V1, V1, S0
+    BLTL           V1, r0, .label11
+    ADDIU          V1, V1, 0040
+   .label11
+    BEQ            S0, r0, .label5
+    DADDU          A0, R0, R0
+   .label14
+    SLTI           V0, V1, 0040
+    BEQL           V0, r0, .label12
+    ADDIU          V1, V1, FFC0
+   .label12
+    SLL            V0, V1, 2
+    ADDU           V0, S1, V0
+    LW             V0, 0330 (V0)
+    AND            V0, V0, S4
+    BNE            V0, r0, .label13
+    ADDIU          A0, A0, 0001
+    SLT            V0, A0, S0
+    BNE            V0, r0, .label14
+    ADDIU          V1, V1, 0001
+   .label5
+    BEQ            S7, r0, .label15
+    ADDIU          V0, R0, FFFF
+    SB             V0, 0087 (S1)
+    DADDU          S2, R0, R0
+   .label15
+    ADDIU          V0, R0, 0001
+    BNE            S2, V0, .label16
+    ADDU           V0, S3, S0
+    LB             V1, 0431 (S1)
+    SUBU           V1, V1, V0
+    BLTL           V1, r0, .label17
+    ADDIU          V1, V1, 0040
+   .label17
+    BEQ            V0, r0, .label16
+    DADDU          A0, R0, R0
+    DADDU          A1, V0, R0
+   .label19
+    SLTI           V0, V1, 0040
+    BEQL           V0, r0, .label18
+    ADDIU          V1, V1, FFC0
+   .label18
+    SLL            V0, V1, 2
+    ADDU           V0, S1, V0
+    SW             R0, 0330 (V0)
+    ADDIU          A0, A0, 0001
+    SLT            V0, A0, A1
+    BNE            V0, r0, .label19
+    ADDIU          V1, V1, 0001
+   .label16
+    BEQ            S2, r0, .end
+    DADDU          V0, S2, R0
+    LH             V0, 006E (S6)
+    BNE            V0, r0, .end
+    DADDU          V0, S2, R0
+    LHU            V0, 029A (S5)
+    ADDIU          V0, V0, 0001
+    SH             V0, 029A (S5)
+    DADDU          V0, S2, R0
+   .end
+    LW              s8, 0034 (sp)
+    LW             RA, 0030 (SP)
+    LW             S7, 002C (SP)
+    LW             S6, 0028 (SP)
+    LW             S5, 0024 (SP)
+    LW             S4, 0020 (SP)
+    LW             S3, 001C (SP)
+    LW             S2, 0018 (SP)
+    LW             S1, 0014 (SP)
+    LW             S0, 0010 (SP)
+    JR             RA
+    ADDIU          SP, SP, 38
+}
