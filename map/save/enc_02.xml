@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Map name="enc_02" author="unnamed" textures="ast_tex">
 	<Editor>
-		<Camera pos="68.813934,96.470062,93.395844" pitch="15.759995" yaw="272.159332"/>
+		<Camera pos="-9.392549,166.132721,292.544800" pitch="20.879978" yaw="358.879486"/>
 		<Camera pos="6.540112,65536.000000,4.812664"/>
 		<Camera pos="65536.000000,79.546425,-44.691273"/>
 		<Camera pos="68.239906,95.478317,65536.000000"/>
@@ -35,7 +35,7 @@
 			<Node name="MeshCollider" id="1"/>
 			<Node name="HullCollider" id="2"/>
 			<Node name="HullCollider" id="3"/>
-			<Node name="HullCollider" id="4"/>
+			<Node name="LadderCollider" id="4"/>
 		</Node>
 	</ColliderTree>
 	<ZoneTree>
@@ -44,10 +44,12 @@
 		</Node>
 	</ZoneTree>
 	<MarkerTree>
-		<Node name="Root" id="1">
+		<Node name="Root" id="3">
 			<Node name="Entrances" id="0">
 				<Node name="Entrance" id="FFFFFFFF"/>
 			</Node>
+			<Node name="Enemy" id="1"/>
+			<Node name="Enemy2" id="2"/>
 		</Node>
 	</MarkerTree>
 	<LightSets>
@@ -3155,7 +3157,7 @@
 			<HitObject type="ROOT"/>
 		</Collider>
 		<Collider ver="0" flags="0">
-			<MapObject name="HullCollider" id="4" hidden="true"/>
+			<MapObject name="LadderCollider" id="4" hidden="true"/>
 			<HitObject type="HIT"/>
 			<HitMesh ver="0">
 				<TriangleBatch ver="0">
@@ -3570,7 +3572,17 @@
 	</Zones>
 	<Markers>
 		<Marker ver="4" type="Root">
-			<MapObject name="Root" id="1"/>
+			<MapObject name="Root" id="3"/>
+		</Marker>
+		<Marker ver="4" type="NPC" pos="100,0,100" yaw="0.000000">
+			<MapObject name="Enemy2" id="2"/>
+			<Movement type="Wander" data="64,0,64,64,0,FFFF8001,0,64,0,64,64,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
+			<Sprite sprite="31" palette="0" animations="4,4,4,4,0,0,25,C,0,0,0,0,0,0,0,0"/>
+		</Marker>
+		<Marker ver="4" type="NPC" pos="-116,0,156" yaw="0.000000">
+			<MapObject name="Enemy" id="1"/>
+			<Movement type="Wander" data="FFFFFF8C,0,9C,64,0,FFFF8001,0,FFFFFF8C,0,9C,64,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
+			<Sprite sprite="31" palette="0" animations="4,4,4,4,0,0,25,C,0,0,0,0,0,0,0,0"/>
 		</Marker>
 		<Marker ver="4" type="Group">
 			<MapObject name="Entrances" id="0"/>

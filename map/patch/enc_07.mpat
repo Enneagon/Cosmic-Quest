@@ -81,7 +81,7 @@
         Call  GotoMapByID ( *MB_LastArea *MB_LastMap *MB_LastNode )
     Else
         Call CloseMessage ()
-        Call DisablePlayerInput ( .True )
+        Call DisablePlayerInput ( .False )
     EndIf
     Return
     End

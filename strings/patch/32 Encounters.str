@@ -14,3 +14,16 @@
 {
 	[Style Right]Not so fast, Mario![Wait][End]
 }
+
+#message:32:003
+{
+	[Style Right]You can't leave while an enemy's[BR]
+	about![Wait][End]
+}
+
+#message:32:004
+{
+	[Style Right]You hear a horrible sound...[BR]
+	Something's invaded your engine[BR]
+	room![Wait][End]
+}

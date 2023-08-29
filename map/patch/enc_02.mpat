@@ -1,3 +1,6 @@
+#define .NpcID:Pokey_1        00
+#define .NpcID:Pokey_2        01
+
 @ $Script_Main {
     Set   *GB_WorldLocation  .Location:GoombaRoad
     Call  SetCamPerspective  ( .Cam:Default 00000003 00000019 00000010 00001000 )
@@ -6,7 +9,124 @@
     Call  SetCamLeadPlayer   ( .Cam:Default .False )
     Exec  $Script_SetupMusic
     Exec  $Script_EngineMoves
+    Bind $Script_Exit .Trigger:WallPressA ~Collider:LadderCollider 00000001 00000000
+    Call  MakeNpcs  ( .True $NpcGroupList_Enemy )
     Exec  $Script_EnterMap
+    Return
+    End
+}
+
+#new:NpcGroupList $NpcGroupList_Enemy
+{
+	00000001 $NpcGroup_Pokey1 30020002
+    00000001 $NpcGroup_Pokey2 30030002
+	00000000 00000000 00000000
+}
+
+#new:NpcGroup $NpcGroup_Pokey1
+{
+	.NpcID:Pokey_1 $NpcSettings_Pokey ~Vec3f:Enemy % -75 0 -30
+	00040C00 $Script_Init_Enemy 00000000 00000000 0000005A
+	~Items:5:Mushroom:5:POWBlock:5
+	~HP:Standard:2 ~FP:Standard:2 ~CoinBonus:1:1
+	~Movement:Enemy
+	~AnimationTable:Enemy % .Sprite:KoopaTroopa
+	00000000 00000000 00000000 00000000 % no tattle string
+}
+
+#new:NpcGroup $NpcGroup_Pokey2
+{
+	.NpcID:Pokey_2 $NpcSettings_Pokey ~Vec3f:Enemy2 % -75 0 -30
+	00040C00 $Script_Init_Enemy 00000000 00000000 0000005A
+	~Items:5:Mushroom:5:POWBlock:5
+	~HP:Standard:2 ~FP:Standard:2 ~CoinBonus:1:1
+	~Movement:Enemy2
+	~AnimationTable:Enemy2 % .Sprite:KoopaTroopa
+	00000000 00000000 00000000 00000000 % no tattle string
+}
+
+#new:NpcSettings $NpcSettings_Pokey
+{
+	00000000 0048000F 00000000 00000000 $Script_NpcAI_80240470 80077F70 00000000 8007809C
+	00000000 00000000 00090000
+}
+
+#new:Script $Script_NpcAI_80240470
+{
+    0:  Call  $Function_Whatever ( )
+    C:  Call  DoBasicAI ( $AISettings_Pokey )
+   1C:  Return
+   24:  End
+}
+
+#new:Function $Function_Whatever
+{
+    0:  LW        V1, 148 (A0)
+    4:  LI        V0, 3
+    8:  SB        V0, B5 (V1)
+    C:  JR        RA
+   10:  LI        V0, 2
+}
+
+#new:AISettings $AISettings_Pokey
+{
+    1.8 % move speed
+    50` % move time
+    10` % wait time
+  250.0 % alert radius
+    0.0
+    2`
+    3.5 % chase speed
+    45`
+    6`
+  300.0 % chase radius
+    0.0
+    1`
+}
+
+#new:Script $Script_Init_Enemy
+{
+    0:  Call  SetSelfEnemyFlags ( 00800000 )
+   10:  Call  BindNpcDefeat     ( .Npc:Self $Script_Defeat_Enemy )
+   4C:  Return
+   54:  End
+}
+
+#new:Script $Script_Defeat_Enemy
+{
+    0:  Call  GetBattleOutcome  ( *Var0 )
+   10:  Switch  *Var0
+   1C:  	Case  ==  .Outcome:PlayerWon % 0
+   28:  		Add *MapVar[0] 1`
+   6C:  		Call  DoNpcDefeat ( )
+   78:  	Case  ==  .Outcome:PlayerFled % 2
+   84:  		Call  80045900  ( 00000000 )
+   94:  	Case  ==  .Outcome:EnemyFled % 3
+                Add *MapVar[0] 1`
+   A0:  		Call  SetEnemyFlagBits  ( .Npc:Self 00000010 00000001 )
+   B8:  		Call  RemoveNpc ( .Npc:Self )
+   C8:  EndSwitch
+   D0:  Return
+   D8:  End
+}
+
+#new:Script $Script_Exit
+{
+    Call DisablePlayerInput ( .True )
+    If *MapVar[0] == 2`
+        Call ShowMessageAtScreenPos    ( 00320001  160`  40` ) % Exit?
+        Call ShowChoice ( 002F0001 )
+        If *Var0 == 00000000
+            Call CloseMessage ()
+            Call  GotoMapByID ( *MB_LastArea *MB_LastMap *MB_LastNode )
+        Else
+            Call CloseMessage ()
+            Call DisablePlayerInput ( .False )
+        EndIf
+    Else
+        Call ShowMessageAtScreenPos    ( 00320003  160`  40` ) % Exit?
+        Call DisablePlayerInput ( .False )
+    EndIf
     Return
     End
 }
