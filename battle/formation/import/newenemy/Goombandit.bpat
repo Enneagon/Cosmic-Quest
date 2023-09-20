@@ -4,7 +4,7 @@
 {
 % stats
 [Index]         7b 
-[Level]         7`b 
+[Level]         9`b 
 [MaxHP]         4`b 
 [Coins]         1`b 
 [Flags]       00000000 
