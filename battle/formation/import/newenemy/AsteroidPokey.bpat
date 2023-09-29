@@ -141,7 +141,7 @@
 
 #new:IdleAnimations $IdleAnimations_Segment 
 {
-    .Status:Normal    00310029 % Used to be 00310016
+    .Status:Normal    00310016 % Used to be 00310016
     .Status:End
 }
 
@@ -715,7 +715,7 @@
         Call  GetActorPos       ( .Actor:Self *Var0 *Var1 *Var2 )
         Call  SetPartPos        ( .Actor:Self 00000006 *Var0 *Var1 *Var2 )
         Call  SetPartJumpGravity    ( .Actor:Self 00000006 *Fixed[2.2] )
-        Call  SetAnimation      ( .Actor:Self 00000006 00310029 ) % Used to be 00310016
+        Call  SetAnimation      ( .Actor:Self 00000006 00310016 ) % Used to be 00310016
         Call  GetStatusFlags    ( .Actor:Self *Var5 )
         Call  GetActorVar       ( .Actor:Self 00000000 *VarA )
         Switch  *VarA
@@ -774,7 +774,7 @@
             Sub   *Var1  5`
             Call  SetPartMoveSpeed  ( .Actor:Self 00000006 *Fixed[20.0] )
             Call  SetPartJumpGravity    ( .Actor:Self 00000006 *Fixed[0.1] )
-            Call  SetAnimation      ( .Actor:Self 00000006 00310029 ) % Used to be 00310016
+            Call  SetAnimation      ( .Actor:Self 00000006 00310029 )
             Call  JumpPartTo        ( .Actor:Self 00000006 *Var0 *Var1 *Var2  0` .True )
             Call  SetPartFlagBits   ( .Actor:Self 00000006 00000001 .True )
             Call  GetActorVar       ( .Actor:Self 00000002 *Var1 )
@@ -787,7 +787,7 @@
     Call  GetGoalPos        ( .Actor:Self *Var0 *Var1 *Var2 )
     Call  SetPartMoveSpeed  ( .Actor:Self 00000006 *Fixed[20.0] )
     Call  SetPartJumpGravity    ( .Actor:Self 00000006 *Fixed[0.1] )
-    Call  SetAnimation      ( .Actor:Self 00000006 00310029 ) % Used to be 00310016
+    Call  SetAnimation      ( .Actor:Self 00000006 00310029 )
     Call  JumpPartTo        ( .Actor:Self 00000006 *Var0 *Var1 *Var2  0` .True )
     Call  EnemyDamageTarget ( .Actor:Self *Var0 ~Flags:DamageType:NoContact 00000000 00000000 .DMG_Pokey_Segment 00000020 )
     Call  GetActorVar       ( .Actor:Self 00000002 *Var1 )

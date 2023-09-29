@@ -94,14 +94,9 @@
 
 #new:StageTable $StageTable
 {
-	$ASCII_encbt00StageName $Stage_encbt00
-	$ASCII_encbt01StageName $Stage_encbt01
+	"enc_bt00" $Stage_encbt00
+	"enc_bt01" $Stage_encbt01
 	00000000 00000000
-}
-
-#new:ASCII $ASCII_encbt00StageName
-{
-	"enc_bt00"
 }
 
 #new:Stage $Stage_encbt00
@@ -111,31 +106,11 @@
 	"enc_bt00_hit"  % enc_bt00_hit
 	00000000
 	00000000
-	00000000  % sbk_bg
+	00000000  % Background
 	00000000
 	00000000
 	00000000
 	00000000
-}
-
-#new:ASCII $ASCII_enc_bt00_hit
-{
-	"enc_bt00_hit"
-}
-
-#new:ASCII $ASCII_enc_bt00_shape
-{
-	"enc_bt00_shape"
-}
-
-#new:ASCII $ASCII_sta_tex
-{
-	"sta_tex"
-}
-
-#new:ASCII $ASCII_encbt01StageName
-{
-	"enc_bt01"
 }
 
 #new:Stage $Stage_encbt01
@@ -145,24 +120,9 @@
 	"enc_bt01_hit"  % enc_bt01_hit
 	00000000
 	00000000
-	00000000  % sbk_bg
+	00000000  % Background
 	00000000
 	00000000
 	00000000
 	00000000
-}
-
-#new:ASCII $ASCII_enc_bt01_hit
-{
-	"enc_bt01_hit"
-}
-
-#new:ASCII $ASCII_enc_bt01_shape
-{
-	"enc_bt01_shape"
-}
-
-#new:ASCII $ASCII_ast_tex
-{
-	"ast_tex"
 }

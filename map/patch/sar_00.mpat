@@ -4,7 +4,8 @@
 #define .NpcID:ChetRippo   04
 #define .NpcID:TestT       05
 
-@ $Script_Main {
+@ $Script_Main 
+{
     Set   *GB_WorldLocation  .Location:GoombaRoad
     Call  SetCamPerspective  ( .Cam:Default 00000003 00000019 00000010 00001000 )
     Call  SetCamBGColor      ( .Cam:Default 00000000 00000000 00000000 )
@@ -1780,7 +1781,8 @@
     End
 }
 
-@ $Script_ToLaunchpad {
+@ $Script_ToLaunchpad 
+{
     SetGroup 0000001B
     Set *MF_NewSector .True
     Set *MB_CurrentNode 0`
@@ -1792,7 +1794,8 @@
     End
 }
 
-@ $Script_Callback_Start {
+@ $Script_Callback_Start 
+{
     If *MF_CompletedTutorial == .True
         Return
     EndIf
@@ -1821,7 +1824,8 @@
     End
 }
 
-@ $Script_Callback_AfterTutorial {
+@ $Script_Callback_AfterTutorial 
+{
     Call DisablePlayerInput ( .True )
     Wait 30`
     Call SpeakToPlayer ( .NpcID:Astro 00830404 00830401 00000000 002F0076 )
@@ -1829,7 +1833,9 @@
     Return
     End
 }
-@ $Script_EnterMap {
+
+@ $Script_EnterMap 
+{
     Call  GetEntryID    ( *Var[0] )
     Switch  *Var[0]
         Case  ==  ~Entry:TutorialEnd
