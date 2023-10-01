@@ -31,7 +31,7 @@
 	90` 45` -10`
 }
 
-#new:Vector3D $Vector3D_CapnKurbio
+#new:Vector3D $Vector3D_CapnKuribo
 {
 	125` 0` 20`
 }
@@ -49,7 +49,7 @@
 
 @ $Formation_00
 {
-	$CapnKurbio $Vector3D_CapnKurbio 0000000A 00000000 00000000 00000000 00000000
+	$CapnKuribo $Vector3D_CapnKuribo 0000000A 00000000 00000000 00000000 00000000
 	% $GoomMate $Vector3D_PirateGoombaBroB1 0000000A 00000000 00000000 00000000 00000000
 	% $GoomMate $Vector3D_PirateGoombaBroA1 0000000A 00000000 00000000 00000000 00000000
 }

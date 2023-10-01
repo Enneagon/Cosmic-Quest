@@ -9,7 +9,7 @@
 [Level]         0`b 
 [MaxHP]         1`b 
 [Coins]         0`b 
-[Flags]       00000000 
+[Flags]       00004000 
 [StatusTable] $StatusTable_DebrisBitCube
 % ai
 [PartsCount]    2`s 
@@ -70,7 +70,7 @@
 
 #new:PartsTable $PartsTable_DebrisBitCube % ActorPartBlueprint struct in decomp
 { 
-    /% s32 flags %/                 00020000
+    /% s32 flags %/                 00020020
     /% s8 index %/                  ~Byte:.Part:debrisBitCube
     /% Vec3b posOffset %/           0`b 10`b 0`b
     /% Vec2b targetOffset %/        0`b 26`b % For cursor when selecting to attack in battle
@@ -86,7 +86,7 @@
     /% s8 unk_20 %/                 00000000
     
     /% Target %/
-    /% s32 flags %/                  80800021
+    /% s32 flags %/                  00800020
     /% s8 index %/                   ~Byte:.Part:invisibleTargetDebrisBitCube
     /% Vec3b posOffset %/            0`b 0`b 0`b
     /% Vec2b targetOffset %/         0`b 26`b % For cursor when selecting to attack in battle

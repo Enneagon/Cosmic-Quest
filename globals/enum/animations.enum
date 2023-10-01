@@ -85,22 +85,22 @@ false	% reversed
 002E0203 = blizterBlasterShiverHurt
 
 % Capn Kuribo Animations
-00630000 = CapnKurbioStill
-00630001 = CapnKurbioIdle
-00630002 = CapnKurbioJump
-00630003 = CapnKurbioWalk
-00630004 = CapnKurbioRun
-00630005 = CapnKurbioKick
-00630006 = CapnKurbioDeath
-00630007 = CapnKurbioDizzy
-00630008 = CapnKurbioSleep
-00630009 = CapnKurbioAngry
-0063000A = CapnKurbioTalk
-0063000B = CapnKurbioPound
-0063000C = CapnKurbioLand
-0063000D = CapnKurbioBurntHurt
-0063000E = CapnKurbioBurntDeath
-0063000F = CapnKurbioChuckolaCola
+00630000 = CapnKuriboStill
+00630001 = CapnKuriboIdle
+00630002 = CapnKuriboJump
+00630003 = CapnKuriboWalk
+00630004 = CapnKuriboRun
+00630005 = CapnKuriboKick
+00630006 = CapnKuriboDeath
+00630007 = CapnKuriboDizzy
+00630008 = CapnKuriboSleep
+00630009 = CapnKuriboAngry
+0063000A = CapnKuriboTalk
+0063000B = CapnKuriboPound
+0063000C = CapnKuriboLand
+0063000D = CapnKuriboBurntHurt
+0063000E = CapnKuriboBurntDeath
+0063000F = CapnKuriboChuckolaCola
 
 % Debris Bit Cube Animations
 007F0000 = debrisBitCubeStill

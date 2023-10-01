@@ -1,4 +1,3 @@
-
 #new:Actor $GoomMate 
 {
     % stats
@@ -99,25 +98,8 @@
     Call  BindTakeTurn      ( .Actor:Self $Script_TakeTurn_GoomMate )
     Call  BindIdle  ( .Actor:Self $Script_Idle_GoomMate )
     Call  BindHandleEvent   ( .Actor:Self $Script_HandleEvent_GoomMate )
-    Call  $Function_80218A30_B ( )
     Return
     End
-}
-
-#new:Function $Function_80218A30_B 
-{
-    ADDIU     SP, SP, FFE8
-    SW        RA, 10 (SP)
-    JAL       ~Func:get_actor
-    LW        A0, 148 (A0)
-    LW        A0, 8 (V0)
-    LBU       V1, 6 (A0)
-    LI        V0, 2
-    SRLV      V1, V1, V0
-    SB        V1, 6 (A0)
-    LW        RA, 10 (SP)
-    JR        RA
-    ADDIU     SP, SP, 18
 }
 
 #new:Function $Function_8021893C_B 
@@ -375,6 +357,7 @@
                 Call AddActorVar ( .Actor:Enemy0 .AVar:HasSummoned 1` )
             EndIf
             ExecWait  DoDeath
+            %ExecWait  $GoomMate_Death
             Return
         Case  ==  .Event:SpinSmashHit % B
             SetConst  *Var0  00000001
@@ -391,6 +374,7 @@
                 Call AddActorVar ( .Actor:Enemy0 .AVar:HasSummoned 1` )
             EndIf
             ExecWait  DoDeath
+            %ExecWait  $GoomMate_Death
             Return
         Case  ==  .Event:ShockHit % 2F
             SetConst  *Var0  00000001
@@ -421,6 +405,7 @@
                 Call AddActorVar ( .Actor:Enemy0 .AVar:HasSummoned 1` )
             EndIf
             ExecWait  DoDeath
+            %ExecWait  $GoomMate_Death
             Return
         Case  ==  .Event:StarBeam % 13
         CaseOR  ==  00000017 % 17
@@ -442,6 +427,7 @@
                 Call AddActorVar ( .Actor:Enemy0 .AVar:HasSummoned 1` )
             EndIf
             ExecWait  DoDeath
+            %ExecWait  $GoomMate_Death
             Return
         Case  ==  .Event:EndFirstStrike % 35
             Call  SetAnimationRate  ( .Actor:Self 00000001 *Fixed[2.0] )
@@ -475,6 +461,14 @@
     Call  SetAnimation      ( .Actor:Self 00000001 00620002 )
     Call  EnableIdleScript  ( .Actor:Self .True )
     Call  UseIdleAnimation  ( .Actor:Self .True )
+    Return
+    End
+}
+
+#new:Script $GoomMate_Death
+{
+    Call  DropStarPoints    ( .Actor:Self )
+    ExecWait  DoDeath
     Return
     End
 }

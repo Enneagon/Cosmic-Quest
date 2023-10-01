@@ -18,6 +18,7 @@
 	00000000 00000001 $Formation_01 $Stage_encbt00 00000000
 	00000000 00000002 $Formation_02 $Stage_encbt01 00000000
 	00000000 00000004 $Formation_03 $Stage_encbt01 00000000
+	%00000000 00000001 $Formation_04 $Stage_encbt00 00000000
 	00000000 00000000 00000000 00000000 00000000
 }
 
@@ -46,14 +47,19 @@
 	110` 0` 20`
 }
 
-#new:Vector3D $Vector3D_CapnKurbio
+#new:Vector3D $Vector3D_CapnKuribo
 {
 	125` 0` 20`
 }
 
 #new:Vector3D $Vector3D_DebrisBitDiamond
 {
-	85` 65` 10`
+	85` 85` 10`
+}
+
+#new:Vector3D $Vector3D_GoomMate
+{
+	100` 0` 0`
 }
 
 /%
@@ -75,7 +81,7 @@
 
 #new:Formation $Formation_01
 {
-	$CapnKurbio $Vector3D_CapnKurbio 0000000A 00000000 00000000 00000000 00000000
+	$CapnKuribo $Vector3D_CapnKuribo 0000000A 00000000 00000000 00000000 00000000
 }
 
 #new:Formation $Formation_02
@@ -91,6 +97,13 @@
 	$DebrisBitDiamond $Vector3D_DebrisBitDiamond 00000008 00000000 00000000 00000000 00000000
 	$DebrisBitSphere 00000003 00000007 00000000 00000000 00000000 00000000
 }
+
+/%
+#new:Formation $Formation_04
+{
+	$GoomMate $Vector3D_GoomMate 0000000A 00000000 00000000 00000000 00000000
+}
+%/
 
 #new:StageTable $StageTable
 {
